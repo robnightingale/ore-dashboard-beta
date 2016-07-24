@@ -2,6 +2,7 @@ var gulp = require('gulp'),
     concat = require('gulp-concat'),
     uglify = require('gulp-uglify'),
     rename = require('gulp-rename'),
+    connect = require('gulp-connect'),
     sass = require('gulp-ruby-sass'),
     autoprefixer = require('gulp-autoprefixer'),
     browserSync = require('browser-sync').create();
@@ -58,4 +59,13 @@ gulp.task('watch', function() {
 });
 
 // Default Task
-gulp.task('default', ['browser-sync', 'watch']);
+// gulp.task('default', ['browser-sync', 'watch']);
+gulp.task('default', ['serveprod', 'watch']);
+
+gulp.task('serveprod', function() {
+    connect.server({
+        root: './',
+        port: process.env.PORT || 5000, // localhost:5000
+        livereload: false
+    });
+});
