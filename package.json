@@ -39,5 +39,8 @@
     "gulp-ruby-sass": "^2.0.6",
     "gulp-uglify": "^1.5.3",
     "gulp-connect" : "^4.1.0"
+  },
+  "dependencies": {
+    "gulp-connect" : "^4.1.0"
   }
 }
