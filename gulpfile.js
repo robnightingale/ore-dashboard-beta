@@ -39,11 +39,10 @@ gulp.task('sass-minify', function() {
 });
 
 gulp.task('browser-sync', function() {
-    var port_ = process.env.PORT || 3000;
     browserSync.init({
         server: {
             baseDir: './',
-            port:port_
+            port:process.env.PORT || 3000
         },
         startPath: './production/index.html'
     });
