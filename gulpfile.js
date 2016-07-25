@@ -59,13 +59,14 @@ gulp.task('watch', function() {
 });
 
 // Default Task
-// gulp.task('default', ['browser-sync', 'watch']);
+gulp.task('dev', ['browser-sync', 'watch']);
 gulp.task('default', ['serveprod', 'watch']);
 
 gulp.task('serveprod', function() {
     connect.server({
         root: './',
         port: process.env.PORT || 5000, // localhost:5000
+//        fallback: './production',
         livereload: false
     });
 });

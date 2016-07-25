@@ -250,6 +250,8 @@ echartLine.setOption({
         }
     },
     calculable: true,
+    clickable: true,
+    // dataZoom: [{ show: true, start: 60}, { show: true, orient: 'vertical'}],
     xAxis: [{
         type: 'category',
         boundaryGap: false,
@@ -347,6 +349,7 @@ echartLine2.setOption({
         name: 'Deal',
         type: 'line',
         smooth: true,
+        // clickable: true,
         itemStyle: {
             normal: {
                 areaStyle: {
@@ -406,6 +409,7 @@ echartBar.setOption({
         }
     },
     calculable: true,
+    clickable : true,
     xAxis: [{
         type: 'value',
         boundaryGap: [0, 0.01]
@@ -864,3 +868,50 @@ echartGauge.setOption({
         }]
     }]
 });
+
+function eConsole(param) {
+    var mes = '【' + param.type + '】';
+    if (typeof param.seriesIndex != 'undefined') {
+        mes += '  seriesIndex : ' + param.seriesIndex;
+        mes += '  dataIndex : ' + param.dataIndex;
+    }
+    if (param.type == 'hover') {
+        document.getElementById('hover-console').innerHTML = 'Event Console : ' + mes;
+    }
+    else {
+        // document.getElementById('console').innerHTML = mes;
+    console.log(mes);
+    }
+    console.log(param);
+}
+/*
+ // -------全局通用
+ REFRESH: 'refresh',
+ RESTORE: 'restore',
+ RESIZE: 'resize',
+ CLICK: 'click',
+ DBLCLICK: 'dblclick',
+ HOVER: 'hover',
+ MOUSEOUT: 'mouseout',
+ // -------业务交互逻辑
+ DATA_CHANGED: 'dataChanged',
+ DATA_ZOOM: 'dataZoom',
+ DATA_RANGE: 'dataRange',
+ DATA_RANGE_HOVERLINK: 'dataRangeHoverLink',
+ LEGEND_SELECTED: 'legendSelected',
+ LEGEND_HOVERLINK: 'legendHoverLink',
+ MAP_SELECTED: 'mapSelected',
+ PIE_SELECTED: 'pieSelected',
+ MAGIC_TYPE_CHANGED: 'magicTypeChanged',
+ DATA_VIEW_CHANGED: 'dataViewChanged',
+ TIMELINE_CHANGED: 'timelineChanged',
+ MAP_ROAM: 'mapRoam',
+ */
+// echartLine.on(ecConfig.EVENT.CLICK, eConsole);
+// echartLine.on(ecConfig.EVENT.HOVER, eConsole);
+// echartLine.on(ecConfig.EVENT.DBLCLICK, eConsole);
+// echartLine.on(ecConfig.EVENT.DATA_ZOOM, eConsole);
+// echartLine.on(ecConfig.EVENT.LEGEND_SELECTED, eConsole);
+// echartLine.on(ecConfig.EVENT.MAGIC_TYPE_CHANGED, eConsole);
+// echartLine.on(ecConfig.EVENT.DATA_VIEW_CHANGED, eConsole);
+echartLine.on('click',eConsole);
