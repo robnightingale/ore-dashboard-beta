@@ -227,6 +227,8 @@ echartLine.setOption({
     toolbox: {
         show: true,
         feature: {
+            dataView: {show:true, title : 'view data',  lang: ['Data','ok','refresh']
+            },
             magicType: {
                 show: true,
                 title: {
@@ -248,8 +250,6 @@ echartLine.setOption({
         }
     },
     calculable: true,
-    clickable: true,
-    // dataZoom: [{ show: true, start: 60}, { show: true, orient: 'vertical'}],
     xAxis: [{
         type: 'category',
         boundaryGap: false,
