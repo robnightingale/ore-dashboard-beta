@@ -210,9 +210,7 @@ var theme = {
     }
 };
 
-
 var echartLine = echarts.init(document.getElementById('echart_line'), theme);
-
 echartLine.setOption({
     title: {
         text: 'Line Graph',
@@ -298,8 +296,8 @@ echartLine.setOption({
         data: [1320, 1132, 601, 234, 120, 90, 20]
     }]
 });
-var echartLine2 = echarts.init(document.getElementById('echart_line2'), theme);
 
+var echartLine2 = echarts.init(document.getElementById('echart_line2'), theme);
 echartLine2.setOption({
     title: {
         text: 'Line Graph',
@@ -384,7 +382,6 @@ echartLine2.setOption({
         data: [1320, 1132, 601, 234, 120, 90, 20]
     }]
 });
-
 
 var echartBar = echarts.init(document.getElementById('echart_bar_horizontal'), theme);
 echartBar.setOption({
@@ -512,7 +509,6 @@ echartBar3.setOption({
 });
 
 var echartDonut = echarts.init(document.getElementById('echart_donut'), theme);
-
 echartDonut.setOption({
     tooltip: {
         trigger: 'item',
@@ -593,7 +589,6 @@ echartDonut.setOption({
 });
 
 var echartDonut2 = echarts.init(document.getElementById('echart_donut2'), theme);
-
 echartDonut2.setOption({
     tooltip: {
         trigger: 'item',
@@ -674,7 +669,6 @@ echartDonut2.setOption({
 });
 
 var echartDonut3 = echarts.init(document.getElementById('echart_donut3'), theme);
-
 echartDonut3.setOption({
     tooltip: {
         trigger: 'item',
@@ -754,9 +748,7 @@ echartDonut3.setOption({
     }]
 });
 
-
 var echartGauge = echarts.init(document.getElementById('echart_guage'), theme);
-
 echartGauge.setOption({
     tooltip: {
         formatter: "{a} <br/>{b} : {c}%"
@@ -884,34 +876,13 @@ function eConsole(param) {
     }
     console.log(param);
 }
-/*
- // -------全局通用
- REFRESH: 'refresh',
- RESTORE: 'restore',
- RESIZE: 'resize',
- CLICK: 'click',
- DBLCLICK: 'dblclick',
- HOVER: 'hover',
- MOUSEOUT: 'mouseout',
- // -------业务交互逻辑
- DATA_CHANGED: 'dataChanged',
- DATA_ZOOM: 'dataZoom',
- DATA_RANGE: 'dataRange',
- DATA_RANGE_HOVERLINK: 'dataRangeHoverLink',
- LEGEND_SELECTED: 'legendSelected',
- LEGEND_HOVERLINK: 'legendHoverLink',
- MAP_SELECTED: 'mapSelected',
- PIE_SELECTED: 'pieSelected',
- MAGIC_TYPE_CHANGED: 'magicTypeChanged',
- DATA_VIEW_CHANGED: 'dataViewChanged',
- TIMELINE_CHANGED: 'timelineChanged',
- MAP_ROAM: 'mapRoam',
- */
-// echartLine.on(ecConfig.EVENT.CLICK, eConsole);
-// echartLine.on(ecConfig.EVENT.HOVER, eConsole);
-// echartLine.on(ecConfig.EVENT.DBLCLICK, eConsole);
-// echartLine.on(ecConfig.EVENT.DATA_ZOOM, eConsole);
-// echartLine.on(ecConfig.EVENT.LEGEND_SELECTED, eConsole);
-// echartLine.on(ecConfig.EVENT.MAGIC_TYPE_CHANGED, eConsole);
-// echartLine.on(ecConfig.EVENT.DATA_VIEW_CHANGED, eConsole);
+
+// attach clickevents to pick up drill down
 echartLine.on('click',eConsole);
+echartLine2.on('click',eConsole);
+echartBar.on('click',eConsole);
+echartBar2.on('click',eConsole);
+echartBar3.on('click',eConsole);
+echartDonut.on('click',eConsole);
+echartDonut2.on('click',eConsole);
+echartDonut3.on('click',eConsole);

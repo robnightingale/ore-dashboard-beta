@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="caa21dc2-8a18-41a2-9fb6-7ca5b9d0c280" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gulpfile.js" afterPath="$PROJECT_DIR$/gulpfile.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/production/js/echart/echart.js" afterPath="$PROJECT_DIR$/production/js/echart/echart.js" />
     </list>
     <ignored path="ore-dashboard-beta.iws" />
@@ -30,9 +29,21 @@
       <file leaf-file-name="echart.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/production/js/echart/echart.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="541">
-              <caret line="916" column="32" selection-start-line="916" selection-start-column="32" selection-end-line="916" selection-end-column="32" />
-              <folding />
+            <state relative-caret-position="570">
+              <caret line="888" column="0" selection-start-line="888" selection-start-column="0" selection-end-line="888" selection-end-column="0" />
+              <folding>
+                <element signature="e#12#4665#0" expanded="false" />
+                <element signature="e#4767#6718#0" expanded="false" />
+                <element signature="e#6824#8702#0" expanded="false" />
+                <element signature="e#8813#9649#0" expanded="false" />
+                <element signature="e#9762#10576#0" expanded="false" />
+                <element signature="e#10689#11503#0" expanded="false" />
+                <element signature="e#11609#13513#0" expanded="false" />
+                <element signature="e#13622#15526#0" expanded="false" />
+                <element signature="e#15635#17539#0" expanded="false" />
+                <element signature="e#17645#20333#0" expanded="false" />
+                <element signature="n#!!block;n#eConsole#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -241,7 +252,7 @@
       <updated>1469370738799</updated>
       <workItem from="1469370739915" duration="5403000" />
       <workItem from="1469392482992" duration="1596000" />
-      <workItem from="1469467292058" duration="2332000" />
+      <workItem from="1469467292058" duration="2901000" />
     </task>
     <task id="LOCAL-00001" summary="package.json updated for local web running">
       <created>1469372595018</created>
@@ -250,11 +261,18 @@
       <option name="project" value="LOCAL" />
       <updated>1469372595018</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="added click event handler for drill down">
+      <created>1469471518312</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1469471518312</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="9331000" />
+    <option name="totallyTimeSpent" value="9900000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="42" y="23" width="1238" height="777" extended-state="6" />
@@ -294,7 +312,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="package.json updated for local web running" />
-    <option name="LAST_COMMIT_MESSAGE" value="package.json updated for local web running" />
+    <MESSAGE value="added click event handler for drill down" />
+    <option name="LAST_COMMIT_MESSAGE" value="added click event handler for drill down" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -557,9 +576,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/production/js/echart/echart.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="541">
-          <caret line="916" column="32" selection-start-line="916" selection-start-column="32" selection-end-line="916" selection-end-column="32" />
-          <folding />
+        <state relative-caret-position="570">
+          <caret line="888" column="0" selection-start-line="888" selection-start-column="0" selection-end-line="888" selection-end-column="0" />
+          <folding>
+            <element signature="e#12#4665#0" expanded="false" />
+            <element signature="e#4767#6718#0" expanded="false" />
+            <element signature="e#6824#8702#0" expanded="false" />
+            <element signature="e#8813#9649#0" expanded="false" />
+            <element signature="e#9762#10576#0" expanded="false" />
+            <element signature="e#10689#11503#0" expanded="false" />
+            <element signature="e#11609#13513#0" expanded="false" />
+            <element signature="e#13622#15526#0" expanded="false" />
+            <element signature="e#15635#17539#0" expanded="false" />
+            <element signature="e#17645#20333#0" expanded="false" />
+            <element signature="n#!!block;n#eConsole#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
