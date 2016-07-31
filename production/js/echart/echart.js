@@ -210,19 +210,19 @@ var theme = {
     }
 };
 
-var echartLine = echarts.init(document.getElementById('echart_line'), theme);
+var echartLine = echarts.init(document.getElementById('echart_line_total_exposure'), theme);
 echartLine.setOption({
     title: {
-        text: 'Line Graph',
+        text: 'Total Exposure',
         subtext: 'Subtitle'
     },
     tooltip: {
         trigger: 'axis'
     },
     legend: {
-        x: 220,
+        x: 140,
         y: 40,
-        data: ['Intent', 'Pre-order', 'Deal']
+        data: ['NPV', 'CE', 'EEPE', 'Total Exp']
     },
     toolbox: {
         show: true,
@@ -253,13 +253,13 @@ echartLine.setOption({
     xAxis: [{
         type: 'category',
         boundaryGap: false,
-        data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+        data: ['Week1', 'Week2', 'Week3', 'Week4']
     }],
     yAxis: [{
         type: 'value'
     }],
     series: [{
-        name: 'Deal',
+        name: 'NPV',
         type: 'line',
         smooth: true,
         itemStyle: {
@@ -269,9 +269,9 @@ echartLine.setOption({
                 }
             }
         },
-        data: [10, 12, 21, 54, 260, 830, 710]
+        data: [-668637914.7, -668637914.7/2, -668637714.7/2.5, -668637614.7/3]
     }, {
-        name: 'Pre-order',
+        name: 'CE',
         type: 'line',
         smooth: true,
         itemStyle: {
@@ -281,9 +281,9 @@ echartLine.setOption({
                 }
             }
         },
-        data: [30, 182, 434, 791, 390, 30, 10]
+        data: [763327844.8, 763327844.8/2, 763327844.8/2.5, 763327844.8/3]
     }, {
-        name: 'Intent',
+        name: 'EEPE',
         type: 'line',
         smooth: true,
         itemStyle: {
@@ -293,15 +293,28 @@ echartLine.setOption({
                 }
             }
         },
-        data: [1320, 1132, 601, 234, 120, 90, 20]
-    }]
+        data: [763327844.8, 763327844.8/2, 763327844.8/2.5, 763327844.8/3]
+    },{
+        name: 'Total Exp',
+        type: 'line',
+        smooth: true,
+        itemStyle: {
+            normal: {
+                areaStyle: {
+                    type: 'default'
+                }
+            }
+        },
+        data: [763327844.8*2, 763327844.8*2/1.2, 763327844.8*2/1.3, 763327844.8*2/1.4]
+    }
+    ]
 });
 
 var echartLine2 = echarts.init(document.getElementById('echart_line2'), theme);
 echartLine2.setOption({
     title: {
-        text: 'Line Graph',
-        subtext: 'Subtitle'
+        text: 'Exposure Profile',
+        subtext: 'Simulated EPE & PFE'
     },
     tooltip: {
         trigger: 'axis'
@@ -309,7 +322,7 @@ echartLine2.setOption({
     legend: {
         x: 220,
         y: 40,
-        data: ['Intent', 'Pre-order', 'Deal']
+        data: ['EPE', 'PFE']
     },
     toolbox: {
         show: true,
@@ -338,13 +351,13 @@ echartLine2.setOption({
     xAxis: [{
         type: 'category',
         boundaryGap: false,
-        data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+        data: ['Week1', 'Week2', 'Week3', 'Week4']
     }],
     yAxis: [{
         type: 'value'
     }],
     series: [{
-        name: 'Deal',
+        name: 'EPE',
         type: 'line',
         smooth: true,
         // clickable: true,
@@ -355,9 +368,9 @@ echartLine2.setOption({
                 }
             }
         },
-        data: [10, 12, 21, 54, 260, 830, 710]
+        data: [54, 260, 830, 710]
     }, {
-        name: 'Pre-order',
+        name: 'PFE',
         type: 'line',
         smooth: true,
         itemStyle: {
@@ -367,26 +380,14 @@ echartLine2.setOption({
                 }
             }
         },
-        data: [30, 182, 434, 791, 390, 30, 10]
-    }, {
-        name: 'Intent',
-        type: 'line',
-        smooth: true,
-        itemStyle: {
-            normal: {
-                areaStyle: {
-                    type: 'default'
-                }
-            }
-        },
-        data: [1320, 1132, 601, 234, 120, 90, 20]
+        data: [791, 390, 30, 10]
     }]
 });
 
-var echartBar = echarts.init(document.getElementById('echart_bar_horizontal'), theme);
+var echartBar = echarts.init(document.getElementById('echart_bar_ce'), theme);
 echartBar.setOption({
     title: {
-        text: 'Bar Graph',
+        text: 'Top CE',
         subtext: 'Graph subtitle'
     },
     tooltip: {
@@ -394,7 +395,7 @@ echartBar.setOption({
     },
     legend: {
         x: 100,
-        data: ['2015', '2016']
+        data: [ "CC", "CCC", "BB", "AA", "BBB"]
     },
     toolbox: {
         show: true,
@@ -413,22 +414,18 @@ echartBar.setOption({
     }],
     yAxis: [{
         type: 'category',
-        data: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun']
+        data: ["CC", "CCC", "BB", "AA", "BBB"]
     }],
     series: [{
-        name: '2015',
+        name: '2016-03-01',
         type: 'bar',
-        data: [18203, 23489, 29034, 104970, 131744, 630230]
-    }, {
-        name: '2016',
-        type: 'bar',
-        data: [19325, 23438, 31000, 121594, 134141, 681807]
+        data: [2.434153795E8, 2.031896731E8, 1.696079112E8, 5.808002756E7, 5.086273894E7]
     }]
 });
-var echartBar2 = echarts.init(document.getElementById('echart_bar_horizontal2'), theme);
+var echartBar2 = echarts.init(document.getElementById('echart_bar_cva'), theme);
 echartBar2.setOption({
     title: {
-        text: 'Bar Graph',
+        text: 'Top CVA',
         subtext: 'Graph subtitle'
     },
     tooltip: {
@@ -436,7 +433,7 @@ echartBar2.setOption({
     },
     legend: {
         x: 100,
-        data: ['2015', '2016']
+        data: ["CC", "AA", "BBB", "CCC", "C"]
     },
     toolbox: {
         show: true,
@@ -454,22 +451,18 @@ echartBar2.setOption({
     }],
     yAxis: [{
         type: 'category',
-        data: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun']
+        data: ["CC", "AA", "BBB", "CCC", "C"]
     }],
     series: [{
-        name: '2015',
+        name: '2016-03-01',
         type: 'bar',
-        data: [18203, 23489, 29034, 104970, 131744, 630230]
-    }, {
-        name: '2016',
-        type: 'bar',
-        data: [19325, 23438, 31000, 121594, 134141, 681807]
+        data: [908487.0, 744821.705, 703462.2286, 583971.5645, 441333.439]
     }]
 });
-var echartBar3 = echarts.init(document.getElementById('echart_bar_horizontal3'), theme);
+var echartBar3 = echarts.init(document.getElementById('echart_bar_dva'), theme);
 echartBar3.setOption({
     title: {
-        text: 'Bar Graph',
+        text: 'Top DVA',
         subtext: 'Graph subtitle'
     },
     tooltip: {
@@ -477,7 +470,7 @@ echartBar3.setOption({
     },
     legend: {
         x: 100,
-        data: ['2015', '2016']
+        data: ["AAA", "NR", "CC", "B", "BBB"]
     },
     toolbox: {
         show: true,
@@ -495,16 +488,160 @@ echartBar3.setOption({
     }],
     yAxis: [{
         type: 'category',
-        data: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun']
+        data: ["AAA", "NR", "CC", "B", "BBB"]
     }],
     series: [{
-        name: '2015',
+        name: '2016-03-01',
         type: 'bar',
-        data: [18203, 23489, 29034, 104970, 131744, 630230]
-    }, {
-        name: '2016',
+        data: [3201984.0, 3163904.5, 3147945.0, 2988867.0, 2550873.01]
+    }]
+});
+var echartBar4 = echarts.init(document.getElementById('echart_bar_npv'), theme);
+echartBar4.setOption({
+    title: {
+        text: 'Top NPV',
+        subtext: 'Graph subtitle'
+    },
+    tooltip: {
+        trigger: 'axis'
+    },
+    legend: {
+        x: 100,
+        data: ["CCC", "BB", "CC", "AA", "C" ]
+    },
+    toolbox: {
+        show: true,
+        feature: {
+            saveAsImage: {
+                show: true,
+                title: "Save Image"
+            }
+        }
+    },
+    calculable: true,
+    xAxis: [{
+        type: 'value',
+        boundaryGap: [0, 0.01]
+    }],
+    yAxis: [{
+        type: 'category',
+        data: ["CCC", "BB", "CC", "AA", "C" ]
+    }],
+    series: [{
+        name: '2016-03-01',
         type: 'bar',
-        data: [19325, 23438, 31000, 121594, 134141, 681807]
+        data: [1.835835138E8, 1.070428432E8, 1.970644777E7, 1.592368559E7, -1.281875696E7]
+    }]
+});
+var echartBar5 = echarts.init(document.getElementById('echart_bar_im'), theme);
+echartBar5.setOption({
+    title: {
+        text: 'Top IM',
+        subtext: 'Graph subtitle'
+    },
+    tooltip: {
+        trigger: 'axis'
+    },
+    legend: {
+        x: 100,
+        data: ["BBB", "AA", "BB", "AAA", "C"]
+    },
+    toolbox: {
+        show: true,
+        feature: {
+            saveAsImage: {
+                show: true,
+                title: "Save Image"
+            }
+        }
+    },
+    calculable: true,
+    xAxis: [{
+        type: 'value',
+        boundaryGap: [0, 0.01]
+    }],
+    yAxis: [{
+        type: 'category',
+        data: ["BBB", "AA", "BB", "AAA", "C"]
+    }],
+    series: [{
+        name: '2016-03-01',
+        type: 'bar',
+        data: [2.558196504E9, 1.875802525E9, 1.824579257E9, 1.806869178E9, 1.800851486E9]
+    }]
+});
+var echartBar6 = echarts.init(document.getElementById('echart_bar_exposure'), theme);
+echartBar6.setOption({
+    title: {
+        text: 'Top Exposure',
+        subtext: 'Graph subtitle'
+    },
+    tooltip: {
+        trigger: 'axis'
+    },
+    legend: {
+        x: 100,
+        data: ["CC", "CCC", "BB", "AA", "BBB"]
+    },
+    toolbox: {
+        show: true,
+        feature: {
+            saveAsImage: {
+                show: true,
+                title: "Save Image"
+            }
+        }
+    },
+    calculable: true,
+    xAxis: [{
+        type: 'value',
+        boundaryGap: [0, 0.01]
+    }],
+    yAxis: [{
+        type: 'category',
+        data: ["CC", "CCC", "BB", "AA", "BBB"]
+    }],
+    series: [{
+        name: '2016-03-01',
+        type: 'bar',
+        data: [4.86830759E8, 4.063793462E8, 3.392158224E8, 1.1616005512E8, 1.0172547788E8]
+    }]
+});
+var echartBar7 = echarts.init(document.getElementById('echart_bar_eepe'), theme);
+echartBar7.setOption({
+    title: {
+        text: 'Top EEPE',
+        subtext: 'Graph subtitle'
+    },
+    tooltip: {
+        trigger: 'axis'
+    },
+    legend: {
+        x: 100,
+        data: [ "CC", "CCC", "BB", "AA", "BBB"]
+    },
+    toolbox: {
+        show: true,
+        feature: {
+            saveAsImage: {
+                show: true,
+                title: "Save Image"
+            }
+        }
+    },
+    calculable: true,
+    xAxis: [{
+        type: 'value',
+        boundaryGap: [0, 0.01]
+    }],
+    yAxis: [{
+        type: 'category',
+        data: [ "CC", "CCC", "BB", "AA", "BBB"]
+    }],
+    series: [{
+        name: '2016-03-01',
+        type: 'bar',
+        data: [2.434153795E8, 2.031896731E8, 1.696079112E8, 5.808002756E7, 5.086273894E7]
     }]
 });
 
@@ -518,7 +655,7 @@ echartDonut.setOption({
     legend: {
         x: 'center',
         y: 'bottom',
-        data: ['Direct Access', 'E-mail Marketing', 'Union Ad', 'Video Ads', 'Search Engine']
+        data: ['AAA', 'AA', 'A', 'BBB', 'BB','B','CCC','CC','C','NR']
     },
     toolbox: {
         show: true,
@@ -546,7 +683,7 @@ echartDonut.setOption({
         }
     },
     series: [{
-        name: 'Access to the resource',
+        name: 'CVA Risk measure by credit rating',
         type: 'pie',
         radius: ['35%', '55%'],
         itemStyle: {
@@ -570,20 +707,35 @@ echartDonut.setOption({
             }
         },
         data: [{
-            value: 335,
-            name: 'Direct Access'
+            value: 378922.2,
+            name: 'AAA'
         }, {
-            value: 310,
-            name: 'E-mail Marketing'
+            value: 744821.705,
+            name: 'AA'
         }, {
-            value: 234,
-            name: 'Union Ad'
+            value: 324822.6539,
+            name: 'A'
         }, {
-            value: 135,
-            name: 'Video Ads'
+            value: 703462.2286,
+            name: 'BBB'
         }, {
-            value: 1548,
-            name: 'Search Engine'
+            value: 433799.9102,
+            name: 'BB'
+        },{
+            value: 128340.57,
+            name: 'B'
+        },{
+            value:583971.5645,
+            name: 'CCC'
+        },{
+            value: 908487,
+            name: 'CC'
+        },{
+            value: 441333.439,
+            name: 'C'
+        },{
+            value: 309688.8,
+            name: 'NR'
         }]
     }]
 });
@@ -598,7 +750,7 @@ echartDonut2.setOption({
     legend: {
         x: 'center',
         y: 'bottom',
-        data: ['Direct Access', 'E-mail Marketing', 'Union Ad', 'Video Ads', 'Search Engine']
+        data: ['AAA', 'AA', 'A', 'BBB', 'BB','B','CCC','CC','C','NR']
     },
     toolbox: {
         show: true,
@@ -626,7 +778,7 @@ echartDonut2.setOption({
         }
     },
     series: [{
-        name: 'Access to the resource',
+        name: 'FVA Risk measure by credit rating',
         type: 'pie',
         radius: ['35%', '55%'],
         itemStyle: {
@@ -650,20 +802,35 @@ echartDonut2.setOption({
             }
         },
         data: [{
-            value: 335,
-            name: 'Direct Access'
+            value: 378922.2,
+            name: 'AAA'
         }, {
-            value: 310,
-            name: 'E-mail Marketing'
+            value: 744821.705,
+            name: 'AA'
         }, {
-            value: 234,
-            name: 'Union Ad'
+            value: 324822.6539,
+            name: 'A'
         }, {
-            value: 135,
-            name: 'Video Ads'
+            value: 703462.2286,
+            name: 'BBB'
         }, {
-            value: 1548,
-            name: 'Search Engine'
+            value: 433799.9102,
+            name: 'BB'
+        },{
+            value: 128340.57,
+            name: 'B'
+        },{
+            value:583971.5645,
+            name: 'CCC'
+        },{
+            value: 908487,
+            name: 'CC'
+        },{
+            value: 441333.439,
+            name: 'C'
+        },{
+            value: 309688.8,
+            name: 'NR'
         }]
     }]
 });
@@ -678,7 +845,7 @@ echartDonut3.setOption({
     legend: {
         x: 'center',
         y: 'bottom',
-        data: ['Direct Access', 'E-mail Marketing', 'Union Ad', 'Video Ads', 'Search Engine']
+        data: ['AAA', 'AA', 'A', 'BBB', 'BB','B','CCC','CC','C','NR']
     },
     toolbox: {
         show: true,
@@ -706,7 +873,7 @@ echartDonut3.setOption({
         }
     },
     series: [{
-        name: 'Access to the resource',
+        name: 'ColVA Risk measure by credit rating',
         type: 'pie',
         radius: ['35%', '55%'],
         itemStyle: {
@@ -730,20 +897,35 @@ echartDonut3.setOption({
             }
         },
         data: [{
-            value: 335,
-            name: 'Direct Access'
+            value: 378922.2,
+            name: 'AAA'
         }, {
-            value: 310,
-            name: 'E-mail Marketing'
+            value: 744821.705,
+            name: 'AA'
         }, {
-            value: 234,
-            name: 'Union Ad'
+            value: 324822.6539,
+            name: 'A'
         }, {
-            value: 135,
-            name: 'Video Ads'
+            value: 703462.2286,
+            name: 'BBB'
         }, {
-            value: 1548,
-            name: 'Search Engine'
+            value: 433799.9102,
+            name: 'BB'
+        },{
+            value: 128340.57,
+            name: 'B'
+        },{
+            value:583971.5645,
+            name: 'CCC'
+        },{
+            value: 908487,
+            name: 'CC'
+        },{
+            value: 441333.439,
+            name: 'C'
+        },{
+            value: 309688.8,
+            name: 'NR'
         }]
     }]
 });
@@ -862,7 +1044,7 @@ echartGauge.setOption({
 });
 
 function eConsole(param) {
-    var mes = '【' + param.type + '】';
+    var mes = 'Drill down request - 【' + param.type + '】';
     if (typeof param.seriesIndex != 'undefined') {
         mes += '  seriesIndex : ' + param.seriesIndex;
         mes += '  dataIndex : ' + param.dataIndex;
@@ -872,7 +1054,8 @@ function eConsole(param) {
     }
     else {
         // document.getElementById('console').innerHTML = mes;
-    console.log(mes);
+        console.log(mes);
+        alert(mes);
     }
     console.log(param);
 }
@@ -883,6 +1066,10 @@ echartLine2.on('click',eConsole);
 echartBar.on('click',eConsole);
 echartBar2.on('click',eConsole);
 echartBar3.on('click',eConsole);
+echartBar4.on('click',eConsole);
+echartBar5.on('click',eConsole);
+echartBar6.on('click',eConsole);
+echartBar7.on('click',eConsole);
 echartDonut.on('click',eConsole);
 echartDonut2.on('click',eConsole);
 echartDonut3.on('click',eConsole);
