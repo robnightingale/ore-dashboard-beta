@@ -387,8 +387,8 @@ echartLine2.setOption({
 var echartBar = echarts.init(document.getElementById('echart_bar_ce'), theme);
 echartBar.setOption({
     title: {
-        text: 'Top CE',
-        subtext: 'Graph subtitle'
+        text: 'CE',
+        subtext: '01-MAR-2016'
     },
     tooltip: {
         trigger: 'axis'
@@ -422,18 +422,18 @@ echartBar.setOption({
         data: [2.434153795E8, 2.031896731E8, 1.696079112E8, 5.808002756E7, 5.086273894E7]
     }]
 });
-var echartBar2 = echarts.init(document.getElementById('echart_bar_cva'), theme);
+var echartBar2 = echarts.init(document.getElementById('echart_bar_npv'), theme);
 echartBar2.setOption({
     title: {
-        text: 'Top CVA',
-        subtext: 'Graph subtitle'
+        text: 'NPV',
+        subtext: '01-MAR-2016'
     },
     tooltip: {
         trigger: 'axis'
     },
     legend: {
         x: 100,
-        data: ["CC", "AA", "BBB", "CCC", "C"]
+        data : [ "CCC", "BB", "CC", "AA", "C" ]
     },
     toolbox: {
         show: true,
@@ -451,19 +451,19 @@ echartBar2.setOption({
     }],
     yAxis: [{
         type: 'category',
-        data: ["CC", "AA", "BBB", "CCC", "C"]
+        data : [ "CCC", "BB", "CC", "AA", "C" ]
     }],
     series: [{
         name: '2016-03-01',
         type: 'bar',
-        data: [908487.0, 744821.705, 703462.2286, 583971.5645, 441333.439]
+        data : [ 1.835835138E8, 1.070428432E8, 1.970644777E7, 1.592368559E7, -1.281875696E7 ]
     }]
 });
-var echartBar3 = echarts.init(document.getElementById('echart_bar_dva'), theme);
+var echartBar3 = echarts.init(document.getElementById('echart_bar_fca'), theme);
 echartBar3.setOption({
     title: {
-        text: 'Top DVA',
-        subtext: 'Graph subtitle'
+        text: 'FCA',
+        subtext: '01-MAR-2016'
     },
     tooltip: {
         trigger: 'axis'
@@ -493,21 +493,21 @@ echartBar3.setOption({
     series: [{
         name: '2016-03-01',
         type: 'bar',
-        data: [3201984.0, 3163904.5, 3147945.0, 2988867.0, 2550873.01]
+        data : [ 1443943.9, 1421737.4, 1396364.0, 1376168.0, 1172954.6 ]
     }]
 });
-var echartBar4 = echarts.init(document.getElementById('echart_bar_npv'), theme);
+var echartBar4 = echarts.init(document.getElementById('echart_bar_eepe'), theme);
 echartBar4.setOption({
     title: {
-        text: 'Top NPV',
-        subtext: 'Graph subtitle'
+        text: 'EEPE',
+        subtext: '01-MAR-2016'
     },
     tooltip: {
         trigger: 'axis'
     },
     legend: {
         x: 100,
-        data: ["CCC", "BB", "CC", "AA", "C" ]
+        data: [ "CC", "CCC", "BB", "AA", "BBB" ]
     },
     toolbox: {
         show: true,
@@ -525,26 +525,26 @@ echartBar4.setOption({
     }],
     yAxis: [{
         type: 'category',
-        data: ["CCC", "BB", "CC", "AA", "C" ]
+        data: [ "CC", "CCC", "BB", "AA", "BBB" ]
     }],
     series: [{
         name: '2016-03-01',
         type: 'bar',
-        data: [1.835835138E8, 1.070428432E8, 1.970644777E7, 1.592368559E7, -1.281875696E7]
+        data: [ 2.434153795E8, 2.031896731E8, 1.696079112E8, 5.808002756E7, 5.086273894E7 ]
     }]
 });
-var echartBar5 = echarts.init(document.getElementById('echart_bar_im'), theme);
+var echartBar5 = echarts.init(document.getElementById('echart_bar_npv2'), theme);
 echartBar5.setOption({
     title: {
-        text: 'Top IM',
-        subtext: 'Graph subtitle'
+        text: 'NPV',
+        subtext: '01-MAR-2016'
     },
     tooltip: {
         trigger: 'axis'
     },
     legend: {
         x: 100,
-        data: ["BBB", "AA", "BB", "AAA", "C"]
+        data : [ "CCC", "BB", "CC", "AA", "C" ]
     },
     toolbox: {
         show: true,
@@ -562,26 +562,26 @@ echartBar5.setOption({
     }],
     yAxis: [{
         type: 'category',
-        data: ["BBB", "AA", "BB", "AAA", "C"]
+        data : [ "CCC", "BB", "CC", "AA", "C" ]
     }],
     series: [{
         name: '2016-03-01',
         type: 'bar',
-        data: [2.558196504E9, 1.875802525E9, 1.824579257E9, 1.806869178E9, 1.800851486E9]
+        data : [ 1.835835138E8, 1.070428432E8, 1.970644777E7, 1.592368559E7, -1.281875696E7 ]
     }]
 });
-var echartBar6 = echarts.init(document.getElementById('echart_bar_exposure'), theme);
+var echartBar6 = echarts.init(document.getElementById('echart_bar_fba'), theme);
 echartBar6.setOption({
     title: {
-        text: 'Top Exposure',
-        subtext: 'Graph subtitle'
+        text: 'FBA',
+        subtext: '01-MAR-2016'
     },
     tooltip: {
         trigger: 'axis'
     },
     legend: {
         x: 100,
-        data: ["CC", "CCC", "BB", "AA", "BBB"]
+        data: [ "B", "NR", "A", "AAA", "BB" ]
     },
     toolbox: {
         show: true,
@@ -599,49 +599,12 @@ echartBar6.setOption({
     }],
     yAxis: [{
         type: 'category',
-        data: ["CC", "CCC", "BB", "AA", "BBB"]
+        data: [ "B", "NR", "A", "AAA", "BB" ]
     }],
     series: [{
         name: '2016-03-01',
         type: 'bar',
-        data: [4.86830759E8, 4.063793462E8, 3.392158224E8, 1.1616005512E8, 1.0172547788E8]
-    }]
-});
-var echartBar7 = echarts.init(document.getElementById('echart_bar_eepe'), theme);
-echartBar7.setOption({
-    title: {
-        text: 'Top EEPE',
-        subtext: 'Graph subtitle'
-    },
-    tooltip: {
-        trigger: 'axis'
-    },
-    legend: {
-        x: 100,
-        data: [ "CC", "CCC", "BB", "AA", "BBB"]
-    },
-    toolbox: {
-        show: true,
-        feature: {
-            saveAsImage: {
-                show: true,
-                title: "Save Image"
-            }
-        }
-    },
-    calculable: true,
-    xAxis: [{
-        type: 'value',
-        boundaryGap: [0, 0.01]
-    }],
-    yAxis: [{
-        type: 'category',
-        data: [ "CC", "CCC", "BB", "AA", "BBB"]
-    }],
-    series: [{
-        name: '2016-03-01',
-        type: 'bar',
-        data: [2.434153795E8, 2.031896731E8, 1.696079112E8, 5.808002756E7, 5.086273894E7]
+        data: [ -17279.998, -40045.45, -48515.71269, -49429.49, -66222.23245 ]
     }]
 });
 
@@ -1069,7 +1032,6 @@ echartBar3.on('click',eConsole);
 echartBar4.on('click',eConsole);
 echartBar5.on('click',eConsole);
 echartBar6.on('click',eConsole);
-echartBar7.on('click',eConsole);
 echartDonut.on('click',eConsole);
 echartDonut2.on('click',eConsole);
 echartDonut3.on('click',eConsole);
