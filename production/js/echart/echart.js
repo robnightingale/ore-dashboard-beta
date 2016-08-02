@@ -6,10 +6,20 @@ var barCharts = (function () {
     var instance;
 
     function setCustomOptions(common, custom){
-        common.series = custom.series;
-        common.title = custom.title;
-        common.data = custom.yAxisLabels;
+        var series_ = [{
+            type: custom.seriesType,
+            data : custom.yaxisValues,
+            name : custom.seriesName
+        }];
+        var title_ = [{
+            text: custom.title,
+            subtext: custom.subTitleText
+        }]
+
+        common.series = series_;
+        common.title = title_;
         common.legend.data = custom.yAxisLabels;
+        common.data = custom.yAxisLabels;
     }
 
     var options = {
@@ -50,77 +60,114 @@ var barCharts = (function () {
     var fba_chart = options;
 
     var ce_chartData = {
-        yAxisLabels: ["CC", "CCC", "BB", "AA", "BBB"],
-        title: {
-            text: 'CE',
-            subtext: '01-MAR-2016'
-        },
-        series: [{
-            name: '2016-03-01',
-            type: 'bar',
-            data: [2.434153795E8, 2.031896731E8, 1.696079112E8, 5.808002756E7, 5.086273894E7]
-        }]
+        "titleText" : "CE",
+        "subTitleText" : "01-MAR-2016",
+        "seriesName" : "2016-03-01",
+        "seriesType" : "bar",
+        "yaxisLabels" : [ "CC", "CCC", "BB", "AA", "BBB" ],
+        "yaxisValues" : [ 2.434153795E8, 2.031896731E8, 1.696079112E8, 5.808002756E7, 5.086273894E7 ]
     }
     var npv_chartData = {
-        yAxisLabels: ["CCC", "BB", "CC", "AA", "C"],
-        title: {
-            text: 'NPV',
-            subtext: '01-MAR-2016'
-        },
-        series: [{
-            name: '2016-03-01',
-            type: 'bar',
-            data: [1.835835138E8, 1.070428432E8, 1.970644777E7, 1.592368559E7, -1.281875696E7]
-        }]
+        "titleText" : "NPV",
+        "subTitleText" : "01-MAR-2016",
+        "seriesName" : "2016-03-01",
+        "seriesType" : "bar",
+        "yaxisLabels" : ["CCC", "BB", "CC", "AA", "C"],
+        "yaxisValues" : [1.835835138E8, 1.070428432E8, 1.970644777E7, 1.592368559E7, -1.281875696E7]
     }
     var fca_chartData = {
-        yAxisLabels: ["AAA", "NR", "CC", "B", "BBB"],
-        title: {
-            text: 'FCA',
-            subtext: '01-MAR-2016'
-        },
-        series: [{
-            name: '2016-03-01',
-            type: 'bar',
-            data: [1443943.9, 1421737.4, 1396364.0, 1376168.0, 1172954.6]
-        }]
+        "titleText" : "CE",
+        "subTitleText" : "01-MAR-2016",
+        "seriesName" : "2016-03-01",
+        "seriesType" : "bar",
+        "yaxisLabels" : [ "CC", "CCC", "BB", "AA", "BBB" ],
+        "yaxisValues" : [ 2.434153795E8, 2.031896731E8, 1.696079112E8, 5.808002756E7, 5.086273894E7 ]
     }
     var fba_chartData = {
-        yAxisLabels: ["B", "NR", "A", "AAA", "BB"],
-        title: {
-            text: 'FBA',
-            subtext: '01-MAR-2016'
-        },
-        series: [{
-            name: '2016-03-01',
-            type: 'bar',
-            data: [-17279.998, -40045.45, -48515.71269, -49429.49, -66222.23245]
-        }]
+        "titleText" : "CE",
+        "subTitleText" : "01-MAR-2016",
+        "seriesName" : "2016-03-01",
+        "seriesType" : "bar",
+        "yaxisLabels" : [ "CC", "CCC", "BB", "AA", "BBB" ],
+        "yaxisValues" : [ 2.434153795E8, 2.031896731E8, 1.696079112E8, 5.808002756E7, 5.086273894E7 ]
     }
     var eepe_chartData = {
-        yAxisLabels: ["CC", "CCC", "BB", "AA", "BBB"],
-        title: {
-            text: 'EEPE',
-            subtext: '01-MAR-2016'
-        },
-        series: [{
-            name: '2016-03-01',
-            type: 'bar',
-            data: [2.434153795E8, 2.031896731E8, 1.696079112E8, 5.808002756E7, 5.086273894E7]
-        }]
+        "titleText" : "CE",
+        "subTitleText" : "01-MAR-2016",
+        "seriesName" : "2016-03-01",
+        "seriesType" : "bar",
+        "yaxisLabels" : [ "CC", "CCC", "BB", "AA", "BBB" ],
+        "yaxisValues" : [ 2.434153795E8, 2.031896731E8, 1.696079112E8, 5.808002756E7, 5.086273894E7 ]
     }
     var npv2_chartData = {
-        yAxisLabels: ["CCC", "BB", "CC", "AA", "C"],
-        title: {
-            text: 'NPV2',
-            subtext: '01-MAR-2016'
-        },
-        series: [{
-            name: '2016-03-01',
-            type: 'bar',
-            data: [1.835835138E8, 1.070428432E8, 1.970644777E7, 1.592368559E7, -1.281875696E7]
-        }]
+        "titleText" : "CE",
+        "subTitleText" : "01-MAR-2016",
+        "seriesName" : "2016-03-01",
+        "seriesType" : "bar",
+        "yaxisLabels" : [ "CC", "CCC", "BB", "AA", "BBB" ],
+        "yaxisValues" : [ 2.434153795E8, 2.031896731E8, 1.696079112E8, 5.808002756E7, 5.086273894E7 ]
     }
+
+    // var npv_chartData = {
+    //     yAxisLabels: ["CCC", "BB", "CC", "AA", "C"],
+    //     title: {
+    //         text: 'NPV',
+    //         subtext: '01-MAR-2016'
+    //     },
+    //     series: [{
+    //         name: '2016-03-01',
+    //         type: 'bar',
+    //         data: [1.835835138E8, 1.070428432E8, 1.970644777E7, 1.592368559E7, -1.281875696E7]
+    //     }]
+    // }
+    // var fca_chartData = {
+    //     yAxisLabels: ["AAA", "NR", "CC", "B", "BBB"],
+    //     title: {
+    //         text: 'FCA',
+    //         subtext: '01-MAR-2016'
+    //     },
+    //     series: [{
+    //         name: '2016-03-01',
+    //         type: 'bar',
+    //         data: [1443943.9, 1421737.4, 1396364.0, 1376168.0, 1172954.6]
+    //     }]
+    // }
+    // var fba_chartData = {
+    //     yAxisLabels: ["B", "NR", "A", "AAA", "BB"],
+    //     title: {
+    //         text: 'FBA',
+    //         subtext: '01-MAR-2016'
+    //     },
+    //     series: [{
+    //         name: '2016-03-01',
+    //         type: 'bar',
+    //         data: [-17279.998, -40045.45, -48515.71269, -49429.49, -66222.23245]
+    //     }]
+    // }
+    // var eepe_chartData = {
+    //     yAxisLabels: ["CC", "CCC", "BB", "AA", "BBB"],
+    //     title: {
+    //         text: 'EEPE',
+    //         subtext: '01-MAR-2016'
+    //     },
+    //     series: [{
+    //         name: '2016-03-01',
+    //         type: 'bar',
+    //         data: [2.434153795E8, 2.031896731E8, 1.696079112E8, 5.808002756E7, 5.086273894E7]
+    //     }]
+    // }
+    // var npv2_chartData = {
+    //     yAxisLabels: ["CCC", "BB", "CC", "AA", "C"],
+    //     title: {
+    //         text: 'NPV2',
+    //         subtext: '01-MAR-2016'
+    //     },
+    //     series: [{
+    //         name: '2016-03-01',
+    //         type: 'bar',
+    //         data: [1.835835138E8, 1.070428432E8, 1.970644777E7, 1.592368559E7, -1.281875696E7]
+    //     }]
+    // }
 
     var echartBar = echarts.init(document.getElementById('echart_bar_ce'), theme);
     var echartBar2 = echarts.init(document.getElementById('echart_bar_npv'), theme);
@@ -149,7 +196,7 @@ var barCharts = (function () {
     // attach clickevents to pick up drill down
 // echartLine.on('click',eConsole);
 // echartLine2.on('click',eConsole);
-    echartBar.on('click',eConsole);
+echartBar.on('click',eConsole);
 // echartBar2.on('click',eConsole);
 // echartBar3.on('click',eConsole);
 // echartBar4.on('click',eConsole);
