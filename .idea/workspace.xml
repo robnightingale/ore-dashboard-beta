@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="caa21dc2-8a18-41a2-9fb6-7ca5b9d0c280" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/production/index.html" afterPath="$PROJECT_DIR$/production/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/production/js/echart/echart.js" afterPath="$PROJECT_DIR$/production/js/echart/echart.js" />
     </list>
     <ignored path="ore-dashboard-beta.iws" />
@@ -31,8 +30,8 @@
       <file leaf-file-name="echart.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/production/js/echart/echart.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="313">
-              <caret line="507" column="13" selection-start-line="507" selection-start-column="13" selection-end-line="507" selection-end-column="13" />
+            <state relative-caret-position="-120">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding>
                 <element signature="e#347#8094#0" expanded="false" />
                 <element signature="e#1939#2261#0" expanded="false" />
@@ -44,8 +43,8 @@
                 <element signature="e#4028#4052#0" expanded="false" />
                 <element signature="e#8352#11530#0" expanded="false" />
                 <element signature="e#12075#12427#0" expanded="false" />
-                <element signature="e#24006#24972#0" expanded="false" />
-                <element signature="e#31470#35043#0" expanded="false" />
+                <element signature="e#24066#25032#0" expanded="false" />
+                <element signature="e#31530#35103#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -303,7 +302,7 @@
       <workItem from="1469953546084" duration="5741000" />
       <workItem from="1470008140283" duration="24728000" />
       <workItem from="1470240756230" duration="39000" />
-      <workItem from="1470240814703" duration="631000" />
+      <workItem from="1470240814703" duration="1154000" />
     </task>
     <task id="LOCAL-00001" summary="package.json updated for local web running">
       <created>1469372595018</created>
@@ -354,22 +353,29 @@
       <option name="project" value="LOCAL" />
       <updated>1470145194419</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="REPOSIT-0000 added marklines and datazoom for exposure profile">
+      <created>1470241582686</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1470241582686</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="47044000" />
+    <option name="totallyTimeSpent" value="47567000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="42" y="23" width="1238" height="777" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24979457" sideWeight="0.5472973" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.15213816" sideWeight="0.66139954" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3262519" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3262519" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32776934" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24979457" sideWeight="0.4527027" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -410,7 +416,8 @@
     <MESSAGE value="testing data view toolbox options" />
     <MESSAGE value="updated to latest beta demo page" />
     <MESSAGE value="REPOSIT-0000 more refactoring of the custom options" />
-    <option name="LAST_COMMIT_MESSAGE" value="REPOSIT-0000 more refactoring of the custom options" />
+    <MESSAGE value="REPOSIT-0000 added marklines and datazoom for exposure profile" />
+    <option name="LAST_COMMIT_MESSAGE" value="REPOSIT-0000 added marklines and datazoom for exposure profile" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -437,8 +444,8 @@
             <element signature="e#4028#4052#0" expanded="false" />
             <element signature="e#8352#11530#0" expanded="false" />
             <element signature="e#12075#12427#0" expanded="false" />
-            <element signature="e#24006#24972#0" expanded="false" />
-            <element signature="e#31470#35043#0" expanded="false" />
+            <element signature="e#24066#25032#0" expanded="false" />
+            <element signature="e#31530#35103#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -760,8 +767,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/production/js/echart/echart.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="313">
-          <caret line="507" column="13" selection-start-line="507" selection-start-column="13" selection-end-line="507" selection-end-column="13" />
+        <state relative-caret-position="-120">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#347#8094#0" expanded="false" />
             <element signature="e#1939#2261#0" expanded="false" />
@@ -773,8 +780,8 @@
             <element signature="e#4028#4052#0" expanded="false" />
             <element signature="e#8352#11530#0" expanded="false" />
             <element signature="e#12075#12427#0" expanded="false" />
-            <element signature="e#24006#24972#0" expanded="false" />
-            <element signature="e#31470#35043#0" expanded="false" />
+            <element signature="e#24066#25032#0" expanded="false" />
+            <element signature="e#31530#35103#0" expanded="false" />
           </folding>
         </state>
       </provider>
