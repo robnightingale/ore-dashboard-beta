@@ -541,6 +541,12 @@ var DONUTCharts = (function () {
 
     function init() {
 
+        function setCustomOptions(common, custom) {
+            common.legend.data = custom.yaxisLabels;
+            common.series[0].data = custom.yaxisValues;
+            common.series[0].name = custom.title;
+        }
+
         var options = {
             tooltip: {
                 trigger: 'item',
@@ -605,16 +611,10 @@ var DONUTCharts = (function () {
                 data: []
             }]
         };
-
-        function setCustomOptions(common, custom) {
-            common.legend.data = custom.yaxisLabels;
-            common.series[0].data = custom.yaxisValues;
-            common.series[0].name = custom.yaxisLabels;
-            common.title = custom.title;
-            common.data = custom.yaxisLabels;
-        }
-
         var cva_options = options;
+        var fva_options = options;
+        var colva_options = options;
+
         var cva_chartData = {
             title : 'CVA Risk measure by credit rating',
             yaxisLabels: ['AAA', 'AA', 'A', 'BBB', 'BB', 'B', 'CCC', 'CC', 'C', 'NR'],
@@ -650,202 +650,277 @@ var DONUTCharts = (function () {
                 name: 'NR'
             }]
         };
+        var fva_chartData = {
+            title : 'FVA Risk measure by credit rating',
+            yaxisLabels: ['AAA', 'AA', 'A', 'BBB', 'BB', 'B', 'CCC', 'CC', 'C', 'NR'],
+            yaxisValues: [{
+                value: 378922.2,
+                name: 'AAA'
+            }, {
+                value: 744821.705,
+                name: 'AA'
+            }, {
+                value: 324822.6539,
+                name: 'A'
+            }, {
+                value: 703462.2286,
+                name: 'BBB'
+            }, {
+                value: 433799.9102,
+                name: 'BB'
+            }, {
+                value: 128340.57,
+                name: 'B'
+            }, {
+                value: 583971.5645,
+                name: 'CCC'
+            }, {
+                value: 908487,
+                name: 'CC'
+            }, {
+                value: 441333.439,
+                name: 'C'
+            }, {
+                value: 309688.8,
+                name: 'NR'
+            }]
+        };
+        var colva_chartData = {
+            title : 'ColVA Risk measure by credit rating',
+            yaxisLabels: ['AAA', 'AA', 'A', 'BBB', 'BB', 'B', 'CCC', 'CC', 'C', 'NR'],
+            yaxisValues: [{
+                value: 378922.2,
+                name: 'AAA'
+            }, {
+                value: 744821.705,
+                name: 'AA'
+            }, {
+                value: 324822.6539,
+                name: 'A'
+            }, {
+                value: 703462.2286,
+                name: 'BBB'
+            }, {
+                value: 433799.9102,
+                name: 'BB'
+            }, {
+                value: 128340.57,
+                name: 'B'
+            }, {
+                value: 583971.5645,
+                name: 'CCC'
+            }, {
+                value: 908487,
+                name: 'CC'
+            }, {
+                value: 441333.439,
+                name: 'C'
+            }, {
+                value: 309688.8,
+                name: 'NR'
+            }]
+        };
+
         setCustomOptions(cva_options, cva_chartData);
+        setCustomOptions(fva_options, fva_chartData);
+        setCustomOptions(colva_options, colva_chartData);
 
         echartDonut = echarts.init(document.getElementById('echart_donut'), theme);
-        // echartDonut.setOption(cva_options);
+        echartDonut.setOption(cva_options);
 
         echartDonut2 = echarts.init(document.getElementById('echart_donut2'), theme);
-        echartDonut2.setOption({
-            tooltip: {
-                trigger: 'item',
-                formatter: "{a} <br/>{b} : {c} ({d}%)"
-            },
-            calculable: true,
-            legend: {
-                show: true,
-                x: 'center',
-                y: 'bottom',
-                data: ['AAA', 'AA', 'A', 'BBB', 'BB', 'B', 'CCC', 'CC', 'C', 'NR']
-            },
-            toolbox: {
-                show: true,
-                feature: {
-                    magicType: {
-                        show: true,
-                        type: ['pie', 'funnel'],
-                        option: {
-                            funnel: {
-                                x: '25%',
-                                width: '50%',
-                                funnelAlign: 'center',
-                                max: 1548
-                            }
-                        }
-                    },
-                    restore: {
-                        show: true,
-                        title: "Restore"
-                    },
-                    saveAsImage: {
-                        show: true,
-                        title: "Save Image"
-                    }
-                }
-            },
-            series: [{
-                name: 'FVA Risk measure by credit rating',
-                type: 'pie',
-                radius: ['35%', '55%'],
-                itemStyle: {
-                    normal: {
-                        label: {
-                            show: true
-                        },
-                        labelLine: {
-                            show: true
-                        }
-                    },
-                    emphasis: {
-                        label: {
-                            show: true,
-                            position: 'center',
-                            textStyle: {
-                                fontSize: '14',
-                                fontWeight: 'normal'
-                            }
-                        }
-                    }
-                },
-                data: [{
-                    value: 378922.2,
-                    name: 'AAA'
-                }, {
-                    value: 744821.705,
-                    name: 'AA'
-                }, {
-                    value: 324822.6539,
-                    name: 'A'
-                }, {
-                    value: 703462.2286,
-                    name: 'BBB'
-                }, {
-                    value: 433799.9102,
-                    name: 'BB'
-                }, {
-                    value: 128340.57,
-                    name: 'B'
-                }, {
-                    value: 583971.5645,
-                    name: 'CCC'
-                }, {
-                    value: 908487,
-                    name: 'CC'
-                }, {
-                    value: 441333.439,
-                    name: 'C'
-                }, {
-                    value: 309688.8,
-                    name: 'NR'
-                }]
-            }]
-        });
+        // echartDonut2.setOption({
+        //     tooltip: {
+        //         trigger: 'item',
+        //         formatter: "{a} <br/>{b} : {c} ({d}%)"
+        //     },
+        //     calculable: true,
+        //     legend: {
+        //         show: true,
+        //         x: 'center',
+        //         y: 'bottom',
+        //         data: ['AAA', 'AA', 'A', 'BBB', 'BB', 'B', 'CCC', 'CC', 'C', 'NR']
+        //     },
+        //     toolbox: {
+        //         show: true,
+        //         feature: {
+        //             magicType: {
+        //                 show: true,
+        //                 type: ['pie', 'funnel'],
+        //                 option: {
+        //                     funnel: {
+        //                         x: '25%',
+        //                         width: '50%',
+        //                         funnelAlign: 'center',
+        //                         max: 1548
+        //                     }
+        //                 }
+        //             },
+        //             restore: {
+        //                 show: true,
+        //                 title: "Restore"
+        //             },
+        //             saveAsImage: {
+        //                 show: true,
+        //                 title: "Save Image"
+        //             }
+        //         }
+        //     },
+        //     series: [{
+        //         name: 'FVA Risk measure by credit rating',
+        //         type: 'pie',
+        //         radius: ['35%', '55%'],
+        //         itemStyle: {
+        //             normal: {
+        //                 label: {
+        //                     show: true
+        //                 },
+        //                 labelLine: {
+        //                     show: true
+        //                 }
+        //             },
+        //             emphasis: {
+        //                 label: {
+        //                     show: true,
+        //                     position: 'center',
+        //                     textStyle: {
+        //                         fontSize: '14',
+        //                         fontWeight: 'normal'
+        //                     }
+        //                 }
+        //             }
+        //         },
+        //         data: [{
+        //             value: 378922.2,
+        //             name: 'AAA'
+        //         }, {
+        //             value: 744821.705,
+        //             name: 'AA'
+        //         }, {
+        //             value: 324822.6539,
+        //             name: 'A'
+        //         }, {
+        //             value: 703462.2286,
+        //             name: 'BBB'
+        //         }, {
+        //             value: 433799.9102,
+        //             name: 'BB'
+        //         }, {
+        //             value: 128340.57,
+        //             name: 'B'
+        //         }, {
+        //             value: 583971.5645,
+        //             name: 'CCC'
+        //         }, {
+        //             value: 908487,
+        //             name: 'CC'
+        //         }, {
+        //             value: 441333.439,
+        //             name: 'C'
+        //         }, {
+        //             value: 309688.8,
+        //             name: 'NR'
+        //         }]
+        //     }]
+        // });
+        echartDonut2.setOption(fva_options);
 
         echartDonut3 = echarts.init(document.getElementById('echart_donut3'), theme);
-        echartDonut3.setOption({
-            tooltip: {
-                trigger: 'item',
-                formatter: "{a} <br/>{b} : {c} ({d}%)"
-            },
-            calculable: true,
-            legend: {
-                show: false,
-                x: 'center',
-                y: 'bottom',
-                data: ['AAA', 'AA', 'A', 'BBB', 'BB', 'B', 'CCC', 'CC', 'C', 'NR']
-            },
-            toolbox: {
-                show: true,
-                feature: {
-                    magicType: {
-                        show: true,
-                        type: ['pie', 'funnel'],
-                        option: {
-                            funnel: {
-                                x: '25%',
-                                width: '50%',
-                                funnelAlign: 'center',
-                                max: 1548
-                            }
-                        }
-                    },
-                    restore: {
-                        show: true,
-                        title: "Restore"
-                    },
-                    saveAsImage: {
-                        show: true,
-                        title: "Save Image"
-                    }
-                }
-            },
-            series: [{
-                name: 'ColVA Risk measure by credit rating',
-                type: 'pie',
-                radius: ['35%', '55%'],
-                itemStyle: {
-                    normal: {
-                        label: {
-                            show: true
-                        },
-                        labelLine: {
-                            show: true
-                        }
-                    },
-                    emphasis: {
-                        label: {
-                            show: true,
-                            position: 'center',
-                            textStyle: {
-                                fontSize: '14',
-                                fontWeight: 'normal'
-                            }
-                        }
-                    }
-                },
-                data: [{
-                    value: 378922.2,
-                    name: 'AAA'
-                }, {
-                    value: 744821.705,
-                    name: 'AA'
-                }, {
-                    value: 324822.6539,
-                    name: 'A'
-                }, {
-                    value: 703462.2286,
-                    name: 'BBB'
-                }, {
-                    value: 433799.9102,
-                    name: 'BB'
-                }, {
-                    value: 128340.57,
-                    name: 'B'
-                }, {
-                    value: 583971.5645,
-                    name: 'CCC'
-                }, {
-                    value: 908487,
-                    name: 'CC'
-                }, {
-                    value: 441333.439,
-                    name: 'C'
-                }, {
-                    value: 309688.8,
-                    name: 'NR'
-                }]
-            }]
-        });
+        // echartDonut3.setOption({
+        //     tooltip: {
+        //         trigger: 'item',
+        //         formatter: "{a} <br/>{b} : {c} ({d}%)"
+        //     },
+        //     calculable: true,
+        //     legend: {
+        //         show: false,
+        //         x: 'center',
+        //         y: 'bottom',
+        //         data: ['AAA', 'AA', 'A', 'BBB', 'BB', 'B', 'CCC', 'CC', 'C', 'NR']
+        //     },
+        //     toolbox: {
+        //         show: true,
+        //         feature: {
+        //             magicType: {
+        //                 show: true,
+        //                 type: ['pie', 'funnel'],
+        //                 option: {
+        //                     funnel: {
+        //                         x: '25%',
+        //                         width: '50%',
+        //                         funnelAlign: 'center',
+        //                         max: 1548
+        //                     }
+        //                 }
+        //             },
+        //             restore: {
+        //                 show: true,
+        //                 title: "Restore"
+        //             },
+        //             saveAsImage: {
+        //                 show: true,
+        //                 title: "Save Image"
+        //             }
+        //         }
+        //     },
+        //     series: [{
+        //         name: 'ColVA Risk measure by credit rating',
+        //         type: 'pie',
+        //         radius: ['35%', '55%'],
+        //         itemStyle: {
+        //             normal: {
+        //                 label: {
+        //                     show: true
+        //                 },
+        //                 labelLine: {
+        //                     show: true
+        //                 }
+        //             },
+        //             emphasis: {
+        //                 label: {
+        //                     show: true,
+        //                     position: 'center',
+        //                     textStyle: {
+        //                         fontSize: '14',
+        //                         fontWeight: 'normal'
+        //                     }
+        //                 }
+        //             }
+        //         },
+        //         data: [{
+        //             value: 378922.2,
+        //             name: 'AAA'
+        //         }, {
+        //             value: 744821.705,
+        //             name: 'AA'
+        //         }, {
+        //             value: 324822.6539,
+        //             name: 'A'
+        //         }, {
+        //             value: 703462.2286,
+        //             name: 'BBB'
+        //         }, {
+        //             value: 433799.9102,
+        //             name: 'BB'
+        //         }, {
+        //             value: 128340.57,
+        //             name: 'B'
+        //         }, {
+        //             value: 583971.5645,
+        //             name: 'CCC'
+        //         }, {
+        //             value: 908487,
+        //             name: 'CC'
+        //         }, {
+        //             value: 441333.439,
+        //             name: 'C'
+        //         }, {
+        //             value: 309688.8,
+        //             name: 'NR'
+        //         }]
+        //     }]
+        // });
+        echartDonut3.setOption(colva_options);
 
         echartGauge = echarts.init(document.getElementById('echart_guage'), theme);
         echartGauge.setOption({
@@ -965,12 +1040,51 @@ var DONUTCharts = (function () {
         echartDonut2.on('click', eConsole);
         echartDonut3.on('click', eConsole);
 
+
+        function getCVAData(level){
+
+            var options = {
+                method: 'GET',
+                mode: 'cors',
+                headers: {
+                    // "Authorization" : getAuthToken(),
+                    'Cache-Control': 'no-cache',
+                    'If-Modified-Since': '0',
+                    'Accept': 'application/json'
+                }
+            };
+            var url = window.location.protocol + '//' + window.location.host + '/bargraph/20160301/creditrating/cva/';
+
+            return fetch(url, options)
+                .then(processStatus)
+                .then(parseJson)
+                .then(function (response) {
+                    // massage data
+                    try {
+                        console.debug(response);
+                        // onLoadTrades(response);
+                    } catch (e) {
+                        console.error(new Error("Request failed : " + ex));
+                        console.debug(response);
+                    }
+                    return response;
+                })
+                .then(function (response) {
+                    console.debug(response);
+                    }
+                )
+                .catch(function (ex) {
+                    console.error(new Error("Request failed : " + ex));
+                })
+        }
+
         // expose a few methods and properties
         return {
             getCVA: echartDonut,
             getFVA: echartDonut2,
             getColVA: echartDonut3,
-            getGauge: echartGauge
+            getGauge: echartGauge,
+            getCVAData: getCVAData
         };
     }
 
@@ -1015,4 +1129,38 @@ function eConsole(param) {
 function _AttachEvent(element, type, handler) {
     if (element.addEventListener) element.addEventListener(type, handler, false);
     else element.attachEvent("on" + type, handler);
+}
+
+
+/**
+ * Generates a GUID string.
+ * @returns {String} The generated GUID.
+ * @example af8a8416-6e18-a307-bd9c-f2c947bbb3aa
+ * @author Slavik Meltser (slavik@meltser.info).
+ * @link http://slavik.meltser.info/?p=142
+ */
+function guid() {
+    function _p8(s) {
+        var p = (Math.random().toString(16) + "000000000").substr(2, 8);
+        return s ? "-" + p.substr(0, 4) + "-" + p.substr(4, 4) : p;
+    }
+
+    return _p8() + _p8(true) + _p8(true) + _p8();
+}
+
+var processStatus = function (response) {
+    // status "0" to handle local files fetching (e.g. Cordova/Phonegap etc.)
+    if ((response.status >= 200 && response.status < 300 ) || response.status === 0) {
+        return Promise.resolve(response)
+    } else {
+        return Promise.reject(new Error(response.statusText))
+    }
+};
+var parseJson = function (response) {
+    console.info('got json data from server');
+    return response.json();
+}
+var parseTextResponse = function (response) {
+    console.info('got text data from server');
+    return response.text();
 }
