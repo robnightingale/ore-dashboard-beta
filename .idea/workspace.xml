@@ -2,10 +2,85 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="caa21dc2-8a18-41a2-9fb6-7ca5b9d0c280" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/production/js/common/fetch.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/app.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/js/helpers/fetch.js" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/js/custom.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/js/custom.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/production/calendar.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/production/chartjs.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/production/chartjs2.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/production/contacts.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/production/css/maps/jquery-jvectormap-2.0.3.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/production/e_commerce.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/production/echarts.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/production/fixed_footer.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/production/fixed_sidebar.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/production/form.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/production/form_advanced.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/production/form_buttons.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/production/form_upload.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/production/form_validation.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/production/form_wizards.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/production/general_elements.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/production/glyphicons.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/production/icons.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/production/images/american-express.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/production/images/cropper.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/production/images/img.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/production/images/inbox.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/production/images/mastercard.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/production/images/media.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/production/images/paypal.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/production/images/picture.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/production/images/prod-1.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/production/images/prod-2.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/production/images/prod-3.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/production/images/prod-4.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/production/images/prod-5.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/production/images/user.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/production/images/visa.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/production/inbox.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/production/index2.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/production/index3.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/production/index4.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/production/invoice.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/production/js/chartjs/donuts.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/production/js/jquery-charts/jq-charts.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/production/level2.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/production/login.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/production/map.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/production/media_gallery.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/production/morisjs.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/production/other_charts.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/production/pricing_tables.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/production/profile.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/production/project_detail.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/production/projects.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/production/tables.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/production/tables_dynamic.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/production/typography.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/production/widgets.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/production/xx.html" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/build/css/custom.css" afterPath="$PROJECT_DIR$/public/css/custom.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/build/css/custom.min.css" afterPath="$PROJECT_DIR$/public/css/custom.min.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/production/index.html" afterPath="$PROJECT_DIR$/public/index.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/production/js/bootstrap-date-filter.js" afterPath="$PROJECT_DIR$/public/js/bootstrap-date-filter.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/production/js/common/fetch.js" afterPath="$PROJECT_DIR$/public/js/common/fetch.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/production/js/datepicker/daterangepicker.js" afterPath="$PROJECT_DIR$/public/js/datepicker/daterangepicker.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/production/js/echart/chart-theme.js" afterPath="$PROJECT_DIR$/public/js/echart/chart-theme.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/production/js/echart/echart.js" afterPath="$PROJECT_DIR$/public/js/echart/echart.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/production/js/moment/moment.min.js" afterPath="$PROJECT_DIR$/public/js/moment/moment.min.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/production/page_403.html" afterPath="$PROJECT_DIR$/public/page_403.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/production/page_404.html" afterPath="$PROJECT_DIR$/public/page_404.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/production/page_500.html" afterPath="$PROJECT_DIR$/public/page_500.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/production/plain_page.html" afterPath="$PROJECT_DIR$/public/plain_page.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/production/index.html" afterPath="$PROJECT_DIR$/production/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/production/js/echart/echart.js" afterPath="$PROJECT_DIR$/production/js/echart/echart.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gulpfile.js" afterPath="$PROJECT_DIR$/gulpfile.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/graceful-fs/package.json" afterPath="$PROJECT_DIR$/node_modules/graceful-fs/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendors/DateJS/GruntFile.js" afterPath="$PROJECT_DIR$/vendors/DateJS/GruntFile.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendors/jquery.tagsinput/grunt-tasks/assets_production.js" afterPath="$PROJECT_DIR$/vendors/jquery.tagsinput/grunt-tasks/assets_production.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendors/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.js" afterPath="$PROJECT_DIR$/vendors/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.js" />
     </list>
     <ignored path="ore-dashboard-beta.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -28,7 +103,38 @@
     <favorites_list name="ore-dashboard-beta" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="LICENSE.txt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/LICENSE.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="gulpfile.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/gulpfile.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="90">
+              <caret line="6" column="38" selection-start-line="6" selection-start-column="38" selection-end-line="6" selection-end-column="38" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -48,14 +154,16 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/gulpfile.js" />
-        <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/production/js/echart/chart-themes.js" />
         <option value="$PROJECT_DIR$/production/js/echart/chart-theme.js" />
         <option value="$PROJECT_DIR$/production/js/echart/echart2.js" />
-        <option value="$PROJECT_DIR$/production/js/echart/echart.js" />
         <option value="$PROJECT_DIR$/production/js/common/fetch.js" />
         <option value="$PROJECT_DIR$/production/index.html" />
+        <option value="$PROJECT_DIR$/production/js/echart/echart.js" />
+        <option value="$PROJECT_DIR$/app.js" />
+        <option value="$PROJECT_DIR$/package.json" />
+        <option value="$PROJECT_DIR$/gulpfile.js" />
+        <option value="$PROJECT_DIR$/public/index.html" />
       </list>
     </option>
   </component>
@@ -79,27 +187,20 @@
             <task-name>sass-minify</task-name>
           </GulpTaskState>
           <GulpTaskState>
+            <task-name>watch</task-name>
+          </GulpTaskState>
+          <GulpTaskState>
             <task-name>browser-sync</task-name>
           </GulpTaskState>
           <GulpTaskState>
-            <task-name>watch</task-name>
+            <task-name>serveprod</task-name>
           </GulpTaskState>
           <GulpTaskState>
             <dependencies>
               <dependency value="browser-sync" />
               <dependency value="watch" />
             </dependencies>
-            <task-name>dev</task-name>
-          </GulpTaskState>
-          <GulpTaskState>
-            <dependencies>
-              <dependency value="serveprod" />
-              <dependency value="watch" />
-            </dependencies>
             <task-name>default</task-name>
-          </GulpTaskState>
-          <GulpTaskState>
-            <task-name>serveprod</task-name>
           </GulpTaskState>
         </tasks>
       </GulpfileState>
@@ -165,7 +266,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="production" />
+              <option name="myItemId" value="public" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -179,33 +280,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="production" />
+              <option name="myItemId" value="public" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ore-dashboard-beta" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ore-dashboard-beta" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="production" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="common" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -217,16 +296,25 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../gentelella" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="editor.preferences.import" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
     <property name="nodejs_interpreter_path" value="/usr/local/bin/node" />
-    <property name="SearchEverywhereHistoryKey" value="index.html&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/production/index.html&#10;index.h&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/vendors/jszip/index.html&#10;echart.js&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/production/js/echart/echart.js&#10;index2&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/production/index2.html&#10;index.ht&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/production/index.html&#10;echarts.js&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/vendors/echarts/dist/echarts.js&#10;echarts.j&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/vendors/echarts/src/echarts.js&#10;server.js&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/node_modules/browser-sync-ui/lib/server.js&#10;3000&#9;null&#9;null" />
+    <property name="SearchEverywhereHistoryKey" value="pack&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/package.json&#10;echart.j&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/production/js/echart/echart.js&#10;pdf&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/vendors/pdfmake/build/pdfmake.js&#10;gulpf&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/gulpfile.js&#10;server.&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/node_modules/browser-sync-ui/lib/server.js&#10;echart.js&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/vendors/echarts/dist/echarts.js&#10;index.html&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/production/index.html&#10;index.h&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/vendors/jszip/index.html&#10;index2&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/production/index2.html&#10;index.ht&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/production/index.html&#10;echarts.js&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/vendors/echarts/dist/echarts.js&#10;echarts.j&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/vendors/echarts/src/echarts.js&#10;server.js&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/node_modules/browser-sync-ui/lib/server.js&#10;3000&#9;null&#9;null" />
     <property name="js.buildTools.gulp.gulp_package_dir" value="$PROJECT_DIR$/node_modules/gulp" />
     <property name="js-jscs-nodeInterpreter" value="/usr/local/bin/node" />
     <property name="aspect.path.notification.shown" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/public" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/js/helpers" />
+      <recent name="$PROJECT_DIR$/public/css" />
+    </key>
   </component>
   <component name="RunManager" selected="Gulp.js.default">
     <configuration default="false" name="default" type="js.build_tools.gulp" factoryName="Gulp.js" temporary="true">
@@ -329,7 +417,7 @@
       <workItem from="1469953546084" duration="5741000" />
       <workItem from="1470008140283" duration="24728000" />
       <workItem from="1470240756230" duration="39000" />
-      <workItem from="1470240814703" duration="8620000" />
+      <workItem from="1470240814703" duration="21808000" />
     </task>
     <task id="LOCAL-00001" summary="package.json updated for local web running">
       <created>1469372595018</created>
@@ -387,25 +475,34 @@
       <option name="project" value="LOCAL" />
       <updated>1470241582686</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="REPOSIT-0000 break out dynamic chart options and refactor in preparation for REST calls.">
+      <created>1470331299775</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1470331299775</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="55033000" />
+    <option name="totallyTimeSpent" value="68221000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="42" y="23" width="1238" height="777" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15201315" sideWeight="0.3490991" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15201315" sideWeight="0.6509009" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3262519" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32776934" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.13722268" sideWeight="0.4537246" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3262519" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32776934" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32776934" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15201315" sideWeight="0.3295711" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15201315" sideWeight="0.6704289" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32928678" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.13722268" sideWeight="0.4356659" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39908952" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -419,11 +516,9 @@
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -444,170 +539,19 @@
     <MESSAGE value="updated to latest beta demo page" />
     <MESSAGE value="REPOSIT-0000 more refactoring of the custom options" />
     <MESSAGE value="REPOSIT-0000 added marklines and datazoom for exposure profile" />
-    <option name="LAST_COMMIT_MESSAGE" value="REPOSIT-0000 added marklines and datazoom for exposure profile" />
+    <MESSAGE value="REPOSIT-0000 break out dynamic chart options and refactor in preparation for REST calls." />
+    <option name="LAST_COMMIT_MESSAGE" value="REPOSIT-0000 break out dynamic chart options and refactor in preparation for REST calls." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="4" />
+      <option name="time" value="5" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/documentation/js/shCore.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/LICENSE.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/js/custom.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.md" />
-    <entry file="file://$PROJECT_DIR$/node_modules/browser-sync-client/dist/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="279">
-          <caret line="1923" column="28" selection-start-line="1923" selection-start-column="22" selection-end-line="1923" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/express/lib/express.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/express/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/browser-sync/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-4686">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/browser-sync/lib/sockets.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/browser-sync-ui/lib/server.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="142">
-          <caret line="21" column="16" selection-start-line="21" selection-start-column="16" selection-end-line="21" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/production/js/jquery-charts/jq-charts.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendors/Chart.js/docs/10-Notes.md" />
-    <entry file="file://$PROJECT_DIR$/vendors/Chart.js/docs/02-Scales.md" />
-    <entry file="file://$PROJECT_DIR$/vendors/Chart.js/docs/01-Chart-Configuration.md" />
-    <entry file="file://$PROJECT_DIR$/vendors/Chart.js/docs/00-Getting-Started.md" />
-    <entry file="file://$PROJECT_DIR$/production/calendar.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendors/Chart.js/samples/AnimationCallbacks/progress-bar.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="48" selection-start-line="18" selection-start-column="48" selection-end-line="18" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendors/pdfmake/build/pdfmake.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-5955">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendors/pdfmake/bower.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bower.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="412">
-          <caret line="80" column="27" selection-start-line="80" selection-start-column="27" selection-end-line="80" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/build/js/custom.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="10" column="48" selection-start-line="10" selection-start-column="48" selection-end-line="10" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/documentation/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1200">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendors/echarts/src/echarts.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-150">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendors/echarts/dist/echarts.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendors/echarts/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="22" selection-start-line="12" selection-start-column="22" selection-end-line="12" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/browser-sync/lib/public/socket.io.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
@@ -615,7 +559,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/npm-debug.log" />
     <entry file="file://$PROJECT_DIR$/vendors/pnotify/libtests/browserify/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
@@ -623,91 +566,77 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/production/index2.html">
+    <entry file="file://$PROJECT_DIR$/public/index2.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
           <caret line="1" column="9" selection-start-line="1" selection-start-column="8" selection-end-line="1" selection-end-column="9" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/production/e_commerce.html">
+    <entry file="file://$PROJECT_DIR$/public/e_commerce.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/production/form.html">
+    <entry file="file://$PROJECT_DIR$/public/form.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/production/morisjs.html">
+    <entry file="file://$PROJECT_DIR$/public/morisjs.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/production/pricing_tables.html">
+    <entry file="file://$PROJECT_DIR$/public/pricing_tables.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/production/tables_dynamic.html">
+    <entry file="file://$PROJECT_DIR$/public/tables_dynamic.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/production/xx.html">
+    <entry file="file://$PROJECT_DIR$/public/xx.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/production/other_charts.html">
+    <entry file="file://$PROJECT_DIR$/public/other_charts.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-3330">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/production/widgets.html">
+    <entry file="file://$PROJECT_DIR$/public/widgets.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="525">
           <caret line="922" column="0" selection-start-line="922" selection-start-column="0" selection-end-line="922" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/production/general_elements.html">
+    <entry file="file://$PROJECT_DIR$/public/general_elements.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="118">
           <caret line="1712" column="31" selection-start-line="1712" selection-start-column="31" selection-end-line="1712" selection-end-column="31" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/gulp-connect/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-560">
-          <caret line="186" column="0" selection-start-line="186" selection-start-column="0" selection-end-line="186" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/gulpfile.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="65" column="7" selection-start-line="65" selection-start-column="7" selection-end-line="65" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/production/js/echart/chart-theme.js">
+    <entry file="file://$PROJECT_DIR$/public/js/echart/chart-theme.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="2" column="3" selection-start-line="2" selection-start-column="3" selection-end-line="2" selection-end-column="3" />
@@ -729,7 +658,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/production/echarts.html">
+    <entry file="file://$PROJECT_DIR$/public/echarts.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="181">
           <caret line="2853" column="14" selection-start-line="2853" selection-start-column="14" selection-end-line="2853" selection-end-column="14" />
@@ -751,7 +680,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/production/js/common/fetch.js">
+    <entry file="file://$PROJECT_DIR$/public/js/common/fetch.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
           <caret line="10" column="19" selection-start-line="10" selection-start-column="19" selection-end-line="10" selection-end-column="19" />
@@ -759,31 +688,76 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/production/index.html">
+    <entry file="file://$PROJECT_DIR$/vendors/echarts/dist/echarts.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="214">
-          <caret line="407" column="0" selection-start-line="407" selection-start-column="0" selection-end-line="407" selection-end-column="0" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/browser-sync-ui/lib/server.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendors/pdfmake/build/pdfmake.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="138">
+          <caret line="28827" column="30" selection-start-line="28827" selection-start-column="30" selection-end-line="28827" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/production/js/jquery-charts/jq-charts.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/production/js/chartjs/donuts.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/datepicker/daterangepicker.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#1;n#div#1;n#div#1;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#1;n#div#2;n#div#1;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#2;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#1;n#div#1;n#div#2;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#1;n#div#2;n#div#2;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#1;n#div#3;n#div#2;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#1;n#div#4;n#div#2;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#1;n#div#5;n#div#2;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#1;n#div#6;n#div#2;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <marker date="1469189932000" expanded="true" signature="1167:1173" ph=" " />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/production/js/echart/echart.js">
+    <entry file="file://$PROJECT_DIR$/documentation/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="430">
-          <caret line="1158" column="4" selection-start-line="1158" selection-start-column="4" selection-end-line="1158" selection-end-column="4" />
+        <state relative-caret-position="220">
+          <caret line="30" column="31" selection-start-line="30" selection-start-column="31" selection-end-line="30" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/express/node_modules/connect/lib/connect.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-645">
+          <caret line="12" column="8" selection-start-line="12" selection-start-column="8" selection-end-line="12" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/echart/echart.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="1046" column="0" selection-start-line="1046" selection-start-column="0" selection-end-line="1046" selection-end-column="0" />
           <folding>
             <element signature="e#347#8094#0" expanded="false" />
             <element signature="e#1939#2261#0" expanded="false" />
@@ -793,19 +767,219 @@
             <element signature="e#3344#3666#0" expanded="false" />
             <element signature="e#3696#4018#0" expanded="false" />
             <element signature="e#4028#4052#0" expanded="false" />
-            <element signature="e#8130#21490#0" expanded="false" />
             <element signature="e#8352#11530#0" expanded="false" />
             <element signature="e#12075#12427#0" expanded="false" />
-            <element signature="e#21897#23907#0" expanded="false" />
-            <element signature="e#22221#23063#0" expanded="false" />
-            <element signature="e#23086#23896#0" expanded="false" />
-            <element signature="e#24045#25011#0" expanded="false" />
-            <element signature="e#25041#26007#0" expanded="false" />
-            <element signature="e#26039#27007#0" expanded="false" />
-            <element signature="e#27400#27427#0" expanded="false" />
-            <element signature="e#30823#30850#0" expanded="false" />
-            <element signature="e#34271#37844#0" expanded="false" />
+            <element signature="e#21896#23906#0" expanded="false" />
+            <element signature="e#22220#23062#0" expanded="false" />
+            <element signature="e#23085#23895#0" expanded="false" />
+            <element signature="e#24044#25010#0" expanded="false" />
+            <element signature="e#25040#26006#0" expanded="false" />
+            <element signature="e#26038#27006#0" expanded="false" />
+            <element signature="e#27399#27426#0" expanded="false" />
+            <element signature="e#30822#30849#0" expanded="false" />
+            <element signature="e#34270#37843#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/express/Readme.md">
+      <provider editor-type-id="MarkdownFxPreviewEditor">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
+        <state split_layout="FIRST">
+          <first_editor relative-caret-position="-270">
+            <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+            <folding />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/express-session/README.md">
+      <provider editor-type-id="MarkdownFxPreviewEditor">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
+        <state split_layout="FIRST">
+          <first_editor relative-caret-position="-270">
+            <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <folding />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/express/bin/express">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="3" selection-start-line="4" selection-start-column="3" selection-end-line="4" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/express/test.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/express/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-930">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/npm-debug.log">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="31" column="35" selection-start-line="31" selection-start-column="35" selection-end-line="31" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bower.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1200">
+          <caret line="80" column="27" selection-start-line="80" selection-start-column="27" selection-end-line="80" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/browser-sync/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3510">
+          <caret line="234" column="9" selection-start-line="234" selection-start-column="9" selection-end-line="234" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/gulp-connect/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="28" selection-start-line="0" selection-start-column="28" selection-end-line="0" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/changelog.md">
+      <provider editor-type-id="MarkdownFxPreviewEditor">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
+        <state split_layout="FIRST">
+          <first_editor relative-caret-position="0">
+            <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <folding />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/js/custom.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1889">
+          <caret line="81" column="38" selection-start-line="81" selection-start-column="38" selection-end-line="81" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="427">
+          <caret line="40" column="28" selection-start-line="40" selection-start-column="28" selection-end-line="40" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#51#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LICENSE.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/bootstrap-date-filter.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="20" column="16" selection-start-line="20" selection-start-column="16" selection-end-line="20" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/calendar.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/js/helpers/fetch.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/documentation/js/shBrushXml.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/plain_page.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="173" column="17" selection-start-line="173" selection-start-column="17" selection-end-line="173" selection-end-column="17" />
+          <folding>
+            <element signature="n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#div#3;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/css/custom.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gulpfile.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="38" selection-start-line="6" selection-start-column="38" selection-end-line="6" selection-end-column="38" />
+          <folding />
         </state>
       </provider>
     </entry>

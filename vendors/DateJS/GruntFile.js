@@ -11,7 +11,7 @@ var getI18NFiles = function () {
 };
 
 var buildMinifyFileList = function (dev) {
-	var output_path = dev ? "" : "production/";
+	var output_path = dev ? "" : "public/";
 	var output_ext = dev ? "." : ".min.";
 	var files = getI18NFiles();
 	var output = {};
@@ -43,7 +43,7 @@ module.exports = function(grunt) {
 			description: "Builds files designed for easy debugging on dev enviroments (non-minified)"
 		},
 		build_prod: {
-			description: "Builds production ready files (minified)"
+			description: "Builds public ready files (minified)"
 		},
 		closurecompiler: {
 			minify: {
@@ -168,7 +168,7 @@ module.exports = function(grunt) {
 	grunt.registerMultiTask("build_dev", "Builds compiled, non-minfied, files for development enviroments", function() {
 		grunt.task.run(["concat:core", "concat:basic", "i18n:core"]);
 	});
-	grunt.registerMultiTask("build_prod", "Rebuilds dev and minifies files for production enviroments", function() {
+	grunt.registerMultiTask("build_prod", "Rebuilds dev and minifies files for public enviroments", function() {
 		grunt.task.run(["concat:core", "concat:basic", "i18n:core", "closurecompiler:minify"]);
 	});
 

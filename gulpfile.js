@@ -1,3 +1,5 @@
+'use strict';
+
 var gulp = require('gulp'),
     concat = require('gulp-concat'),
     uglify = require('gulp-uglify'),
@@ -7,7 +9,7 @@ var gulp = require('gulp'),
     autoprefixer = require('gulp-autoprefixer'),
     browserSync = require('browser-sync').create();
 
-var DEST = 'build/';
+var DEST = 'public/';
 
 gulp.task('scripts', function() {
     return gulp.src([
@@ -39,34 +41,35 @@ gulp.task('sass-minify', function() {
     return compileSASS('custom.min.css', {style: 'compressed'});
 });
 
-gulp.task('browser-sync', function() {
-    browserSync.init({
-        server: {
-            baseDir: './',
-            port:process.env.PORT || 3000
-        },
-        startPath: './production/index.html'
-    });
-});
-
 gulp.task('watch', function() {
   // Watch .html files
-  gulp.watch('production/*.html', browserSync.reload);
+  gulp.watch('public/*.html', browserSync.reload);
+  gulp.watch('public/**/js/*.js', browserSync.reload);
   // Watch .js files
   gulp.watch('src/js/*.js', ['scripts']);
   // Watch .scss files
   gulp.watch('src/scss/*.scss', ['sass', 'sass-minify']);
 });
 
-// Default Task
-gulp.task('dev', ['browser-sync', 'watch']);
-gulp.task('default', ['serveprod', 'watch']);
+gulp.task('browser-sync', function() {
+    browserSync.init({
+        server: {
+            baseDir: './',
+            port:process.env.PORT || 3000
+        },
+        startPath: './public/index.html'
+    });
+});
 
 gulp.task('serveprod', function() {
     connect.server({
-        root: './',
+        root: '.',
         port: process.env.PORT || 5000, // localhost:5000
-//        fallback: './production',
+       fallback: './public/index.html',
         livereload: false
     });
 });
+
+// Default Task
+gulp.task('default', ['browser-sync', 'watch']);
+// gulp.task('prod', ['serveprod', 'watch']);

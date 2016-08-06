@@ -31,8 +31,8 @@ THE SOFTWARE.
 
 /*
 The code below is fairly long, fully commented and should be normally used in development. 
-For production, use either the minified jquery.mCustomScrollbar.min.js script or 
-the production-ready jquery.mCustomScrollbar.concat.min.js which contains the plugin 
+For public, use either the minified jquery.mCustomScrollbar.min.js script or
+the public-ready jquery.mCustomScrollbar.concat.min.js which contains the plugin
 and dependencies (minified). 
 */
 
