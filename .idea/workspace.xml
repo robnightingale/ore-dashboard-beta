@@ -2,85 +2,158 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="caa21dc2-8a18-41a2-9fb6-7ca5b9d0c280" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/app.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/js/helpers/fetch.js" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/js/custom.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/js/custom.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/calendar.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/chartjs.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/chartjs2.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/contacts.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/css/maps/jquery-jvectormap-2.0.3.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/e_commerce.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/echarts.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/fixed_footer.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/fixed_sidebar.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/form.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/form_advanced.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/form_buttons.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/form_upload.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/form_validation.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/form_wizards.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/general_elements.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/glyphicons.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/icons.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/images/american-express.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/images/cropper.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/images/img.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/images/inbox.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/images/mastercard.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/images/media.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/images/paypal.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/images/picture.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/images/prod-1.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/images/prod-2.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/images/prod-3.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/images/prod-4.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/images/prod-5.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/images/user.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/images/visa.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/inbox.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/index2.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/index3.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/index4.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/invoice.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/js/chartjs/donuts.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/js/jquery-charts/jq-charts.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/level2.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/login.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/map.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/media_gallery.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/morisjs.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/other_charts.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/pricing_tables.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/profile.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/project_detail.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/projects.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/tables.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/tables_dynamic.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/typography.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/widgets.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/production/xx.html" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/build/css/custom.css" afterPath="$PROJECT_DIR$/public/css/custom.css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/build/css/custom.min.css" afterPath="$PROJECT_DIR$/public/css/custom.min.css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/production/index.html" afterPath="$PROJECT_DIR$/public/index.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/production/js/bootstrap-date-filter.js" afterPath="$PROJECT_DIR$/public/js/bootstrap-date-filter.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/production/js/common/fetch.js" afterPath="$PROJECT_DIR$/public/js/common/fetch.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/production/js/datepicker/daterangepicker.js" afterPath="$PROJECT_DIR$/public/js/datepicker/daterangepicker.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/production/js/echart/chart-theme.js" afterPath="$PROJECT_DIR$/public/js/echart/chart-theme.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/production/js/echart/echart.js" afterPath="$PROJECT_DIR$/public/js/echart/echart.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/production/js/moment/moment.min.js" afterPath="$PROJECT_DIR$/public/js/moment/moment.min.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/production/page_403.html" afterPath="$PROJECT_DIR$/public/page_403.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/production/page_404.html" afterPath="$PROJECT_DIR$/public/page_404.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/production/page_500.html" afterPath="$PROJECT_DIR$/public/page_500.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/production/plain_page.html" afterPath="$PROJECT_DIR$/public/plain_page.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/tests/assets/image2.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/tests/assets/image2_1.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/tests/assets/image_1.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/.editorconfig" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/.gitignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/.gitmodules" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/.jshintrc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/.npmignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/.travis.yml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/CHANGELOG.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/Gruntfile.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/LICENSE" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/bower.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/dist/html2canvas.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/dist/html2canvas.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/dist/html2canvas.svg.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/dist/html2canvas.svg.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/examples/demo.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/examples/demo2.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/examples/existing_canvas.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/package.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/readme.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/src/clone.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/src/color.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/src/core.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/src/dummyimagecontainer.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/src/font.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/src/fontmetrics.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/src/framecontainer.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/src/gradientcontainer.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/src/imagecontainer.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/src/imageloader.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/src/lineargradientcontainer.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/src/log.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/src/nodecontainer.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/src/nodeparser.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/src/proxy.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/src/proxyimagecontainer.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/src/pseudoelementcontainer.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/src/renderer.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/src/renderers/canvas.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/src/stackingcontext.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/src/support.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/src/svgcontainer.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/src/svgnodecontainer.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/src/textcontainer.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/src/utils.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/src/webkitgradientcontainer.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/src/xhr.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/tests/assets/iframe/frame1.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/tests/assets/image.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/tests/assets/jquery-1.6.2.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/tests/cases/acid2.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/tests/cases/background/clip.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/tests/cases/background/encoded.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/tests/cases/background/linear-gradient.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/tests/cases/background/multi.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/tests/cases/background/position.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/tests/cases/background/radial-gradient.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/tests/cases/background/repeat.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/tests/cases/background/size.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/tests/cases/border/dashed.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/tests/cases/border/dotted.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/tests/cases/border/double.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/tests/cases/border/inset.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/tests/cases/border/radius.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/tests/cases/border/solid.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/tests/cases/child-textnodes.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/tests/cases/clip.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/tests/cases/crossorigin-iframe.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/tests/cases/forms.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/tests/cases/google-maps.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/tests/cases/iframe.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/tests/cases/images/base.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/tests/cases/images/canvas.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/tests/cases/images/cross-origin.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/tests/cases/images/empty.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/tests/cases/images/images.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/tests/cases/images/svg/base64.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/tests/cases/images/svg/external.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/tests/cases/images/svg/inline.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/tests/cases/images/svg/native_only.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/tests/cases/images/svg/node.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/tests/cases/list/decimal-leading-zero.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/tests/cases/list/decimal.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/tests/cases/list/lower-alpha.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/tests/cases/list/upper-roman.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/tests/cases/overflow.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/tests/cases/pseudoelements.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/tests/cases/text/chinese.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/tests/cases/text/fontawesome.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/tests/cases/text/linethrough.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/tests/cases/text/shadow.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/tests/cases/text/text.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/tests/cases/text/underline-lineheight.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/tests/cases/text/underline.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/tests/cases/transform/nested.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/tests/cases/transform/rotate.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/tests/cases/transform/translate.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/tests/cases/visibility.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/tests/cases/zindex/z-index1.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/tests/cases/zindex/z-index10.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/tests/cases/zindex/z-index11.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/tests/cases/zindex/z-index12.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/tests/cases/zindex/z-index13.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/tests/cases/zindex/z-index14.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/tests/cases/zindex/z-index15.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/tests/cases/zindex/z-index16.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/tests/cases/zindex/z-index17.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/tests/cases/zindex/z-index18.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/tests/cases/zindex/z-index2.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/tests/cases/zindex/z-index3.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/tests/cases/zindex/z-index4.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/tests/cases/zindex/z-index5.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/tests/cases/zindex/z-index6.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/tests/cases/zindex/z-index7.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/tests/cases/zindex/z-index8.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/tests/cases/zindex/z-index9.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/tests/mocha/.jshintrc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/tests/mocha/background.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/tests/mocha/clone.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/tests/mocha/cropping.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/tests/mocha/css.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/tests/mocha/form-rendering.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/tests/mocha/gradients.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/tests/mocha/ie9-clonenode-bug.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/tests/mocha/iframe1.htm" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/tests/mocha/iframe2.htm" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/tests/mocha/iframe3.htm" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/tests/mocha/lib/expect.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/tests/mocha/lib/mocha.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/tests/mocha/lib/mocha.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/tests/mocha/multiple-renders.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/tests/mocha/options.onclone.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/tests/mocha/parsing.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/tests/mocha/proxy.htm" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/tests/mocha/scrolling.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/tests/mocha/selenium.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/tests/node/color.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/tests/node/package.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/tests/rangetest.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/tests/results/.gitignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/tests/sauceconnect.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/tests/selenium.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/tests/test.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/vendors/html2canvas/tests/utils.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gulpfile.js" afterPath="$PROJECT_DIR$/gulpfile.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/graceful-fs/package.json" afterPath="$PROJECT_DIR$/node_modules/graceful-fs/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendors/DateJS/GruntFile.js" afterPath="$PROJECT_DIR$/vendors/DateJS/GruntFile.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendors/jquery.tagsinput/grunt-tasks/assets_production.js" afterPath="$PROJECT_DIR$/vendors/jquery.tagsinput/grunt-tasks/assets_production.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendors/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.js" afterPath="$PROJECT_DIR$/vendors/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/index.html" afterPath="$PROJECT_DIR$/public/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/custom.js" afterPath="$PROJECT_DIR$/public/js/custom.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/custom.min.js" afterPath="$PROJECT_DIR$/public/js/custom.min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/js/custom.js" afterPath="$PROJECT_DIR$/src/js/custom.js" />
     </list>
     <ignored path="ore-dashboard-beta.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -104,31 +177,46 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="LICENSE.txt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/LICENSE.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+            <state relative-caret-position="-675">
+              <caret line="31" column="7" selection-start-line="31" selection-start-column="7" selection-end-line="31" selection-end-column="7" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#ul#0;n#li#0;n#ul#0;n#div#0;n#div#3;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#ul#0;n#li#1;n#ul#0;n#li#0;n#ul#0;n#div#0;n#div#3;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="custom.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/js/custom.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="490">
+              <caret line="717" column="0" selection-start-line="717" selection-start-column="0" selection-end-line="717" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="gulpfile.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="custom.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/js/custom.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="190">
+              <caret line="248" column="47" selection-start-line="248" selection-start-column="47" selection-end-line="248" selection-end-column="47" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="gulpfile.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/gulpfile.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="6" column="38" selection-start-line="6" selection-start-column="38" selection-end-line="6" selection-end-column="38" />
+            <state relative-caret-position="265">
+              <caret line="60" column="30" selection-start-line="60" selection-start-column="30" selection-end-line="60" selection-end-column="30" />
               <folding />
             </state>
           </provider>
@@ -164,6 +252,8 @@
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/gulpfile.js" />
         <option value="$PROJECT_DIR$/public/index.html" />
+        <option value="$PROJECT_DIR$/public/js/custom.js" />
+        <option value="$PROJECT_DIR$/src/js/custom.js" />
       </list>
     </option>
   </component>
@@ -238,6 +328,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -266,7 +358,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
+              <option name="myItemId" value="vendors" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -280,7 +372,21 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ore-dashboard-beta" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ore-dashboard-beta" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -290,8 +396,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="PackagesPane" />
     </panes>
   </component>
@@ -302,18 +406,19 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
     <property name="nodejs_interpreter_path" value="/usr/local/bin/node" />
-    <property name="SearchEverywhereHistoryKey" value="pack&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/package.json&#10;echart.j&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/production/js/echart/echart.js&#10;pdf&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/vendors/pdfmake/build/pdfmake.js&#10;gulpf&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/gulpfile.js&#10;server.&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/node_modules/browser-sync-ui/lib/server.js&#10;echart.js&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/vendors/echarts/dist/echarts.js&#10;index.html&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/production/index.html&#10;index.h&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/vendors/jszip/index.html&#10;index2&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/production/index2.html&#10;index.ht&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/production/index.html&#10;echarts.js&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/vendors/echarts/dist/echarts.js&#10;echarts.j&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/vendors/echarts/src/echarts.js&#10;server.js&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/node_modules/browser-sync-ui/lib/server.js&#10;3000&#9;null&#9;null" />
+    <property name="SearchEverywhereHistoryKey" value="custom&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/public/js/custom.js&#10;html2canvas&#9;null&#9;null&#10;pack&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/package.json&#10;echart.j&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/production/js/echart/echart.js&#10;pdf&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/vendors/pdfmake/build/pdfmake.js&#10;gulpf&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/gulpfile.js&#10;server.&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/node_modules/browser-sync-ui/lib/server.js&#10;echart.js&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/vendors/echarts/dist/echarts.js&#10;index.html&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/production/index.html&#10;index.h&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/vendors/jszip/index.html&#10;index2&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/production/index2.html&#10;index.ht&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/production/index.html&#10;echarts.js&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/vendors/echarts/dist/echarts.js&#10;echarts.j&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/vendors/echarts/src/echarts.js&#10;server.js&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/node_modules/browser-sync-ui/lib/server.js&#10;3000&#9;null&#9;null" />
     <property name="js.buildTools.gulp.gulp_package_dir" value="$PROJECT_DIR$/node_modules/gulp" />
     <property name="js-jscs-nodeInterpreter" value="/usr/local/bin/node" />
     <property name="aspect.path.notification.shown" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/public" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/vendors" />
       <recent name="$PROJECT_DIR$/src/js/helpers" />
       <recent name="$PROJECT_DIR$/public/css" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/public" />
     </key>
   </component>
   <component name="RunManager" selected="Gulp.js.default">
@@ -417,7 +522,8 @@
       <workItem from="1469953546084" duration="5741000" />
       <workItem from="1470008140283" duration="24728000" />
       <workItem from="1470240756230" duration="39000" />
-      <workItem from="1470240814703" duration="21808000" />
+      <workItem from="1470240814703" duration="22629000" />
+      <workItem from="1470475582127" duration="6042000" />
     </task>
     <task id="LOCAL-00001" summary="package.json updated for local web running">
       <created>1469372595018</created>
@@ -486,23 +592,21 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="68221000" />
+    <option name="totallyTimeSpent" value="75084000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="42" y="23" width="1238" height="777" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
+      <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15201315" sideWeight="0.34085777" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15201315" sideWeight="0.6591422" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3262519" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32776934" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32776934" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15201315" sideWeight="0.3295711" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15201315" sideWeight="0.6704289" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32928678" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.13722268" sideWeight="0.4356659" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32776934" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39908952" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -516,9 +620,11 @@
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32928678" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -552,90 +658,12 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/node_modules/browser-sync/lib/public/socket.io.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="2" column="15061" selection-start-line="2" selection-start-column="15061" selection-end-line="2" selection-end-column="15061" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendors/pnotify/libtests/browserify/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/index2.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="9" selection-start-line="1" selection-start-column="8" selection-end-line="1" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/e_commerce.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/form.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/morisjs.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/pricing_tables.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/tables_dynamic.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/xx.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/other_charts.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3330">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/widgets.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="525">
-          <caret line="922" column="0" selection-start-line="922" selection-start-column="0" selection-end-line="922" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/general_elements.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="118">
-          <caret line="1712" column="31" selection-start-line="1712" selection-start-column="31" selection-end-line="1712" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/public/pricing_tables.html" />
+    <entry file="file://$PROJECT_DIR$/public/tables_dynamic.html" />
+    <entry file="file://$PROJECT_DIR$/public/xx.html" />
+    <entry file="file://$PROJECT_DIR$/public/other_charts.html" />
+    <entry file="file://$PROJECT_DIR$/public/widgets.html" />
+    <entry file="file://$PROJECT_DIR$/public/general_elements.html" />
     <entry file="file://$PROJECT_DIR$/public/js/echart/chart-theme.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -644,27 +672,9 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/production/js/echart/echart2.js" />
-    <entry file="file://$PROJECT_DIR$/build/css/custom.min.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="0" column="3410" selection-start-line="0" selection-start-column="3410" selection-end-line="0" selection-end-column="3410" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/build/css/custom.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6343">
-          <caret line="873" column="41" selection-start-line="873" selection-start-column="41" selection-end-line="873" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/echarts.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="181">
-          <caret line="2853" column="14" selection-start-line="2853" selection-start-column="14" selection-end-line="2853" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/build/css/custom.min.css" />
+    <entry file="file://$PROJECT_DIR$/build/css/custom.css" />
+    <entry file="file://$PROJECT_DIR$/public/echarts.html" />
     <entry file="jar://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/lib/JavaScriptLanguage.jar!/com/intellij/lang/javascript/index/predefined/DHTML.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="138">
@@ -676,7 +686,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
           <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -692,7 +701,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -700,34 +708,11 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
           <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/vendors/pdfmake/build/pdfmake.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="28827" column="30" selection-start-line="28827" selection-start-column="30" selection-end-line="28827" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/production/js/jquery-charts/jq-charts.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/production/js/chartjs/donuts.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/production/js/jquery-charts/jq-charts.js" />
+    <entry file="file://$PROJECT_DIR$/production/js/chartjs/donuts.js" />
     <entry file="file://$PROJECT_DIR$/public/js/datepicker/daterangepicker.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -742,7 +727,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="220">
           <caret line="30" column="31" selection-start-line="30" selection-start-column="31" selection-end-line="30" selection-end-column="31" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -750,7 +734,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-645">
           <caret line="12" column="8" selection-start-line="12" selection-start-column="8" selection-end-line="12" selection-end-column="8" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -790,7 +773,6 @@
         <state split_layout="FIRST">
           <first_editor relative-caret-position="-270">
             <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
-            <folding />
           </first_editor>
           <second_editor />
         </state>
@@ -804,7 +786,6 @@
         <state split_layout="FIRST">
           <first_editor relative-caret-position="-270">
             <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-            <folding />
           </first_editor>
           <second_editor />
         </state>
@@ -814,7 +795,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
           <caret line="4" column="3" selection-start-line="4" selection-start-column="3" selection-end-line="4" selection-end-column="3" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -822,7 +802,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
           <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -830,23 +809,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-930">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/npm-debug.log">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="31" column="35" selection-start-line="31" selection-start-column="35" selection-end-line="31" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/npm-debug.log" />
     <entry file="file://$PROJECT_DIR$/bower.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1200">
           <caret line="80" column="27" selection-start-line="80" selection-start-column="27" selection-end-line="80" selection-end-column="27" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -854,7 +824,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3510">
           <caret line="234" column="9" selection-start-line="234" selection-start-column="9" selection-end-line="234" selection-end-column="9" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -862,7 +831,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="28" selection-start-line="0" selection-start-column="28" selection-end-line="0" selection-end-column="28" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -874,17 +842,8 @@
         <state split_layout="FIRST">
           <first_editor relative-caret-position="0">
             <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-            <folding />
           </first_editor>
           <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/js/custom.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1889">
-          <caret line="81" column="38" selection-start-line="81" selection-start-column="38" selection-end-line="81" selection-end-column="38" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -892,7 +851,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="427">
           <caret line="40" column="28" selection-start-line="40" selection-start-column="28" selection-end-line="40" selection-end-column="28" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -900,17 +858,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="315">
           <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#51#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/LICENSE.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -922,22 +869,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/calendar.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/public/calendar.html" />
     <entry file="file://$PROJECT_DIR$/src/js/helpers/fetch.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -950,9 +882,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -960,10 +889,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="480">
           <caret line="173" column="17" selection-start-line="173" selection-start-column="17" selection-end-line="173" selection-end-column="17" />
-          <folding>
-            <element signature="n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#div#3;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -971,14 +896,97 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LICENSE.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendors/jquery/src/attributes/classes.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-42">
+          <caret line="98" column="4" selection-start-line="98" selection-start-column="4" selection-end-line="98" selection-end-column="4" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/gulpfile.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="38" selection-start-line="6" selection-start-column="38" selection-end-line="6" selection-end-column="38" />
+        <state relative-caret-position="265">
+          <caret line="60" column="30" selection-start-line="60" selection-start-column="30" selection-end-line="60" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendors/pdfmake/build/pdfmake.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="138">
+          <caret line="28827" column="30" selection-start-line="28827" selection-start-column="30" selection-end-line="28827" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendors/html2canvas/src/log.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendors/pdfmake/.bower.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-173">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendors/pdfmake/bower.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendors/pdfmake/LICENSE">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-675">
+          <caret line="31" column="7" selection-start-line="31" selection-start-column="7" selection-end-line="31" selection-end-column="7" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#ul#0;n#li#0;n#ul#0;n#div#0;n#div#3;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#ul#0;n#li#1;n#ul#0;n#li#0;n#ul#0;n#div#0;n#div#3;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/custom.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="490">
+          <caret line="717" column="0" selection-start-line="717" selection-start-column="0" selection-end-line="717" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/js/custom.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="248" column="47" selection-start-line="248" selection-start-column="47" selection-end-line="248" selection-end-column="47" />
           <folding />
         </state>
       </provider>

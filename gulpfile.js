@@ -57,16 +57,9 @@ gulp.task('browser-sync', function() {
             baseDir: './',
             port:process.env.PORT || 3000
         },
-        startPath: './public/index.html'
-    });
-});
-
-gulp.task('serveprod', function() {
-    connect.server({
-        root: '.',
-        port: process.env.PORT || 5000, // localhost:5000
-       fallback: './public/index.html',
-        livereload: false
+        startPath: './public/index.html',
+        injectChanges: 'true',
+        script: './public/app.js'
     });
 });
 
