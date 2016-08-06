@@ -78,6 +78,8 @@
                   </li>
                 </ul>
               </li>
+              <li class=""><a onclick="pdfMe();"><i class="fa fa-download"></i> PDF </span></a>
+              </li>
             </ul>
           </div>
 
@@ -142,10 +144,10 @@
         </div>
 
         <div class="row">
-          <div class="col-md-4 col-sm-4 col-xs-12">
+          <div class="col-md-3 col-sm-3 col-xs-12">
             <!--<div class="x_panel">-->
               <div class="x_title">
-                <h2>CVA Donut Graph</h2>
+                <h2>CVA</h2>
                 <ul class="nav navbar-right panel_toolbox">
                   <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                   </li>
@@ -168,15 +170,15 @@
                 <div id="echart_donut" style="height:200px;"></div>
 
               </div>
-              <span>Total CVA</span>
-              <h2>231,809</h2>
+              <span>Total</span>
+              <h2>#CVA</h2>
 
             <!--</div>-->
           </div>
-          <div class="col-md-4 col-sm-4 col-xs-12">
+          <div class="col-md-3 col-sm-3 col-xs-12">
             <!--<div class="x_panel">-->
               <div class="x_title">
-                <h2>FVA Donut Graph</h2>
+                <h2>FVA</h2>
                 <ul class="nav navbar-right panel_toolbox">
                   <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                   </li>
@@ -199,15 +201,15 @@
                 <div id="echart_donut2" style="height:200px;"></div>
 
               </div>
-              <span>Total FVA</span>
-              <h2>231,809</h2>
+              <span>Total</span>
+              <h2>#FVA</h2>
 
             <!--</div>-->
           </div>
-          <div class="col-md-4 col-sm-4 col-xs-12">
+          <div class="col-md-3 col-sm-3 col-xs-12">
             <!--<div class="x_panel">-->
               <div class="x_title">
-                <h2>ColVA Donut Graph</h2>
+                <h2>ColVA</h2>
                 <ul class="nav navbar-right panel_toolbox">
                   <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                   </li>
@@ -230,10 +232,37 @@
                 <div id="echart_donut3" style="height:200px;"></div>
 
               </div>
-              <span>Total ColVA</span>
-              <h2>231,809</h2>
+              <span>Total</span>
+              <h2>#ColVA</h2>
 
             <!--</div>-->
+          </div>
+          <div class="col-md-3 col-sm-3 col-xs-12">
+            <!--<div class="x_panel">-->
+            <div class="x_title">
+              <h2>Risk Gauge</h2>
+              <ul class="nav navbar-right panel_toolbox">
+                <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                </li>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                  <ul class="dropdown-menu" role="menu">
+                    <li><a href="#">Settings 1</a>
+                    </li>
+                    <li><a href="#">Settings 2</a>
+                    </li>
+                  </ul>
+                </li>
+                <li><a class="close-link"><i class="fa fa-close"></i></a>
+                </li>
+              </ul>
+              <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+              <div id="echart_guage" style="height:270px;"></div>
+            </div>
+            <!--</div>-->
+
           </div>
         </div>
 
@@ -408,33 +437,6 @@
             <!--</div>-->
           </div>
 
-          <div class="col-md-4 col-sm-4 col-xs-12">
-            <!--<div class="x_panel">-->
-              <div class="x_title">
-                <h2>Risk Gauge</h2>
-                <ul class="nav navbar-right panel_toolbox">
-                  <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                  </li>
-                  <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                    <ul class="dropdown-menu" role="menu">
-                      <li><a href="#">Settings 1</a>
-                      </li>
-                      <li><a href="#">Settings 2</a>
-                      </li>
-                    </ul>
-                  </li>
-                  <li><a class="close-link"><i class="fa fa-close"></i></a>
-                  </li>
-                </ul>
-                <div class="clearfix"></div>
-              </div>
-              <div class="x_content">
-                <div id="echart_guage" style="height:270px;"></div>
-              </div>
-            <!--</div>-->
-
-          </div>
 
         </div>
 
@@ -483,7 +485,6 @@
 
 <!-- bootstrap-daterangepicker -->
 <script src="js/bootstrap-date-filter.js"></script>
-<!--<script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=fetch" async defer></script>-->
 
 <script language="javascript">
 //  var load_ = function () {

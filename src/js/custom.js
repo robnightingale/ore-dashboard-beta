@@ -259,3 +259,48 @@ html2canvas(document.getElementById('export_me_'), {
     }
 });
 }
+
+
+/**
+ * Generates a GUID string.
+ * @returns {String} The generated GUID.
+ * @example af8a8416-6e18-a307-bd9c-f2c947bbb3aa
+ * @author Slavik Meltser (slavik@meltser.info).
+ * @link http://slavik.meltser.info/?p=142
+ */
+function guid() {
+    function _p8(s) {
+        var p = (Math.random().toString(16) + "000000000").substr(2, 8);
+        return s ? "-" + p.substr(0, 4) + "-" + p.substr(4, 4) : p;
+    }
+
+    return _p8() + _p8(true) + _p8(true) + _p8();
+}
+
+var processStatus = function (response) {
+    // status "0" to handle local files fetching (e.g. Cordova/Phonegap etc.)
+    if ((response.status >= 200 && response.status < 300 ) || response.status === 0) {
+        return Promise.resolve(response)
+    } else {
+        return Promise.reject(new Error(response.statusText))
+    }
+};
+var parseJson = function (response) {
+    console.info('got json data from server');
+    return response.json();
+}
+var parseTextResponse = function (response) {
+    console.info('got text data from server');
+    return response.text();
+}
+
+/**
+ * Used to attach events to an element or object in a browser independent way
+ * @param element
+ * @param event
+ * @param callbackFunction
+ */
+function _AttachEvent(element, type, handler) {
+    if (element.addEventListener) element.addEventListener(type, handler, false);
+    else element.attachEvent("on" + type, handler);
+}

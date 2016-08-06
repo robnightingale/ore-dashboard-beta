@@ -483,26 +483,26 @@ var LINECharts = (function () {
                     '8210000', '7810000', '7780000', '7510000', '7430000', '7130000', '7000000',
                     '6700000', '6400000', '6070000', '6040000', '5800000'],
 
-                markPoint : {
-                    data : [
-                        // Vertical axis, default
-                        {type : 'max', name: '最大值',symbol: 'emptyCircle', itemStyle:{normal:{color:'#dc143c',label:{position:'top'}}}},
-                        {type : 'min', name: '最小值',symbol: 'emptyCircle', itemStyle:{normal:{color:'#dc143c',label:{position:'bottom'}}}},
-                        // Horizontal axis
-                        {type : 'max', name: '最大值', valueIndex: 0, symbol: 'emptyCircle', itemStyle:{normal:{color:'#1e90ff',label:{position:'right'}}}},
-                        {type : 'min', name: '最小值', valueIndex: 0, symbol: 'emptyCircle', itemStyle:{normal:{color:'#1e90ff',label:{position:'left'}}}}
-                    ]
-                },
+                // markPoint : {
+                //     data : [
+                //         // Vertical axis, default
+                //         {type : 'max', name: 'max',symbol: 'emptyCircle', itemStyle:{normal:{color:'#dc143c',label:{position:'top'}}}},
+                //         {type : 'min', name: 'min',symbol: 'emptyCircle', itemStyle:{normal:{color:'#dc143c',label:{position:'bottom'}}}},
+                //         // Horizontal axis
+                //         {type : 'max', name: 'max', valueIndex: 0, symbol: 'emptyCircle', itemStyle:{normal:{color:'#1e90ff',label:{position:'right'}}}},
+                //         {type : 'min', name: 'min', valueIndex: 0, symbol: 'emptyCircle', itemStyle:{normal:{color:'#1e90ff',label:{position:'left'}}}}
+                //     ]
+                // },
                 markLine : {
                     data : [
                         // Vertical axis, default
-                        {type : 'max', name: '最大值', itemStyle:{normal:{color:'#dc143c'}}},
-                        {type : 'min', name: '最小值', itemStyle:{normal:{color:'#dc143c'}}},
-                        {type : 'average', name : '平均值', itemStyle:{normal:{color:'#dc143c'}}},
+                        {type : 'max', name: 'max', itemStyle:{normal:{color:'#dc143c'}}},
+                        {type : 'min', name: 'min', itemStyle:{normal:{color:'#dc143c'}}},
+                        {type : 'average', name : 'avg', itemStyle:{normal:{color:'#dc143c'}}},
                         // Horizontal axis
-                        {type : 'max', name: '最大值', valueIndex: 0, itemStyle:{normal:{color:'#1e90ff'}}},
-                        {type : 'min', name: '最小值', valueIndex: 0, itemStyle:{normal:{color:'#1e90ff'}}},
-                        {type : 'average', name : '平均值', valueIndex: 0, itemStyle:{normal:{color:'#1e90ff'}}}
+                        {type : 'max', name: 'max', valueIndex: 0, itemStyle:{normal:{color:'#1e90ff'}}},
+                        {type : 'min', name: 'min', valueIndex: 0, itemStyle:{normal:{color:'#1e90ff'}}},
+                        {type : 'average', name : 'avg', valueIndex: 0, itemStyle:{normal:{color:'#1e90ff'}}}
                     ]
                 }
             }]
@@ -1121,47 +1121,3 @@ function eConsole(param) {
 }
 
 
-/**
- * Used to attach events to an element or object in a browser independent way
- * @param element
- * @param event
- * @param callbackFunction
- */
-function _AttachEvent(element, type, handler) {
-    if (element.addEventListener) element.addEventListener(type, handler, false);
-    else element.attachEvent("on" + type, handler);
-}
-
-
-/**
- * Generates a GUID string.
- * @returns {String} The generated GUID.
- * @example af8a8416-6e18-a307-bd9c-f2c947bbb3aa
- * @author Slavik Meltser (slavik@meltser.info).
- * @link http://slavik.meltser.info/?p=142
- */
-function guid() {
-    function _p8(s) {
-        var p = (Math.random().toString(16) + "000000000").substr(2, 8);
-        return s ? "-" + p.substr(0, 4) + "-" + p.substr(4, 4) : p;
-    }
-
-    return _p8() + _p8(true) + _p8(true) + _p8();
-}
-
-var processStatus = function (response) {
-    // status "0" to handle local files fetching (e.g. Cordova/Phonegap etc.)
-    if ((response.status >= 200 && response.status < 300 ) || response.status === 0) {
-        return Promise.resolve(response)
-    } else {
-        return Promise.reject(new Error(response.statusText))
-    }
-};
-var parseJson = function (response) {
-    console.info('got json data from server');
-    return response.json();
-}
-var parseTextResponse = function (response) {
-    console.info('got text data from server');
-    return response.text();
-}
