@@ -171,55 +171,9 @@ var LINECharts = (function () {
 
     function init() {
 
-        line_total_exposure = echarts.init(document.getElementById('line_total_exposure'), theme);
-        line_total_exposure.setOption({
-            title: {
-                text: 'Total Exposure',
-                subtext: 'Subtitle'
-            },
-            tooltip: {
-                trigger: 'axis'
-            },
-            legend: {
-                x: 140,
-                y: 40,
-                data: ['NPV', 'CE', 'EEPE', 'Total Exp']
-            },
-            toolbox: {
-                show: true,
-                feature: {
-                    dataView: {
-                        show: false, title: 'view data', lang: ['Data', 'ok', 'refresh']
-                    },
-                    magicType: {
-                        show: true,
-                        title: {
-                            line: 'Line',
-                            bar: 'Bar',
-                            stack: 'Stack',
-                            tiled: 'Tiled'
-                        },
-                        type: ['line', 'bar', 'stack', 'tiled']
-                    },
-                    restore: {
-                        show: true,
-                        title: "Restore"
-                    },
-                    saveAsImage: {
-                        show: true,
-                        title: "Save Image"
-                    }
-                }
-            },
-            calculable: true,
-            xAxis: [{
-                type: 'category',
-                boundaryGap: false,
-                data: ['Week1', 'Week2', 'Week3', 'Week4']
-            }],
-            yAxis: [{
-                type: 'value'
-            }],
+        var total_Data = {
+            legend: ['NPV', 'CE', 'EEPE', 'Total Exp'],
+            xAxisData : ['Week1', 'Week2', 'Week3', 'Week4'],
             series: [{
                 name: 'NPV',
                 type: 'line',
@@ -270,80 +224,30 @@ var LINECharts = (function () {
                 data: [763327844.8 * 2, 763327844.8 * 2 / 1.2, 763327844.8 * 2 / 1.3, 763327844.8 * 2 / 1.4]
             }
             ]
-        });
 
-        line_exposure_profile = echarts.init(document.getElementById('line_exposure_profile'), theme);
-        line_exposure_profile.setOption({
-            title: {
-                text: 'Exposure Profile',
-                subtext: 'Simulated EPE & PFE'
-            },
-            tooltip: {
-                trigger: 'axis'
-            },
-            legend: {
-                x: 220,
-                y: 40,
-                data: ['EPE', 'PFE']
-            },
-            toolbox: {
-                show: true,
-                feature: {
-                    magicType: {
-                        show: true,
-                        title: {
-                            line: 'Line',
-                            bar: 'Bar',
-                            stack: 'Stack',
-                            tiled: 'Tiled'
-                        },
-                        type: ['line', 'bar', 'stack', 'tiled']
-                    },
-                    restore: {
-                        show: true,
-                        title: "Restore"
-                    },
-                    saveAsImage: {
-                        show: true,
-                        title: "Save Image"
-                    }
-                }
-            },
-            dataZoom : {
-                show : true,
-                realtime: true,
-                start : 0,
-                end : 100
-            },
-            calculable: true,
-            xAxis: [{
-                type: 'category',
-                boundaryGap: false,
-                data: ['3/1/2016', '6/1/2016', '9/1/2016', '12/1/2016', '3/1/2017',
-                    '6/1/2017', '9/1/2017', '12/1/2017', '3/1/2018', '6/1/2018', '9/4/2018',
-                    '12/3/2018', '3/1/2019', '6/3/2019', '9/3/2019', '12/2/2019', '3/2/2020',
-                    '6/2/2020', '9/1/2020', '12/1/2020', '3/1/2021', '6/1/2021', '9/1/2021',
-                    '12/1/2021', '3/1/2022', '6/1/2022', '9/1/2022', '12/1/2022', '3/1/2023',
-                    '6/1/2023', '9/1/2023', '12/1/2023', '3/1/2024', '6/3/2024', '9/3/2024',
-                    '12/2/2024', '3/3/2025', '6/2/2025', '9/2/2025', '12/1/2025', '3/2/2026',
-                    '6/1/2026', '9/1/2026', '12/1/2026', '3/1/2027', '6/1/2027', '9/1/2027',
-                    '12/1/2027', '3/1/2028', '6/1/2028', '9/1/2028', '12/1/2028', '3/1/2029',
-                    '6/1/2029', '9/4/2029', '12/3/2029', '3/1/2030', '6/3/2030', '9/3/2030',
-                    '12/2/2030', '3/3/2031', '6/3/2031', '9/2/2031', '12/1/2031', '3/1/2032',
-                    '6/1/2032', '9/1/2032', '12/1/2032', '3/1/2033', '6/1/2033', '9/1/2033',
-                    '12/1/2033', '3/1/2034', '6/1/2034', '9/1/2034', '12/1/2034', '3/1/2035',
-                    '6/1/2035', '9/4/2035', '12/3/2035', '3/3/2036', '6/3/2036', '9/2/2036',
-                    '12/1/2036', '3/2/2037', '6/1/2037', '9/1/2037', '12/1/2037', '3/1/2038',
-                    '6/1/2038', '9/1/2038', '12/1/2038', '3/1/2039', '6/1/2039', '9/1/2039',
-                    '12/1/2039', '3/1/2040', '6/1/2040', '9/4/2040', '12/3/2040', '3/1/2041',
-                    '6/3/2041', '9/3/2041', '12/2/2041', '3/3/2042', '6/2/2042', '9/2/2042',
-                    '12/1/2042', '3/2/2043', '6/1/2043', '9/1/2043', '12/1/2043', '3/1/2044',
-                    '6/1/2044', '9/1/2044', '12/1/2044', '3/1/2045', '6/1/2045', '9/1/2045',
-                    '12/1/2045', '3/1/2046']
-            }],
-            yAxis: [{
-                type: 'value'
-            }],
+        };
+        var profile_DData = {
+            xAxisData: ['3/1/2016', '6/1/2016', '9/1/2016', '12/1/2016', '3/1/2017',
+                '6/1/2017', '9/1/2017', '12/1/2017', '3/1/2018', '6/1/2018', '9/4/2018',
+                '12/3/2018', '3/1/2019', '6/3/2019', '9/3/2019', '12/2/2019', '3/2/2020',
+                '6/2/2020', '9/1/2020', '12/1/2020', '3/1/2021', '6/1/2021', '9/1/2021',
+                '12/1/2021', '3/1/2022', '6/1/2022', '9/1/2022', '12/1/2022', '3/1/2023',
+                '6/1/2023', '9/1/2023', '12/1/2023', '3/1/2024', '6/3/2024', '9/3/2024',
+                '12/2/2024', '3/3/2025', '6/2/2025', '9/2/2025', '12/1/2025', '3/2/2026',
+                '6/1/2026', '9/1/2026', '12/1/2026', '3/1/2027', '6/1/2027', '9/1/2027',
+                '12/1/2027', '3/1/2028', '6/1/2028', '9/1/2028', '12/1/2028', '3/1/2029',
+                '6/1/2029', '9/4/2029', '12/3/2029', '3/1/2030', '6/3/2030', '9/3/2030',
+                '12/2/2030', '3/3/2031', '6/3/2031', '9/2/2031', '12/1/2031', '3/1/2032',
+                '6/1/2032', '9/1/2032', '12/1/2032', '3/1/2033', '6/1/2033', '9/1/2033',
+                '12/1/2033', '3/1/2034', '6/1/2034', '9/1/2034', '12/1/2034', '3/1/2035',
+                '6/1/2035', '9/4/2035', '12/3/2035', '3/3/2036', '6/3/2036', '9/2/2036',
+                '12/1/2036', '3/2/2037', '6/1/2037', '9/1/2037', '12/1/2037', '3/1/2038',
+                '6/1/2038', '9/1/2038', '12/1/2038', '3/1/2039', '6/1/2039', '9/1/2039',
+                '12/1/2039', '3/1/2040', '6/1/2040', '9/4/2040', '12/3/2040', '3/1/2041',
+                '6/3/2041', '9/3/2041', '12/2/2041', '3/3/2042', '6/2/2042', '9/2/2042',
+                '12/1/2042', '3/2/2043', '6/1/2043', '9/1/2043', '12/1/2043', '3/1/2044',
+                '6/1/2044', '9/1/2044', '12/1/2044', '3/1/2045', '6/1/2045', '9/1/2045',
+                '12/1/2045', '3/1/2046'],
             series: [{
                 name: 'EPE',
                 type: 'line',
@@ -404,8 +308,114 @@ var LINECharts = (function () {
                     '8890000', '8640000', '8780000', '8980000', '9200000', '8800000', '8800000',
                     '8980000', '8670000', '8800000', '8530000', '8400000', '8270000', '8490000',
                     '8210000', '7810000', '7780000', '7510000', '7430000', '7130000', '7000000',
-                    '6700000', '6400000', '6070000', '6040000', '5800000'],
+                    '6700000', '6400000', '6070000', '6040000', '5800000']
+            }],
+            legend: ['EPE', 'PFE']
+        };
 
+        var total_exposure_options = {
+
+            title: {
+                text: 'Total Exposure',
+                subtext: 'Subtitle'
+            },
+            tooltip: {
+                trigger: 'axis'
+            },
+            legend: {
+                x: 140,
+                y: 40,
+                data: []
+            },
+            toolbox: {
+                show: true,
+                feature: {
+                    dataView: {
+                        show: false, title: 'view data', lang: ['Data', 'ok', 'refresh']
+                    },
+                    magicType: {
+                        show: true,
+                        title: {
+                            line: 'Line',
+                            bar: 'Bar',
+                            stack: 'Stack',
+                            tiled: 'Tiled'
+                        },
+                        type: ['line', 'bar', 'stack', 'tiled']
+                    },
+                    restore: {
+                        show: true,
+                        title: "Restore"
+                    },
+                    saveAsImage: {
+                        show: true,
+                        title: "Save Image"
+                    }
+                }
+            },
+            calculable: true,
+            xAxis: [{
+                type: 'category',
+                boundaryGap: false,
+                data: []
+            }],
+            yAxis: [{
+                type: 'value'
+            }],
+            series : []
+    };
+        var exposure_profile_options = {
+            title: {
+                text: 'Exposure Profile',
+                subtext: 'Simulated EPE & PFE'
+            },
+            tooltip: {
+                trigger: 'axis'
+            },
+            legend: {
+                x: 220,
+                y: 40,
+                data: []
+            },
+            toolbox: {
+                show: true,
+                feature: {
+                    magicType: {
+                        show: true,
+                        title: {
+                            line: 'Line',
+                            bar: 'Bar',
+                            stack: 'Stack',
+                            tiled: 'Tiled'
+                        },
+                        type: ['line', 'bar', 'stack', 'tiled']
+                    },
+                    restore: {
+                        show: true,
+                        title: "Restore"
+                    },
+                    saveAsImage: {
+                        show: true,
+                        title: "Save Image"
+                    }
+                }
+            },
+            dataZoom: {
+                show: true,
+                realtime: true,
+                start: 0,
+                end: 100
+            },
+            calculable: true,
+            xAxis: [{
+                type: 'category',
+                boundaryGap: false,
+                data : []
+            }],
+            yAxis: [{
+                type: 'value'
+            }],
+            series: [],
                 // markPoint : {
                 //     data : [
                 //         // Vertical axis, default
@@ -416,28 +426,45 @@ var LINECharts = (function () {
                 //         {type : 'min', name: 'min', valueIndex: 0, symbol: 'emptyCircle', itemStyle:{normal:{color:'#1e90ff',label:{position:'left'}}}}
                 //     ]
                 // },
-                markLine : {
-                    data : [
+                markLine: {
+                    data: [
                         // Vertical axis, default
-                        {type : 'max', name: 'max', itemStyle:{normal:{color:'#dc143c'}}},
-                        {type : 'min', name: 'min', itemStyle:{normal:{color:'#dc143c'}}},
-                        {type : 'average', name : 'avg', itemStyle:{normal:{color:'#dc143c'}}},
+                        {type: 'max', name: 'max', itemStyle: {normal: {color: '#dc143c'}}},
+                        {type: 'min', name: 'min', itemStyle: {normal: {color: '#dc143c'}}},
+                        {type: 'average', name: 'avg', itemStyle: {normal: {color: '#dc143c'}}},
                         // Horizontal axis
-                        {type : 'max', name: 'max', valueIndex: 0, itemStyle:{normal:{color:'#1e90ff'}}},
-                        {type : 'min', name: 'min', valueIndex: 0, itemStyle:{normal:{color:'#1e90ff'}}},
-                        {type : 'average', name : 'avg', valueIndex: 0, itemStyle:{normal:{color:'#1e90ff'}}}
+                        {type: 'max', name: 'max', valueIndex: 0, itemStyle: {normal: {color: '#1e90ff'}}},
+                        {type: 'min', name: 'min', valueIndex: 0, itemStyle: {normal: {color: '#1e90ff'}}},
+                        {type: 'average', name: 'avg', valueIndex: 0, itemStyle: {normal: {color: '#1e90ff'}}}
                     ]
                 }
-            }]
-        });
+            };
+
+
+        line_total_exposure = echarts.init(document.getElementById('line_total_exposure'), theme);
+        line_total_exposure.setOption(total_exposure_options);
+        setNewData(line_total_exposure, total_Data);
+
+        line_exposure_profile = echarts.init(document.getElementById('line_exposure_profile'), theme);
+        line_exposure_profile.setOption(exposure_profile_options);
+        setNewData(line_exposure_profile, profile_DData);
 
         line_total_exposure.on('click', eConsole);
         line_exposure_profile.on('click', eConsole);
 
+        function setNewData(chart_, data_){
+            chart_.setOption({
+                legend: [{data: data_.legend}],
+                xAxis : [{data : data_.xAxisData}],
+                series : data_.series
+            });
+        }
+
 // expose a few methods and properties
         return {
             getTotalExposure: line_total_exposure,
-            getProjection: line_exposure_profile
+            getProjection: line_exposure_profile,
+            setNewData : setNewData
         };
 
     }
