@@ -63,6 +63,16 @@ gulp.task('browser-sync', function() {
     });
 });
 
+
+gulp.task('serveprod', function() {
+    connect.server({
+        root: './',
+        port: process.env.PORT || 5000, // localhost:5000
+//        fallback: './production',
+        livereload: false
+    });
+});
+
 // Default Task
-gulp.task('default', ['browser-sync', 'watch']);
-// gulp.task('prod', ['serveprod', 'watch']);
+gulp.task('dev', ['browser-sync', 'watch']);
+gulp.task('default', ['serveprod', 'watch']);
