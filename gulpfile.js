@@ -46,7 +46,7 @@ gulp.task('sass-minify', function() {
 gulp.task('watch', function() {
   // Watch .html files
   gulp.watch('public/*.html', browserSync.reload);
-  gulp.watch('public/**/js/*.js', browserSync.reload);
+  gulp.watch('public/js/**/*.js', browserSync.reload);
   // Watch .js files
   gulp.watch('src/js/*.js', ['scripts']);
   // Watch .scss files

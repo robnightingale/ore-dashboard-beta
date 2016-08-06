@@ -250,16 +250,6 @@ var LINECharts = (function () {
                 '12/1/2045', '3/1/2046'],
             series: [{
                 name: 'EPE',
-                type: 'line',
-                smooth: true,
-                // clickable: true,
-                itemStyle: {
-                    normal: {
-                        areaStyle: {
-                            type: 'default'
-                        }
-                    }
-                },
                 data: ['0', '0', '1900', '28100', '29900', '95200', '108000', '331000',
                     '301000', '521000', '557000', '906000', '834000', '1140000', '1110000',
                     '1580000', '1430000', '1810000', '1820000', '2320000', '2080000', '2480000',
@@ -281,15 +271,6 @@ var LINECharts = (function () {
 
             }, {
                 name: 'PFE',
-                type: 'line',
-                smooth: true,
-                itemStyle: {
-                    normal: {
-                        areaStyle: {
-                            type: 'default'
-                        }
-                    }
-                },
                 data: ['-160000000', '-23400000', '-22900000', '-21300000', '-21600000',
                     '-20600000', '-20500000', '-19000000', '-19500000', '-18400000', '-18600000',
                     '-16500000', '-16100000', '-14500000', '-13000000', '-9610000', '-7870000',
@@ -446,7 +427,7 @@ var LINECharts = (function () {
         setNewData(line_total_exposure, total_Data);
 
         line_exposure_profile = echarts.init(document.getElementById('line_exposure_profile'), theme);
-        addMarkLines(profile_Data, profile_marklines);
+        // addMarkLines(profile_Data, profile_marklines);
         line_exposure_profile.setOption(exposure_profile_options);
         setNewData(line_exposure_profile, profile_Data);
         line_exposure_profile.getOption();
@@ -454,13 +435,22 @@ var LINECharts = (function () {
         line_total_exposure.on('click', eConsole);
         line_exposure_profile.on('click', eConsole);
 
-        function addMarkLines(profile_Data_, profile_marklines) {
-            profile_Data_.series.forEach(function(elem){
-                elem.markLine = profile_marklines;
-            })
-        };
-
         function setNewData(chart_, data_){
+            data_.series.forEach(function(elem){
+                // only add marklines for exposure profile graph
+                if (chart_.getOption().title[0].text == 'Exposure Profile')
+                    elem.markLine = profile_marklines;
+                elem.type = 'line';
+                elem.smooth = true;
+                elem.itemStyle = {
+                    normal: {
+                        areaStyle: {
+                            type: 'default'
+                        }
+                    }
+                };
+            });
+
             chart_.setOption({
                 legend: [{data: data_.legend}],
                 xAxis : [{data : data_.xAxisData}],
@@ -802,39 +792,31 @@ var DONUTCharts = (function () {
         donut_colva.on('click', eConsole);
 
 
-        function getCVAData(level){
+        function getRatings(level){
 
-            var url_ = window.location.protocol + '//' + window.location.host + '/bargraph/20160301/creditrating/cva/';
+            var url_ = window.location.protocol + '//' + window.location.host + '/api/ratings';
 
-            return fetch({
-                url:url_,
-                method: 'GET',
-                mode: 'same-origin',
-                headers: {
-                    // "Authorization" : getAuthToken(),
-                    'Cache-Control': 'no-cache',
-                    'If-Modified-Since': '0',
-                    'Accept': 'application/json'
-                },
-                credentials : 'same-origin'
-            })
+            return fetch(
+                url_, {
+                    method: 'GET',
+                    mode: 'same-origin',
+                    headers: {
+                        'Cache-Control': 'no-cache',
+                        'If-Modified-Since': '0',
+                        'Accept': 'application/json'
+                    },
+                    credentials: 'same-origin'
+                })
                 .then(processStatus)
                 .then(parseJson)
                 .then(function (response) {
                     // massage data
-                    try {
-                        console.debug(response);
-                        // onLoadTrades(response);
-                    } catch (e) {
-                        console.error(new Error("Request failed : " + ex));
-                        console.debug(response);
-                    }
+                    console.debug(response);
+                    // response.forEach(function(elem) {
+                    //     console.debug(elem);
+                    // })
                     return response;
                 })
-                .then(function (response) {
-                    console.debug(response);
-                    }
-                )
                 .catch(function (ex) {
                     console.error(new Error("Request failed : " + ex));
                 })
@@ -857,8 +839,8 @@ var DONUTCharts = (function () {
             getFVA: donut_fva,
             getColVA: donut_colva,
             getGauge: echartGauge,
-            getCVAData: getCVAData,
             setNewData: setNewData
+            ,getRatings: getRatings
         };
     }
 
