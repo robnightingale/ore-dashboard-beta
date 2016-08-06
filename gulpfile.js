@@ -54,11 +54,11 @@ gulp.task('watch', function() {
 gulp.task('browser-sync', function() {
     browserSync.init({
         server: {
-            baseDir: './',
+            baseDir: ['./','public'],
             port:process.env.PORT || 3000
         },
-        startPath: './public/index.html',
         injectChanges: 'true'
+        // ,startPath: './public/index.html',
         // ,browser : 'google chrome'
     });
 });
@@ -66,10 +66,10 @@ gulp.task('browser-sync', function() {
 
 gulp.task('serveprod', function() {
     connect.server({
-        root: './',
+        root: ['./', 'public'],
         port: process.env.PORT || 5000, // localhost:5000
-        livereload: false,
-        fallback : './public/index.html'
+        livereload: false
+        // ,fallback : './public/index.html'
     });
 });
 
