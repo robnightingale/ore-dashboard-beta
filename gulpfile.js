@@ -58,8 +58,8 @@ gulp.task('browser-sync', function() {
             port:process.env.PORT || 3000
         },
         startPath: './public/index.html',
-        injectChanges: 'true',
-        script: './public/app.js'
+        injectChanges: 'true'
+        // ,browser : 'google chrome'
     });
 });
 
@@ -68,8 +68,8 @@ gulp.task('serveprod', function() {
     connect.server({
         root: './',
         port: process.env.PORT || 5000, // localhost:5000
-//        fallback: './production',
-        livereload: false
+        livereload: false,
+        fallback : './public/index.html'
     });
 });
 
