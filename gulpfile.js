@@ -6,6 +6,8 @@ var gulp = require('gulp'),
     rename = require('gulp-rename'),
     connect = require('gulp-connect'),
     sass = require('gulp-ruby-sass'),
+    url = require('url'),
+    proxy = require('proxy-middleware'),
     autoprefixer = require('gulp-autoprefixer'),
     browserSync = require('browser-sync').create();
 
@@ -52,10 +54,15 @@ gulp.task('watch', function() {
 });
 
 gulp.task('browser-sync', function() {
+    var proxyOptions = url.parse('http://localhost:5000/api/v1');
+    proxyOptions.route = '/api';
+    // requests to `/api/x/y/z` are proxied to `http://localhost:5000/secret-api`
+
     browserSync.init({
         server: {
             baseDir: ['./','public'],
-            port:process.env.PORT || 3000
+            port:process.env.PORT || 3000,
+            middleware: [proxy(proxyOptions)]
         },
         injectChanges: 'true'
         // ,startPath: './public/index.html',
