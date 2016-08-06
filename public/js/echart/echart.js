@@ -259,7 +259,7 @@ var LINECharts = (function () {
                 show: true,
                 feature: {
                     dataView: {
-                        show: true, title: 'view data', lang: ['Data', 'ok', 'refresh']
+                        show: false, title: 'view data', lang: ['Data', 'ok', 'refresh']
                     },
                     magicType: {
                         show: true,
