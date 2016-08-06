@@ -226,7 +226,7 @@ var LINECharts = (function () {
             ]
 
         };
-        var profile_DData = {
+        var profile_Data = {
             xAxisData: ['3/1/2016', '6/1/2016', '9/1/2016', '12/1/2016', '3/1/2017',
                 '6/1/2017', '9/1/2017', '12/1/2017', '3/1/2018', '6/1/2018', '9/4/2018',
                 '12/3/2018', '3/1/2019', '6/3/2019', '9/3/2019', '12/2/2019', '3/2/2020',
@@ -364,6 +364,19 @@ var LINECharts = (function () {
             }],
             series : []
     };
+        var profile_marklines = {
+            data: [
+                // Vertical axis, default
+                {type: 'max', name: 'max', itemStyle: {normal: {color: '#dc143c'}}},
+                {type: 'min', name: 'min', itemStyle: {normal: {color: '#dc143c'}}},
+                {type: 'average', name: 'avg', itemStyle: {normal: {color: '#dc143c'}}},
+                // Horizontal axis
+                {type: 'max', name: 'max', valueIndex: 0, itemStyle: {normal: {color: '#1e90ff'}}},
+                {type: 'min', name: 'min', valueIndex: 0, itemStyle: {normal: {color: '#1e90ff'}}},
+                {type: 'average', name: 'avg', valueIndex: 0, itemStyle: {normal: {color: '#1e90ff'}}}
+            ]
+        };
+
         var exposure_profile_options = {
             title: {
                 text: 'Exposure Profile',
@@ -426,31 +439,26 @@ var LINECharts = (function () {
                 //         {type : 'min', name: 'min', valueIndex: 0, symbol: 'emptyCircle', itemStyle:{normal:{color:'#1e90ff',label:{position:'left'}}}}
                 //     ]
                 // },
-                markLine: {
-                    data: [
-                        // Vertical axis, default
-                        {type: 'max', name: 'max', itemStyle: {normal: {color: '#dc143c'}}},
-                        {type: 'min', name: 'min', itemStyle: {normal: {color: '#dc143c'}}},
-                        {type: 'average', name: 'avg', itemStyle: {normal: {color: '#dc143c'}}},
-                        // Horizontal axis
-                        {type: 'max', name: 'max', valueIndex: 0, itemStyle: {normal: {color: '#1e90ff'}}},
-                        {type: 'min', name: 'min', valueIndex: 0, itemStyle: {normal: {color: '#1e90ff'}}},
-                        {type: 'average', name: 'avg', valueIndex: 0, itemStyle: {normal: {color: '#1e90ff'}}}
-                    ]
-                }
             };
-
 
         line_total_exposure = echarts.init(document.getElementById('line_total_exposure'), theme);
         line_total_exposure.setOption(total_exposure_options);
         setNewData(line_total_exposure, total_Data);
 
         line_exposure_profile = echarts.init(document.getElementById('line_exposure_profile'), theme);
+        addMarkLines(profile_Data, profile_marklines);
         line_exposure_profile.setOption(exposure_profile_options);
-        setNewData(line_exposure_profile, profile_DData);
+        setNewData(line_exposure_profile, profile_Data);
+        line_exposure_profile.getOption();
 
         line_total_exposure.on('click', eConsole);
         line_exposure_profile.on('click', eConsole);
+
+        function addMarkLines(profile_Data_, profile_marklines) {
+            profile_Data_.series.forEach(function(elem){
+                elem.markLine = profile_marklines;
+            })
+        };
 
         function setNewData(chart_, data_){
             chart_.setOption({
