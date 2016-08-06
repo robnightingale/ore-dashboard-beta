@@ -17,21 +17,17 @@ var BARCharts = (function () {
 
     function init() {
 
-        function setCustomOptions(common, custom) {
-            var series_ = [{
-                type: custom.seriesType,
-                data: custom.yaxisValues,
-                name: custom.seriesName
-            }];
-            var title_ = [{
-                text: custom.title,
-                subtext: custom.subTitleText
-            }]
-
-            common.series = series_;
-            common.title = title_;
-            common.legend.data = custom.yAxisLabels;
-            common.data = custom.yAxisLabels;
+        function setNewData(chart_, data_) {
+            chart_.setOption({
+                series: [{
+                    type: data_.seriesType,
+                    data: data_.yaxisValues,
+                    name: data_.seriesName
+                }],
+                title: [{text: data_.title, subtext: data_.subTitleText}],
+                legend: [{data: data_.yaxisLabels}],
+                yAxis: [{data: data_.yaxisLabels}]
+            });
         }
 
         var options = {
@@ -63,13 +59,6 @@ var BARCharts = (function () {
             }],
             series: null
         };
-
-        var ce_chart = options;
-        var npv_chart = options;
-        var fca_chart = options;
-        var eepe_chart = options;
-        var npv2_chart = options;
-        var fba_chart = options;
 
         // TODO make these into REST calls
         var ce_chartData = {
@@ -121,86 +110,26 @@ var BARCharts = (function () {
             "yaxisValues": [2.434153795E8, 2.031896731E8, 1.696079112E8, 5.808002756E7, 5.086273894E7]
         }
 
-        // var npv_chartData = {
-        //     yAxisLabels: ["CCC", "BB", "CC", "AA", "C"],
-        //     title: {
-        //         text: 'NPV',
-        //         subtext: '01-MAR-2016'
-        //     },
-        //     series: [{
-        //         name: '2016-03-01',
-        //         type: 'bar',
-        //         data: [1.835835138E8, 1.070428432E8, 1.970644777E7, 1.592368559E7, -1.281875696E7]
-        //     }]
-        // }
-        // var fca_chartData = {
-        //     yAxisLabels: ["AAA", "NR", "CC", "B", "BBB"],
-        //     title: {
-        //         text: 'FCA',
-        //         subtext: '01-MAR-2016'
-        //     },
-        //     series: [{
-        //         name: '2016-03-01',
-        //         type: 'bar',
-        //         data: [1443943.9, 1421737.4, 1396364.0, 1376168.0, 1172954.6]
-        //     }]
-        // }
-        // var fba_chartData = {
-        //     yAxisLabels: ["B", "NR", "A", "AAA", "BB"],
-        //     title: {
-        //         text: 'FBA',
-        //         subtext: '01-MAR-2016'
-        //     },
-        //     series: [{
-        //         name: '2016-03-01',
-        //         type: 'bar',
-        //         data: [-17279.998, -40045.45, -48515.71269, -49429.49, -66222.23245]
-        //     }]
-        // }
-        // var eepe_chartData = {
-        //     yAxisLabels: ["CC", "CCC", "BB", "AA", "BBB"],
-        //     title: {
-        //         text: 'EEPE',
-        //         subtext: '01-MAR-2016'
-        //     },
-        //     series: [{
-        //         name: '2016-03-01',
-        //         type: 'bar',
-        //         data: [2.434153795E8, 2.031896731E8, 1.696079112E8, 5.808002756E7, 5.086273894E7]
-        //     }]
-        // }
-        // var npv2_chartData = {
-        //     yAxisLabels: ["CCC", "BB", "CC", "AA", "C"],
-        //     title: {
-        //         text: 'NPV2',
-        //         subtext: '01-MAR-2016'
-        //     },
-        //     series: [{
-        //         name: '2016-03-01',
-        //         type: 'bar',
-        //         data: [1.835835138E8, 1.070428432E8, 1.970644777E7, 1.592368559E7, -1.281875696E7]
-        //     }]
-        // }
-        setCustomOptions(ce_chart, ce_chartData);
-        setCustomOptions(npv_chart, npv_chartData);
-        setCustomOptions(fca_chart, fca_chartData);
-        setCustomOptions(eepe_chart, eepe_chartData);
-        setCustomOptions(npv2_chart, npv2_chartData);
-        setCustomOptions(fba_chart, fba_chartData);
+        var echartBar = echarts.init(document.getElementById('bar_ce'), theme);
+        var echartBar2 = echarts.init(document.getElementById('bar_npv'), theme);
+        var echartBar3 = echarts.init(document.getElementById('bar_fca'), theme);
+        var echartBar4 = echarts.init(document.getElementById('bar_eepe'), theme);
+        var echartBar5 = echarts.init(document.getElementById('bar_npv2'), theme);
+        var echartBar6 = echarts.init(document.getElementById('bar_fba'), theme);
 
-        var echartBar = echarts.init(document.getElementById('echart_bar_ce'), theme);
-        var echartBar2 = echarts.init(document.getElementById('echart_bar_npv'), theme);
-        var echartBar3 = echarts.init(document.getElementById('echart_bar_fca'), theme);
-        var echartBar4 = echarts.init(document.getElementById('echart_bar_eepe'), theme);
-        var echartBar5 = echarts.init(document.getElementById('echart_bar_npv2'), theme);
-        var echartBar6 = echarts.init(document.getElementById('echart_bar_fba'), theme);
+        echartBar.setOption(options);
+        echartBar2.setOption(options);
+        echartBar3.setOption(options);
+        echartBar4.setOption(options);
+        echartBar5.setOption(options);
+        echartBar6.setOption(options);
 
-        echartBar.setOption(ce_chart);
-        echartBar2.setOption(npv_chart);
-        echartBar3.setOption(fca_chart);
-        echartBar4.setOption(eepe_chart);
-        echartBar5.setOption(npv2_chart);
-        echartBar6.setOption(fba_chart);
+        setNewData(echartBar, ce_chartData);
+        setNewData(echartBar2, npv_chartData);
+        setNewData(echartBar3, fca_chartData);
+        setNewData(echartBar4, eepe_chartData);
+        setNewData(echartBar5, npv2_chartData);
+        setNewData(echartBar6, fba_chartData);
 
         echartBar.on('click', eConsole);
         echartBar2.on('click', eConsole);
@@ -216,7 +145,8 @@ var BARCharts = (function () {
             getFCAChart: echartBar3,
             getEEPEChart: echartBar4,
             getNPV2Chart: echartBar5,
-            getFBAChart: echartBar6
+            getFBAChart: echartBar6,
+            setNewData : setNewData
         };
     }
 
@@ -237,12 +167,12 @@ var LINECharts = (function () {
 
     'use strict';
     var instance;
-    var echartLine, echartLine2;
+    var line_total_exposure, line_exposure_profile;
 
     function init() {
 
-        echartLine = echarts.init(document.getElementById('echart_line_total_exposure'), theme);
-        echartLine.setOption({
+        line_total_exposure = echarts.init(document.getElementById('line_total_exposure'), theme);
+        line_total_exposure.setOption({
             title: {
                 text: 'Total Exposure',
                 subtext: 'Subtitle'
@@ -342,8 +272,8 @@ var LINECharts = (function () {
             ]
         });
 
-        echartLine2 = echarts.init(document.getElementById('echart_line2'), theme);
-        echartLine2.setOption({
+        line_exposure_profile = echarts.init(document.getElementById('line_exposure_profile'), theme);
+        line_exposure_profile.setOption({
             title: {
                 text: 'Exposure Profile',
                 subtext: 'Simulated EPE & PFE'
@@ -368,13 +298,6 @@ var LINECharts = (function () {
                             tiled: 'Tiled'
                         },
                         type: ['line', 'bar', 'stack', 'tiled']
-                    },
-                    dataZoom : {
-                        show : true,
-                        title : {
-                            dataZoom : 'zoom',
-                            dataZoomReset : 'reset'
-                        }
                     },
                     restore: {
                         show: true,
@@ -508,13 +431,13 @@ var LINECharts = (function () {
             }]
         });
 
-        echartLine.on('click', eConsole);
-        echartLine2.on('click', eConsole);
+        line_total_exposure.on('click', eConsole);
+        line_exposure_profile.on('click', eConsole);
 
 // expose a few methods and properties
         return {
-            getTotalExposure: echartLine,
-            getProjection: echartLine2
+            getTotalExposure: line_total_exposure,
+            getProjection: line_exposure_profile
         };
 
     }
@@ -537,20 +460,14 @@ var DONUTCharts = (function () {
     'use strict';
     var instance;
 
-    var echartDonut, echartDonut2, echartDonut3, echartGauge;
+    var donut_cva, donut_fva, donut_colva, echartGauge;
 
     function init() {
-
-        function setCustomOptions(common, custom) {
-            common.legend.data = custom.yaxisLabels;
-            common.series[0].data = custom.yaxisValues;
-            common.series[0].name = custom.title;
-        }
 
         var options = {
             tooltip: {
                 trigger: 'item',
-                    formatter: "{a} <br/>{b} : {c} ({d}%)"
+                    formatter: "{a} <br/>{b} : {c} <br/>({d}%)"
             },
             calculable: true,
             legend: {
@@ -611,9 +528,6 @@ var DONUTCharts = (function () {
                 data: []
             }]
         };
-        var cva_options = options;
-        var fva_options = options;
-        var colva_options = options;
 
         var cva_chartData = {
             title : 'CVA Risk measure by credit rating',
@@ -721,206 +635,17 @@ var DONUTCharts = (function () {
             }]
         };
 
-        setCustomOptions(cva_options, cva_chartData);
-        setCustomOptions(fva_options, fva_chartData);
-        setCustomOptions(colva_options, colva_chartData);
+        donut_cva = echarts.init(document.getElementById('donut_cva'), theme);
+        donut_cva.setOption(options);
+        setNewData(donut_cva, cva_chartData);
 
-        echartDonut = echarts.init(document.getElementById('echart_donut'), theme);
-        echartDonut.setOption(cva_options);
+        donut_fva = echarts.init(document.getElementById('donut_fva'), theme);
+        donut_fva.setOption(options);
+        setNewData(donut_fva, fva_chartData);
 
-        echartDonut2 = echarts.init(document.getElementById('echart_donut2'), theme);
-        // echartDonut2.setOption({
-        //     tooltip: {
-        //         trigger: 'item',
-        //         formatter: "{a} <br/>{b} : {c} ({d}%)"
-        //     },
-        //     calculable: true,
-        //     legend: {
-        //         show: true,
-        //         x: 'center',
-        //         y: 'bottom',
-        //         data: ['AAA', 'AA', 'A', 'BBB', 'BB', 'B', 'CCC', 'CC', 'C', 'NR']
-        //     },
-        //     toolbox: {
-        //         show: true,
-        //         feature: {
-        //             magicType: {
-        //                 show: true,
-        //                 type: ['pie', 'funnel'],
-        //                 option: {
-        //                     funnel: {
-        //                         x: '25%',
-        //                         width: '50%',
-        //                         funnelAlign: 'center',
-        //                         max: 1548
-        //                     }
-        //                 }
-        //             },
-        //             restore: {
-        //                 show: true,
-        //                 title: "Restore"
-        //             },
-        //             saveAsImage: {
-        //                 show: true,
-        //                 title: "Save Image"
-        //             }
-        //         }
-        //     },
-        //     series: [{
-        //         name: 'FVA Risk measure by credit rating',
-        //         type: 'pie',
-        //         radius: ['35%', '55%'],
-        //         itemStyle: {
-        //             normal: {
-        //                 label: {
-        //                     show: true
-        //                 },
-        //                 labelLine: {
-        //                     show: true
-        //                 }
-        //             },
-        //             emphasis: {
-        //                 label: {
-        //                     show: true,
-        //                     position: 'center',
-        //                     textStyle: {
-        //                         fontSize: '14',
-        //                         fontWeight: 'normal'
-        //                     }
-        //                 }
-        //             }
-        //         },
-        //         data: [{
-        //             value: 378922.2,
-        //             name: 'AAA'
-        //         }, {
-        //             value: 744821.705,
-        //             name: 'AA'
-        //         }, {
-        //             value: 324822.6539,
-        //             name: 'A'
-        //         }, {
-        //             value: 703462.2286,
-        //             name: 'BBB'
-        //         }, {
-        //             value: 433799.9102,
-        //             name: 'BB'
-        //         }, {
-        //             value: 128340.57,
-        //             name: 'B'
-        //         }, {
-        //             value: 583971.5645,
-        //             name: 'CCC'
-        //         }, {
-        //             value: 908487,
-        //             name: 'CC'
-        //         }, {
-        //             value: 441333.439,
-        //             name: 'C'
-        //         }, {
-        //             value: 309688.8,
-        //             name: 'NR'
-        //         }]
-        //     }]
-        // });
-        echartDonut2.setOption(fva_options);
-
-        echartDonut3 = echarts.init(document.getElementById('echart_donut3'), theme);
-        // echartDonut3.setOption({
-        //     tooltip: {
-        //         trigger: 'item',
-        //         formatter: "{a} <br/>{b} : {c} ({d}%)"
-        //     },
-        //     calculable: true,
-        //     legend: {
-        //         show: false,
-        //         x: 'center',
-        //         y: 'bottom',
-        //         data: ['AAA', 'AA', 'A', 'BBB', 'BB', 'B', 'CCC', 'CC', 'C', 'NR']
-        //     },
-        //     toolbox: {
-        //         show: true,
-        //         feature: {
-        //             magicType: {
-        //                 show: true,
-        //                 type: ['pie', 'funnel'],
-        //                 option: {
-        //                     funnel: {
-        //                         x: '25%',
-        //                         width: '50%',
-        //                         funnelAlign: 'center',
-        //                         max: 1548
-        //                     }
-        //                 }
-        //             },
-        //             restore: {
-        //                 show: true,
-        //                 title: "Restore"
-        //             },
-        //             saveAsImage: {
-        //                 show: true,
-        //                 title: "Save Image"
-        //             }
-        //         }
-        //     },
-        //     series: [{
-        //         name: 'ColVA Risk measure by credit rating',
-        //         type: 'pie',
-        //         radius: ['35%', '55%'],
-        //         itemStyle: {
-        //             normal: {
-        //                 label: {
-        //                     show: true
-        //                 },
-        //                 labelLine: {
-        //                     show: true
-        //                 }
-        //             },
-        //             emphasis: {
-        //                 label: {
-        //                     show: true,
-        //                     position: 'center',
-        //                     textStyle: {
-        //                         fontSize: '14',
-        //                         fontWeight: 'normal'
-        //                     }
-        //                 }
-        //             }
-        //         },
-        //         data: [{
-        //             value: 378922.2,
-        //             name: 'AAA'
-        //         }, {
-        //             value: 744821.705,
-        //             name: 'AA'
-        //         }, {
-        //             value: 324822.6539,
-        //             name: 'A'
-        //         }, {
-        //             value: 703462.2286,
-        //             name: 'BBB'
-        //         }, {
-        //             value: 433799.9102,
-        //             name: 'BB'
-        //         }, {
-        //             value: 128340.57,
-        //             name: 'B'
-        //         }, {
-        //             value: 583971.5645,
-        //             name: 'CCC'
-        //         }, {
-        //             value: 908487,
-        //             name: 'CC'
-        //         }, {
-        //             value: 441333.439,
-        //             name: 'C'
-        //         }, {
-        //             value: 309688.8,
-        //             name: 'NR'
-        //         }]
-        //     }]
-        // });
-        echartDonut3.setOption(colva_options);
+        donut_colva = echarts.init(document.getElementById('donut_colva'), theme);
+        donut_colva.setOption(options);
+        setNewData(donut_colva, colva_chartData);
 
         echartGauge = echarts.init(document.getElementById('echart_guage'), theme);
         echartGauge.setOption({
@@ -939,7 +664,9 @@ var DONUTCharts = (function () {
                         title: "Save Image"
                     }
                 }
-            },
+            }
+        });
+        echartGauge.setOption({
             series: [{
                 name: 'Risk Gauge',
                 type: 'gauge',
@@ -1029,16 +756,15 @@ var DONUTCharts = (function () {
                     }
                 },
                 data: [{
-                    value: 43,
-                    name: 'Risk Performance\n(VaR vs worst 10 days in 2008)'
+                    value: 43
                 }]
             }]
         });
 
         // attach clickevents to pick up drill down
-        echartDonut.on('click', eConsole);
-        echartDonut2.on('click', eConsole);
-        echartDonut3.on('click', eConsole);
+        donut_cva.on('click', eConsole);
+        donut_fva.on('click', eConsole);
+        donut_colva.on('click', eConsole);
 
 
         function getCVAData(level){
@@ -1079,13 +805,25 @@ var DONUTCharts = (function () {
                 })
         }
 
+        function setNewData(chart_, data_){
+            chart_.setOption({
+                series: [{
+                    data: data_.yaxisValues,
+                    name: data_.title
+                }],
+                legend : { data : data_.yaxisLabels}
+            });
+
+        }
+
         // expose a few methods and properties
         return {
-            getCVA: echartDonut,
-            getFVA: echartDonut2,
-            getColVA: echartDonut3,
+            getCVA: donut_cva,
+            getFVA: donut_fva,
+            getColVA: donut_colva,
             getGauge: echartGauge,
-            getCVAData: getCVAData
+            getCVAData: getCVAData,
+            setNewData: setNewData
         };
     }
 
@@ -1119,5 +857,3 @@ function eConsole(param) {
     }
     console.log(param);
 }
-
-
