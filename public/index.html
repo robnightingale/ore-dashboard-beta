@@ -19,6 +19,9 @@
   <link href="../vendors/iCheck/skins/flat/green.css" rel="stylesheet">
   <!-- bootstrap-progressbar -->
   <link href="../vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
+  <!-- Select2 -->
+  <link href="../vendors/select2/dist/css/select2.min.css" rel="stylesheet">
+
   <!-- PNotify -->
   <!--<script src="../vendors/pnotify/dist/pnotify.js"></script>-->
   <!--<script src="../vendors/pnotify/dist/pnotify.buttons.js"></script>-->
@@ -113,24 +116,44 @@
         <div class="row">
 
           <div class="col-md-12">
-            <!--<div class="x_panel">-->
-              <div class="x_title">
+                <!--empty space for vertical padding-->
+              <div class="x_title clearfix">
                 <h2>Portfolio XYZ</h2>
-                <div class="filter">
-                  <div id="reportrange" class="pull-right" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc">
-                    <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
-                    <span>December 30, 2014 - January 28, 2015</span> <b class="caret"></b>
+
+                <div class="fform-group filter">
+                  <label class="control-label col-md-3 col-sm-3 col-xs-12">Select</label>
+                  <div class="col-md-9 col-sm-9 col-xs-12">
+                    <select class="select2_single form-control select2-hidden-accessible">
+                      <option>Choose option</option>
+                      <option>Total</option>
+                      <option>Credit Rating</option>
+                      <option>Netting Set</option>
+                      <option>Counterparty</option>
+                      <option>Trade</option>
+                    </select>
                   </div>
                 </div>
-                <div class="clearfix"></div>
+
+                    <!--<select class="select2_group form-control select2-hidden-accessible" tabindex="-1"-->
+                            <!--aria-hidden="true">-->
+                    <!--</select>-->
+
               </div>
               <div class="x_content">
+                <!--<div class="clearfix">-->
+                  <div class="filter clearfix">
+                    <div id="reportrange" class="pull-left" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc">
+                      <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
+                      <span>December 30, 2014 - January 28, 2015</span> <b class="caret"></b>
+                    </div>
+                  </div>
+
+                <!--</div>-->
                 <div class="col-md-6 col-sm-12 col-xs-12">
                   <div class="demo-container" style="height:350px">
                     <div id="line_total_exposure" style="height:350px;"></div>
                   </div>
                 </div>
-
 
                 <div class="col-md-6 col-sm-12 col-xs-12">
                   <div class="demo-container" style="height:350px">
@@ -139,7 +162,6 @@
 
                 </div>
               </div>
-            <!--</div>-->
           </div>
         </div>
 
@@ -453,11 +475,13 @@
 <script src="../vendors/fastclick/lib/fastclick.js"></script>
 <!-- NProgress -->
 <script src="../vendors/nprogress/nprogress.js"></script>
+<!-- Select2 -->
+<script src="../vendors/select2/dist/js/select2.full.min.js"></script>
 
 <!-- ECharts -->
 <!--<script src="../vendors/echarts/dist/echarts.min.js"></script>-->
 <!--<script src="../vendors/echarts/map/js/world.js"></script>-->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/3.2.2/echarts.min.js"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/3.2.2/echarts.min.js"></script>
 
 <!-- DateJS -->
 <script src="../vendors/DateJS/build/date.js"></script>
@@ -477,15 +501,18 @@
 <script src="js/bootstrap-date-filter.js"></script>
 
 <script language="javascript">
-//  var load_ = function () {
-//    console.info('Loaded the window');
+  var load_ = function () {
+    $(".select2_single").select2({
+      placeholder: "Select a Hierarchy",
+      allowClear: true
+    });
+    console.info('Loaded the window');
 //    var lineCharts = lineCharts.getInstance();
 //    var barCharts = barCharts.getInstance();
 //    var pieCharts = donutCharts.getInstance();
-//  }
-//
-//  window.onload = load_;
+  }
 
+  window.onload = load_;
 </script>
 
 </body>

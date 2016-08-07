@@ -39,7 +39,7 @@ var BARCharts = (function () {
                 data: null
             },
             toolbox: {
-                show: true,
+                show: false,
                 feature: {
                     saveAsImage: {
                         show: true,
@@ -502,7 +502,7 @@ var DONUTCharts = (function () {
                 data: []
         },
             toolbox: {
-                show: true,
+                show: false,
                     feature: {
                     magicType: {
                         show: true,
