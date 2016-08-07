@@ -54,7 +54,7 @@ gulp.task('watch', function() {
 });
 
 gulp.task('browser-sync', function() {
-    var proxyOptions = url.parse('http://localhost:5000/api/v1');
+    var proxyOptions = url.parse('http://localhost:5000/api');
     proxyOptions.route = '/api';
     // requests to `/api/x/y/z` are proxied to `http://localhost:5000/secret-api`
 
