@@ -23,12 +23,9 @@
   <link href="../vendors/select2/dist/css/select2.min.css" rel="stylesheet">
 
   <!-- PNotify -->
-  <!--<script src="../vendors/pnotify/dist/pnotify.js"></script>-->
-  <!--<script src="../vendors/pnotify/dist/pnotify.buttons.js"></script>-->
-  <!--<script src="../vendors/pnotify/dist/pnotify.nonblock.js"></script>-->
-  <script src="../vendors/html2canvas/dist/html2canvas.min.js"></script>
-  <script src="../vendors/html2canvas/dist/html2canvas.svg.min.js"></script>
-  <script src="../vendors/pdfmake/build/pdfmake.min.js"></script>
+  <script src="../vendors/pnotify/dist/pnotify.js"></script>
+  <script src="../vendors/pnotify/dist/pnotify.buttons.js"></script>
+  <script src="../vendors/pnotify/dist/pnotify.nonblock.js"></script>
 
   <!-- Custom Theme Style -->
   <link href="css/custom.min.css" rel="stylesheet">
@@ -48,12 +45,12 @@
         <!-- menu profile quick info -->
         <div class="profile">
           <div class="profile_pic">
-            <img src="images/img.jpg" alt="..." class="img-circle profile_img">
+            <img src="" alt="..." class="img-circle profile_img">
           </div>
-          <div class="profile_info">
-            <span>Welcome,</span>
-            <h2>John Doe</h2>
-          </div>
+          <!--<div class="profile_info">-->
+            <!--<span>Welcome,</span>-->
+            <!--<h2>John Doe</h2>-->
+          <!--</div>-->
         </div>
         <!-- /menu profile quick info -->
 
@@ -116,15 +113,15 @@
         <div class="row">
 
           <div class="col-md-12">
-                <!--empty space for vertical padding-->
               <div class="x_title clearfix">
                 <h2>Portfolio XYZ</h2>
 
-                <div class="fform-group filter">
-                  <label class="control-label col-md-3 col-sm-3 col-xs-12">Select</label>
+                <div class="form-group filter">
+                  <!--<label class="control-label col-md-2 col-sm-2 col-xs-12">Hierarchy level</label>-->
                   <div class="col-md-9 col-sm-9 col-xs-12">
-                    <select class="select2_single form-control select2-hidden-accessible">
-                      <option>Choose option</option>
+                    <select class="select2_single form-control">
+                    <!--<select style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc">-->
+                      <option>Choose Hierarchy</option>
                       <option>Total</option>
                       <option>Credit Rating</option>
                       <option>Netting Set</option>
@@ -133,11 +130,6 @@
                     </select>
                   </div>
                 </div>
-
-                    <!--<select class="select2_group form-control select2-hidden-accessible" tabindex="-1"-->
-                            <!--aria-hidden="true">-->
-                    <!--</select>-->
-
               </div>
               <div class="x_content">
                 <!--<div class="clearfix">-->
@@ -170,21 +162,26 @@
           <div class="col-md-3 col-sm-3 col-xs-12">
               <div class="x_title">
                 <h2>CVA</h2>
-                <ul class="nav navbar-right panel_toolbox">
-                  <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                  </li>
-                  <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                    <ul class="dropdown-menu" role="menu">
-                      <li><a href="#">Settings 1</a>
-                      </li>
-                      <li><a href="#">Settings 2</a>
-                      </li>
-                    </ul>
-                  </li>
-                  <li><a class="close-link"><i class="fa fa-close"></i></a>
-                  </li>
-                </ul>
+
+                <!--<ul class="nav navbar-right panel_toolbox">-->
+                  <!--<li class="dropdown">-->
+                    <!--<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-bar-chart-o"></i></a>-->
+                    <!--<ul class="dropdown-menu" role="menu">-->
+                      <!--<li><a href="#">CE</a></li>-->
+                      <!--<li><a href="#">EEPE</a></li>-->
+                      <!--<li><a href="#">TOTALEXP</a></li>-->
+                      <!--<li><a href="#">CVA</a></li>-->
+                      <!--<li><a href="#">DVA</a></li>-->
+                      <!--<li><a href="#">NPV</a></li>-->
+                      <!--<li><a href="#">FCA</a></li>-->
+                      <!--<li><a href="#">FBA</a></li>-->
+                      <!--<li><a href="#">FVA</a></li>-->
+                      <!--<li><a href="#">ColVA</a></li>-->
+                      <!--<li><a href="#">IM</a></li>-->
+                    <!--</ul>-->
+                  <!--</li>-->
+                  <!--<li><a class="close-link"><i class="fa fa-recycle"></i></a></li>-->
+                <!--</ul>-->
                 <div class="clearfix"></div>
               </div>
               <div class="x_content">
@@ -192,27 +189,33 @@
                 <div id="donut_cva" style="height:200px;"></div>
 
               </div>
-              <span>Total #CVA </span>
+              <span>Total #CVA $$,$$$,$$$.$$</span>
 
           </div>
+
           <div class="col-md-3 col-sm-3 col-xs-12">
               <div class="x_title">
                 <h2>FVA</h2>
-                <ul class="nav navbar-right panel_toolbox">
-                  <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                  </li>
-                  <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                    <ul class="dropdown-menu" role="menu">
-                      <li><a href="#">Settings 1</a>
-                      </li>
-                      <li><a href="#">Settings 2</a>
-                      </li>
-                    </ul>
-                  </li>
-                  <li><a class="close-link"><i class="fa fa-close"></i></a>
-                  </li>
-                </ul>
+                <!--<ul class="nav navbar-right panel_toolbox">-->
+                  <!--<li class="dropdown">-->
+                    <!--<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-bar-chart-o"></i></a>-->
+                    <!--<ul class="dropdown-menu" role="menu">-->
+                      <!--<li><a href="#">CE</a></li>-->
+                      <!--<li><a href="#">EEPE</a></li>-->
+                      <!--<li><a href="#">TOTALEXP</a></li>-->
+                      <!--<li><a href="#">CVA</a></li>-->
+                      <!--<li><a href="#">DVA</a></li>-->
+                      <!--<li><a href="#">NPV</a></li>-->
+                      <!--<li><a href="#">FCA</a></li>-->
+                      <!--<li><a href="#">FBA</a></li>-->
+                      <!--<li><a href="#">FVA</a></li>-->
+                      <!--<li><a href="#">ColVA</a></li>-->
+                      <!--<li><a href="#">IM</a></li>-->
+                    <!--</ul>-->
+                  <!--</li>-->
+                  <!--<li><a class="close-link"><i class="fa fa-recycle"></i></a></li>-->
+                <!--</ul>-->
+
                 <div class="clearfix"></div>
               </div>
               <div class="x_content">
@@ -220,27 +223,27 @@
                 <div id="donut_fva" style="height:200px;"></div>
 
               </div>
-              <span>Total #FVA</span>
+            <span>Total #FVA $$,$$$,$$$.$$</span>
 
           </div>
           <div class="col-md-3 col-sm-3 col-xs-12">
               <div class="x_title">
                 <h2>ColVA</h2>
-                <ul class="nav navbar-right panel_toolbox">
-                  <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                  </li>
-                  <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                    <ul class="dropdown-menu" role="menu">
-                      <li><a href="#">Settings 1</a>
-                      </li>
-                      <li><a href="#">Settings 2</a>
-                      </li>
-                    </ul>
-                  </li>
-                  <li><a class="close-link"><i class="fa fa-close"></i></a>
-                  </li>
-                </ul>
+                <!--<ul class="nav navbar-right panel_toolbox">-->
+                  <!--<li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>-->
+                  <!--</li>-->
+                  <!--<li class="dropdown">-->
+                    <!--<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>-->
+                    <!--<ul class="dropdown-menu" role="menu">-->
+                      <!--<li><a href="#">Settings 1</a>-->
+                      <!--</li>-->
+                      <!--<li><a href="#">Settings 2</a>-->
+                      <!--</li>-->
+                    <!--</ul>-->
+                  <!--</li>-->
+                  <!--<li><a class="close-link"><i class="fa fa-close"></i></a>-->
+                  <!--</li>-->
+                <!--</ul>-->
                 <div class="clearfix"></div>
               </div>
               <div class="x_content">
@@ -248,7 +251,7 @@
                 <div id="donut_colva" style="height:200px;"></div>
 
               </div>
-              <span>Total #ColVA</span>
+            <span>Total #ColVA $$,$$$,$$$.$$</span>
 
           </div>
           <div class="col-md-3 col-sm-3 col-xs-12">
@@ -272,7 +275,7 @@
               <div class="clearfix"></div>
             </div>
             <div class="x_content">
-              <div id="echart_guage" style="height:270px;"></div>
+              <div id="echart_guage" style="height:200px;"></div>
             </div>
 
           </div>
@@ -285,19 +288,23 @@
               <div class="x_title">
                 <h2>CREDIT</h2>
                 <ul class="nav navbar-right panel_toolbox">
-                  <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                  </li>
                   <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-bar-chart-o"></i></a>
                     <ul class="dropdown-menu" role="menu">
-                      <li><a href="#">Settings 1</a>
-                      </li>
-                      <li><a href="#">Settings 2</a>
-                      </li>
+                      <li><a href="#">CE</a></li>
+                      <li><a href="#">EEPE</a></li>
+                      <li><a href="#">TOTALEXP</a></li>
+                      <li><a href="#">CVA</a></li>
+                      <li><a href="#">DVA</a></li>
+                      <li><a href="#">NPV</a></li>
+                      <li><a href="#">FCA</a></li>
+                      <li><a href="#">FBA</a></li>
+                      <li><a href="#">FVA</a></li>
+                      <li><a href="#">ColVA</a></li>
+                      <li><a href="#">IM</a></li>
                     </ul>
                   </li>
-                  <li><a class="close-link"><i class="fa fa-close"></i></a>
-                  </li>
+                  <li><a class="close-link"><i class="fa fa-recycle"></i></a></li>
                 </ul>
                 <div class="clearfix"></div>
               </div>
@@ -313,19 +320,23 @@
               <div class="x_title">
                 <h2>MARKET</h2>
                 <ul class="nav navbar-right panel_toolbox">
-                  <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                  </li>
                   <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-bar-chart-o"></i></a>
                     <ul class="dropdown-menu" role="menu">
-                      <li><a href="#">Settings 1</a>
-                      </li>
-                      <li><a href="#">Settings 2</a>
-                      </li>
+                      <li><a href="#">CE</a></li>
+                      <li><a href="#">EEPE</a></li>
+                      <li><a href="#">TOTALEXP</a></li>
+                      <li><a href="#">CVA</a></li>
+                      <li><a href="#">DVA</a></li>
+                      <li><a href="#">NPV</a></li>
+                      <li><a href="#">FCA</a></li>
+                      <li><a href="#">FBA</a></li>
+                      <li><a href="#">FVA</a></li>
+                      <li><a href="#">ColVA</a></li>
+                      <li><a href="#">IM</a></li>
                     </ul>
                   </li>
-                  <li><a class="close-link"><i class="fa fa-close"></i></a>
-                  </li>
+                  <li><a class="close-link"><i class="fa fa-recycle"></i></a></li>
                 </ul>
                 <div class="clearfix"></div>
               </div>
@@ -341,19 +352,23 @@
               <div class="x_title">
                 <h2>LIQUIDITY</h2>
                 <ul class="nav navbar-right panel_toolbox">
-                  <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                  </li>
                   <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-bar-chart-o"></i></a>
                     <ul class="dropdown-menu" role="menu">
-                      <li><a href="#">Settings 1</a>
-                      </li>
-                      <li><a href="#">Settings 2</a>
-                      </li>
+                      <li><a href="#">CE</a></li>
+                      <li><a href="#">EEPE</a></li>
+                      <li><a href="#">TOTALEXP</a></li>
+                      <li><a href="#">CVA</a></li>
+                      <li><a href="#">DVA</a></li>
+                      <li><a href="#">NPV</a></li>
+                      <li><a href="#">FCA</a></li>
+                      <li><a href="#">FBA</a></li>
+                      <li><a href="#">FVA</a></li>
+                      <li><a href="#">ColVA</a></li>
+                      <li><a href="#">IM</a></li>
                     </ul>
                   </li>
-                  <li><a class="close-link"><i class="fa fa-close"></i></a>
-                  </li>
+                  <li><a class="close-link"><i class="fa fa-recycle"></i></a></li>
                 </ul>
                 <div class="clearfix"></div>
               </div>
@@ -369,19 +384,23 @@
               <div class="x_title">
                 <h2>CREDIT</h2>
                 <ul class="nav navbar-right panel_toolbox">
-                  <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                  </li>
                   <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-bar-chart-o"></i></a>
                     <ul class="dropdown-menu" role="menu">
-                      <li><a href="#">Settings 1</a>
-                      </li>
-                      <li><a href="#">Settings 2</a>
-                      </li>
+                      <li><a href="#">CE</a></li>
+                      <li><a href="#">EEPE</a></li>
+                      <li><a href="#">TOTALEXP</a></li>
+                      <li><a href="#">CVA</a></li>
+                      <li><a href="#">DVA</a></li>
+                      <li><a href="#">NPV</a></li>
+                      <li><a href="#">FCA</a></li>
+                      <li><a href="#">FBA</a></li>
+                      <li><a href="#">FVA</a></li>
+                      <li><a href="#">ColVA</a></li>
+                      <li><a href="#">IM</a></li>
                     </ul>
                   </li>
-                  <li><a class="close-link"><i class="fa fa-close"></i></a>
-                  </li>
+                  <li><a class="close-link"><i class="fa fa-recycle"></i></a></li>
                 </ul>
                 <div class="clearfix"></div>
               </div>
@@ -397,19 +416,23 @@
               <div class="x_title">
                 <h2>MARKET</h2>
                 <ul class="nav navbar-right panel_toolbox">
-                  <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                  </li>
                   <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-bar-chart-o"></i></a>
                     <ul class="dropdown-menu" role="menu">
-                      <li><a href="#">Settings 1</a>
-                      </li>
-                      <li><a href="#">Settings 2</a>
-                      </li>
+                      <li><a href="#">CE</a></li>
+                      <li><a href="#">EEPE</a></li>
+                      <li><a href="#">TOTALEXP</a></li>
+                      <li><a href="#">CVA</a></li>
+                      <li><a href="#">DVA</a></li>
+                      <li><a href="#">NPV</a></li>
+                      <li><a href="#">FCA</a></li>
+                      <li><a href="#">FBA</a></li>
+                      <li><a href="#">FVA</a></li>
+                      <li><a href="#">ColVA</a></li>
+                      <li><a href="#">IM</a></li>
                     </ul>
                   </li>
-                  <li><a class="close-link"><i class="fa fa-close"></i></a>
-                  </li>
+                  <li><a class="close-link"><i class="fa fa-recycle"></i></a></li>
                 </ul>
                 <div class="clearfix"></div>
               </div>
@@ -425,19 +448,23 @@
               <div class="x_title">
                 <h2>LIQUIDITY</h2>
                 <ul class="nav navbar-right panel_toolbox">
-                  <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                  </li>
                   <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-bar-chart-o"></i></a>
                     <ul class="dropdown-menu" role="menu">
-                      <li><a href="#">Settings 1</a>
-                      </li>
-                      <li><a href="#">Settings 2</a>
-                      </li>
+                      <li><a href="#">CE</a></li>
+                      <li><a href="#">EEPE</a></li>
+                      <li><a href="#">TOTALEXP</a></li>
+                      <li><a href="#">CVA</a></li>
+                      <li><a href="#">DVA</a></li>
+                      <li><a href="#">NPV</a></li>
+                      <li><a href="#">FCA</a></li>
+                      <li><a href="#">FBA</a></li>
+                      <li><a href="#">FVA</a></li>
+                      <li><a href="#">ColVA</a></li>
+                      <li><a href="#">IM</a></li>
                     </ul>
                   </li>
-                  <li><a class="close-link"><i class="fa fa-close"></i></a>
-                  </li>
+                  <li><a class="close-link"><i class="fa fa-recycle"></i></a></li>
                 </ul>
                 <div class="clearfix"></div>
               </div>
@@ -459,7 +486,7 @@
     <!-- footer content -->
     <footer>
       <div class="pull-right">
-        Gentelella - Bootstrap Admin Template <a href="https://reposit.ie">Reposit</a>
+        Gentelella - Bootstrap Admin Template | <a href="https://reposit.ie">Reposit</a>
       </div>
       <div class="clearfix"></div>
     </footer>
@@ -477,17 +504,20 @@
 <script src="../vendors/nprogress/nprogress.js"></script>
 <!-- Select2 -->
 <script src="../vendors/select2/dist/js/select2.full.min.js"></script>
-
 <!-- ECharts -->
-<!--<script src="../vendors/echarts/dist/echarts.min.js"></script>-->
-<!--<script src="../vendors/echarts/map/js/world.js"></script>-->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/3.2.2/echarts.min.js"></script>
+<script src="../vendors/echarts-3.2.2/dist/echarts.min.js"></script>
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/3.2.2/echarts.min.js"></script>-->
 
 <!-- DateJS -->
 <script src="../vendors/DateJS/build/date.js"></script>
 <!-- bootstrap-daterangepicker -->
 <script src="js/moment/moment.min.js"></script>
 <script src="js/datepicker/daterangepicker.js"></script>
+
+<script src="../vendors/html2canvas/dist/html2canvas.min.js"></script>
+<script src="../vendors/html2canvas/dist/html2canvas.svg.min.js"></script>
+<script src="../vendors/pdfmake/build/pdfmake.min.js"></script>
+
 
 <!-- Custom Theme Scripts -->
 <script src="js/custom.min.js"></script>
@@ -501,18 +531,28 @@
 <script src="js/bootstrap-date-filter.js"></script>
 
 <script language="javascript">
+
   var load_ = function () {
-    $(".select2_single").select2({
-      placeholder: "Select a Hierarchy",
+    $('.select2_single').select2({
+      placeholder: "Hierarchy",
       allowClear: true
     });
-    console.info('Loaded the window');
 //    var lineCharts = lineCharts.getInstance();
 //    var barCharts = barCharts.getInstance();
 //    var pieCharts = donutCharts.getInstance();
+    jj();
   }
 
   window.onload = load_;
+
+  var jj = function(){
+    PNotify.prototype.options.styling = "bootstrap3";
+    new PNotify({
+      title: 'Regular Notice',
+      text: 'Check me out! I\'m a notice.'
+    });
+  };
+
 </script>
 
 </body>
