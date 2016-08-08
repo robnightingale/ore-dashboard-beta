@@ -4,6 +4,8 @@ $(window).load(function () {
     var barCharts = BARCharts.getInstance();
     var pieCharts = DONUTCharts.getInstance();
 
+    barCharts.initCharts();
+
     console.log('[INFO] ORE Dashboard init completed');
 
 });
@@ -110,42 +112,35 @@ var BARCharts = (function () {
             "yaxisValues": [2.434153795E8, 2.031896731E8, 1.696079112E8, 5.808002756E7, 5.086273894E7]
         }
 
-        var echartBar = echarts.init(document.getElementById('bar_ce'), theme);
-        var echartBar2 = echarts.init(document.getElementById('bar_npv'), theme);
-        var echartBar3 = echarts.init(document.getElementById('bar_fca'), theme);
-        var echartBar4 = echarts.init(document.getElementById('bar_eepe'), theme);
-        var echartBar5 = echarts.init(document.getElementById('bar_npv2'), theme);
-        var echartBar6 = echarts.init(document.getElementById('bar_fba'), theme);
+        function initChart(chartTagName_, options, data_) {
+            var echartBar = echarts.init(document.getElementById(chartTagName_), theme);
+            echartBar.setOption(options);
+            setNewData(echartBar, data_);
+            echartBar.on('click', eConsole);
+        }
 
-        echartBar.setOption(options);
-        echartBar2.setOption(options);
-        echartBar3.setOption(options);
-        echartBar4.setOption(options);
-        echartBar5.setOption(options);
-        echartBar6.setOption(options);
+        function getChartInstance(chartTagName_){
+            var echartBar = echarts.init(document.getElementById(chartTagName_), theme);
+            return echartBar;
+        }
 
-        setNewData(echartBar, ce_chartData);
-        setNewData(echartBar2, npv_chartData);
-        setNewData(echartBar3, fca_chartData);
-        setNewData(echartBar4, eepe_chartData);
-        setNewData(echartBar5, npv2_chartData);
-        setNewData(echartBar6, fba_chartData);
+        // function setNewData(chartTagName_, data_) {
+        //     var chart_ = getChartInstance(chartTagName_);
+        //     setNewData(chart_, data_);
+        // }
 
-        echartBar.on('click', eConsole);
-        echartBar2.on('click', eConsole);
-        echartBar3.on('click', eConsole);
-        echartBar4.on('click', eConsole);
-        echartBar5.on('click', eConsole);
-        echartBar6.on('click', eConsole);
+        function initialiseAllCharts(){
+            initChart('bar_1', options, ce_chartData);
+            initChart('bar_2', options, npv_chartData);
+            initChart('bar_3', options, fca_chartData);
+            initChart('bar_4', options, eepe_chartData);
+            initChart('bar_5', options, npv2_chartData);
+            initChart('bar_6', options, fba_chartData);
+        }
 
 // expose a few methods and properties
         return {
-            getCEChart: echartBar,
-            getNPVChart: echartBar2,
-            getFCAChart: echartBar3,
-            getEEPEChart: echartBar4,
-            getNPV2Chart: echartBar5,
-            getFBAChart: echartBar6,
+            initCharts : initialiseAllCharts,
             setNewData : setNewData
         };
     }
@@ -297,7 +292,7 @@ var LINECharts = (function () {
         var total_exposure_options = {
 
             title: {
-                text: 'Total Exposure',
+                text: 'Total ¡Exposure',
                 subtext: 'Subtitle'
             },
             tooltip: {
