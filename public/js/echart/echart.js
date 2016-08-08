@@ -4,7 +4,9 @@ $(window).load(function () {
     var barCharts = BARCharts.getInstance();
     var pieCharts = DONUTCharts.getInstance();
 
-    barCharts.initCharts();
+    barCharts.initAllCharts();
+    lineCharts.initAllCharts();
+    pieCharts.initAllCharts();
 
     console.log('[INFO] ORE Dashboard init completed');
 
@@ -112,36 +114,24 @@ var BARCharts = (function () {
             "yaxisValues": [2.434153795E8, 2.031896731E8, 1.696079112E8, 5.808002756E7, 5.086273894E7]
         }
 
-        function initChart(chartTagName_, options, data_) {
-            var echartBar = echarts.init(document.getElementById(chartTagName_), theme);
-            echartBar.setOption(options);
-            setNewData(echartBar, data_);
-            echartBar.on('click', eConsole);
-        }
-
-        function getChartInstance(chartTagName_){
-            var echartBar = echarts.init(document.getElementById(chartTagName_), theme);
-            return echartBar;
-        }
-
-        // function setNewData(chartTagName_, data_) {
-        //     var chart_ = getChartInstance(chartTagName_);
-        //     setNewData(chart_, data_);
-        // }
-
         function initialiseAllCharts(){
-            initChart('bar_1', options, ce_chartData);
-            initChart('bar_2', options, npv_chartData);
-            initChart('bar_3', options, fca_chartData);
-            initChart('bar_4', options, eepe_chartData);
-            initChart('bar_5', options, npv2_chartData);
-            initChart('bar_6', options, fba_chartData);
+            initChart('bar_1', options, ce_chartData, setNewData);
+            initChart('bar_2', options, npv_chartData, setNewData);
+            initChart('bar_3', options, fca_chartData, setNewData);
+            initChart('bar_4', options, eepe_chartData, setNewData);
+            initChart('bar_5', options, npv2_chartData, setNewData);
+            initChart('bar_6', options, fba_chartData, setNewData);
+        }
+
+        function loadData(){
+
         }
 
 // expose a few methods and properties
         return {
-            initCharts : initialiseAllCharts,
-            setNewData : setNewData
+            initAllCharts : initialiseAllCharts,
+            setNewData : setNewData,
+            loadData: loadData
         };
     }
 
@@ -417,19 +407,6 @@ var LINECharts = (function () {
                 // },
             };
 
-        line_total_exposure = echarts.init(document.getElementById('line_total_exposure'), theme);
-        line_total_exposure.setOption(total_exposure_options);
-        setNewData(line_total_exposure, total_Data);
-
-        line_exposure_profile = echarts.init(document.getElementById('line_exposure_profile'), theme);
-        // addMarkLines(profile_Data, profile_marklines);
-        line_exposure_profile.setOption(exposure_profile_options);
-        setNewData(line_exposure_profile, profile_Data);
-        line_exposure_profile.getOption();
-
-        line_total_exposure.on('click', eConsole);
-        line_exposure_profile.on('click', eConsole);
-
         function setNewData(chart_, data_){
             data_.series.forEach(function(elem){
                 // only add marklines for exposure profile graph
@@ -453,13 +430,23 @@ var LINECharts = (function () {
             });
         }
 
-// expose a few methods and properties
+        function initialiseAllCharts(){
+            initChart('line_total_exposure', total_exposure_options, total_Data, setNewData);
+            initChart('line_exposure_profile', exposure_profile_options, profile_Data, setNewData);
+        }
+
+        function loadData(){
+
+        }
+
+        // expose a few methods and properties
         return {
             getTotalExposure: line_total_exposure,
             getProjection: line_exposure_profile,
-            setNewData : setNewData
+            initAllCharts : initialiseAllCharts,
+            setNewData : setNewData,
+            loadData: loadData
         };
-
     }
 
     return {
@@ -655,38 +642,26 @@ var DONUTCharts = (function () {
             }]
         };
 
-        donut_cva = echarts.init(document.getElementById('donut_cva'), theme);
-        donut_cva.setOption(options);
-        setNewData(donut_cva, cva_chartData);
+        // echartGauge.setOption({
+        //     tooltip: {
+        //         formatter: "{a} <br/>{b} : {c}%"
+        //     },
+        //     toolbox: {
+        //         show: false,
+        //         feature: {
+        //             restore: {
+        //                 show: true,
+        //                 title: "Restore"
+        //             },
+        //             saveAsImage: {
+        //                 show: true,
+        //                 title: "Save Image"
+        //             }
+        //         }
+        //     }
+        // });
 
-        donut_fva = echarts.init(document.getElementById('donut_fva'), theme);
-        donut_fva.setOption(options);
-        setNewData(donut_fva, fva_chartData);
-
-        donut_colva = echarts.init(document.getElementById('donut_colva'), theme);
-        donut_colva.setOption(options);
-        setNewData(donut_colva, colva_chartData);
-
-        echartGauge = echarts.init(document.getElementById('echart_guage'), theme);
-        echartGauge.setOption({
-            tooltip: {
-                formatter: "{a} <br/>{b} : {c}%"
-            },
-            toolbox: {
-                show: false,
-                feature: {
-                    restore: {
-                        show: true,
-                        title: "Restore"
-                    },
-                    saveAsImage: {
-                        show: true,
-                        title: "Save Image"
-                    }
-                }
-            }
-        });
-        echartGauge.setOption({
+        var gauge_options = {
             series: [{
                 name: 'Risk Gauge',
                 type: 'gauge',
@@ -779,43 +754,7 @@ var DONUTCharts = (function () {
                     value: 43
                 }]
             }]
-        });
-
-        // attach clickevents to pick up drill down
-        donut_cva.on('click', eConsole);
-        donut_fva.on('click', eConsole);
-        donut_colva.on('click', eConsole);
-
-
-        function getRatings(level){
-
-            var url_ = window.location.protocol + '//' + window.location.host + '/api/ratings';
-
-            return fetch(
-                url_, {
-                    method: 'GET',
-                    mode: 'same-origin',
-                    headers: {
-                        'Cache-Control': 'no-cache',
-                        'If-Modified-Since': '0',
-                        'Accept': 'application/json'
-                    },
-                    credentials: 'same-origin'
-                })
-                .then(processStatus)
-                .then(parseJson)
-                .then(function (response) {
-                    // massage data
-                    console.debug(response);
-                    // response.forEach(function(elem) {
-                    //     console.debug(elem);
-                    // })
-                    return response;
-                })
-                .catch(function (ex) {
-                    console.error(new Error("Request failed : " + ex));
-                })
-        }
+        };
 
         function setNewData(chart_, data_){
             chart_.setOption({
@@ -828,15 +767,24 @@ var DONUTCharts = (function () {
 
         }
 
-        // expose a few methods and properties
+        function initialiseAllCharts(){
+            initChart('donut_cva', options, cva_chartData, setNewData);
+            initChart('donut_fva', options, fva_chartData, setNewData);
+            initChart('donut_colva', options, colva_chartData, setNewData);
+            initChart('echart_guage', gauge_options, [], setNewData);
+        }
+
+        function loadData(){
+
+        }
+
+// expose a few methods and properties
         return {
-            getCVA: donut_cva,
-            getFVA: donut_fva,
-            getColVA: donut_colva,
-            getGauge: echartGauge,
-            setNewData: setNewData
-            ,getRatings: getRatings
+            initAllCharts : initialiseAllCharts,
+            setNewData : setNewData,
+            loadData: loadData
         };
+
     }
 
         return {
@@ -868,4 +816,47 @@ function eConsole(param) {
         alert(mes);
     }
     console.log(param);
+}
+
+
+function getRatings(level){
+
+    var url_ = window.location.protocol + '//' + window.location.host + '/api/ratings';
+
+    return fetch(
+        url_, {
+            method: 'GET',
+            mode: 'same-origin',
+            headers: {
+                'Cache-Control': 'no-cache',
+                'If-Modified-Since': '0',
+                'Accept': 'application/json'
+            },
+            credentials: 'same-origin'
+        })
+        .then(processStatus)
+        .then(parseJson)
+        .then(function (response) {
+            // massage data
+            console.debug(response);
+            // response.forEach(function(elem) {
+            //     console.debug(elem);
+            // })
+            return response;
+        })
+        .catch(function (ex) {
+            console.error(new Error("Request failed : " + ex));
+        })
+}
+
+function initChart(chartTagName_, options, data_, fnLoadData_) {
+    var echartBar = echarts.init(document.getElementById(chartTagName_), theme);
+    echartBar.setOption(options);
+    fnLoadData_(echartBar, data_);
+    echartBar.on('click', eConsole);
+}
+
+function getChartInstance(chartTagName_){
+    var echartBar = echarts.init(document.getElementById(chartTagName_), theme);
+    return echartBar;
 }
