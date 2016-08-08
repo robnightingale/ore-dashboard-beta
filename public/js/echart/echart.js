@@ -3,10 +3,12 @@ $(window).load(function () {
     var lineCharts = LINECharts.getInstance();
     var barCharts = BARCharts.getInstance();
     var pieCharts = DONUTCharts.getInstance();
+    var riskGauge = RISKGauge.getInstance();
 
     barCharts.initAllCharts();
     lineCharts.initAllCharts();
     pieCharts.initAllCharts();
+    riskGauge.initAllCharts();
 
     console.log('[INFO] ORE Dashboard init completed');
 
@@ -114,7 +116,7 @@ var BARCharts = (function () {
             "yaxisValues": [2.434153795E8, 2.031896731E8, 1.696079112E8, 5.808002756E7, 5.086273894E7]
         }
 
-        function initialiseAllCharts(){
+        function initialiseAllCharts() {
             initChart('bar_1', options, ce_chartData, setNewData);
             initChart('bar_2', options, npv_chartData, setNewData);
             initChart('bar_3', options, fca_chartData, setNewData);
@@ -123,14 +125,14 @@ var BARCharts = (function () {
             initChart('bar_6', options, fba_chartData, setNewData);
         }
 
-        function loadData(){
-
+        function loadData(chart_, data_) {
+            setNewData(chart_, data_);
         }
 
 // expose a few methods and properties
         return {
-            initAllCharts : initialiseAllCharts,
-            setNewData : setNewData,
+            initAllCharts: initialiseAllCharts,
+            setNewData: setNewData,
             loadData: loadData
         };
     }
@@ -152,13 +154,14 @@ var LINECharts = (function () {
 
     'use strict';
     var instance;
-    var line_total_exposure, line_exposure_profile;
 
     function init() {
 
+        var line_total_exposure, line_exposure_profile;
+
         var total_Data = {
             legend: ['NPV', 'CE', 'EEPE', 'Total Exp'],
-            xAxisData : ['Week1', 'Week2', 'Week3', 'Week4'],
+            xAxisData: ['Week1', 'Week2', 'Week3', 'Week4'],
             series: [{
                 name: 'NPV',
                 type: 'line',
@@ -328,8 +331,8 @@ var LINECharts = (function () {
             yAxis: [{
                 type: 'value'
             }],
-            series : []
-    };
+            series: []
+        };
         var profile_marklines = {
             data: [
                 // Vertical axis, default
@@ -389,26 +392,26 @@ var LINECharts = (function () {
             xAxis: [{
                 type: 'category',
                 boundaryGap: false,
-                data : []
+                data: []
             }],
             yAxis: [{
                 type: 'value'
             }],
             series: [],
-                // markPoint : {
-                //     data : [
-                //         // Vertical axis, default
-                //         {type : 'max', name: 'max',symbol: 'emptyCircle', itemStyle:{normal:{color:'#dc143c',label:{position:'top'}}}},
-                //         {type : 'min', name: 'min',symbol: 'emptyCircle', itemStyle:{normal:{color:'#dc143c',label:{position:'bottom'}}}},
-                //         // Horizontal axis
-                //         {type : 'max', name: 'max', valueIndex: 0, symbol: 'emptyCircle', itemStyle:{normal:{color:'#1e90ff',label:{position:'right'}}}},
-                //         {type : 'min', name: 'min', valueIndex: 0, symbol: 'emptyCircle', itemStyle:{normal:{color:'#1e90ff',label:{position:'left'}}}}
-                //     ]
-                // },
-            };
+            // markPoint : {
+            //     data : [
+            //         // Vertical axis, default
+            //         {type : 'max', name: 'max',symbol: 'emptyCircle', itemStyle:{normal:{color:'#dc143c',label:{position:'top'}}}},
+            //         {type : 'min', name: 'min',symbol: 'emptyCircle', itemStyle:{normal:{color:'#dc143c',label:{position:'bottom'}}}},
+            //         // Horizontal axis
+            //         {type : 'max', name: 'max', valueIndex: 0, symbol: 'emptyCircle', itemStyle:{normal:{color:'#1e90ff',label:{position:'right'}}}},
+            //         {type : 'min', name: 'min', valueIndex: 0, symbol: 'emptyCircle', itemStyle:{normal:{color:'#1e90ff',label:{position:'left'}}}}
+            //     ]
+            // },
+        };
 
-        function setNewData(chart_, data_){
-            data_.series.forEach(function(elem){
+        function setNewData(chart_, data_) {
+            data_.series.forEach(function (elem) {
                 // only add marklines for exposure profile graph
                 if (chart_.getOption().title[0].text == 'Exposure Profile')
                     elem.markLine = profile_marklines;
@@ -425,26 +428,26 @@ var LINECharts = (function () {
 
             chart_.setOption({
                 legend: [{data: data_.legend}],
-                xAxis : [{data : data_.xAxisData}],
-                series : data_.series
+                xAxis: [{data: data_.xAxisData}],
+                series: data_.series
             });
         }
 
-        function initialiseAllCharts(){
+        function initialiseAllCharts() {
             initChart('line_total_exposure', total_exposure_options, total_Data, setNewData);
             initChart('line_exposure_profile', exposure_profile_options, profile_Data, setNewData);
         }
 
-        function loadData(){
-
+        function loadData(chart_, data_) {
+            setNewData(chart_, data_);
         }
 
         // expose a few methods and properties
         return {
             getTotalExposure: line_total_exposure,
             getProjection: line_exposure_profile,
-            initAllCharts : initialiseAllCharts,
-            setNewData : setNewData,
+            initAllCharts: initialiseAllCharts,
+            setNewData: setNewData,
             loadData: loadData
         };
     }
@@ -467,44 +470,44 @@ var DONUTCharts = (function () {
     'use strict';
     var instance;
 
-    var donut_cva, donut_fva, donut_colva, echartGauge;
 
     function init() {
 
+        var donut_cva, donut_fva, donut_colva, echartGauge;
         var options = {
             tooltip: {
                 trigger: 'item',
-                    formatter: "{a} <br/>{b} : {c} <br/>({d}%)"
+                formatter: "{a} <br/>{b} : {c} <br/>({d}%)"
             },
             calculable: true,
             legend: {
-            show: false,
+                show: false,
                 x: 'center',
                 y: 'bottom',
                 data: []
-        },
+            },
             toolbox: {
                 show: false,
-                    feature: {
+                feature: {
                     magicType: {
                         show: true,
-                            type: ['pie', 'funnel'],
-                            option: {
+                        type: ['pie', 'funnel'],
+                        option: {
                             funnel: {
                                 x: '25%',
-                                    width: '50%',
-                                    funnelAlign: 'center',
-                                    max: 1548
+                                width: '50%',
+                                funnelAlign: 'center',
+                                max: 1548
                             }
                         }
                     },
                     restore: {
                         show: true,
-                            title: "Restore"
+                        title: "Restore"
                     },
                     saveAsImage: {
                         show: true,
-                            title: "Save Image"
+                        title: "Save Image"
                     }
                 }
             },
@@ -537,7 +540,7 @@ var DONUTCharts = (function () {
         };
 
         var cva_chartData = {
-            title : 'CVA Risk measure by credit rating',
+            title: 'CVA Risk measure by credit rating',
             yaxisLabels: ['AAA', 'AA', 'A', 'BBB', 'BB', 'B', 'CCC', 'CC', 'C', 'NR'],
             yaxisValues: [{
                 value: 378922.2,
@@ -572,7 +575,7 @@ var DONUTCharts = (function () {
             }]
         };
         var fva_chartData = {
-            title : 'FVA Risk measure by credit rating',
+            title: 'FVA Risk measure by credit rating',
             yaxisLabels: ['AAA', 'AA', 'A', 'BBB', 'BB', 'B', 'CCC', 'CC', 'C', 'NR'],
             yaxisValues: [{
                 value: 378922.2,
@@ -607,7 +610,7 @@ var DONUTCharts = (function () {
             }]
         };
         var colva_chartData = {
-            title : 'ColVA Risk measure by credit rating',
+            title: 'ColVA Risk measure by credit rating',
             yaxisLabels: ['AAA', 'AA', 'A', 'BBB', 'BB', 'B', 'CCC', 'CC', 'C', 'NR'],
             yaxisValues: [{
                 value: 378922.2,
@@ -642,26 +645,74 @@ var DONUTCharts = (function () {
             }]
         };
 
-        // echartGauge.setOption({
-        //     tooltip: {
-        //         formatter: "{a} <br/>{b} : {c}%"
-        //     },
-        //     toolbox: {
-        //         show: false,
-        //         feature: {
-        //             restore: {
-        //                 show: true,
-        //                 title: "Restore"
-        //             },
-        //             saveAsImage: {
-        //                 show: true,
-        //                 title: "Save Image"
-        //             }
-        //         }
-        //     }
-        // });
+        function setNewData(chart_, data_) {
+            chart_.setOption({
+                series: [{
+                    data: data_.yaxisValues,
+                    name: data_.title
+                }],
+                legend: {data: data_.yaxisLabels}
+            });
 
-        var gauge_options = {
+        }
+
+        function initialiseAllCharts() {
+            initChart('donut_cva', options, cva_chartData, setNewData);
+            initChart('donut_fva', options, fva_chartData, setNewData);
+            initChart('donut_colva', options, colva_chartData, setNewData);
+        }
+
+        function loadData(chart_, data_) {
+            setNewData(chart_, data_);
+        }
+
+// expose a few methods and properties
+        return {
+            initAllCharts: initialiseAllCharts,
+            setNewData: setNewData,
+            loadData: loadData
+        };
+
+    }
+
+    return {
+        // Get the Singleton instance if one exists
+        // or create one if it doesn't
+        getInstance: function () {
+            if (!instance) {
+                instance = init();
+            }
+            return instance;
+        }
+    };
+
+})();
+var RISKGauge = (function () {
+
+    'use strict';
+    var instance;
+
+
+    function init() {
+        var echartGauge;
+
+        var options = {
+            tooltip: {
+                formatter: "{a} <br/>{b} : {c}%"
+            },
+            toolbox: {
+                show: false,
+                feature: {
+                    restore: {
+                        show: true,
+                        title: "Restore"
+                    },
+                    saveAsImage: {
+                        show: true,
+                        title: "Save Image"
+                    }
+                }
+            },
             series: [{
                 name: 'Risk Gauge',
                 type: 'gauge',
@@ -756,47 +807,44 @@ var DONUTCharts = (function () {
             }]
         };
 
-        function setNewData(chart_, data_){
+        function setNewData(chart_, data_) {
             chart_.setOption({
                 series: [{
                     data: data_.yaxisValues,
                     name: data_.title
                 }],
-                legend : { data : data_.yaxisLabels}
+                legend: {data: data_.yaxisLabels}
             });
 
         }
 
-        function initialiseAllCharts(){
-            initChart('donut_cva', options, cva_chartData, setNewData);
-            initChart('donut_fva', options, fva_chartData, setNewData);
-            initChart('donut_colva', options, colva_chartData, setNewData);
-            initChart('echart_guage', gauge_options, [], setNewData);
+        function initialiseAllCharts() {
+            initChart('echart_guage', options, [], setNewData);
         }
 
-        function loadData(){
-
+        function loadData(chart_, data_) {
+            setNewData(chart_, data_);
         }
 
 // expose a few methods and properties
         return {
-            initAllCharts : initialiseAllCharts,
-            setNewData : setNewData,
+            initAllCharts: initialiseAllCharts,
+            setNewData: setNewData,
             loadData: loadData
         };
 
     }
 
-        return {
-            // Get the Singleton instance if one exists
-            // or create one if it doesn't
-            getInstance: function () {
-                if (!instance) {
-                    instance = init();
-                }
-                return instance;
+    return {
+        // Get the Singleton instance if one exists
+        // or create one if it doesn't
+        getInstance: function () {
+            if (!instance) {
+                instance = init();
             }
-        };
+            return instance;
+        }
+    };
 
 })();
 
@@ -819,7 +867,7 @@ function eConsole(param) {
 }
 
 
-function getRatings(level){
+function getRatings(level) {
 
     var url_ = window.location.protocol + '//' + window.location.host + '/api/ratings';
 
@@ -856,7 +904,7 @@ function initChart(chartTagName_, options, data_, fnLoadData_) {
     echartBar.on('click', eConsole);
 }
 
-function getChartInstance(chartTagName_){
+function getChartInstance(chartTagName_) {
     var echartBar = echarts.init(document.getElementById(chartTagName_), theme);
     return echartBar;
 }

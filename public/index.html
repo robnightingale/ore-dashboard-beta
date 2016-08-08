@@ -1,497 +1,443 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <!-- Meta, title, CSS, favicons, etc. -->
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Open Risk Engine | Dashboard</title>
+    <title>Open Risk Engine | Dashboard</title>
 
-  <!-- Bootstrap -->
-  <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Font Awesome -->
-  <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-  <!-- NProgress -->
-  <link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
-  <!-- iCheck -->
-  <link href="../vendors/iCheck/skins/flat/green.css" rel="stylesheet">
-  <!-- bootstrap-progressbar -->
-  <link href="../vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
-  <!-- Select2 -->
-  <link href="../vendors/select2/dist/css/select2.min.css" rel="stylesheet">
+    <!-- Bootstrap -->
+    <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
+    <!-- iCheck -->
+    <link href="../vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+    <!-- bootstrap-progressbar -->
+    <link href="../vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
+    <!-- Select2 -->
+    <link href="../vendors/select2/dist/css/select2.min.css" rel="stylesheet">
 
-  <!-- PNotify -->
-  <!--<script src="../vendors/pnotify/dist/pnotify.js"></script>-->
-  <!--<script src="../vendors/pnotify/dist/pnotify.buttons.js"></script>-->
-  <!--<script src="../vendors/pnotify/dist/pnotify.nonblock.js"></script>-->
-
-  <!-- Custom Theme Style -->
-  <link href="css/custom.min.css" rel="stylesheet">
+    <!-- Custom Theme Style -->
+    <link href="css/custom.min.css" rel="stylesheet">
 </head>
 
 <body class="nav-sm">
 <div class="container body" id="export_me_">
-  <div class="main_container">
-    <div class="col-md-3 left_col">
-      <div class="left_col scroll-view">
-        <div class="navbar nav_title" style="border: 0;">
-          <a href="index.html" class="site_title"><i class="fa fa-home"></i> <span>Open Risk Engine</span></a>
-        </div>
-
-        <div class="clearfix"></div>
-
-        <!-- menu profile quick info -->
-        <div class="profile">
-          <div class="profile_pic">
-            <img src="" alt="..." class="img-circle profile_img">
-          </div>
-          <!--<div class="profile_info">-->
-            <!--<span>Welcome,</span>-->
-            <!--<h2>John Doe</h2>-->
-          <!--</div>-->
-        </div>
-        <!-- /menu profile quick info -->
-
-        <br>
-
-        <!-- sidebar menu -->
-        <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
-          <div class="menu_section active">
-            <h3>Live On</h3>
-            <ul class="nav side-menu" style="">
-              <!--<li class="active-sm"><a><i class="fa fa-sitemap"></i> Hierarchy Menu <span class="fa fa-chevron-down"></span></a>-->
-                <!--<ul class="nav child_menu" style="display: none;">-->
-                  <!--<li><a href="#level1_1">Level One</a>-->
-                  <!--</li><li class="active-sm"><a>Level One<span class="fa fa-chevron-down"></span></a>-->
-                  <!--<ul class="nav child_menu" style="display: none;">-->
-                    <!--<li class="sub_menu current-page"><a href="level2.html">Level Two</a>-->
-                    <!--</li>-->
-                    <!--<li><a href="#level2_1">Level Two</a>-->
-                    <!--</li>-->
-                    <!--<li><a href="#level2_2">Level Two</a>-->
-                    <!--</li>-->
-                  <!--</ul>-->
-                <!--</li>-->
-                  <!--<li><a href="#level1_2">Level One</a>-->
-                  <!--</li>-->
-                <!--</ul>-->
-              <!--</li>-->
-              <li class=""><a onclick="pdfMe();"><i class="fa fa-download"></i> PDF </span></a>
-              </li>
-            </ul>
-          </div>
-
-        </div>
-        <!-- /sidebar menu -->
-
-        <!-- /menu footer buttons -->
-        <div class="sidebar-footer hidden-small">
-          <a data-toggle="tooltip" data-placement="top" title="" data-original-title="Settings">
-            <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
-          </a>
-          <a data-toggle="tooltip" data-placement="top" title="" data-original-title="FullScreen">
-            <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
-          </a>
-          <a data-toggle="tooltip" data-placement="top" title="" data-original-title="Lock">
-            <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
-          </a>
-          <a data-toggle="tooltip" data-placement="top" title="" data-original-title="Logout">
-            <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
-          </a>
-        </div>
-        <!-- /menu footer buttons -->
-      </div>
-    </div>
-
-
-    <!-- page content -->
-    <!--<div class="right_col" role="main">-->
-      <div class="right_col" role="main">
-
-        <div class="row">
-
-          <div class="col-md-12">
-              <div class="x_title clearfix">
-                <h2>Portfolio XYZ</h2>
-
-                <div class="form-group filter">
-                  <!--<label class="control-label col-md-2 col-sm-2 col-xs-12">Hierarchy level</label>-->
-                  <div class="col-md-9 col-sm-9 col-xs-12">
-                    <select class="select2_single form-control">
-                    <!--<select style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc">-->
-                      <option>Choose Hierarchy</option>
-                      <option>Total</option>
-                      <option>Credit Rating</option>
-                      <option>Netting Set</option>
-                      <option>Counterparty</option>
-                      <option>Trade</option>
-                    </select>
-                  </div>
+    <div class="main_container">
+        <div class="col-md-3 left_col">
+            <div class="left_col scroll-view">
+                <div class="navbar nav_title" style="border: 0;">
+                    <a href="index.html" class="site_title"><i class="fa fa-home"></i> <span>Open Risk Engine</span></a>
                 </div>
-              </div>
-              <div class="x_content">
-                <!--<div class="clearfix">-->
-                  <div class="filter clearfix">
-                    <div id="reportrange" class="pull-left" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc">
-                      <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
-                      <span>December 30, 2014 - January 28, 2015</span> <b class="caret"></b>
+
+                <div class="clearfix"></div>
+
+                <!-- menu profile quick info -->
+                <div class="profile">
+                    <div class="profile_pic">
+                        <img src="" alt="..." class="img-circle profile_img">
                     </div>
-                  </div>
-
-                <!--</div>-->
-                <div class="col-md-6 col-sm-12 col-xs-12">
-                  <div class="demo-container" style="height:350px">
-                    <div id="line_total_exposure" style="height:350px;"></div>
-                  </div>
+                    <!--<div class="profile_info">-->
+                    <!--<span>Welcome,</span>-->
+                    <!--<h2>John Doe</h2>-->
+                    <!--</div>-->
                 </div>
+                <!-- /menu profile quick info -->
 
-                <div class="col-md-6 col-sm-12 col-xs-12">
-                  <div class="demo-container" style="height:350px">
-                    <div id="line_exposure_profile" style="height:350px;"></div>
-                  </div>
+                <br>
+
+                <!-- sidebar menu -->
+                <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+                    <div class="menu_section active">
+                        <h3>Live On</h3>
+                        <ul class="nav side-menu" style="">
+                            <!--<li class="active-sm"><a><i class="fa fa-sitemap"></i> Hierarchy Menu <span class="fa fa-chevron-down"></span></a>-->
+                            <!--<ul class="nav child_menu" style="display: none;">-->
+                            <!--<li><a href="#level1_1">Level One</a>-->
+                            <!--</li><li class="active-sm"><a>Level One<span class="fa fa-chevron-down"></span></a>-->
+                            <!--<ul class="nav child_menu" style="display: none;">-->
+                            <!--<li class="sub_menu current-page"><a href="level2.html">Level Two</a>-->
+                            <!--</li>-->
+                            <!--<li><a href="#level2_1">Level Two</a>-->
+                            <!--</li>-->
+                            <!--<li><a href="#level2_2">Level Two</a>-->
+                            <!--</li>-->
+                            <!--</ul>-->
+                            <!--</li>-->
+                            <!--<li><a href="#level1_2">Level One</a>-->
+                            <!--</li>-->
+                            <!--</ul>-->
+                            <!--</li>-->
+                            <li class=""><a onclick="pdfMe();"><i class="fa fa-download"></i> PDF </span></a>
+                            </li>
+                        </ul>
+                    </div>
 
                 </div>
-              </div>
-          </div>
+                <!-- /sidebar menu -->
+
+                <!-- /menu footer buttons -->
+                <div class="sidebar-footer hidden-small">
+                    <a data-toggle="tooltip" data-placement="top" title="" data-original-title="Settings">
+                        <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+                    </a>
+                    <a data-toggle="tooltip" data-placement="top" title="" data-original-title="FullScreen">
+                        <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
+                    </a>
+                    <a data-toggle="tooltip" data-placement="top" title="" data-original-title="Lock">
+                        <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
+                    </a>
+                    <a data-toggle="tooltip" data-placement="top" title="" data-original-title="Logout">
+                        <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+                    </a>
+                </div>
+                <!-- /menu footer buttons -->
+            </div>
         </div>
 
-        <div class="row">
-          <div class="x_title"></div>
-          <div class="col-md-3 col-sm-3 col-xs-12">
-              <div class="x_title">
-                <h2>CVA</h2>
 
-                <!--<ul class="nav navbar-right panel_toolbox">-->
-                  <!--<li class="dropdown">-->
-                    <!--<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-bar-chart-o"></i></a>-->
-                    <!--<ul class="dropdown-menu" role="menu">-->
-                      <!--<li><a href="#">CE</a></li>-->
-                      <!--<li><a href="#">EEPE</a></li>-->
-                      <!--<li><a href="#">TOTALEXP</a></li>-->
-                      <!--<li><a href="#">CVA</a></li>-->
-                      <!--<li><a href="#">DVA</a></li>-->
-                      <!--<li><a href="#">NPV</a></li>-->
-                      <!--<li><a href="#">FCA</a></li>-->
-                      <!--<li><a href="#">FBA</a></li>-->
-                      <!--<li><a href="#">FVA</a></li>-->
-                      <!--<li><a href="#">ColVA</a></li>-->
-                      <!--<li><a href="#">IM</a></li>-->
-                    <!--</ul>-->
-                  <!--</li>-->
-                  <!--<li><a class="close-link"><i class="fa fa-recycle"></i></a></li>-->
-                <!--</ul>-->
-                <div class="clearfix"></div>
-              </div>
-              <div class="x_content">
+        <!-- page content -->
+        <!--<div class="right_col" role="main">-->
+        <div class="right_col" role="main">
 
-                <div id="donut_cva" style="height:200px;"></div>
+            <div class="row">
 
-              </div>
-              <span>Total #CVA $$,$$$,$$$.$$</span>
+                <div class="col-md-12">
+                    <div class="x_title clearfix">
+                        <h2>Portfolio XYZ</h2>
 
-          </div>
+                        <div class="form-group filter">
+                            <!--<label class="control-label col-md-2 col-sm-2 col-xs-12">Hierarchy level</label>-->
+                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                <select class="select2_single form-control">
+                                    <!--<select style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc">-->
+                                    <option>Choose Hierarchy</option>
+                                    <option>Total</option>
+                                    <option>Credit Rating</option>
+                                    <option>Netting Set</option>
+                                    <option>Counterparty</option>
+                                    <option>Trade</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="x_content">
+                        <!--<div class="clearfix">-->
+                        <div class="filter clearfix">
+                            <div id="reportrange" class="pull-left"
+                                 style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc">
+                                <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
+                                <span>December 30, 2014 - January 28, 2015</span> <b class="caret"></b>
+                            </div>
+                        </div>
 
-          <div class="col-md-3 col-sm-3 col-xs-12">
-              <div class="x_title">
-                <h2>FVA</h2>
-                <!--<ul class="nav navbar-right panel_toolbox">-->
-                  <!--<li class="dropdown">-->
-                    <!--<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-bar-chart-o"></i></a>-->
-                    <!--<ul class="dropdown-menu" role="menu">-->
-                      <!--<li><a href="#">CE</a></li>-->
-                      <!--<li><a href="#">EEPE</a></li>-->
-                      <!--<li><a href="#">TOTALEXP</a></li>-->
-                      <!--<li><a href="#">CVA</a></li>-->
-                      <!--<li><a href="#">DVA</a></li>-->
-                      <!--<li><a href="#">NPV</a></li>-->
-                      <!--<li><a href="#">FCA</a></li>-->
-                      <!--<li><a href="#">FBA</a></li>-->
-                      <!--<li><a href="#">FVA</a></li>-->
-                      <!--<li><a href="#">ColVA</a></li>-->
-                      <!--<li><a href="#">IM</a></li>-->
-                    <!--</ul>-->
-                  <!--</li>-->
-                  <!--<li><a class="close-link"><i class="fa fa-recycle"></i></a></li>-->
-                <!--</ul>-->
+                        <!--</div>-->
+                        <div class="col-md-6 col-sm-12 col-xs-12">
+                            <div class="demo-container" style="height:350px">
+                                <div id="line_total_exposure" style="height:350px;"></div>
+                            </div>
+                        </div>
 
-                <div class="clearfix"></div>
-              </div>
-              <div class="x_content">
+                        <div class="col-md-6 col-sm-12 col-xs-12">
+                            <div class="demo-container" style="height:350px">
+                                <div id="line_exposure_profile" style="height:350px;"></div>
+                            </div>
 
-                <div id="donut_fva" style="height:200px;"></div>
-
-              </div>
-            <span>Total #FVA $$,$$$,$$$.$$</span>
-
-          </div>
-          <div class="col-md-3 col-sm-3 col-xs-12">
-              <div class="x_title">
-                <h2>ColVA</h2>
-                <!--<ul class="nav navbar-right panel_toolbox">-->
-                  <!--<li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>-->
-                  <!--</li>-->
-                  <!--<li class="dropdown">-->
-                    <!--<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>-->
-                    <!--<ul class="dropdown-menu" role="menu">-->
-                      <!--<li><a href="#">Settings 1</a>-->
-                      <!--</li>-->
-                      <!--<li><a href="#">Settings 2</a>-->
-                      <!--</li>-->
-                    <!--</ul>-->
-                  <!--</li>-->
-                  <!--<li><a class="close-link"><i class="fa fa-close"></i></a>-->
-                  <!--</li>-->
-                <!--</ul>-->
-                <div class="clearfix"></div>
-              </div>
-              <div class="x_content">
-
-                <div id="donut_colva" style="height:200px;"></div>
-
-              </div>
-            <span>Total #ColVA $$,$$$,$$$.$$</span>
-
-          </div>
-          <div class="col-md-3 col-sm-3 col-xs-12">
-            <div class="x_title">
-              <h2>Risk Gauge</h2>
-              <ul class="nav navbar-right panel_toolbox">
-                <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                </li>
-                <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                  <ul class="dropdown-menu" role="menu">
-                    <li><a href="#">Settings 1</a>
-                    </li>
-                    <li><a href="#">Settings 2</a>
-                    </li>
-                  </ul>
-                </li>
-                <li><a class="close-link"><i class="fa fa-close"></i></a>
-                </li>
-              </ul>
-              <div class="clearfix"></div>
-            </div>
-            <div class="x_content">
-              <div id="echart_guage" style="height:200px;"></div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-          </div>
+            <div class="row">
+                <div class="x_title"></div>
+                <div class="col-md-3 col-sm-3 col-xs-12">
+                    <div class="x_title">
+                        <h2>CVA</h2>
+
+                        <ul class="nav navbar-right panel_toolbox">
+                            <li><a class="close-link"><i class="fa fa-search-plus"></i></a></li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+
+                        <div id="donut_cva" style="height:200px;"></div>
+
+                    </div>
+                    <span>Total #CVA $$,$$$,$$$.$$</span>
+
+                </div>
+
+                <div class="col-md-3 col-sm-3 col-xs-12">
+                    <div class="x_title">
+                        <h2>FVA</h2>
+                        <ul class="nav navbar-right panel_toolbox">
+                            <li><a class="close-link"><i class="fa fa-search-plus"></i></a></li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+
+                        <div id="donut_fva" style="height:200px;"></div>
+
+                    </div>
+                    <span>Total #FVA $$,$$$,$$$.$$</span>
+
+                </div>
+                <div class="col-md-3 col-sm-3 col-xs-12">
+                    <div class="x_title">
+                        <h2>ColVA</h2>
+                        <ul class="nav navbar-right panel_toolbox">
+                            <li><a class="close-link"><i class="fa fa-search-plus"></i></a></li>
+                        </ul>
+
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+
+                        <div id="donut_colva" style="height:200px;"></div>
+
+                    </div>
+                    <span>Total #ColVA $$,$$$,$$$.$$</span>
+
+                </div>
+                <div class="col-md-3 col-sm-3 col-xs-12">
+                    <div class="x_title">
+                        <h2>Risk Gauge</h2>
+                        <ul class="nav navbar-right panel_toolbox">
+                            <li><a class="close-link"><i class="fa fa-close"></i></a></li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <div id="echart_guage" style="height:200px;"></div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="row">
+
+                <div class="col-md-4 col-sm-4 col-xs-12">
+                    <!--<div class="x_panel">-->
+                    <div class="x_title">
+                        <h2>CREDIT</h2>
+                        <ul class="nav navbar-right panel_toolbox">
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                   aria-expanded="false"><i class="fa fa-bar-chart-o"></i></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a href="#">CE</a></li>
+                                    <li><a href="#">EEPE</a></li>
+                                    <li><a href="#">TOTALEXP</a></li>
+                                    <li><a href="#">CVA</a></li>
+                                    <li><a href="#">DVA</a></li>
+                                    <li><a href="#">NPV</a></li>
+                                    <li><a href="#">FCA</a></li>
+                                    <li><a href="#">FBA</a></li>
+                                    <li><a href="#">FVA</a></li>
+                                    <li><a href="#">ColVA</a></li>
+                                    <li><a href="#">IM</a></li>
+                                </ul>
+                            </li>
+                            <li><a class="close-link"><i class="fa fa-refresh"></i></a></li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+
+                        <div id="bar_1" style="height:270px;"></div>
+
+                    </div>
+                    <!--</div>-->
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-12">
+                    <!--<div class="x_panel">-->
+                    <div class="x_title">
+                        <h2>MARKET</h2>
+                        <ul class="nav navbar-right panel_toolbox">
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                   aria-expanded="false"><i class="fa fa-bar-chart-o"></i></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a href="#">CE</a></li>
+                                    <li><a href="#">EEPE</a></li>
+                                    <li><a href="#">TOTALEXP</a></li>
+                                    <li><a href="#">CVA</a></li>
+                                    <li><a href="#">DVA</a></li>
+                                    <li><a href="#">NPV</a></li>
+                                    <li><a href="#">FCA</a></li>
+                                    <li><a href="#">FBA</a></li>
+                                    <li><a href="#">FVA</a></li>
+                                    <li><a href="#">ColVA</a></li>
+                                    <li><a href="#">IM</a></li>
+                                </ul>
+                            </li>
+                            <li><a class="close-link"><i class="fa fa-refresh"></i></a></li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+
+                        <div id="bar_2" style="height:270px;"></div>
+
+                    </div>
+                    <!--</div>-->
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-12">
+                    <!--<div class="x_panel">-->
+                    <div class="x_title">
+                        <h2>LIQUIDITY</h2>
+                        <ul class="nav navbar-right panel_toolbox">
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                   aria-expanded="false"><i class="fa fa-bar-chart-o"></i></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a href="#">CE</a></li>
+                                    <li><a href="#">EEPE</a></li>
+                                    <li><a href="#">TOTALEXP</a></li>
+                                    <li><a href="#">CVA</a></li>
+                                    <li><a href="#">DVA</a></li>
+                                    <li><a href="#">NPV</a></li>
+                                    <li><a href="#">FCA</a></li>
+                                    <li><a href="#">FBA</a></li>
+                                    <li><a href="#">FVA</a></li>
+                                    <li><a href="#">ColVA</a></li>
+                                    <li><a href="#">IM</a></li>
+                                </ul>
+                            </li>
+                            <li><a class="close-link"><i class="fa fa-refresh"></i></a></li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+
+                        <div id="bar_3" style="height:270px;"></div>
+
+                    </div>
+                    <!--</div>-->
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-12">
+                    <!--<div class="x_panel">-->
+                    <div class="x_title">
+                        <h2>CREDIT</h2>
+                        <ul class="nav navbar-right panel_toolbox">
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                   aria-expanded="false"><i class="fa fa-bar-chart-o"></i></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a href="#">CE</a></li>
+                                    <li><a href="#">EEPE</a></li>
+                                    <li><a href="#">TOTALEXP</a></li>
+                                    <li><a href="#">CVA</a></li>
+                                    <li><a href="#">DVA</a></li>
+                                    <li><a href="#">NPV</a></li>
+                                    <li><a href="#">FCA</a></li>
+                                    <li><a href="#">FBA</a></li>
+                                    <li><a href="#">FVA</a></li>
+                                    <li><a href="#">ColVA</a></li>
+                                    <li><a href="#">IM</a></li>
+                                </ul>
+                            </li>
+                            <li><a class="close-link"><i class="fa fa-refresh"></i></a></li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+
+                        <div id="bar_4" style="height:270px;"></div>
+
+                    </div>
+                    <!--</div>-->
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-12">
+                    <!--<div class="x_panel">-->
+                    <div class="x_title">
+                        <h2>MARKET</h2>
+                        <ul class="nav navbar-right panel_toolbox">
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                   aria-expanded="false"><i class="fa fa-bar-chart-o"></i></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a href="#">CE</a></li>
+                                    <li><a href="#">EEPE</a></li>
+                                    <li><a href="#">TOTALEXP</a></li>
+                                    <li><a href="#">CVA</a></li>
+                                    <li><a href="#">DVA</a></li>
+                                    <li><a href="#">NPV</a></li>
+                                    <li><a href="#">FCA</a></li>
+                                    <li><a href="#">FBA</a></li>
+                                    <li><a href="#">FVA</a></li>
+                                    <li><a href="#">ColVA</a></li>
+                                    <li><a href="#">IM</a></li>
+                                </ul>
+                            </li>
+                            <li><a class="close-link"><i class="fa fa-refresh"></i></a></li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+
+                        <div id="bar_5" style="height:270px;"></div>
+
+                    </div>
+                    <!--</div>-->
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-12">
+                    <!--<div class="x_panel">-->
+                    <div class="x_title">
+                        <h2>LIQUIDITY</h2>
+                        <ul class="nav navbar-right panel_toolbox">
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                   aria-expanded="false"><i class="fa fa-bar-chart-o"></i></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a href="#">CE</a></li>
+                                    <li><a href="#">EEPE</a></li>
+                                    <li><a href="#">TOTALEXP</a></li>
+                                    <li><a href="#">CVA</a></li>
+                                    <li><a href="#">DVA</a></li>
+                                    <li><a href="#">NPV</a></li>
+                                    <li><a href="#">FCA</a></li>
+                                    <li><a href="#">FBA</a></li>
+                                    <li><a href="#">FVA</a></li>
+                                    <li><a href="#">ColVA</a></li>
+                                    <li><a href="#">IM</a></li>
+                                </ul>
+                            </li>
+                            <li><a class="close-link"><i class="fa fa-refresh"></i></a></li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+
+                        <div id="bar_6" style="height:270px;"></div>
+
+                    </div>
+                    <!--</div>-->
+                </div>
+
+
+            </div>
+
         </div>
+        <!--</div>-->
+        <!-- /page content -->
 
-        <div class="row">
-
-          <div class="col-md-4 col-sm-4 col-xs-12">
-            <!--<div class="x_panel">-->
-              <div class="x_title">
-                <h2>CREDIT</h2>
-                <ul class="nav navbar-right panel_toolbox">
-                  <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-bar-chart-o"></i></a>
-                    <ul class="dropdown-menu" role="menu">
-                      <li><a href="#">CE</a></li>
-                      <li><a href="#">EEPE</a></li>
-                      <li><a href="#">TOTALEXP</a></li>
-                      <li><a href="#">CVA</a></li>
-                      <li><a href="#">DVA</a></li>
-                      <li><a href="#">NPV</a></li>
-                      <li><a href="#">FCA</a></li>
-                      <li><a href="#">FBA</a></li>
-                      <li><a href="#">FVA</a></li>
-                      <li><a href="#">ColVA</a></li>
-                      <li><a href="#">IM</a></li>
-                    </ul>
-                  </li>
-                  <li><a class="close-link"><i class="fa fa-recycle"></i></a></li>
-                </ul>
-                <div class="clearfix"></div>
-              </div>
-              <div class="x_content">
-
-                <div id="bar_1" style="height:270px;"></div>
-
-              </div>
-            <!--</div>-->
-          </div>
-          <div class="col-md-4 col-sm-4 col-xs-12">
-            <!--<div class="x_panel">-->
-              <div class="x_title">
-                <h2>MARKET</h2>
-                <ul class="nav navbar-right panel_toolbox">
-                  <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-bar-chart-o"></i></a>
-                    <ul class="dropdown-menu" role="menu">
-                      <li><a href="#">CE</a></li>
-                      <li><a href="#">EEPE</a></li>
-                      <li><a href="#">TOTALEXP</a></li>
-                      <li><a href="#">CVA</a></li>
-                      <li><a href="#">DVA</a></li>
-                      <li><a href="#">NPV</a></li>
-                      <li><a href="#">FCA</a></li>
-                      <li><a href="#">FBA</a></li>
-                      <li><a href="#">FVA</a></li>
-                      <li><a href="#">ColVA</a></li>
-                      <li><a href="#">IM</a></li>
-                    </ul>
-                  </li>
-                  <li><a class="close-link"><i class="fa fa-recycle"></i></a></li>
-                </ul>
-                <div class="clearfix"></div>
-              </div>
-              <div class="x_content">
-
-                <div id="bar_2" style="height:270px;"></div>
-
-              </div>
-            <!--</div>-->
-          </div>
-          <div class="col-md-4 col-sm-4 col-xs-12">
-            <!--<div class="x_panel">-->
-              <div class="x_title">
-                <h2>LIQUIDITY</h2>
-                <ul class="nav navbar-right panel_toolbox">
-                  <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-bar-chart-o"></i></a>
-                    <ul class="dropdown-menu" role="menu">
-                      <li><a href="#">CE</a></li>
-                      <li><a href="#">EEPE</a></li>
-                      <li><a href="#">TOTALEXP</a></li>
-                      <li><a href="#">CVA</a></li>
-                      <li><a href="#">DVA</a></li>
-                      <li><a href="#">NPV</a></li>
-                      <li><a href="#">FCA</a></li>
-                      <li><a href="#">FBA</a></li>
-                      <li><a href="#">FVA</a></li>
-                      <li><a href="#">ColVA</a></li>
-                      <li><a href="#">IM</a></li>
-                    </ul>
-                  </li>
-                  <li><a class="close-link"><i class="fa fa-recycle"></i></a></li>
-                </ul>
-                <div class="clearfix"></div>
-              </div>
-              <div class="x_content">
-
-                <div id="bar_3" style="height:270px;"></div>
-
-              </div>
-            <!--</div>-->
-          </div>
-          <div class="col-md-4 col-sm-4 col-xs-12">
-            <!--<div class="x_panel">-->
-              <div class="x_title">
-                <h2>CREDIT</h2>
-                <ul class="nav navbar-right panel_toolbox">
-                  <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-bar-chart-o"></i></a>
-                    <ul class="dropdown-menu" role="menu">
-                      <li><a href="#">CE</a></li>
-                      <li><a href="#">EEPE</a></li>
-                      <li><a href="#">TOTALEXP</a></li>
-                      <li><a href="#">CVA</a></li>
-                      <li><a href="#">DVA</a></li>
-                      <li><a href="#">NPV</a></li>
-                      <li><a href="#">FCA</a></li>
-                      <li><a href="#">FBA</a></li>
-                      <li><a href="#">FVA</a></li>
-                      <li><a href="#">ColVA</a></li>
-                      <li><a href="#">IM</a></li>
-                    </ul>
-                  </li>
-                  <li><a class="close-link"><i class="fa fa-recycle"></i></a></li>
-                </ul>
-                <div class="clearfix"></div>
-              </div>
-              <div class="x_content">
-
-                <div id="bar_4" style="height:270px;"></div>
-
-              </div>
-            <!--</div>-->
-          </div>
-          <div class="col-md-4 col-sm-4 col-xs-12">
-            <!--<div class="x_panel">-->
-              <div class="x_title">
-                <h2>MARKET</h2>
-                <ul class="nav navbar-right panel_toolbox">
-                  <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-bar-chart-o"></i></a>
-                    <ul class="dropdown-menu" role="menu">
-                      <li><a href="#">CE</a></li>
-                      <li><a href="#">EEPE</a></li>
-                      <li><a href="#">TOTALEXP</a></li>
-                      <li><a href="#">CVA</a></li>
-                      <li><a href="#">DVA</a></li>
-                      <li><a href="#">NPV</a></li>
-                      <li><a href="#">FCA</a></li>
-                      <li><a href="#">FBA</a></li>
-                      <li><a href="#">FVA</a></li>
-                      <li><a href="#">ColVA</a></li>
-                      <li><a href="#">IM</a></li>
-                    </ul>
-                  </li>
-                  <li><a class="close-link"><i class="fa fa-recycle"></i></a></li>
-                </ul>
-                <div class="clearfix"></div>
-              </div>
-              <div class="x_content">
-
-                <div id="bar_5" style="height:270px;"></div>
-
-              </div>
-            <!--</div>-->
-          </div>
-          <div class="col-md-4 col-sm-4 col-xs-12">
-            <!--<div class="x_panel">-->
-              <div class="x_title">
-                <h2>LIQUIDITY</h2>
-                <ul class="nav navbar-right panel_toolbox">
-                  <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-bar-chart-o"></i></a>
-                    <ul class="dropdown-menu" role="menu">
-                      <li><a href="#">CE</a></li>
-                      <li><a href="#">EEPE</a></li>
-                      <li><a href="#">TOTALEXP</a></li>
-                      <li><a href="#">CVA</a></li>
-                      <li><a href="#">DVA</a></li>
-                      <li><a href="#">NPV</a></li>
-                      <li><a href="#">FCA</a></li>
-                      <li><a href="#">FBA</a></li>
-                      <li><a href="#">FVA</a></li>
-                      <li><a href="#">ColVA</a></li>
-                      <li><a href="#">IM</a></li>
-                    </ul>
-                  </li>
-                  <li><a class="close-link"><i class="fa fa-recycle"></i></a></li>
-                </ul>
-                <div class="clearfix"></div>
-              </div>
-              <div class="x_content">
-
-                <div id="bar_6" style="height:270px;"></div>
-
-              </div>
-            <!--</div>-->
-          </div>
-
-
-        </div>
-
-      </div>
-    <!--</div>-->
-    <!-- /page content -->
-
-    <!-- footer content -->
-    <footer>
-      <div class="pull-right">
-        Gentelella - Bootstrap Admin Template | <a href="https://reposit.ie">Reposit</a>
-      </div>
-      <div class="clearfix"></div>
-    </footer>
-    <!-- /footer content -->
-  </div>
+        <!-- footer content -->
+        <footer>
+            <div class="pull-right">
+                Gentelella - Bootstrap Admin Template | <a href="https://reposit.ie">Reposit</a>
+            </div>
+            <div class="clearfix"></div>
+        </footer>
+        <!-- /footer content -->
+    </div>
 </div>
 
 <!-- jQuery -->
@@ -532,26 +478,14 @@
 
 <script language="javascript">
 
-  var load_ = function () {
-    $('.select2_single').select2({
-      placeholder: "Hierarchy",
-      allowClear: true
-    });
-//    var lineCharts = lineCharts.getInstance();
-//    var barCharts = barCharts.getInstance();
-//    var pieCharts = donutCharts.getInstance();
-//    jj();
-  }
+    var load_ = function () {
+        $('.select2_single').select2({
+            placeholder: "Hierarchy",
+            allowClear: true
+        });
+    }
 
-  window.onload = load_;
-
-//  var jj = function(){
-//    PNotify.prototype.options.styling = "bootstrap3";
-//    new PNotify({
-//      title: 'Regular Notice',
-//      text: 'Check me out! I\'m a notice.'
-//    });
-//  };
+    window.onload = load_;
 
 </script>
 
