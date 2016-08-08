@@ -1,17 +1,7 @@
 $(window).load(function () {
     console.log('[INFO] ORE Dashboard.init');
-    var lineCharts = LINECharts.getInstance();
-    var barCharts = BARCharts.getInstance();
-    var pieCharts = DONUTCharts.getInstance();
-    var riskGauge = RISKGauge.getInstance();
-
-    barCharts.initAllCharts();
-    lineCharts.initAllCharts();
-    pieCharts.initAllCharts();
-    riskGauge.initAllCharts();
-
+    chartManager.initAllCharts();
     console.log('[INFO] ORE Dashboard init completed');
-
 });
 
 /**
@@ -117,12 +107,12 @@ var BARCharts = (function () {
         }
 
         function initialiseAllCharts() {
-            initChart('bar_1', options, ce_chartData, setNewData);
-            initChart('bar_2', options, npv_chartData, setNewData);
-            initChart('bar_3', options, fca_chartData, setNewData);
-            initChart('bar_4', options, eepe_chartData, setNewData);
-            initChart('bar_5', options, npv2_chartData, setNewData);
-            initChart('bar_6', options, fba_chartData, setNewData);
+            chartManager.initChart('bar_1', options, ce_chartData, setNewData);
+            chartManager.initChart('bar_2', options, npv_chartData, setNewData);
+            chartManager.initChart('bar_3', options, fca_chartData, setNewData);
+            chartManager.initChart('bar_4', options, eepe_chartData, setNewData);
+            chartManager.initChart('bar_5', options, npv2_chartData, setNewData);
+            chartManager.initChart('bar_6', options, fba_chartData, setNewData);
         }
 
         function loadData(chart_, data_) {
@@ -149,7 +139,6 @@ var BARCharts = (function () {
     };
 
 })();
-
 var LINECharts = (function () {
 
     'use strict';
@@ -434,8 +423,8 @@ var LINECharts = (function () {
         }
 
         function initialiseAllCharts() {
-            initChart('line_total_exposure', total_exposure_options, total_Data, setNewData);
-            initChart('line_exposure_profile', exposure_profile_options, profile_Data, setNewData);
+            chartManager.initChart('line_total_exposure', total_exposure_options, total_Data, setNewData);
+            chartManager.initChart('line_exposure_profile', exposure_profile_options, profile_Data, setNewData);
         }
 
         function loadData(chart_, data_) {
@@ -464,7 +453,6 @@ var LINECharts = (function () {
     };
 
 })();
-
 var DONUTCharts = (function () {
 
     'use strict';
@@ -657,9 +645,9 @@ var DONUTCharts = (function () {
         }
 
         function initialiseAllCharts() {
-            initChart('donut_cva', options, cva_chartData, setNewData);
-            initChart('donut_fva', options, fva_chartData, setNewData);
-            initChart('donut_colva', options, colva_chartData, setNewData);
+            chartManager.initChart('donut_cva', options, cva_chartData, setNewData);
+            chartManager.initChart('donut_fva', options, fva_chartData, setNewData);
+            chartManager.initChart('donut_colva', options, colva_chartData, setNewData);
         }
 
         function loadData(chart_, data_) {
@@ -819,7 +807,7 @@ var RISKGauge = (function () {
         }
 
         function initialiseAllCharts() {
-            initChart('echart_guage', options, [], setNewData);
+            chartManager.initChart('echart_guage', options, [], setNewData);
         }
 
         function loadData(chart_, data_) {
@@ -848,63 +836,130 @@ var RISKGauge = (function () {
 
 })();
 
+var chartManager = {
 
-function eConsole(param) {
-    var mes = 'Drill down request - 【' + param.type + '】';
-    if (typeof param.seriesIndex != 'undefined') {
-        mes += '  seriesIndex : ' + param.seriesIndex;
-        mes += '  dataIndex : ' + param.dataIndex;
-    }
-    if (param.type == 'hover') {
-        document.getElementById('hover-console').innerHTML = 'Event Console : ' + mes;
-    }
-    else {
-        // document.getElementById('console').innerHTML = mes;
-        console.log(mes);
-        alert(mes);
-    }
-    console.log(param);
-}
+    initAllCharts: function(){
+        LINECharts.getInstance().initAllCharts();
+        BARCharts.getInstance().initAllCharts();
+        DONUTCharts.getInstance().initAllCharts();
+        RISKGauge.getInstance().initAllCharts();
+    },
+    initChart: function (chartTagName_, options, data_, fnLoadData_) {
+        var theChart_ = echarts.init(document.getElementById(chartTagName_), theme);
+        theChart_.setOption(options);
+        fnLoadData_(theChart_, data_);
+        theChart_.on('click', this.eConsole);
+    },
+    getChartInstanceByDivId: function (chartTagName_) {
+        var theChart_ = echarts.getInstanceByDom(document.getElementById(chartTagName_));
+        return theChart_;
+    },
+    eConsole: function (param) {
+        var mes = 'Drill down request - 【' + param.type + '】';
+        if (typeof param.seriesIndex != 'undefined') {
+            mes += '  seriesIndex : ' + param.seriesIndex;
+            mes += '  dataIndex : ' + param.dataIndex;
+        }
+        if (param.type == 'hover') {
+            document.getElementById('hover-console').innerHTML = 'Event Console : ' + mes;
+        }
+        else {
+            // document.getElementById('console').innerHTML = mes;
+            console.log(mes);
+            alert(mes);
+        }
+        console.log(param);
+    },
+    getDataFromRestCall: function (url_) {
 
+        var theUrl_ = window.location.protocol + '//' + window.location.host + url_;
 
-function getRatings(level) {
+        return fetch(
+            theUrl_, {
+                method: 'GET',
+                mode: 'same-origin',
+                headers: {
+                    'Cache-Control': 'no-cache',
+                    'If-Modified-Since': '0',
+                    'Accept': 'application/json'
+                },
+                credentials: 'same-origin'
+            })
+            .then(processStatus)
+            .then(parseJson)
+            .then(function (response) {
+                // massage data
+                console.debug(response);
+                // response.forEach(function(elem) {
+                //     console.debug(elem);
+                // })
+                return response;
+            })
+            .catch(function (ex) {
+                console.error(new Error("Request failed : " + ex));
+            })
+    },
+    loadDataIntoGraph: function(chartTagName_, data_){
 
-    var url_ = window.location.protocol + '//' + window.location.host + '/api/ratings';
+    },
+    load_graph_panel: function (graph_) {
+        var trade_type = document.getElementById('tradeContainer.trade.trade_type');
+        var current_trade_type = (tradeType || trade_type.options[trade_type.options.selectedIndex].value);
+        var loadUrl_ = './' + current_trade_type + '.html';
 
-    return fetch(
-        url_, {
-            method: 'GET',
-            mode: 'same-origin',
-            headers: {
-                'Cache-Control': 'no-cache',
-                'If-Modified-Since': '0',
-                'Accept': 'application/json'
-            },
-            credentials: 'same-origin'
-        })
-        .then(processStatus)
-        .then(parseJson)
-        .then(function (response) {
-            // massage data
-            console.debug(response);
-            // response.forEach(function(elem) {
-            //     console.debug(elem);
-            // })
-            return response;
-        })
-        .catch(function (ex) {
-            console.error(new Error("Request failed : " + ex));
-        })
-}
+        //var e = new Error('dummy');
+        //var stack = e.stack.replace(/^[^\(]+?[\n$]/gm, '')
+        //    .replace(/^\s+at\s+/gm, '')
+        //    .replace(/^Object.<anonymous>\s*\(/gm, '{anonymous}()@')
+        //    .split('\n');
+        //console.debug(stack);
 
-function initChart(chartTagName_, options, data_, fnLoadData_) {
-    var echartBar = echarts.init(document.getElementById(chartTagName_), theme);
-    echartBar.setOption(options);
-    fnLoadData_(echartBar, data_);
-    echartBar.on('click', eConsole);
-}
+        return new Promise(function (resolve, reject) {
+            try {
+                $('#trade').load(loadUrl_, function () {
+                    if (current_trade_type === 'VNS')
+                        vnsFormManager.getInstance().initTable();
+                    if (current_trade_type === 'INF') {
+                        $("#roll_convention_label").hide();
+                        $("#roll_convention").hide();
+                    }
+                    else {
+                        $("#roll_convention_label").show();
+                        $("#roll_convention").show();
+                    }
 
-function getChartInstance(chartTagName_) {
-    var echartBar = echarts.init(document.getElementById(chartTagName_), theme);
-    return echartBar;
+                    return resolve(tradeType);
+                });
+            }
+            catch (e) {
+                return reject(new Error(e));
+            }
+        });
+    },
+    populateBusinessDates: function (source) {
+        if (isNullOrUndefined(source))
+            return;
+
+        try {
+            var sel = document.getElementById(source.currentTarget);
+            // zero out the existing options
+            sel.options.length = 0;
+
+            var fragment = document.createDocumentFragment();
+            var busDateList_ = this.getDataFromRestCall('/api/businessdates/');
+            return busDateList_.then(function (response) {
+                response.forEach(function (dcc, index) {
+                    var opt = document.createElement('option');
+                    opt.innerHTML = dcc;
+                    opt.value = dcc;
+                    fragment.appendChild(opt);
+                });
+                sel.appendChild(fragment);
+            }).catch(function (e) {
+                return new Error(e);
+            })
+        } catch (e) {
+            console.error(new Error(e));
+        }
+    },
 }

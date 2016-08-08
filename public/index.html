@@ -28,6 +28,11 @@
 
 <body class="nav-sm">
 <div class="container body" id="export_me_">
+    <input type="hidden" value="2016-03-01" id="busdate" name="busdate"/>
+    <input type="hidden" value="AAA" id="creditrating" name="creditrating"/>
+    <input type="hidden" value="CSA_1" id="counterparty" name="counterparty"/>
+    <input type="hidden" value="CSA_1" id="nettingset" name="nettingset"/>
+
     <div class="main_container">
         <div class="col-md-3 left_col">
             <div class="left_col scroll-view">
@@ -42,10 +47,6 @@
                     <div class="profile_pic">
                         <img src="" alt="..." class="img-circle profile_img">
                     </div>
-                    <!--<div class="profile_info">-->
-                    <!--<span>Welcome,</span>-->
-                    <!--<h2>John Doe</h2>-->
-                    <!--</div>-->
                 </div>
                 <!-- /menu profile quick info -->
 
@@ -56,25 +57,7 @@
                     <div class="menu_section active">
                         <h3>Live On</h3>
                         <ul class="nav side-menu" style="">
-                            <!--<li class="active-sm"><a><i class="fa fa-sitemap"></i> Hierarchy Menu <span class="fa fa-chevron-down"></span></a>-->
-                            <!--<ul class="nav child_menu" style="display: none;">-->
-                            <!--<li><a href="#level1_1">Level One</a>-->
-                            <!--</li><li class="active-sm"><a>Level One<span class="fa fa-chevron-down"></span></a>-->
-                            <!--<ul class="nav child_menu" style="display: none;">-->
-                            <!--<li class="sub_menu current-page"><a href="level2.html">Level Two</a>-->
-                            <!--</li>-->
-                            <!--<li><a href="#level2_1">Level Two</a>-->
-                            <!--</li>-->
-                            <!--<li><a href="#level2_2">Level Two</a>-->
-                            <!--</li>-->
-                            <!--</ul>-->
-                            <!--</li>-->
-                            <!--<li><a href="#level1_2">Level One</a>-->
-                            <!--</li>-->
-                            <!--</ul>-->
-                            <!--</li>-->
-                            <li class=""><a onclick="pdfMe();"><i class="fa fa-download"></i> PDF </span></a>
-                            </li>
+                            <li class=""><a onclick="pdfMe();"><i class="fa fa-download"></i> PDF </span></a></li>
                         </ul>
                     </div>
 
@@ -102,7 +85,6 @@
 
 
         <!-- page content -->
-        <!--<div class="right_col" role="main">-->
         <div class="right_col" role="main">
 
             <div class="row">
@@ -110,6 +92,16 @@
                 <div class="col-md-12">
                     <div class="x_title clearfix">
                         <h2>Portfolio XYZ</h2>
+
+                        <div class="form-group filter pull-left">
+                            <!--<label class="control-label col-md-2 col-sm-2 col-xs-12">Hierarchy level</label>-->
+                            <div class="col-md-9 col-sm-9 col-xs-12">
+                                <!--<select class="select2_single form-control">-->
+                                    <select id="businessDates" class="select2_single" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc">
+                                    <option>Choose Business Date</option>
+                                </select>
+                            </div>
+                        </div>
 
                         <div class="form-group filter">
                             <!--<label class="control-label col-md-2 col-sm-2 col-xs-12">Hierarchy level</label>-->
@@ -127,7 +119,6 @@
                         </div>
                     </div>
                     <div class="x_content">
-                        <!--<div class="clearfix">-->
                         <div class="filter clearfix">
                             <div id="reportrange" class="pull-left"
                                  style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc">
@@ -136,7 +127,6 @@
                             </div>
                         </div>
 
-                        <!--</div>-->
                         <div class="col-md-6 col-sm-12 col-xs-12">
                             <div class="demo-container" style="height:350px">
                                 <div id="line_total_exposure" style="height:350px;"></div>
@@ -222,9 +212,9 @@
             </div>
 
             <div class="row">
+                <div class="x_title"></div>
 
                 <div class="col-md-4 col-sm-4 col-xs-12">
-                    <!--<div class="x_panel">-->
                     <div class="x_title">
                         <h2>CREDIT</h2>
                         <ul class="nav navbar-right panel_toolbox">
@@ -254,10 +244,8 @@
                         <div id="bar_1" style="height:270px;"></div>
 
                     </div>
-                    <!--</div>-->
                 </div>
                 <div class="col-md-4 col-sm-4 col-xs-12">
-                    <!--<div class="x_panel">-->
                     <div class="x_title">
                         <h2>MARKET</h2>
                         <ul class="nav navbar-right panel_toolbox">
@@ -287,10 +275,8 @@
                         <div id="bar_2" style="height:270px;"></div>
 
                     </div>
-                    <!--</div>-->
                 </div>
                 <div class="col-md-4 col-sm-4 col-xs-12">
-                    <!--<div class="x_panel">-->
                     <div class="x_title">
                         <h2>LIQUIDITY</h2>
                         <ul class="nav navbar-right panel_toolbox">
@@ -320,10 +306,8 @@
                         <div id="bar_3" style="height:270px;"></div>
 
                     </div>
-                    <!--</div>-->
                 </div>
                 <div class="col-md-4 col-sm-4 col-xs-12">
-                    <!--<div class="x_panel">-->
                     <div class="x_title">
                         <h2>CREDIT</h2>
                         <ul class="nav navbar-right panel_toolbox">
@@ -353,10 +337,8 @@
                         <div id="bar_4" style="height:270px;"></div>
 
                     </div>
-                    <!--</div>-->
                 </div>
                 <div class="col-md-4 col-sm-4 col-xs-12">
-                    <!--<div class="x_panel">-->
                     <div class="x_title">
                         <h2>MARKET</h2>
                         <ul class="nav navbar-right panel_toolbox">
@@ -386,10 +368,8 @@
                         <div id="bar_5" style="height:270px;"></div>
 
                     </div>
-                    <!--</div>-->
                 </div>
                 <div class="col-md-4 col-sm-4 col-xs-12">
-                    <!--<div class="x_panel">-->
                     <div class="x_title">
                         <h2>LIQUIDITY</h2>
                         <ul class="nav navbar-right panel_toolbox">
@@ -419,14 +399,9 @@
                         <div id="bar_6" style="height:270px;"></div>
 
                     </div>
-                    <!--</div>-->
                 </div>
-
-
             </div>
-
         </div>
-        <!--</div>-->
         <!-- /page content -->
 
         <!-- footer content -->
@@ -479,10 +454,13 @@
 <script language="javascript">
 
     var load_ = function () {
-        $('.select2_single').select2({
-            placeholder: "Hierarchy",
-            allowClear: true
-        });
+//        $('.select2_single').select2({
+//            placeholder: "Hierarchy",
+//            allowClear: true
+//        });
+
+        _AttachEvent(document.getElementById("businessDates"), "click", chartManager.populateBusinessDates);
+//        _AttachEvent(document.getElementById("businessDates"), "change", chartManager.populateBusinessDates);
     }
 
     window.onload = load_;

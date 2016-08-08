@@ -3,8 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="caa21dc2-8a18-41a2-9fb6-7ca5b9d0c280" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gulpfile.js" afterPath="$PROJECT_DIR$/gulpfile.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/index.html" afterPath="$PROJECT_DIR$/public/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/custom.js" afterPath="$PROJECT_DIR$/public/js/custom.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/custom.min.js" afterPath="$PROJECT_DIR$/public/js/custom.min.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/echart/echart.js" afterPath="$PROJECT_DIR$/public/js/echart/echart.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/js/custom.js" afterPath="$PROJECT_DIR$/src/js/custom.js" />
     </list>
     <ignored path="ore-dashboard-beta.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -27,48 +30,61 @@
     <favorites_list name="ore-dashboard-beta" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="echart.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/public/js/echart/echart.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+            <state relative-caret-position="154">
+              <caret line="947" column="0" selection-start-line="947" selection-start-column="0" selection-end-line="947" selection-end-column="0" />
               <folding>
-                <element signature="e#5789#7591#0" expanded="false" />
-                <element signature="e#7620#13079#0" expanded="false" />
-                <element signature="e#13119#14581#0" expanded="false" />
-                <element signature="e#14615#15299#0" expanded="false" />
-                <element signature="e#15341#17634#0" expanded="false" />
-                <element signature="n#!!block;n#eConsole#0" expanded="false" />
-                <marker date="1470520909000" expanded="false" signature="347:5613" ph="{...}" />
-                <marker date="1470520909000" expanded="false" signature="892:1600" ph="{...}" />
-                <marker date="1470520909000" expanded="false" signature="1673:1995" ph="{...}" />
-                <marker date="1470520909000" expanded="false" signature="2024:2346" ph="{...}" />
-                <marker date="1470520909000" expanded="false" signature="2375:2697" ph="{...}" />
-                <marker date="1470520909000" expanded="false" signature="2726:3048" ph="{...}" />
-                <marker date="1470520909000" expanded="false" signature="3078:3400" ph="{...}" />
-                <marker date="1470520909000" expanded="false" signature="3430:3752" ph="{...}" />
-                <marker date="1470520909000" expanded="false" signature="15756:16108" ph="{...}" />
-                <marker date="1470520909000" expanded="false" signature="16139:16239" ph="{...}" />
-                <marker date="1470520909000" expanded="false" signature="16274:16377" ph="{...}" />
-                <marker date="1470520909000" expanded="false" signature="20059:20901" ph="{...}" />
-                <marker date="1470520909000" expanded="false" signature="20924:21734" ph="{&quot;name&quot;: ''...}" />
-                <marker date="1470520909000" expanded="false" signature="21776:22742" ph="{...}" />
-                <marker date="1470520909000" expanded="false" signature="22772:23738" ph="{...}" />
-                <marker date="1470520909000" expanded="false" signature="23770:24738" ph="{...}" />
-                <marker date="1470520909000" expanded="false" signature="25357:25834" ph="{...}" />
-                <marker date="1470520909000" expanded="false" signature="25890:28884" ph="{&quot;name&quot;: 'Risk Gauge'...}" />
+                <element signature="e#345#761#0" expanded="false" />
+                <element signature="e#785#1494#0" expanded="false" />
+                <element signature="e#1567#1889#0" expanded="false" />
+                <element signature="e#1918#2240#0" expanded="false" />
+                <element signature="e#2269#2591#0" expanded="false" />
+                <element signature="e#2620#2942#0" expanded="false" />
+                <element signature="e#2972#3294#0" expanded="false" />
+                <element signature="e#3324#3646#0" expanded="false" />
+                <element signature="e#4769#18435#0" expanded="false" />
+                <element signature="e#4914#6715#0" expanded="false" />
+                <element signature="e#6744#12203#0" expanded="false" />
+                <element signature="e#12243#13709#0" expanded="false" />
+                <element signature="e#13743#14427#0" expanded="false" />
+                <element signature="e#14469#16717#0" expanded="false" />
+                <element signature="e#14884#15236#0" expanded="false" />
+                <element signature="e#15267#15367#0" expanded="false" />
+                <element signature="e#15402#15505#0" expanded="false" />
+                <element signature="e#16763#17505#0" expanded="false" />
+                <element signature="e#18471#24741#0" expanded="false" />
+                <element signature="e#18617#20605#0" expanded="false" />
+                <element signature="e#19784#20594#0" expanded="false" />
+                <element signature="e#20636#21601#0" expanded="false" />
+                <element signature="e#21631#22596#0" expanded="false" />
+                <element signature="e#22628#23595#0" expanded="false" />
+                <element signature="e#23641#23880#0" expanded="false" />
+                <element signature="e#24775#29345#0" expanded="false" />
+                <element signature="e#24886#28381#0" expanded="false" />
+                <element signature="e#28427#28666#0" expanded="false" />
+                <element signature="e#29402#29608#0" expanded="false" />
+                <element signature="e#29679#29894#0" expanded="false" />
+                <element signature="e#31730#33047#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="gulpfile.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/gulpfile.js">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-80">
-              <caret line="48" column="27" selection-start-line="48" selection-start-column="27" selection-end-line="48" selection-end-column="27" />
-              <folding />
+            <state relative-caret-position="1141">
+              <caret line="456" column="29" selection-start-line="456" selection-start-column="29" selection-end-line="456" selection-end-column="29" />
+              <folding>
+                <element signature="n#style#0;n#select#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#1;n#div#4;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -101,10 +117,10 @@
         <option value="$PROJECT_DIR$/production/js/echart/echart.js" />
         <option value="$PROJECT_DIR$/app.js" />
         <option value="$PROJECT_DIR$/public/js/custom.js" />
-        <option value="$PROJECT_DIR$/src/js/custom.js" />
-        <option value="$PROJECT_DIR$/public/index.html" />
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/gulpfile.js" />
+        <option value="$PROJECT_DIR$/src/js/custom.js" />
+        <option value="$PROJECT_DIR$/public/index.html" />
         <option value="$PROJECT_DIR$/public/js/echart/echart.js" />
       </list>
     </option>
@@ -187,114 +203,11 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="Scope" />
       <pane id="ProjectPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ore-dashboard-beta" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ore-dashboard-beta" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ore-dashboard-beta" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ore-dashboard-beta" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ore-dashboard-beta" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ore-dashboard-beta" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ore-dashboard-beta" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ore-dashboard-beta" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ore-dashboard-beta" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ore-dashboard-beta" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ore-dashboard-beta" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ore-dashboard-beta" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ore-dashboard-beta" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="echart" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
+        <subPane />
       </pane>
+      <pane id="Scratches" />
       <pane id="PackagesPane" />
     </panes>
   </component>
@@ -305,7 +218,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
     <property name="nodejs_interpreter_path" value="/usr/local/bin/node" />
-    <property name="SearchEverywhereHistoryKey" value="echart.j&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/public/js/echart/echart.js&#10;index.html&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/public/index.html&#10;echarts.j&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/vendors/echarts/dist/echarts.js&#10;echart.&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/public/js/echart/echart.js&#10;custom&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/public/js/custom.js&#10;html2canvas&#9;null&#9;null&#10;pack&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/package.json&#10;pdf&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/vendors/pdfmake/build/pdfmake.js&#10;gulpf&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/gulpfile.js&#10;server.&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/node_modules/browser-sync-ui/lib/server.js&#10;echart.js&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/vendors/echarts/dist/echarts.js&#10;index.h&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/vendors/jszip/index.html&#10;index2&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/production/index2.html&#10;index.ht&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/production/index.html&#10;echarts.js&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/vendors/echarts/dist/echarts.js&#10;server.js&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/node_modules/browser-sync-ui/lib/server.js&#10;3000&#9;null&#9;null" />
+    <property name="SearchEverywhereHistoryKey" value="custom.j&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/src/js/custom.js&#10;index.h&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/public/index.html&#10;echart.j&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/public/js/echart/echart.js&#10;index&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/public/index.html&#10;index.html&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/public/index.html&#10;echarts.j&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/vendors/echarts/dist/echarts.js&#10;echart.&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/public/js/echart/echart.js&#10;custom&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/public/js/custom.js&#10;html2canvas&#9;null&#9;null&#10;pack&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/package.json&#10;pdf&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/vendors/pdfmake/build/pdfmake.js&#10;gulpf&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/gulpfile.js&#10;server.&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/node_modules/browser-sync-ui/lib/server.js&#10;echart.js&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/vendors/echarts/dist/echarts.js&#10;index2&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/production/index2.html&#10;index.ht&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/production/index.html&#10;echarts.js&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/vendors/echarts/dist/echarts.js&#10;server.js&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/node_modules/browser-sync-ui/lib/server.js&#10;3000&#9;null&#9;null" />
     <property name="js.buildTools.gulp.gulp_package_dir" value="$PROJECT_DIR$/node_modules/gulp" />
     <property name="js-jscs-nodeInterpreter" value="/usr/local/bin/node" />
     <property name="aspect.path.notification.shown" value="true" />
@@ -320,7 +233,7 @@
       <recent name="$PROJECT_DIR$/public/css" />
     </key>
   </component>
-  <component name="RunManager" selected="Gulp.js.default">
+  <component name="RunManager" selected="Gulp.js.Development server">
     <configuration default="false" name="default" type="js.build_tools.gulp" factoryName="Gulp.js" temporary="true">
       <node-interpreter>project</node-interpreter>
       <node-options />
@@ -385,8 +298,20 @@
       <recursive>false</recursive>
       <method />
     </configuration>
-    <list size="1">
-      <item index="0" class="java.lang.String" itemvalue="Gulp.js.default" />
+    <configuration default="false" name="Development server" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <gulpfile>$PROJECT_DIR$/gulpfile.js</gulpfile>
+      <tasks>
+        <task>dev</task>
+      </tasks>
+      <arguments />
+      <envs />
+      <method />
+    </configuration>
+    <list size="2">
+      <item index="0" class="java.lang.String" itemvalue="Gulp.js.Development server" />
+      <item index="1" class="java.lang.String" itemvalue="Gulp.js.default" />
     </list>
     <recent_temporary>
       <list size="1">
@@ -424,7 +349,8 @@
       <workItem from="1470240814703" duration="22629000" />
       <workItem from="1470475582127" duration="9584000" />
       <workItem from="1470488199841" duration="8672000" />
-      <workItem from="1470499862547" duration="12093000" />
+      <workItem from="1470499862547" duration="12207000" />
+      <workItem from="1470583507212" duration="29461000" />
     </task>
     <task id="LOCAL-00001" summary="package.json updated for local web running">
       <created>1469372595018</created>
@@ -489,25 +415,32 @@
       <option name="project" value="LOCAL" />
       <updated>1470331299775</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="just a tidy up - added a proxy to allow for rest calls to go to a running java instance">
+      <created>1470583848887</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1470583848887</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="99391000" />
+    <option name="totallyTimeSpent" value="128966000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="43" y="23" width="1237" height="777" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
-      <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1513158" sideWeight="0.35585585" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1513158" sideWeight="0.6441441" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13651316" sideWeight="0.4650113" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1513158" sideWeight="0.63581187" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32928678" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32776934" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32776934" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1513158" sideWeight="0.35204855" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3262519" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32776934" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.13722268" sideWeight="0.4356659" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32473445" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32776934" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13651316" sideWeight="0.5349887" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32776934" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1513158" sideWeight="0.35204855" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39908952" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -522,10 +455,10 @@
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32776934" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -547,7 +480,8 @@
     <MESSAGE value="REPOSIT-0000 more refactoring of the custom options" />
     <MESSAGE value="REPOSIT-0000 added marklines and datazoom for exposure profile" />
     <MESSAGE value="REPOSIT-0000 break out dynamic chart options and refactor in preparation for REST calls." />
-    <option name="LAST_COMMIT_MESSAGE" value="REPOSIT-0000 break out dynamic chart options and refactor in preparation for REST calls." />
+    <MESSAGE value="just a tidy up - added a proxy to allow for rest calls to go to a running java instance" />
+    <option name="LAST_COMMIT_MESSAGE" value="just a tidy up - added a proxy to allow for rest calls to go to a running java instance" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -559,18 +493,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/public/other_charts.html" />
-    <entry file="file://$PROJECT_DIR$/public/widgets.html" />
-    <entry file="file://$PROJECT_DIR$/public/general_elements.html" />
-    <entry file="file://$PROJECT_DIR$/public/js/echart/chart-theme.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="2" column="3" selection-start-line="2" selection-start-column="3" selection-end-line="2" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/production/js/echart/echart2.js" />
-    <entry file="file://$PROJECT_DIR$/build/css/custom.min.css" />
     <entry file="file://$PROJECT_DIR$/build/css/custom.css" />
     <entry file="file://$PROJECT_DIR$/public/echarts.html" />
     <entry file="jar://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/lib/JavaScriptLanguage.jar!/com/intellij/lang/javascript/index/predefined/DHTML.js">
@@ -716,13 +638,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/js/bootstrap-date-filter.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="20" column="16" selection-start-line="20" selection-start-column="16" selection-end-line="20" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/calendar.html" />
     <entry file="file://$PROJECT_DIR$/src/js/helpers/fetch.js">
       <provider selected="true" editor-type-id="text-editor">
@@ -801,13 +716,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/js/custom.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="301">
-          <caret line="717" column="0" selection-start-line="717" selection-start-column="0" selection-end-line="717" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/vendors/nprogress/nprogress.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -826,13 +734,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/js/custom.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="385">
-          <caret line="306" column="0" selection-start-line="306" selection-start-column="0" selection-end-line="306" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/vendors/echarts/src/echarts.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
@@ -844,7 +745,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="211">
           <caret line="37" column="29" selection-start-line="37" selection-start-column="29" selection-end-line="37" selection-end-column="29" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -852,63 +752,141 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="171">
           <caret line="1605" column="14" selection-start-line="1605" selection-start-column="14" selection-end-line="1605" selection-end-column="14" />
-          <folding>
-            <marker date="1469189932000" expanded="true" signature="196751:196868" ph="..." />
-            <marker date="1469189932000" expanded="true" signature="1685814:1685823" ph="..." />
-            <marker date="1469189932000" expanded="true" signature="1685877:1685892" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="73">
-          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-          <folding>
-            <element signature="n#li#0;n#ul#0;n#div#0;n#div#3;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#div#4;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/gulpfile.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-80">
-          <caret line="48" column="27" selection-start-line="48" selection-start-column="27" selection-end-line="48" selection-end-column="27" />
+        <state relative-caret-position="280">
+          <caret line="65" column="0" selection-start-line="65" selection-start-column="0" selection-end-line="65" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/css/custom.min.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="138">
+          <caret line="0" column="12999" selection-start-line="0" selection-start-column="12999" selection-end-line="0" selection-end-column="12999" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendors/bootstrap/dist/css/bootstrap.min.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="4" column="116636" selection-start-line="4" selection-start-column="116636" selection-end-line="4" selection-end-column="116636" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendors/echarts-3.2.2/dist/echarts.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendors/select2/dist/css/select2.min.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendors/pnotify/dist/pnotify.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!doc" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/bootstrap-date-filter.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="886">
+          <caret line="71" column="3" selection-start-line="71" selection-start-column="3" selection-end-line="71" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/custom.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="301">
+          <caret line="717" column="0" selection-start-line="717" selection-start-column="0" selection-end-line="717" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendors/echarts-3.2.2/src/echarts.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="201">
+          <caret line="1289" column="12" selection-start-line="1289" selection-start-column="12" selection-end-line="1289" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/js/custom.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="421">
+          <caret line="308" column="0" selection-start-line="308" selection-start-column="0" selection-end-line="308" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1141">
+          <caret line="456" column="29" selection-start-line="456" selection-start-column="29" selection-end-line="456" selection-end-column="29" />
+          <folding>
+            <element signature="n#style#0;n#select#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#4;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/js/echart/echart.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+        <state relative-caret-position="154">
+          <caret line="947" column="0" selection-start-line="947" selection-start-column="0" selection-end-line="947" selection-end-column="0" />
           <folding>
-            <element signature="e#5789#7591#0" expanded="false" />
-            <element signature="e#7620#13079#0" expanded="false" />
-            <element signature="e#13119#14581#0" expanded="false" />
-            <element signature="e#14615#15299#0" expanded="false" />
-            <element signature="e#15341#17634#0" expanded="false" />
-            <element signature="n#!!block;n#eConsole#0" expanded="false" />
-            <marker date="1470520909000" expanded="false" signature="347:5613" ph="{...}" />
-            <marker date="1470520909000" expanded="false" signature="892:1600" ph="{...}" />
-            <marker date="1470520909000" expanded="false" signature="1673:1995" ph="{...}" />
-            <marker date="1470520909000" expanded="false" signature="2024:2346" ph="{...}" />
-            <marker date="1470520909000" expanded="false" signature="2375:2697" ph="{...}" />
-            <marker date="1470520909000" expanded="false" signature="2726:3048" ph="{...}" />
-            <marker date="1470520909000" expanded="false" signature="3078:3400" ph="{...}" />
-            <marker date="1470520909000" expanded="false" signature="3430:3752" ph="{...}" />
-            <marker date="1470520909000" expanded="false" signature="15756:16108" ph="{...}" />
-            <marker date="1470520909000" expanded="false" signature="16139:16239" ph="{...}" />
-            <marker date="1470520909000" expanded="false" signature="16274:16377" ph="{...}" />
-            <marker date="1470520909000" expanded="false" signature="20059:20901" ph="{...}" />
-            <marker date="1470520909000" expanded="false" signature="20924:21734" ph="{&quot;name&quot;: ''...}" />
-            <marker date="1470520909000" expanded="false" signature="21776:22742" ph="{...}" />
-            <marker date="1470520909000" expanded="false" signature="22772:23738" ph="{...}" />
-            <marker date="1470520909000" expanded="false" signature="23770:24738" ph="{...}" />
-            <marker date="1470520909000" expanded="false" signature="25357:25834" ph="{...}" />
-            <marker date="1470520909000" expanded="false" signature="25890:28884" ph="{&quot;name&quot;: 'Risk Gauge'...}" />
+            <element signature="e#345#761#0" expanded="false" />
+            <element signature="e#785#1494#0" expanded="false" />
+            <element signature="e#1567#1889#0" expanded="false" />
+            <element signature="e#1918#2240#0" expanded="false" />
+            <element signature="e#2269#2591#0" expanded="false" />
+            <element signature="e#2620#2942#0" expanded="false" />
+            <element signature="e#2972#3294#0" expanded="false" />
+            <element signature="e#3324#3646#0" expanded="false" />
+            <element signature="e#4769#18435#0" expanded="false" />
+            <element signature="e#4914#6715#0" expanded="false" />
+            <element signature="e#6744#12203#0" expanded="false" />
+            <element signature="e#12243#13709#0" expanded="false" />
+            <element signature="e#13743#14427#0" expanded="false" />
+            <element signature="e#14469#16717#0" expanded="false" />
+            <element signature="e#14884#15236#0" expanded="false" />
+            <element signature="e#15267#15367#0" expanded="false" />
+            <element signature="e#15402#15505#0" expanded="false" />
+            <element signature="e#16763#17505#0" expanded="false" />
+            <element signature="e#18471#24741#0" expanded="false" />
+            <element signature="e#18617#20605#0" expanded="false" />
+            <element signature="e#19784#20594#0" expanded="false" />
+            <element signature="e#20636#21601#0" expanded="false" />
+            <element signature="e#21631#22596#0" expanded="false" />
+            <element signature="e#22628#23595#0" expanded="false" />
+            <element signature="e#23641#23880#0" expanded="false" />
+            <element signature="e#24775#29345#0" expanded="false" />
+            <element signature="e#24886#28381#0" expanded="false" />
+            <element signature="e#28427#28666#0" expanded="false" />
+            <element signature="e#29402#29608#0" expanded="false" />
+            <element signature="e#29679#29894#0" expanded="false" />
+            <element signature="e#31730#33047#0" expanded="false" />
           </folding>
         </state>
       </provider>

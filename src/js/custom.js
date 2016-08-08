@@ -304,3 +304,47 @@ function _AttachEvent(element, type, handler) {
     if (element.addEventListener) element.addEventListener(type, handler, false);
     else element.attachEvent("on" + type, handler);
 }
+
+// check JSON object for child nodes
+function checkNestedFast(obj /*, level1, level2, ... levelN*/) {
+    // eg checkNestedFast(data, 'swap', 'pay_leg', 'has_compounding')
+    for (var i = 1; i < arguments.length; i++) {
+        if (!obj.hasOwnProperty(arguments[i])) {
+            return false;
+        }
+        obj = obj[arguments[i]];
+    }
+    return true;
+}
+
+function isNullOrUndefined(a) {
+    var rc = false;
+
+    if (typeof (a) === "undefined" || a === null) {
+        rc = true;
+    }
+
+    return rc;
+}
+
+function getJSessionId() {
+    var jsId = document.cookie.match(/JSESSIONID=[^;]+/);
+    if (jsId != null) {
+        if (jsId instanceof Array)
+            jsId = jsId[0].substring(11);
+        else
+            jsId = jsId.substring(11);
+    }
+    return jsId;
+}
+
+/**
+ * returns the current context path, ex: http://localhost:8080/MyApp/Controller
+ * returns /MyApp/ ex: http://localhost:8080/MyApp returns /MyApp/ ex:
+ * https://www.example.co.za/ returns /
+ */
+function getContextPath() {
+    var ctx = window.location.pathname, path = '/' !== ctx ? ctx.substring(0,
+        ctx.indexOf('/', 1) + 1) : ctx;
+    return path + (/\/$/.test(path) ? '' : '/');
+}
