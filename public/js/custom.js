@@ -758,11 +758,11 @@ var processStatus = function (response) {
     }
 };
 var parseJson = function (response) {
-    console.info('got json data from server');
+    // console.debug(response);
     return response.json();
 }
 var parseTextResponse = function (response) {
-    console.info('got text data from server');
+    // console.debug(response);
     return response.text();
 }
 
