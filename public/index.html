@@ -20,7 +20,7 @@
     <!-- bootstrap-progressbar -->
     <link href="../vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
     <!-- Select2 -->
-    <link href="../vendors/select2/dist/css/select2.min.css" rel="stylesheet">
+    <!--<link href="../vendors/select2/dist/css/select2.min.css" rel="stylesheet">-->
 
     <!-- Custom Theme Style -->
     <link href="css/custom.min.css" rel="stylesheet">
@@ -96,8 +96,7 @@
                         <div class="form-group filter pull-left">
                             <!--<label class="control-label col-md-2 col-sm-2 col-xs-12">Hierarchy level</label>-->
                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                <!--<select class="select2_single form-control">-->
-                                    <select id="businessDates" class="select2_single" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc">
+                                <select class="selectpicker" data-live-search="true" data-size="7" id="businessDates">
                                     <option>Choose Business Date</option>
                                 </select>
                             </div>
@@ -106,7 +105,7 @@
                         <div class="form-group filter">
                             <!--<label class="control-label col-md-2 col-sm-2 col-xs-12">Hierarchy level</label>-->
                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                <select class="select2_single form-control">
+                                <select class="selectpicker">
                                     <!--<select style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc">-->
                                     <option>Choose Hierarchy</option>
                                     <option>Total</option>
@@ -119,14 +118,6 @@
                         </div>
                     </div>
                     <div class="x_content">
-                        <div class="filter clearfix">
-                            <div id="reportrange" class="pull-left"
-                                 style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc">
-                                <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
-                                <span>December 30, 2014 - January 28, 2015</span> <b class="caret"></b>
-                            </div>
-                        </div>
-
                         <div class="col-md-6 col-sm-12 col-xs-12">
                             <div class="demo-container" style="height:350px">
                                 <div id="line_total_exposure" style="height:350px;"></div>
@@ -461,6 +452,7 @@
 
         // add a change event handler to the bus dates dropdown
         _AttachEvent(document.getElementById("businessDates"), "change", chartManager.setNewBusDate);
+//        _AttachEvent(document.getElementById("select2-businessDates-container"), "click", chartManager.setNewBusDate);
     }
 
     window.onload = load_;

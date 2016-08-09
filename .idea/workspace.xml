@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="caa21dc2-8a18-41a2-9fb6-7ca5b9d0c280" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gulpfile.js" afterPath="$PROJECT_DIR$/gulpfile.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/index.html" afterPath="$PROJECT_DIR$/public/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/echart/echart.js" afterPath="$PROJECT_DIR$/public/js/echart/echart.js" />
     </list>
@@ -31,9 +30,10 @@
       <file leaf-file-name="echart.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/public/js/echart/echart.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="511">
-              <caret line="981" column="31" selection-start-line="981" selection-start-column="31" selection-end-line="981" selection-end-column="31" />
+            <state relative-caret-position="-360">
+              <caret line="845" column="20" selection-start-line="845" selection-start-column="20" selection-end-line="845" selection-end-column="20" />
               <folding>
+                <element signature="e#282#4776#0" expanded="false" />
                 <element signature="e#387#803#0" expanded="false" />
                 <element signature="e#827#1536#0" expanded="false" />
                 <element signature="e#1609#1931#0" expanded="false" />
@@ -42,40 +42,29 @@
                 <element signature="e#2662#2984#0" expanded="false" />
                 <element signature="e#3014#3336#0" expanded="false" />
                 <element signature="e#3366#3688#0" expanded="false" />
-                <element signature="e#4811#18477#0" expanded="false" />
+                <element signature="e#4811#18632#0" expanded="false" />
                 <element signature="e#4956#6757#0" expanded="false" />
                 <element signature="e#6786#12245#0" expanded="false" />
-                <element signature="e#12285#13751#0" expanded="false" />
-                <element signature="e#13785#14469#0" expanded="false" />
-                <element signature="e#14511#16759#0" expanded="false" />
-                <element signature="e#14926#15278#0" expanded="false" />
-                <element signature="e#15309#15409#0" expanded="false" />
-                <element signature="e#15444#15547#0" expanded="false" />
-                <element signature="e#16805#17547#0" expanded="false" />
-                <element signature="e#18513#24783#0" expanded="false" />
-                <element signature="e#18659#20647#0" expanded="false" />
-                <element signature="e#19826#20636#0" expanded="false" />
-                <element signature="e#20678#21643#0" expanded="false" />
-                <element signature="e#21673#22638#0" expanded="false" />
-                <element signature="e#22670#23637#0" expanded="false" />
-                <element signature="e#23683#23922#0" expanded="false" />
-                <element signature="e#24817#29387#0" expanded="false" />
-                <element signature="e#24928#28423#0" expanded="false" />
-                <element signature="e#28469#28708#0" expanded="false" />
-                <element signature="e#29721#29936#0" expanded="false" />
-                <element signature="e#31780#33097#0" expanded="false" />
-                <marker date="1470730234000" expanded="false" signature="29444:29650" ph="{...}" />
+                <element signature="e#12285#13900#0" expanded="false" />
+                <element signature="e#13934#14618#0" expanded="false" />
+                <element signature="e#14660#16908#0" expanded="false" />
+                <element signature="e#15075#15427#0" expanded="false" />
+                <element signature="e#15458#15558#0" expanded="false" />
+                <element signature="e#15593#15696#0" expanded="false" />
+                <element signature="e#18668#24938#0" expanded="false" />
+                <element signature="e#18814#20802#0" expanded="false" />
+                <element signature="e#19981#20791#0" expanded="false" />
+                <element signature="e#20833#21798#0" expanded="false" />
+                <element signature="e#21828#22793#0" expanded="false" />
+                <element signature="e#22825#23792#0" expanded="false" />
+                <element signature="e#23838#24077#0" expanded="false" />
+                <element signature="e#24972#29542#0" expanded="false" />
+                <element signature="e#25083#28578#0" expanded="false" />
+                <element signature="e#28624#28863#0" expanded="false" />
+                <element signature="e#29876#30091#0" expanded="false" />
+                <element signature="e#31937#33254#0" expanded="false" />
+                <marker date="1470744239000" expanded="false" signature="29599:29805" ph="{...}" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="gulpfile.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/gulpfile.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="57" column="27" selection-start-line="57" selection-start-column="27" selection-end-line="57" selection-end-column="27" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -83,13 +72,11 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="28" column="21" selection-start-line="28" selection-start-column="21" selection-end-line="28" selection-end-column="21" />
+            <state relative-caret-position="85">
+              <caret line="120" column="0" selection-start-line="120" selection-start-column="0" selection-end-line="120" selection-end-column="0" />
               <folding>
-                <element signature="n#style#0;n#select#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#div#1;n#div#4;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
             </state>
@@ -225,7 +212,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
     <property name="nodejs_interpreter_path" value="/usr/local/bin/node" />
-    <property name="SearchEverywhereHistoryKey" value="custom.j&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/src/js/custom.js&#10;index.h&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/public/index.html&#10;echart.j&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/public/js/echart/echart.js&#10;index&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/public/index.html&#10;index.html&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/public/index.html&#10;echarts.j&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/vendors/echarts/dist/echarts.js&#10;echart.&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/public/js/echart/echart.js&#10;custom&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/public/js/custom.js&#10;html2canvas&#9;null&#9;null&#10;pack&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/package.json&#10;pdf&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/vendors/pdfmake/build/pdfmake.js&#10;gulpf&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/gulpfile.js&#10;server.&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/node_modules/browser-sync-ui/lib/server.js&#10;echart.js&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/vendors/echarts/dist/echarts.js&#10;index2&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/production/index2.html&#10;index.ht&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/production/index.html&#10;echarts.js&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/vendors/echarts/dist/echarts.js&#10;server.js&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/node_modules/browser-sync-ui/lib/server.js&#10;3000&#9;null&#9;null" />
+    <property name="SearchEverywhereHistoryKey" value="populate&#9;null&#9;null&#10;custom.j&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/src/js/custom.js&#10;index.h&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/public/index.html&#10;echart.j&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/public/js/echart/echart.js&#10;index&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/public/index.html&#10;index.html&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/public/index.html&#10;echarts.j&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/vendors/echarts/dist/echarts.js&#10;echart.&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/public/js/echart/echart.js&#10;custom&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/public/js/custom.js&#10;html2canvas&#9;null&#9;null&#10;pack&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/package.json&#10;pdf&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/vendors/pdfmake/build/pdfmake.js&#10;gulpf&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/gulpfile.js&#10;server.&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/node_modules/browser-sync-ui/lib/server.js&#10;echart.js&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/vendors/echarts/dist/echarts.js&#10;index2&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/production/index2.html&#10;index.ht&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/production/index.html&#10;echarts.js&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/vendors/echarts/dist/echarts.js&#10;server.js&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/node_modules/browser-sync-ui/lib/server.js&#10;3000&#9;null&#9;null" />
     <property name="js.buildTools.gulp.gulp_package_dir" value="$PROJECT_DIR$/node_modules/gulp" />
     <property name="js-jscs-nodeInterpreter" value="/usr/local/bin/node" />
     <property name="aspect.path.notification.shown" value="true" />
@@ -357,7 +344,7 @@
       <workItem from="1470475582127" duration="9584000" />
       <workItem from="1470488199841" duration="8672000" />
       <workItem from="1470499862547" duration="12207000" />
-      <workItem from="1470583507212" duration="34281000" />
+      <workItem from="1470583507212" duration="38357000" />
     </task>
     <task id="LOCAL-00001" summary="package.json updated for local web running">
       <created>1469372595018</created>
@@ -433,7 +420,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="133786000" />
+    <option name="totallyTimeSpent" value="137862000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="43" y="23" width="1237" height="777" extended-state="6" />
@@ -838,21 +825,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/gulpfile.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="57" column="27" selection-start-line="57" selection-start-column="27" selection-end-line="57" selection-end-column="27" />
+        <state relative-caret-position="129">
+          <caret line="57" column="27" selection-start-line="57" selection-start-column="26" selection-end-line="57" selection-end-column="27" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="28" column="21" selection-start-line="28" selection-start-column="21" selection-end-line="28" selection-end-column="21" />
+        <state relative-caret-position="85">
+          <caret line="120" column="0" selection-start-line="120" selection-start-column="0" selection-end-line="120" selection-end-column="0" />
           <folding>
-            <element signature="n#style#0;n#select#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#1;n#div#4;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
@@ -860,9 +845,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/public/js/echart/echart.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="511">
-          <caret line="981" column="31" selection-start-line="981" selection-start-column="31" selection-end-line="981" selection-end-column="31" />
+        <state relative-caret-position="-360">
+          <caret line="845" column="20" selection-start-line="845" selection-start-column="20" selection-end-line="845" selection-end-column="20" />
           <folding>
+            <element signature="e#282#4776#0" expanded="false" />
             <element signature="e#387#803#0" expanded="false" />
             <element signature="e#827#1536#0" expanded="false" />
             <element signature="e#1609#1931#0" expanded="false" />
@@ -871,29 +857,28 @@
             <element signature="e#2662#2984#0" expanded="false" />
             <element signature="e#3014#3336#0" expanded="false" />
             <element signature="e#3366#3688#0" expanded="false" />
-            <element signature="e#4811#18477#0" expanded="false" />
+            <element signature="e#4811#18632#0" expanded="false" />
             <element signature="e#4956#6757#0" expanded="false" />
             <element signature="e#6786#12245#0" expanded="false" />
-            <element signature="e#12285#13751#0" expanded="false" />
-            <element signature="e#13785#14469#0" expanded="false" />
-            <element signature="e#14511#16759#0" expanded="false" />
-            <element signature="e#14926#15278#0" expanded="false" />
-            <element signature="e#15309#15409#0" expanded="false" />
-            <element signature="e#15444#15547#0" expanded="false" />
-            <element signature="e#16805#17547#0" expanded="false" />
-            <element signature="e#18513#24783#0" expanded="false" />
-            <element signature="e#18659#20647#0" expanded="false" />
-            <element signature="e#19826#20636#0" expanded="false" />
-            <element signature="e#20678#21643#0" expanded="false" />
-            <element signature="e#21673#22638#0" expanded="false" />
-            <element signature="e#22670#23637#0" expanded="false" />
-            <element signature="e#23683#23922#0" expanded="false" />
-            <element signature="e#24817#29387#0" expanded="false" />
-            <element signature="e#24928#28423#0" expanded="false" />
-            <element signature="e#28469#28708#0" expanded="false" />
-            <element signature="e#29721#29936#0" expanded="false" />
-            <element signature="e#31780#33097#0" expanded="false" />
-            <marker date="1470730234000" expanded="false" signature="29444:29650" ph="{...}" />
+            <element signature="e#12285#13900#0" expanded="false" />
+            <element signature="e#13934#14618#0" expanded="false" />
+            <element signature="e#14660#16908#0" expanded="false" />
+            <element signature="e#15075#15427#0" expanded="false" />
+            <element signature="e#15458#15558#0" expanded="false" />
+            <element signature="e#15593#15696#0" expanded="false" />
+            <element signature="e#18668#24938#0" expanded="false" />
+            <element signature="e#18814#20802#0" expanded="false" />
+            <element signature="e#19981#20791#0" expanded="false" />
+            <element signature="e#20833#21798#0" expanded="false" />
+            <element signature="e#21828#22793#0" expanded="false" />
+            <element signature="e#22825#23792#0" expanded="false" />
+            <element signature="e#23838#24077#0" expanded="false" />
+            <element signature="e#24972#29542#0" expanded="false" />
+            <element signature="e#25083#28578#0" expanded="false" />
+            <element signature="e#28624#28863#0" expanded="false" />
+            <element signature="e#29876#30091#0" expanded="false" />
+            <element signature="e#31937#33254#0" expanded="false" />
+            <marker date="1470744239000" expanded="false" signature="29599:29805" ph="{...}" />
           </folding>
         </state>
       </provider>

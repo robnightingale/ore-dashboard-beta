@@ -275,7 +275,7 @@ var LINECharts = (function () {
         var total_exposure_options = {
 
             title: {
-                text: 'Total ¡Exposure',
+                text: 'Total Exposure',
                 subtext: 'Subtitle'
             },
             tooltip: {
@@ -311,6 +311,12 @@ var LINECharts = (function () {
                         title: "Save Image"
                     }
                 }
+            },
+            dataZoom: {
+                show: true,
+                realtime: true,
+                start: 0,
+                end: 100
             },
             calculable: true,
             xAxis: [{
@@ -434,8 +440,8 @@ var LINECharts = (function () {
 
         // expose a few methods and properties
         return {
-            getTotalExposure: line_total_exposure,
-            getProjection: line_exposure_profile,
+            // getTotalExposure: line_total_exposure,
+            // getProjection: line_exposure_profile,
             initAllCharts: initialiseAllCharts,
             setNewData: setNewData,
             loadData: loadData
@@ -851,7 +857,7 @@ var chartManager = {
         fnLoadData_(theChart_, data_);
         theChart_.on('click', this.eConsole);
     },
-    getChartInstanceByDivId: function (chartTagName_) {
+    getChartInstanceFromDivId: function (chartTagName_) {
         var theChart_ = echarts.getInstanceByDom(document.getElementById(chartTagName_));
         return theChart_;
     },
@@ -940,16 +946,8 @@ var chartManager = {
             }
         });
     },
-    populateBusinessDates: function (evt) {
-        // TODO hook up eventHandler
-        // if (isNullOrUndefined(evt))
-        //     return;
-        //
-        // evt = evt || window.event;
-        // var target = evt.target || evt.srcElement;
-
+    populateBusinessDates: function () {
         try {
-            // var sel = document.getElementById(target.id);
             var sel = document.getElementById('businessDates');
             // zero out the existing options
             sel.options.length = 0;
@@ -959,8 +957,9 @@ var chartManager = {
             return busDateList_.then(function (response) {
                 response.forEach(function (dcc, index) {
                     var opt = document.createElement('option');
-                    // opt.innerHTML = dcc;
+                    // nice format for the user to see
                     opt.innerHTML = moment(dcc,'YYYYMMDD').format('DD-MMM-YYYY');
+                    // nice format for the computer to see
                     opt.value = dcc;
                     fragment.appendChild(opt);
                 });
@@ -981,5 +980,15 @@ var chartManager = {
         // console.debug(target);
         // set the hidden field
         selectedBusdate.value = target.value;
+    },
+    setNewCounterparty: function(evt){
+        if (isNullOrUndefined(evt))
+            return;
+
+        evt = evt || window.event;
+        var target = evt.target || evt.srcElement;
+        // set the hidden field
+        selectedCounterparty.value = target.value;
     }
+
 }
