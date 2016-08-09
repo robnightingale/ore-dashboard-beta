@@ -1,6 +1,7 @@
 $(window).load(function () {
     console.log('[INFO] ORE Dashboard.init');
     chartManager.initAllCharts();
+    chartManager.populateBusinessDates();
     console.log('[INFO] ORE Dashboard init completed');
 });
 
@@ -872,19 +873,22 @@ var chartManager = {
     },
     getDataFromRestCall: function (url_) {
 
+        var req_ = new Request();
+        req_.headers = {
+            'Cache-Control': 'no-cache',
+            'If-Modified-Since': '0',
+            'Accept': 'application/json'
+        };
+        req_.method = 'GET';
+        req_.mode = 'cors';
+        req_.credentials = 'same-origin';
+
         var theUrl_ = window.location.protocol + '//' + window.location.host + url_;
 
+        console.debug(req_);
+
         return fetch(
-            theUrl_, {
-                method: 'GET',
-                mode: 'same-origin',
-                headers: {
-                    'Cache-Control': 'no-cache',
-                    'If-Modified-Since': '0',
-                    'Accept': 'application/json'
-                },
-                credentials: 'same-origin'
-            })
+            theUrl_, req_)
             .then(processStatus)
             .then(parseJson)
             .then(function (response) {
@@ -936,21 +940,27 @@ var chartManager = {
             }
         });
     },
-    populateBusinessDates: function (source) {
-        if (isNullOrUndefined(source))
-            return;
+    populateBusinessDates: function (evt) {
+        // TODO hook up eventHandler
+        // if (isNullOrUndefined(evt))
+        //     return;
+        //
+        // evt = evt || window.event;
+        // var target = evt.target || evt.srcElement;
 
         try {
-            var sel = document.getElementById(source.currentTarget);
+            // var sel = document.getElementById(target.id);
+            var sel = document.getElementById('businessDates');
             // zero out the existing options
             sel.options.length = 0;
 
             var fragment = document.createDocumentFragment();
-            var busDateList_ = this.getDataFromRestCall('/api/businessdates/');
+            var busDateList_ = chartManager.getDataFromRestCall('/api/businessdates/');
             return busDateList_.then(function (response) {
                 response.forEach(function (dcc, index) {
                     var opt = document.createElement('option');
-                    opt.innerHTML = dcc;
+                    // opt.innerHTML = dcc;
+                    opt.innerHTML = moment(dcc,'YYYYMMDD').format('DD-MMM-YYYY');
                     opt.value = dcc;
                     fragment.appendChild(opt);
                 });
@@ -962,4 +972,14 @@ var chartManager = {
             console.error(new Error(e));
         }
     },
+    setNewBusDate: function(evt){
+        if (isNullOrUndefined(evt))
+            return;
+
+        evt = evt || window.event;
+        var target = evt.target || evt.srcElement;
+        // console.debug(target);
+        // set the hidden field
+        selectedBusdate.value = target.value;
+    }
 }

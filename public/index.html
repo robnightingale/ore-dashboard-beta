@@ -28,10 +28,10 @@
 
 <body class="nav-sm">
 <div class="container body" id="export_me_">
-    <input type="hidden" value="2016-03-01" id="busdate" name="busdate"/>
-    <input type="hidden" value="AAA" id="creditrating" name="creditrating"/>
-    <input type="hidden" value="CSA_1" id="counterparty" name="counterparty"/>
-    <input type="hidden" value="CSA_1" id="nettingset" name="nettingset"/>
+    <input type="hidden" value="" id="selectedBusdate" name="busdate"/>
+    <input type="hidden" value="" id="selectedCreditrating" name="creditrating"/>
+    <input type="hidden" value="" id="selectedCounterparty" name="counterparty"/>
+    <input type="hidden" value="" id="selectedNettingset" name="nettingset"/>
 
     <div class="main_container">
         <div class="col-md-3 left_col">
@@ -459,8 +459,8 @@
 //            allowClear: true
 //        });
 
-        _AttachEvent(document.getElementById("businessDates"), "click", chartManager.populateBusinessDates);
-//        _AttachEvent(document.getElementById("businessDates"), "change", chartManager.populateBusinessDates);
+        // add a change event handler to the bus dates dropdown
+        _AttachEvent(document.getElementById("businessDates"), "change", chartManager.setNewBusDate);
     }
 
     window.onload = load_;

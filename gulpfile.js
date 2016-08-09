@@ -54,7 +54,10 @@ gulp.task('watch', function() {
 });
 
 gulp.task('browser-sync', function() {
-    var proxyOptions = url.parse('http://localhost:5000/api');
+    // use this for when you are running the spark locally
+    // via heroku local web
+    // var proxyOptions = url.parse('http://localhost:5000/api');
+    var proxyOptions = url.parse('http://atomic-staircase.herokuapp.com/api');
     proxyOptions.route = '/api';
     // requests to `/api/x/y/z` are proxied to `http://localhost:5000/secret-api`
 
