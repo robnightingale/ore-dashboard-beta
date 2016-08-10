@@ -28,10 +28,11 @@
 
 <body class="nav-sm">
 <div class="container body" id="export_me_">
-    <input type="hidden" value="" id="selectedBusdate" name="busdate"/>
-    <input type="hidden" value="" id="selectedCreditrating" name="creditrating"/>
-    <input type="hidden" value="" id="selectedCounterparty" name="counterparty"/>
-    <input type="hidden" value="" id="selectedNettingset" name="nettingset"/>
+    <!-- some defaults for starters -->
+    <input type="hidden" value="20150630" id="selectedBusdate" name="busdate"/>
+    <input type="hidden" value="AAA" id="selectedCreditrating" name="creditrating"/>
+    <input type="hidden" value="CUST_A" id="selectedCounterparty" name="counterparty"/>
+    <input type="hidden" value="CSA_1" id="selectedNettingset" name="nettingset"/>
 
     <div class="main_container">
         <div class="col-md-3 left_col">
@@ -92,6 +93,15 @@
                 <div class="col-md-12">
                     <div class="x_title clearfix">
                         <h2>Portfolio XYZ</h2>
+
+                        <div class="container">
+                            <ol class="breadcrumb">
+                                <li><a href="#">Home</a></li>
+                                <li><a href="#">Credit</a></li>
+                                <li><a href="#">Counter</a></li>
+                                <li><a href="#">Netting</a></li>
+                            </ol>
+                        </div>
 
                         <div class="form-group filter pull-left">
                             <!--<label class="control-label col-md-2 col-sm-2 col-xs-12">Hierarchy level</label>-->

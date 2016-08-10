@@ -25,6 +25,25 @@ var BARCharts = (function () {
                 legend: [{data: data_.yaxisLabels}],
                 yAxis: [{data: data_.yaxisLabels}]
             });
+
+
+            // var yaxisLabels = [];
+            // var yaxisValues = [];
+            // data_.data.forEach(function(elem,index){
+            //     yaxisLabels.push(elem.name);
+            //     yaxisValues.push(elem.value);
+            // });
+            //
+            // chart_.setOption({
+            //     series: [{
+            //         type: 'bar',
+            //         data: yaxisValues,
+            //         name: 'vv' || data_.seriesName
+            //     }],
+            //     title: [{text: 'xVA' || data_.title, subtext: '.' || data_.subTitleText}],
+            //     legend: [{data: yaxisLabels}],
+            //     yAxis: [{data: yaxisLabels}]
+            // });
         }
 
         var options = {
@@ -59,12 +78,12 @@ var BARCharts = (function () {
 
 
         function initialiseAllCharts() {
-            chartManager.initChart('bar_1', options, get_ce_data(), setNewData);
-            chartManager.initChart('bar_2', options, get_npv_data(), setNewData);
-            chartManager.initChart('bar_3', options, get_fca_data(), setNewData);
-            chartManager.initChart('bar_4', options, get_eepe_data(), setNewData);
-            chartManager.initChart('bar_5', options, get_npv2_data(), setNewData);
-            chartManager.initChart('bar_6', options, get_fba_data(), setNewData);
+            chartManager.initChart('bar_1', options, getBar1Data(), setNewData);
+            chartManager.initChart('bar_2', options, getBar2Data(), setNewData);
+            chartManager.initChart('bar_3', options, getBar3Data(), setNewData);
+            chartManager.initChart('bar_4', options, getBar5Data(), setNewData);
+            chartManager.initChart('bar_5', options, getBar6Data(), setNewData);
+            chartManager.initChart('bar_6', options, getBar4Data(), setNewData);
         }
 
         function loadData(chart_, data_) {
@@ -235,26 +254,110 @@ var LINECharts = (function () {
         };
 
         function setNewData(chart_, data_) {
-            data_.series.forEach(function (elem) {
-                // only add marklines for exposure profile graph
-                if (chart_.getOption().title[0].text == 'Exposure Profile')
-                    elem.markLine = profile_marklines;
-                elem.type = 'line';
-                elem.smooth = true;
-                elem.itemStyle = {
-                    normal: {
-                        areaStyle: {
-                            type: 'default'
-                        }
-                    }
-                };
-            });
+            if (chart_.getOption().title[0].text == 'Exposure Profile'){
+                // yuk
+                var xAxisData_ = data_.dates;
+                var series_0 = {
+                    name: "EPE",
+                    data: data_.epes
+                }
+                var series_1 = {
+                    name: "PFE",
+                    data: data_.pfes
+                }
+                var series_ = []
+                series_.push(series_0);
+                series_.push((series_1));
 
-            chart_.setOption({
-                legend: [{data: data_.legend}],
-                xAxis: [{data: data_.xAxisData}],
-                series: data_.series
-            });
+                series_.forEach(function (elem) {
+                    // only add marklines for exposure profile graph
+                    if (chart_.getOption().title[0].text == 'Exposure Profile')
+                        elem.markLine = profile_marklines;
+                    elem.type = 'line';
+                    elem.smooth = true;
+                    elem.itemStyle = {
+                        normal: {
+                            areaStyle: {
+                                type: 'default'
+                            }
+                        }
+                    };
+                });
+
+                chart_.setOption({
+                    legend: [{data: data_.name}],
+                    xAxis: [{data: xAxisData_}],
+                    series: series_
+                });
+
+            } else {
+                // data_.series.forEach(function (elem) {
+                //     only add marklines for exposure profile graph
+                    // if (chart_.getOption().title[0].text == 'Exposure Profile')
+                    //     elem.markLine = profile_marklines;
+                    // elem.type = 'line';
+                    // elem.smooth = true;
+                    // elem.itemStyle = {
+                    //     normal: {
+                    //         areaStyle: {
+                    //             type: 'default'
+                    //         }
+                    //     }
+                    // };
+                // });
+                //
+                // chart_.setOption({
+                //     legend: [{data: data_.legend}],
+                //     xAxis: [{data: data_.xAxisData}],
+                //     series: data_.series
+                // });
+
+                // yuk
+                var xAxisData_ = data_.dates;
+                var series_0 = {
+                    name: "NPV",
+                    data: data_.npvs
+                }
+                var series_1 = {
+                    name: "CE",
+                    data: data_.ces
+                }
+                var series_2 = {
+                    name: "EEPE",
+                    data: data_.eepes
+                }
+                var series_3 = {
+                    name: "Total",
+                    data: data_.tes
+                }
+                var series_ = []
+                series_.push(series_0);
+                series_.push((series_1));
+                series_.push((series_2));
+                series_.push((series_3));
+
+                series_.forEach(function (elem) {
+                    // only add marklines for exposure profile graph
+                    if (chart_.getOption().title[0].text == 'Exposure Profile')
+                        elem.markLine = profile_marklines;
+                    elem.type = 'line';
+                    elem.smooth = true;
+                    elem.itemStyle = {
+                        normal: {
+                            areaStyle: {
+                                type: 'default'
+                            }
+                        }
+                    };
+                });
+
+                chart_.setOption({
+                    legend: [{data: data_.name}],
+                    xAxis: [{data: xAxisData_}],
+                    series: series_
+                });
+
+            }
         }
 
         function initialiseAllCharts() {
@@ -365,10 +468,10 @@ var DONUTCharts = (function () {
         function setNewData(chart_, data_) {
             chart_.setOption({
                 series: [{
-                    data: data_.yaxisValues,
-                    name: data_.title
+                    data: data_.data,
+                    name: data_.name
                 }],
-                legend: {data: data_.yaxisLabels}
+                legend: {data: data_.labels}
             });
 
         }
@@ -576,8 +679,11 @@ var chartManager = {
     initChart: function (chartTagName_, options, data_, fnLoadData_) {
         var theChart_ = echarts.init(document.getElementById(chartTagName_), theme);
         theChart_.setOption(options);
-        fnLoadData_(theChart_, data_);
         theChart_.on('click', this.eConsole);
+        // once data is resolved, render it
+        Promise.resolve(data_).then(function(res){
+        fnLoadData_(theChart_, res);
+        });
     },
     getChartInstanceFromDivId: function (chartTagName_) {
         var theChart_ = echarts.getInstanceByDom(document.getElementById(chartTagName_));
@@ -601,12 +707,14 @@ var chartManager = {
     },
     getDataFromRestCall: function (url_) {
 
-        var req_ = new Request();
-        req_.headers = {
-            'Cache-Control': 'no-cache',
-            'If-Modified-Since': '0',
-            'Accept': 'application/json'
-        };
+        var req_ = new Request({
+                headers: {
+                    'Cache-Control': 'no-cache',
+                    'If-Modified-Since': '0',
+                    'Accept': 'application/json'
+                }
+            }
+        );
         req_.method = 'GET';
         req_.mode = 'cors';
         req_.credentials = 'same-origin';
@@ -674,7 +782,7 @@ var chartManager = {
             sel.options.length = 0;
 
             var fragment = document.createDocumentFragment();
-            var busDateList_ = chartManager.getDataFromRestCall('/api/businessdates/');
+            var busDateList_ = chartManager.getDataFromRestCall('/api/dates/');
             return busDateList_.then(function (response) {
                 response.forEach(function (dcc, index) {
                     var opt = document.createElement('option');
@@ -714,137 +822,86 @@ var chartManager = {
 
 }
 
-function getTotalExposureData(){
-    var total_Data = {
-        legend: ['NPV', 'CE', 'EEPE', 'Total Exp'],
-        xAxisData: ['Week1', 'Week2', 'Week3', 'Week4'],
-        series: [{
-            name: 'NPV',
-            type: 'line',
-            smooth: true,
-            itemStyle: {
-                normal: {
-                    areaStyle: {
-                        type: 'default'
-                    }
-                }
-            },
-            data: [-668637914.7, -668637914.7 / 2, -668637714.7 / 2.5, -668637614.7 / 3]
-        }, {
-            name: 'CE',
-            type: 'line',
-            smooth: true,
-            itemStyle: {
-                normal: {
-                    areaStyle: {
-                        type: 'default'
-                    }
-                }
-            },
-            data: [763327844.8, 763327844.8 / 2, 763327844.8 / 2.5, 763327844.8 / 3]
-        }, {
-            name: 'EEPE',
-            type: 'line',
-            smooth: true,
-            itemStyle: {
-                normal: {
-                    areaStyle: {
-                        type: 'default'
-                    }
-                }
-            },
-            data: [763327844.8, 763327844.8 / 2, 763327844.8 / 2.5, 763327844.8 / 3]
-        }, {
-            name: 'Total Exp',
-            type: 'line',
-            smooth: true,
-            itemStyle: {
-                normal: {
-                    areaStyle: {
-                        type: 'default'
-                    }
-                }
-            },
-            data: [763327844.8 * 2, 763327844.8 * 2 / 1.2, 763327844.8 * 2 / 1.3, 763327844.8 * 2 / 1.4]
-        }
-        ]
+function getTotalExposureData(key_){
+    // var total_Data = {
+    //     legend: ['NPV', 'CE', 'EEPE', 'Total Exp'],
+    //     xAxisData: ['Week1', 'Week2', 'Week3', 'Week4'],
+    //     series: [{
+    //         name: 'NPV',
+    //         type: 'line',
+    //         smooth: true,
+    //         itemStyle: {
+    //             normal: {
+    //                 areaStyle: {
+    //                     type: 'default'
+    //                 }
+    //             }
+    //         },
+    //         data: [-668637914.7, -668637914.7 / 2, -668637714.7 / 2.5, -668637614.7 / 3]
+    //     }, {
+    //         name: 'CE',
+    //         type: 'line',
+    //         smooth: true,
+    //         itemStyle: {
+    //             normal: {
+    //                 areaStyle: {
+    //                     type: 'default'
+    //                 }
+    //             }
+    //         },
+    //         data: [763327844.8, 763327844.8 / 2, 763327844.8 / 2.5, 763327844.8 / 3]
+    //     }, {
+    //         name: 'EEPE',
+    //         type: 'line',
+    //         smooth: true,
+    //         itemStyle: {
+    //             normal: {
+    //                 areaStyle: {
+    //                     type: 'default'
+    //                 }
+    //             }
+    //         },
+    //         data: [763327844.8, 763327844.8 / 2, 763327844.8 / 2.5, 763327844.8 / 3]
+    //     }, {
+    //         name: 'Total Exp',
+    //         type: 'line',
+    //         smooth: true,
+    //         itemStyle: {
+    //             normal: {
+    //                 areaStyle: {
+    //                     type: 'default'
+    //                 }
+    //             }
+    //         },
+    //         data: [763327844.8 * 2, 763327844.8 * 2 / 1.2, 763327844.8 * 2 / 1.3, 763327844.8 * 2 / 1.4]
+    //     }
+    //     ]
+    //
+    // };
+    // return total_Data;
+    var key__ = '/api/totalexposure-tree/total/Total/';
 
-    };
-    return total_Data;
+    // returns a promise (future)
+    return chartManager.getDataFromRestCall(key__);
+
 }
 
-function getExposureProfileData(){
-    var profile_Data = {
-        xAxisData: ['3/1/2016', '6/1/2016', '9/1/2016', '12/1/2016', '3/1/2017',
-            '6/1/2017', '9/1/2017', '12/1/2017', '3/1/2018', '6/1/2018', '9/4/2018',
-            '12/3/2018', '3/1/2019', '6/3/2019', '9/3/2019', '12/2/2019', '3/2/2020',
-            '6/2/2020', '9/1/2020', '12/1/2020', '3/1/2021', '6/1/2021', '9/1/2021',
-            '12/1/2021', '3/1/2022', '6/1/2022', '9/1/2022', '12/1/2022', '3/1/2023',
-            '6/1/2023', '9/1/2023', '12/1/2023', '3/1/2024', '6/3/2024', '9/3/2024',
-            '12/2/2024', '3/3/2025', '6/2/2025', '9/2/2025', '12/1/2025', '3/2/2026',
-            '6/1/2026', '9/1/2026', '12/1/2026', '3/1/2027', '6/1/2027', '9/1/2027',
-            '12/1/2027', '3/1/2028', '6/1/2028', '9/1/2028', '12/1/2028', '3/1/2029',
-            '6/1/2029', '9/4/2029', '12/3/2029', '3/1/2030', '6/3/2030', '9/3/2030',
-            '12/2/2030', '3/3/2031', '6/3/2031', '9/2/2031', '12/1/2031', '3/1/2032',
-            '6/1/2032', '9/1/2032', '12/1/2032', '3/1/2033', '6/1/2033', '9/1/2033',
-            '12/1/2033', '3/1/2034', '6/1/2034', '9/1/2034', '12/1/2034', '3/1/2035',
-            '6/1/2035', '9/4/2035', '12/3/2035', '3/3/2036', '6/3/2036', '9/2/2036',
-            '12/1/2036', '3/2/2037', '6/1/2037', '9/1/2037', '12/1/2037', '3/1/2038',
-            '6/1/2038', '9/1/2038', '12/1/2038', '3/1/2039', '6/1/2039', '9/1/2039',
-            '12/1/2039', '3/1/2040', '6/1/2040', '9/4/2040', '12/3/2040', '3/1/2041',
-            '6/3/2041', '9/3/2041', '12/2/2041', '3/3/2042', '6/2/2042', '9/2/2042',
-            '12/1/2042', '3/2/2043', '6/1/2043', '9/1/2043', '12/1/2043', '3/1/2044',
-            '6/1/2044', '9/1/2044', '12/1/2044', '3/1/2045', '6/1/2045', '9/1/2045',
-            '12/1/2045', '3/1/2046'],
-        series: [{
-            name: 'EPE',
-            data: ['0', '0', '1900', '28100', '29900', '95200', '108000', '331000',
-                '301000', '521000', '557000', '906000', '834000', '1140000', '1110000',
-                '1580000', '1430000', '1810000', '1820000', '2320000', '2080000', '2480000',
-                '2500000', '2780000', '2600000', '2900000', '2870000', '3020000', '2740000',
-                '3120000', '3140000', '3320000', '3150000', '3280000', '3400000', '3260000',
-                '3210000', '3470000', '3460000', '3370000', '3370000', '3540000', '3620000',
-                '3480000', '3330000', '3550000', '3610000', '3400000', '3250000', '3480000',
-                '3560000', '3370000', '3180000', '3320000', '3410000', '3150000', '3000000',
-                '3190000', '3250000', '3120000', '2910000', '3060000', '3120000', '2920000',
-                '2640000', '2830000', '2900000', '2750000', '2390000', '2550000', '2520000',
-                '2380000', '2380000', '2530000', '2550000', '2440000', '2470000', '2570000',
-                '2630000', '2490000', '2470000', '2580000', '2630000', '2550000', '2520000',
-                '2540000', '2570000', '2600000', '2590000', '2630000', '2630000', '2660000',
-                '2640000', '2630000', '2610000', '2620000', '2610000', '2640000', '2610000',
-                '2620000', '2590000', '2580000', '2540000', '2570000', '2510000', '2490000',
-                '2480000', '2430000', '2430000', '2380000', '2290000', '2270000', '2220000',
-                '2200000', '2140000', '2090000', '2030000', '1980000', '1920000', '1870000',
-                '1780000']
+function getExposureProfileData(key_){
+    var key__ = '/api/exposure-tree/20150630/total/Total/';
 
-        }, {
-            name: 'PFE',
-            data: ['-160000000', '-23400000', '-22900000', '-21300000', '-21600000',
-                '-20600000', '-20500000', '-19000000', '-19500000', '-18400000', '-18600000',
-                '-16500000', '-16100000', '-14500000', '-13000000', '-9610000', '-7870000',
-                '-6060000', '-5740000', '-3730000', '-3680000', '152000', '487000', '3410000',
-                '3440000', '6460000', '6700000', '7430000', '8010000', '10700000', '11600000',
-                '12300000', '12800000', '12700000', '13000000', '12400000', '14200000',
-                '15400000', '14600000', '14200000', '15100000', '16200000', '16300000',
-                '15500000', '15700000', '16700000', '16600000', '15300000', '15000000',
-                '16000000', '16200000', '15600000', '14100000', '14900000', '15200000',
-                '14100000', '13600000', '13800000', '13600000', '13300000', '12600000',
-                '12900000', '12700000', '12300000', '10600000', '11200000', '11300000',
-                '11400000', '10500000', '10500000', '9580000', '9690000', '9560000', '10000000',
-                '9650000', '9930000', '9920000', '10200000', '10600000', '10500000', '10300000',
-                '10500000', '10600000', '10400000', '10100000', '10400000', '10200000', '10200000',
-                '10300000', '10400000', '10000000', '9850000', '9700000', '9490000', '9350000',
-                '8890000', '8640000', '8780000', '8980000', '9200000', '8800000', '8800000',
-                '8980000', '8670000', '8800000', '8530000', '8400000', '8270000', '8490000',
-                '8210000', '7810000', '7780000', '7510000', '7430000', '7130000', '7000000',
-                '6700000', '6400000', '6070000', '6040000', '5800000']
-        }],
-        legend: ['EPE', 'PFE']
-    };
-    return profile_Data;
+    // returns a promise (future)
+    return chartManager.getDataFromRestCall(key__);
 }
 
-function get_ce_data(){
+function getBar1Data(key_){
+//    var busDate_ = selectedBusdate.value;
+//    var key__ = '/api/xva-tree/' + busDate_ + '/total/Total/cva/';
+
+    var key__ = '/api/xva-tree/20150630/total/Total/cva/';
+
+    // returns a promise (future)
+    // return chartManager.getDataFromRestCall(key__);
+
     var ce_chartData = {
         "titleText": "CE",
         "subTitleText": "01-MAR-2016",
@@ -856,182 +913,117 @@ function get_ce_data(){
     return ce_chartData;
 }
 
-function get_npv_data(){
-    var npv_chartData = {
-        "titleText": "NPV",
-        "subTitleText": "01-MAR-2016",
-        "seriesName": "2016-03-01",
-        "seriesType": "bar",
-        "yaxisLabels": ["CCC", "BB", "CC", "AA", "C"],
-        "yaxisValues": [1.835835138E8, 1.070428432E8, 1.970644777E7, 1.592368559E7, -1.281875696E7]
-    }
-    return npv_chartData;
+function getBar2Data(key_){
+    // var npv_chartData = {
+    //     "titleText": "NPV",
+    //     "subTitleText": "01-MAR-2016",
+    //     "seriesName": "2016-03-01",
+    //     "seriesType": "bar",
+    //     "yaxisLabels": ["CCC", "BB", "CC", "AA", "C"],
+    //     "yaxisValues": [1.835835138E8, 1.070428432E8, 1.970644777E7, 1.592368559E7, -1.281875696E7]
+    // }
+    // return npv_chartData;
+    return getBar1Data();
 }
 
-function get_fca_data(){
-    var fca_chartData = {
-        "titleText": "CE",
-        "subTitleText": "01-MAR-2016",
-        "seriesName": "2016-03-01",
-        "seriesType": "bar",
-        "yaxisLabels": ["CC", "CCC", "BB", "AA", "BBB"],
-        "yaxisValues": [2.434153795E8, 2.031896731E8, 1.696079112E8, 5.808002756E7, 5.086273894E7]
-    }
-    return fca_chartData;
+function getBar3Data(key_){
+    // var fca_chartData = {
+    //     "titleText": "CE",
+    //     "subTitleText": "01-MAR-2016",
+    //     "seriesName": "2016-03-01",
+    //     "seriesType": "bar",
+    //     "yaxisLabels": ["CC", "CCC", "BB", "AA", "BBB"],
+    //     "yaxisValues": [2.434153795E8, 2.031896731E8, 1.696079112E8, 5.808002756E7, 5.086273894E7]
+    // }
+    // return fca_chartData;
+    return getBar1Data();
 
 }
 
-function get_fba_data(){
-    var fba_chartData = {
-        "titleText": "CE",
-        "subTitleText": "01-MAR-2016",
-        "seriesName": "2016-03-01",
-        "seriesType": "bar",
-        "yaxisLabels": ["CC", "CCC", "BB", "AA", "BBB"],
-        "yaxisValues": [2.434153795E8, 2.031896731E8, 1.696079112E8, 5.808002756E7, 5.086273894E7]
-    }
-    return fba_chartData;
+function getBar4Data(key_){
+    // var fba_chartData = {
+    //     "titleText": "CE",
+    //     "subTitleText": "01-MAR-2016",
+    //     "seriesName": "2016-03-01",
+    //     "seriesType": "bar",
+    //     "yaxisLabels": ["CC", "CCC", "BB", "AA", "BBB"],
+    //     "yaxisValues": [2.434153795E8, 2.031896731E8, 1.696079112E8, 5.808002756E7, 5.086273894E7]
+    // }
+    // return fba_chartData;
+    return getBar1Data();
 }
 
-function get_eepe_data(){
-    var eepe_chartData = {
-        "titleText": "CE",
-        "subTitleText": "01-MAR-2016",
-        "seriesName": "2016-03-01",
-        "seriesType": "bar",
-        "yaxisLabels": ["CC", "CCC", "BB", "AA", "BBB"],
-        "yaxisValues": [2.434153795E8, 2.031896731E8, 1.696079112E8, 5.808002756E7, 5.086273894E7]
-    }
-    return eepe_chartData;
+function getBar5Data(key_){
+    // var eepe_chartData = {
+    //     "titleText": "CE",
+    //     "subTitleText": "01-MAR-2016",
+    //     "seriesName": "2016-03-01",
+    //     "seriesType": "bar",
+    //     "yaxisLabels": ["CC", "CCC", "BB", "AA", "BBB"],
+    //     "yaxisValues": [2.434153795E8, 2.031896731E8, 1.696079112E8, 5.808002756E7, 5.086273894E7]
+    // }
+    // return eepe_chartData;
+    return getBar1Data();
 
 }
-function get_npv2_data(){
-    var npv2_chartData = {
-        "titleText": "CE",
-        "subTitleText": "01-MAR-2016",
-        "seriesName": "2016-03-01",
-        "seriesType": "bar",
-        "yaxisLabels": ["CC", "CCC", "BB", "AA", "BBB"],
-        "yaxisValues": [2.434153795E8, 2.031896731E8, 1.696079112E8, 5.808002756E7, 5.086273894E7]
-    }
-    return npv2_chartData;
+function getBar6Data(key_){
+    // var npv2_chartData = {
+    //     "titleText": "CE",
+    //     "subTitleText": "01-MAR-2016",
+    //     "seriesName": "2016-03-01",
+    //     "seriesType": "bar",
+    //     "yaxisLabels": ["CC", "CCC", "BB", "AA", "BBB"],
+    //     "yaxisValues": [2.434153795E8, 2.031896731E8, 1.696079112E8, 5.808002756E7, 5.086273894E7]
+    // }
+    // return npv2_chartData;
+    return getBar1Data();
 }
 
-
-function getCVAData(){
-    var cva_chartData = {
-        title: 'CVA Risk measure by credit rating',
-        yaxisLabels: ['AAA', 'AA', 'A', 'BBB', 'BB', 'B', 'CCC', 'CC', 'C', 'NR'],
-        yaxisValues: [{
-            value: 378922.2,
-            name: 'AAA'
-        }, {
-            value: 744821.705,
-            name: 'AA'
-        }, {
-            value: 324822.6539,
-            name: 'A'
-        }, {
-            value: 703462.2286,
-            name: 'BBB'
-        }, {
-            value: 433799.9102,
-            name: 'BB'
-        }, {
-            value: 128340.57,
-            name: 'B'
-        }, {
-            value: 583971.5645,
-            name: 'CCC'
-        }, {
-            value: 908487,
-            name: 'CC'
-        }, {
-            value: 441333.439,
-            name: 'C'
-        }, {
-            value: 309688.8,
-            name: 'NR'
-        }]
-    };
-    return cva_chartData;
-
+function getCVAData(key_){
+    var key__ = '/api/xva-tree/20150630/total/Total/cva/';
+    // returns a promise (future)
+    return chartManager.getDataFromRestCall(key__);
 }
-function getFVAData(){
-    var fva_chartData = {
-        title: 'FVA Risk measure by credit rating',
-        yaxisLabels: ['AAA', 'AA', 'A', 'BBB', 'BB', 'B', 'CCC', 'CC', 'C', 'NR'],
-        yaxisValues: [{
-            value: 378922.2,
-            name: 'AAA'
-        }, {
-            value: 744821.705,
-            name: 'AA'
-        }, {
-            value: 324822.6539,
-            name: 'A'
-        }, {
-            value: 703462.2286,
-            name: 'BBB'
-        }, {
-            value: 433799.9102,
-            name: 'BB'
-        }, {
-            value: 128340.57,
-            name: 'B'
-        }, {
-            value: 583971.5645,
-            name: 'CCC'
-        }, {
-            value: 908487,
-            name: 'CC'
-        }, {
-            value: 441333.439,
-            name: 'C'
-        }, {
-            value: 309688.8,
-            name: 'NR'
-        }]
-    };
-    return fva_chartData;
-
+function getFVAData(key_){
+    var key__ = '/api/xva-tree/20150630/total/Total/fva/';
+    // returns a promise (future)
+    return chartManager.getDataFromRestCall(key__);
 }
-function getColVAData(){
-    var colva_chartData = {
-        title: 'ColVA Risk measure by credit rating',
-        yaxisLabels: ['AAA', 'AA', 'A', 'BBB', 'BB', 'B', 'CCC', 'CC', 'C', 'NR'],
-        yaxisValues: [{
-            value: 378922.2,
-            name: 'AAA'
-        }, {
-            value: 744821.705,
-            name: 'AA'
-        }, {
-            value: 324822.6539,
-            name: 'A'
-        }, {
-            value: 703462.2286,
-            name: 'BBB'
-        }, {
-            value: 433799.9102,
-            name: 'BB'
-        }, {
-            value: 128340.57,
-            name: 'B'
-        }, {
-            value: 583971.5645,
-            name: 'CCC'
-        }, {
-            value: 908487,
-            name: 'CC'
-        }, {
-            value: 441333.439,
-            name: 'C'
-        }, {
-            value: 309688.8,
-            name: 'NR'
-        }]
-    };
-    return colva_chartData;
+function getColVAData(key_){
+    var key__ = '/api/xva-tree/20150630/total/Total/colva/';
+    // returns a promise (future)
+    return chartManager.getDataFromRestCall(key__);
 }
 
+function getTreeAsMenu() {
+    var fragment = document.createDocumentFragment();
+    var elements = {};
+    var busDateList_ = chartManager.getDataFromRestCall('/api/tree/');
+    busDateList_.then(function (res) {
+        res.forEach(function (elem) {
+                var cur = elements;
+                elem.split("/").slice(1).forEach(function (elem_) {
+                    cur[elem_] = cur[elem_] || {};
+                    cur = cur[elem_];
+                });
+            }
+
+            // parseFolder("/src/stuff/hello")
+            // parseFolder("/src/stuff/world")
+            // parseFolder("/bin/stuff/world")
+            //
+
+            // var parent = elements[elem.substr(0, elem.lastIndexOf("/"))];
+            // var list = parent ? parent.children("ul") : fragment;
+            // if (!list.length) {
+            //     list = $("<ul>").appendTo(parent);
+            // }
+            // var item = $("<li>").appendTo(list);
+            // $("<a>").attr("href", this.url).text(this.name).appendTo(item);
+            // elements[eleml] = item;
+            // fragment.appendChild(opt);
+            // sel.appendChild(fragment);
+        )
+    });
+
+}
