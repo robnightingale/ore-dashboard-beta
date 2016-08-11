@@ -24,7 +24,7 @@ var BARCharts = (function () {
                 }];
             localOptions_.title = [{text: data_.title, subtext: data_.subTitleText}];
             localOptions_.legend.data = data_.yaxisLabels;
-            localOptions_.yAxis.data = data_.yaxisLabels;
+            localOptions_.yAxis[0].data = data_.yaxisLabels;
 
             chart_.setOption(localOptions_, true);
         }
@@ -896,18 +896,20 @@ function getColVAData(key_){
 }
 
 function refreshGraphsOnDateChange(){
-    chartManager.initChart('bar_1', BARCharts.getInstance().getDefaults, getBar1Data('Total'), BARCharts.getInstance().setNewData);
-    chartManager.initChart('bar_2', BARCharts.getInstance().getDefaults, getBar2Data('Total'), BARCharts.getInstance().setNewData);
-    chartManager.initChart('bar_3', BARCharts.getInstance().getDefaults, getBar3Data('Total'), BARCharts.getInstance().setNewData);
-    chartManager.initChart('bar_4', BARCharts.getInstance().getDefaults, getBar4Data('Total'), BARCharts.getInstance().setNewData);
-    chartManager.initChart('bar_5', BARCharts.getInstance().getDefaults, getBar5Data('Total'), BARCharts.getInstance().setNewData);
-    chartManager.initChart('bar_6', BARCharts.getInstance().getDefaults, getBar6Data('Total'), BARCharts.getInstance().setNewData);
-    chartManager.initChart('donut_cva', DONUTCharts.getInstance().getDefaults, getCVAData('Total'), DONUTCharts.getInstance().setNewData);
-    chartManager.initChart('donut_fva', DONUTCharts.getInstance().getDefaults, getFVAData('Total'), DONUTCharts.getInstance().setNewData);
-    chartManager.initChart('donut_colva', DONUTCharts.getInstance().getDefaults, getColVAData('Total'), DONUTCharts.getInstance().setNewData);
+    var __level__ = selectedHierarchy.value;
 
-    chartManager.initChart('line_exposure_profile', LINECharts.getInstance().getDefaultExposureOpts, getExposureProfileData('Total'), LINECharts.getInstance().setNewData);
-    chartManager.initChart('line_total_exposure', LINECharts.getInstance().getDefaultTotalOptions, getTotalExposureData('Total'), LINECharts.getInstance().setNewData);
+    chartManager.initChart('bar_1', BARCharts.getInstance().getDefaults, getBar1Data(__level__), BARCharts.getInstance().setNewData);
+    chartManager.initChart('bar_2', BARCharts.getInstance().getDefaults, getBar2Data(__level__), BARCharts.getInstance().setNewData);
+    chartManager.initChart('bar_3', BARCharts.getInstance().getDefaults, getBar3Data(__level__), BARCharts.getInstance().setNewData);
+    chartManager.initChart('bar_4', BARCharts.getInstance().getDefaults, getBar4Data(__level__), BARCharts.getInstance().setNewData);
+    chartManager.initChart('bar_5', BARCharts.getInstance().getDefaults, getBar5Data(__level__), BARCharts.getInstance().setNewData);
+    chartManager.initChart('bar_6', BARCharts.getInstance().getDefaults, getBar6Data(__level__), BARCharts.getInstance().setNewData);
+    chartManager.initChart('donut_cva', DONUTCharts.getInstance().getDefaults, getCVAData(__level__), DONUTCharts.getInstance().setNewData);
+    chartManager.initChart('donut_fva', DONUTCharts.getInstance().getDefaults, getFVAData(__level__), DONUTCharts.getInstance().setNewData);
+    chartManager.initChart('donut_colva', DONUTCharts.getInstance().getDefaults, getColVAData(__level__), DONUTCharts.getInstance().setNewData);
+
+    chartManager.initChart('line_exposure_profile', LINECharts.getInstance().getDefaultExposureOpts, getExposureProfileData(__level__), LINECharts.getInstance().setNewData);
+    chartManager.initChart('line_total_exposure', LINECharts.getInstance().getDefaultTotalOptions, getTotalExposureData(__level__), LINECharts.getInstance().setNewData);
 }
 
 function getTreeAsMenu() {
