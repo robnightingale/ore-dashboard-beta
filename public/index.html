@@ -93,39 +93,39 @@
                 <div class="col-md-12">
                     <div class="x_title clearfix">
                         <h2>Portfolio XYZ</h2>
+                        <div class="col-md-4 col-sm-4 col-xs-12 pull-left">
+                                <ol class="breadcrumb">
+                                    <li><a href="#">Home</a></li>
+                                    <li><a href="#">Credit</a></li>
+                                    <li><a href="#">Counter</a></li>
+                                    <li><a href="#">Netting</a></li>
+                                </ol>
 
-                        <div class="container">
-                            <ol class="breadcrumb">
-                                <li><a href="#">Home</a></li>
-                                <li><a href="#">Credit</a></li>
-                                <li><a href="#">Counter</a></li>
-                                <li><a href="#">Netting</a></li>
-                            </ol>
                         </div>
 
-                        <div class="form-group filter pull-left">
+                        <div class="form-group filter pull-right">
                             <!--<label class="control-label col-md-2 col-sm-2 col-xs-12">Hierarchy level</label>-->
                             <div class="col-md-9 col-sm-9 col-xs-12">
                                 <select class="selectpicker" data-live-search="true" data-size="7" id="businessDates">
                                     <option>Choose Business Date</option>
                                 </select>
-                            </div>
-                        </div>
-
-                        <div class="form-group filter">
-                            <!--<label class="control-label col-md-2 col-sm-2 col-xs-12">Hierarchy level</label>-->
-                            <div class="col-md-9 col-sm-9 col-xs-12">
                                 <select class="selectpicker">
                                     <!--<select style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc">-->
                                     <option>Choose Hierarchy</option>
                                     <option>Total</option>
                                     <option>Credit Rating</option>
-                                    <option>Netting Set</option>
                                     <option>Counterparty</option>
+                                    <option>Netting Set</option>
                                     <option>Trade</option>
                                 </select>
                             </div>
                         </div>
+
+                        <!--<div class="form-group filter">-->
+                            <!--<label class="control-label col-md-2 col-sm-2 col-xs-12">Hierarchy level</label>-->
+                            <!--<div class="col-md-9 col-sm-9 col-xs-12">-->
+                            <!--</div>-->
+                        <!--</div>-->
                     </div>
                     <div class="x_content">
                         <div class="col-md-6 col-sm-12 col-xs-12">
@@ -221,8 +221,8 @@
                         <ul class="nav navbar-right panel_toolbox">
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                                   aria-expanded="false"><i class="fa fa-bar-chart-o"></i></a>
-                                <ul class="dropdown-menu" role="menu">
+                                   aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                <ul class="dropdown-menu" role="menu" id="bar_dropdown_1">
                                     <li><a href="#">CE</a></li>
                                     <li><a href="#">EEPE</a></li>
                                     <li><a href="#">TOTALEXP</a></li>
@@ -253,7 +253,7 @@
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                                    aria-expanded="false"><i class="fa fa-bar-chart-o"></i></a>
-                                <ul class="dropdown-menu" role="menu">
+                                <ul class="dropdown-menu" role="menu" id="bar_dropdown_2">
                                     <li><a href="#">CE</a></li>
                                     <li><a href="#">EEPE</a></li>
                                     <li><a href="#">TOTALEXP</a></li>
@@ -284,7 +284,7 @@
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                                    aria-expanded="false"><i class="fa fa-bar-chart-o"></i></a>
-                                <ul class="dropdown-menu" role="menu">
+                                <ul class="dropdown-menu" role="menu" id="bar_dropdown_3">
                                     <li><a href="#">CE</a></li>
                                     <li><a href="#">EEPE</a></li>
                                     <li><a href="#">TOTALEXP</a></li>
@@ -315,7 +315,7 @@
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                                    aria-expanded="false"><i class="fa fa-bar-chart-o"></i></a>
-                                <ul class="dropdown-menu" role="menu">
+                                <ul class="dropdown-menu" role="menu" id="bar_dropdown_4">
                                     <li><a href="#">CE</a></li>
                                     <li><a href="#">EEPE</a></li>
                                     <li><a href="#">TOTALEXP</a></li>
@@ -346,7 +346,7 @@
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                                    aria-expanded="false"><i class="fa fa-bar-chart-o"></i></a>
-                                <ul class="dropdown-menu" role="menu">
+                                <ul class="dropdown-menu" role="menu" id="bar_dropdown_5">
                                     <li><a href="#">CE</a></li>
                                     <li><a href="#">EEPE</a></li>
                                     <li><a href="#">TOTALEXP</a></li>
@@ -377,7 +377,7 @@
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                                    aria-expanded="false"><i class="fa fa-bar-chart-o"></i></a>
-                                <ul class="dropdown-menu" role="menu">
+                                <ul class="dropdown-menu" role="menu" id="bar_dropdown_6">
                                     <li><a href="#">CE</a></li>
                                     <li><a href="#">EEPE</a></li>
                                     <li><a href="#">TOTALEXP</a></li>
@@ -462,10 +462,19 @@
 
         // add a change event handler to the bus dates dropdown
         _AttachEvent(document.getElementById("businessDates"), "change", chartManager.setNewBusDate);
-//        _AttachEvent(document.getElementById("select2-businessDates-container"), "click", chartManager.setNewBusDate);
+
+        $(document).on('click', '.dropdown-menu li a', function() {
+            console.debug('clicked on ' + this.innerText + ' ' + this.parentNode.parentNode.id);
+            chartManager.flipChart(id_, type_);
+        });
+
     }
 
     window.onload = load_;
+
+    function jojo(evt){
+        console.debug(evt);
+    }
 
 </script>
 

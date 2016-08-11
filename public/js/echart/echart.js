@@ -1,7 +1,7 @@
 $(window).load(function () {
     console.log('[INFO] ORE Dashboard.init');
-    chartManager.initAllCharts();
     chartManager.populateBusinessDates();
+    chartManager.initAllCharts();
     console.log('[INFO] ORE Dashboard init completed');
 });
 
@@ -15,6 +15,15 @@ var BARCharts = (function () {
     function init() {
 
         function setNewData(chart_, data_) {
+            // var opt_ = chart_.getOption();
+            // opt_.series = [{
+            //     type: data_.seriesType,
+            //     data: data_.yaxisValues,
+            //     name: data_.seriesName
+            // }];
+
+            // chart_.clear();
+
             chart_.setOption({
                 series: [{
                     type: data_.seriesType,
@@ -25,25 +34,7 @@ var BARCharts = (function () {
                 legend: [{data: data_.yaxisLabels}],
                 yAxis: [{data: data_.yaxisLabels}]
             });
-
-
-            // var yaxisLabels = [];
-            // var yaxisValues = [];
-            // data_.data.forEach(function(elem,index){
-            //     yaxisLabels.push(elem.name);
-            //     yaxisValues.push(elem.value);
-            // });
-            //
-            // chart_.setOption({
-            //     series: [{
-            //         type: 'bar',
-            //         data: yaxisValues,
-            //         name: 'vv' || data_.seriesName
-            //     }],
-            //     title: [{text: 'xVA' || data_.title, subtext: '.' || data_.subTitleText}],
-            //     legend: [{data: yaxisLabels}],
-            //     yAxis: [{data: yaxisLabels}]
-            // });
+            chart_.refresh();
         }
 
         var options = {
@@ -76,14 +67,13 @@ var BARCharts = (function () {
             series: null
         };
 
-
         function initialiseAllCharts() {
-            chartManager.initChart('bar_1', options, getBar1Data(), setNewData);
-            chartManager.initChart('bar_2', options, getBar2Data(), setNewData);
-            chartManager.initChart('bar_3', options, getBar3Data(), setNewData);
-            chartManager.initChart('bar_4', options, getBar5Data(), setNewData);
-            chartManager.initChart('bar_5', options, getBar6Data(), setNewData);
-            chartManager.initChart('bar_6', options, getBar4Data(), setNewData);
+            chartManager.initChart('bar_1', options, getBar1Data('Total'), setNewData);
+            chartManager.initChart('bar_2', options, getBar2Data('Total'), setNewData);
+            chartManager.initChart('bar_3', options, getBar3Data('Total'), setNewData);
+            chartManager.initChart('bar_4', options, getBar4Data('Total'), setNewData);
+            chartManager.initChart('bar_5', options, getBar5Data('Total'), setNewData);
+            chartManager.initChart('bar_6', options, getBar6Data('Total'), setNewData);
         }
 
         function loadData(chart_, data_) {
@@ -314,6 +304,7 @@ var LINECharts = (function () {
 
                 // yuk
                 var xAxisData_ = data_.dates;
+
                 var series_0 = {
                     name: "NPV",
                     data: data_.npvs
@@ -361,8 +352,8 @@ var LINECharts = (function () {
         }
 
         function initialiseAllCharts() {
-            chartManager.initChart('line_total_exposure', total_exposure_options, getTotalExposureData(), setNewData);
-            chartManager.initChart('line_exposure_profile', exposure_profile_options, getExposureProfileData(), setNewData);
+            chartManager.initChart('line_total_exposure', total_exposure_options, getTotalExposureData('Total'), setNewData);
+            chartManager.initChart('line_exposure_profile', exposure_profile_options, getExposureProfileData('Total'), setNewData);
         }
 
         function loadData(chart_, data_) {
@@ -477,9 +468,9 @@ var DONUTCharts = (function () {
         }
 
         function initialiseAllCharts() {
-            chartManager.initChart('donut_cva', options, getCVAData(), setNewData);
-            chartManager.initChart('donut_fva', options, getFVAData(), setNewData);
-            chartManager.initChart('donut_colva', options, getColVAData(), setNewData);
+            chartManager.initChart('donut_cva', options, getCVAData('Total'), setNewData);
+            chartManager.initChart('donut_fva', options, getFVAData('Total'), setNewData);
+            chartManager.initChart('donut_colva', options, getColVAData('Total'), setNewData);
         }
 
         function loadData(chart_, data_) {
@@ -728,7 +719,7 @@ var chartManager = {
             .then(processStatus)
             .then(parseJson)
             .then(function (response) {
-                // console.debug(response);
+                console.debug(response);
                 // response.forEach(function(elem) {
                 //     console.debug(elem);
                 // })
@@ -736,6 +727,7 @@ var chartManager = {
             })
             .catch(function (ex) {
                 console.error(new Error("Request failed : " + ex));
+                return {};
             })
     },
     loadDataIntoGraph: function(chartTagName_, data_){
@@ -782,20 +774,20 @@ var chartManager = {
             sel.options.length = 0;
 
             var fragment = document.createDocumentFragment();
-            var busDateList_ = chartManager.getDataFromRestCall('/api/dates/');
-            return busDateList_.then(function (response) {
-                response.forEach(function (dcc, index) {
-                    var opt = document.createElement('option');
-                    // nice format for the user to see
-                    opt.innerHTML = moment(dcc,'YYYYMMDD').format('DD-MMM-YYYY');
-                    // nice format for the computer to see
-                    opt.value = dcc;
-                    fragment.appendChild(opt);
-                });
-                sel.appendChild(fragment);
-            }).catch(function (e) {
-                return new Error(e);
-            })
+            return chartManager.getDataFromRestCall('/api/dates/')
+                .then(function (response) {
+                    response.forEach(function (dcc, index) {
+                        var opt = document.createElement('option');
+                        // nice format for the user to see
+                        opt.innerHTML = moment(dcc, 'YYYYMMDD').format('DD-MMM-YYYY');
+                        // nice format for the computer to see
+                        opt.value = dcc;
+                        fragment.appendChild(opt);
+                    });
+                    sel.appendChild(fragment);
+                }).catch(function (e) {
+                    return new Error(e);
+                })
         } catch (e) {
             console.error(new Error(e));
         }
@@ -806,9 +798,9 @@ var chartManager = {
 
         evt = evt || window.event;
         var target = evt.target || evt.srcElement;
-        // console.debug(target);
         // set the hidden field
         selectedBusdate.value = target.value;
+        refreshGraphsOnDateChange();
     },
     setNewCounterparty: function(evt){
         if (isNullOrUndefined(evt))
@@ -823,182 +815,111 @@ var chartManager = {
 }
 
 function getTotalExposureData(key_){
-    // var total_Data = {
-    //     legend: ['NPV', 'CE', 'EEPE', 'Total Exp'],
-    //     xAxisData: ['Week1', 'Week2', 'Week3', 'Week4'],
-    //     series: [{
-    //         name: 'NPV',
-    //         type: 'line',
-    //         smooth: true,
-    //         itemStyle: {
-    //             normal: {
-    //                 areaStyle: {
-    //                     type: 'default'
-    //                 }
-    //             }
-    //         },
-    //         data: [-668637914.7, -668637914.7 / 2, -668637714.7 / 2.5, -668637614.7 / 3]
-    //     }, {
-    //         name: 'CE',
-    //         type: 'line',
-    //         smooth: true,
-    //         itemStyle: {
-    //             normal: {
-    //                 areaStyle: {
-    //                     type: 'default'
-    //                 }
-    //             }
-    //         },
-    //         data: [763327844.8, 763327844.8 / 2, 763327844.8 / 2.5, 763327844.8 / 3]
-    //     }, {
-    //         name: 'EEPE',
-    //         type: 'line',
-    //         smooth: true,
-    //         itemStyle: {
-    //             normal: {
-    //                 areaStyle: {
-    //                     type: 'default'
-    //                 }
-    //             }
-    //         },
-    //         data: [763327844.8, 763327844.8 / 2, 763327844.8 / 2.5, 763327844.8 / 3]
-    //     }, {
-    //         name: 'Total Exp',
-    //         type: 'line',
-    //         smooth: true,
-    //         itemStyle: {
-    //             normal: {
-    //                 areaStyle: {
-    //                     type: 'default'
-    //                 }
-    //             }
-    //         },
-    //         data: [763327844.8 * 2, 763327844.8 * 2 / 1.2, 763327844.8 * 2 / 1.3, 763327844.8 * 2 / 1.4]
-    //     }
-    //     ]
-    //
-    // };
-    // return total_Data;
-    var key__ = '/api/totalexposure-tree/total/Total/';
-
+    level_ = key_;
+    var key__ = '/api/totalexposure-tree/total/' + level_ + '/';
     // returns a promise (future)
     return chartManager.getDataFromRestCall(key__);
-
 }
 
 function getExposureProfileData(key_){
-    var key__ = '/api/exposure-tree/20150630/total/Total/';
-
+    level_ = key_;
+    var busDate_ = selectedBusdate.value;
+    var key__ = '/api/exposure-tree/' + busDate_ +'/total/' + level_ + '/';
     // returns a promise (future)
     return chartManager.getDataFromRestCall(key__);
 }
 
 function getBar1Data(key_){
-//    var busDate_ = selectedBusdate.value;
-//    var key__ = '/api/xva-tree/' + busDate_ + '/total/Total/cva/';
-
-    var key__ = '/api/xva-tree/20150630/total/Total/cva/';
-
+    level_ = key_;
+    var busDate_ = selectedBusdate.value;
+    var key__ = '/api/bargraph-tree/' + busDate_ +'/total/' + level_ + '/ce/';
     // returns a promise (future)
-    // return chartManager.getDataFromRestCall(key__);
-
-    var ce_chartData = {
-        "titleText": "CE",
-        "subTitleText": "01-MAR-2016",
-        "seriesName": "2016-03-01",
-        "seriesType": "bar",
-        "yaxisLabels": ["CC", "CCC", "BB", "AA", "BBB"],
-        "yaxisValues": [2.434153795E8, 2.031896731E8, 1.696079112E8, 5.808002756E7, 5.086273894E7]
-    }
-    return ce_chartData;
+    return chartManager.getDataFromRestCall(key__);
 }
 
 function getBar2Data(key_){
-    // var npv_chartData = {
-    //     "titleText": "NPV",
-    //     "subTitleText": "01-MAR-2016",
-    //     "seriesName": "2016-03-01",
-    //     "seriesType": "bar",
-    //     "yaxisLabels": ["CCC", "BB", "CC", "AA", "C"],
-    //     "yaxisValues": [1.835835138E8, 1.070428432E8, 1.970644777E7, 1.592368559E7, -1.281875696E7]
-    // }
-    // return npv_chartData;
-    return getBar1Data();
+    level_ = key_;
+    var busDate_ = selectedBusdate.value;
+    var key__ = '/api/bargraph-tree/' + busDate_ +'/total/' + level_ + '/npv/';
+    // returns a promise (future)
+    return chartManager.getDataFromRestCall(key__);
 }
 
 function getBar3Data(key_){
-    // var fca_chartData = {
-    //     "titleText": "CE",
-    //     "subTitleText": "01-MAR-2016",
-    //     "seriesName": "2016-03-01",
-    //     "seriesType": "bar",
-    //     "yaxisLabels": ["CC", "CCC", "BB", "AA", "BBB"],
-    //     "yaxisValues": [2.434153795E8, 2.031896731E8, 1.696079112E8, 5.808002756E7, 5.086273894E7]
-    // }
-    // return fca_chartData;
-    return getBar1Data();
+    level_ = key_;
+    var busDate_ = selectedBusdate.value;
+    var key__ = '/api/bargraph-tree/' + busDate_ +'/total/' + level_ + '/fca/';
 
+    // returns a promise (future)
+    return chartManager.getDataFromRestCall(key__);
 }
 
 function getBar4Data(key_){
-    // var fba_chartData = {
-    //     "titleText": "CE",
-    //     "subTitleText": "01-MAR-2016",
-    //     "seriesName": "2016-03-01",
-    //     "seriesType": "bar",
-    //     "yaxisLabels": ["CC", "CCC", "BB", "AA", "BBB"],
-    //     "yaxisValues": [2.434153795E8, 2.031896731E8, 1.696079112E8, 5.808002756E7, 5.086273894E7]
-    // }
-    // return fba_chartData;
-    return getBar1Data();
+    level_ = key_;
+    var busDate_ = selectedBusdate.value;
+    var key__ = '/api/bargraph-tree/' + busDate_ +'/total/' + level_ + '/fba/';
+    // returns a promise (future)
+    return chartManager.getDataFromRestCall(key__);
+
 }
 
+
 function getBar5Data(key_){
-    // var eepe_chartData = {
-    //     "titleText": "CE",
-    //     "subTitleText": "01-MAR-2016",
-    //     "seriesName": "2016-03-01",
-    //     "seriesType": "bar",
-    //     "yaxisLabels": ["CC", "CCC", "BB", "AA", "BBB"],
-    //     "yaxisValues": [2.434153795E8, 2.031896731E8, 1.696079112E8, 5.808002756E7, 5.086273894E7]
-    // }
-    // return eepe_chartData;
-    return getBar1Data();
+    level_ = key_;
+    var busDate_ = selectedBusdate.value;
+    var key__ = '/api/bargraph-tree/' + busDate_ +'/total/' + level_ + '/eepe/';
+
+    // returns a promise (future)
+    return chartManager.getDataFromRestCall(key__);
+
 
 }
 function getBar6Data(key_){
-    // var npv2_chartData = {
-    //     "titleText": "CE",
-    //     "subTitleText": "01-MAR-2016",
-    //     "seriesName": "2016-03-01",
-    //     "seriesType": "bar",
-    //     "yaxisLabels": ["CC", "CCC", "BB", "AA", "BBB"],
-    //     "yaxisValues": [2.434153795E8, 2.031896731E8, 1.696079112E8, 5.808002756E7, 5.086273894E7]
-    // }
-    // return npv2_chartData;
-    return getBar1Data();
+    level_ = key_;
+    var busDate_ = selectedBusdate.value;
+    var key__ = '/api/bargraph-tree/' + busDate_ +'/total/' + level_ + '/cva/';
+    // returns a promise (future)
+    return chartManager.getDataFromRestCall(key__);
 }
 
+function flipChart(chartId_, chartType_){
+    var chart_ = chartManager.getChartInstanceFromDivId(chartId_);
+    var data_ = chartManager.getDataFromRestCall(chartType_);
+    chart_.setNewData(chart_, data_);
+
+}
+
+
 function getCVAData(key_){
-    var key__ = '/api/xva-tree/20150630/total/Total/cva/';
+    level_ = key_;
+    var busDate_ = selectedBusdate.value;
+    var key__ = '/api/xva-tree/' + busDate_ +'/total/' + level_ + '/cva/';
     // returns a promise (future)
     return chartManager.getDataFromRestCall(key__);
 }
 function getFVAData(key_){
-    var key__ = '/api/xva-tree/20150630/total/Total/fva/';
+    level_ = key_;
+    var busDate_ = selectedBusdate.value;
+    var key__ = '/api/xva-tree/' + busDate_ +'/total/' + level_ + '/fva/';
     // returns a promise (future)
     return chartManager.getDataFromRestCall(key__);
 }
 function getColVAData(key_){
-    var key__ = '/api/xva-tree/20150630/total/Total/colva/';
+    level_ = key_;
+    var busDate_ = selectedBusdate.value;
+    var key__ = '/api/xva-tree/' + busDate_ +'/total/' + level_ + '/colva/';
     // returns a promise (future)
     return chartManager.getDataFromRestCall(key__);
+}
+
+function refreshGraphsOnDateChange(){
+    BARCharts.getInstance().initAllCharts();
 }
 
 function getTreeAsMenu() {
     var fragment = document.createDocumentFragment();
     var elements = {};
-    var busDateList_ = chartManager.getDataFromRestCall('/api/tree/');
+    var busDateList_ = chartManager.getDataFromRestCall('/api/tree2/');
     busDateList_.then(function (res) {
         res.forEach(function (elem) {
                 var cur = elements;
@@ -1007,22 +928,6 @@ function getTreeAsMenu() {
                     cur = cur[elem_];
                 });
             }
-
-            // parseFolder("/src/stuff/hello")
-            // parseFolder("/src/stuff/world")
-            // parseFolder("/bin/stuff/world")
-            //
-
-            // var parent = elements[elem.substr(0, elem.lastIndexOf("/"))];
-            // var list = parent ? parent.children("ul") : fragment;
-            // if (!list.length) {
-            //     list = $("<ul>").appendTo(parent);
-            // }
-            // var item = $("<li>").appendTo(list);
-            // $("<a>").attr("href", this.url).text(this.name).appendTo(item);
-            // elements[eleml] = item;
-            // fragment.appendChild(opt);
-            // sel.appendChild(fragment);
         )
     });
 
