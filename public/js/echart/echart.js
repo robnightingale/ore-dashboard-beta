@@ -15,26 +15,18 @@ var BARCharts = (function () {
     function init() {
 
         function setNewData(chart_, data_) {
-            // var opt_ = chart_.getOption();
-            // opt_.series = [{
-            //     type: data_.seriesType,
-            //     data: data_.yaxisValues,
-            //     name: data_.seriesName
-            // }];
+            var localOptions_ = options;
 
-            // chart_.clear();
-
-            chart_.setOption({
-                series: [{
+            localOptions_.series = [{
                     type: data_.seriesType,
                     data: data_.yaxisValues,
                     name: data_.seriesName
-                }],
-                title: [{text: data_.title, subtext: data_.subTitleText}],
-                legend: [{data: data_.yaxisLabels}],
-                yAxis: [{data: data_.yaxisLabels}]
-            });
-            chart_.refresh();
+                }];
+            localOptions_.title = [{text: data_.title, subtext: data_.subTitleText}];
+            localOptions_.legend.data = data_.yaxisLabels;
+            localOptions_.yAxis.data = data_.yaxisLabels;
+
+            chart_.setOption(localOptions_, true);
         }
 
         var options = {
@@ -84,7 +76,8 @@ var BARCharts = (function () {
         return {
             initAllCharts: initialiseAllCharts,
             setNewData: setNewData,
-            loadData: loadData
+            loadData: loadData,
+            getDefaults: options
         };
     }
 
@@ -224,7 +217,7 @@ var LINECharts = (function () {
             calculable: true,
             xAxis: [{
                 type: 'category',
-                boundaryGap: false,
+                boundaryGap: true,
                 data: []
             }],
             yAxis: [{
@@ -273,35 +266,18 @@ var LINECharts = (function () {
                         }
                     };
                 });
-
-                chart_.setOption({
-                    legend: [{data: data_.name}],
-                    xAxis: [{data: xAxisData_}],
-                    series: series_
-                });
+                // chart_.setOption({
+                //     legend: [{data: data_.name}],
+                //     xAxis: [{data: xAxisData_}],
+                //     series: series_
+                // });
+                var localOptions_ = exposure_profile_options;
+                localOptions_.legend.data = data_.name;
+                localOptions_.xAxis[0].data = xAxisData_;
+                localOptions_.series = series_;
+                chart_.setOption(localOptions_, true);
 
             } else {
-                // data_.series.forEach(function (elem) {
-                //     only add marklines for exposure profile graph
-                    // if (chart_.getOption().title[0].text == 'Exposure Profile')
-                    //     elem.markLine = profile_marklines;
-                    // elem.type = 'line';
-                    // elem.smooth = true;
-                    // elem.itemStyle = {
-                    //     normal: {
-                    //         areaStyle: {
-                    //             type: 'default'
-                    //         }
-                    //     }
-                    // };
-                // });
-                //
-                // chart_.setOption({
-                //     legend: [{data: data_.legend}],
-                //     xAxis: [{data: data_.xAxisData}],
-                //     series: data_.series
-                // });
-
                 // yuk
                 var xAxisData_ = data_.dates;
 
@@ -342,12 +318,16 @@ var LINECharts = (function () {
                     };
                 });
 
-                chart_.setOption({
-                    legend: [{data: data_.name}],
-                    xAxis: [{data: xAxisData_}],
-                    series: series_
-                });
-
+                // chart_.setOption({
+                //     legend: [{data: data_.name}],
+                //     xAxis: [{data: xAxisData_}],
+                //     series: series_
+                // });
+                var localOptions_ = total_exposure_options;
+                localOptions_.legend.data = data_.name;
+                localOptions_.xAxis[0].data = xAxisData_;
+                localOptions_.series = series_;
+                chart_.setOption(localOptions_, true);
             }
         }
 
@@ -366,7 +346,9 @@ var LINECharts = (function () {
             // getProjection: line_exposure_profile,
             initAllCharts: initialiseAllCharts,
             setNewData: setNewData,
-            loadData: loadData
+            loadData: loadData,
+            getDefaultExposureOpts : exposure_profile_options,
+            getDefaultTotalOptions: total_exposure_options
         };
     }
 
@@ -464,7 +446,6 @@ var DONUTCharts = (function () {
                 }],
                 legend: {data: data_.labels}
             });
-
         }
 
         function initialiseAllCharts() {
@@ -481,7 +462,8 @@ var DONUTCharts = (function () {
         return {
             initAllCharts: initialiseAllCharts,
             setNewData: setNewData,
-            loadData: loadData
+            loadData: loadData,
+            getDefaults: options
         };
 
     }
@@ -641,7 +623,8 @@ var RISKGauge = (function () {
         return {
             initAllCharts: initialiseAllCharts,
             setNewData: setNewData,
-            loadData: loadData
+            loadData: loadData,
+            getDefaults: options
         };
 
     }
@@ -913,7 +896,18 @@ function getColVAData(key_){
 }
 
 function refreshGraphsOnDateChange(){
-    BARCharts.getInstance().initAllCharts();
+    chartManager.initChart('bar_1', BARCharts.getInstance().getDefaults, getBar1Data('Total'), BARCharts.getInstance().setNewData);
+    chartManager.initChart('bar_2', BARCharts.getInstance().getDefaults, getBar2Data('Total'), BARCharts.getInstance().setNewData);
+    chartManager.initChart('bar_3', BARCharts.getInstance().getDefaults, getBar3Data('Total'), BARCharts.getInstance().setNewData);
+    chartManager.initChart('bar_4', BARCharts.getInstance().getDefaults, getBar4Data('Total'), BARCharts.getInstance().setNewData);
+    chartManager.initChart('bar_5', BARCharts.getInstance().getDefaults, getBar5Data('Total'), BARCharts.getInstance().setNewData);
+    chartManager.initChart('bar_6', BARCharts.getInstance().getDefaults, getBar6Data('Total'), BARCharts.getInstance().setNewData);
+    chartManager.initChart('donut_cva', DONUTCharts.getInstance().getDefaults, getCVAData('Total'), DONUTCharts.getInstance().setNewData);
+    chartManager.initChart('donut_fva', DONUTCharts.getInstance().getDefaults, getFVAData('Total'), DONUTCharts.getInstance().setNewData);
+    chartManager.initChart('donut_colva', DONUTCharts.getInstance().getDefaults, getColVAData('Total'), DONUTCharts.getInstance().setNewData);
+
+    chartManager.initChart('line_exposure_profile', LINECharts.getInstance().getDefaultExposureOpts, getExposureProfileData('Total'), LINECharts.getInstance().setNewData);
+    chartManager.initChart('line_total_exposure', LINECharts.getInstance().getDefaultTotalOptions, getTotalExposureData('Total'), LINECharts.getInstance().setNewData);
 }
 
 function getTreeAsMenu() {
