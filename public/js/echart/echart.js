@@ -60,12 +60,14 @@ var BARCharts = (function () {
         };
 
         function initialiseAllCharts() {
-            chartManager.initChart('bar_1', options, getBar1Data('Total'), setNewData);
-            chartManager.initChart('bar_2', options, getBar2Data('Total'), setNewData);
-            chartManager.initChart('bar_3', options, getBar3Data('Total'), setNewData);
-            chartManager.initChart('bar_4', options, getBar4Data('Total'), setNewData);
-            chartManager.initChart('bar_5', options, getBar5Data('Total'), setNewData);
-            chartManager.initChart('bar_6', options, getBar6Data('Total'), setNewData);
+            // set the initial entry point to 'Total' level
+            var __level__ = 'Total';
+            chartManager.initChart('bar_1', options, getBar1Data(__level__), setNewData);
+            chartManager.initChart('bar_2', options, getBar2Data(__level__), setNewData);
+            chartManager.initChart('bar_3', options, getBar3Data(__level__), setNewData);
+            chartManager.initChart('bar_4', options, getBar4Data(__level__), setNewData);
+            chartManager.initChart('bar_5', options, getBar5Data(__level__), setNewData);
+            chartManager.initChart('bar_6', options, getBar6Data(__level__), setNewData);
         }
 
         function loadData(chart_, data_) {
@@ -266,11 +268,6 @@ var LINECharts = (function () {
                         }
                     };
                 });
-                // chart_.setOption({
-                //     legend: [{data: data_.name}],
-                //     xAxis: [{data: xAxisData_}],
-                //     series: series_
-                // });
                 var localOptions_ = exposure_profile_options;
                 localOptions_.legend.data = data_.name;
                 localOptions_.xAxis[0].data = xAxisData_;
@@ -318,11 +315,6 @@ var LINECharts = (function () {
                     };
                 });
 
-                // chart_.setOption({
-                //     legend: [{data: data_.name}],
-                //     xAxis: [{data: xAxisData_}],
-                //     series: series_
-                // });
                 var localOptions_ = total_exposure_options;
                 localOptions_.legend.data = data_.name;
                 localOptions_.xAxis[0].data = xAxisData_;
@@ -332,8 +324,9 @@ var LINECharts = (function () {
         }
 
         function initialiseAllCharts() {
-            chartManager.initChart('line_total_exposure', total_exposure_options, getTotalExposureData('Total'), setNewData);
-            chartManager.initChart('line_exposure_profile', exposure_profile_options, getExposureProfileData('Total'), setNewData);
+            var __level__ = 'Total';
+            chartManager.initChart('line_total_exposure', total_exposure_options, getTotalExposureData(__level__), setNewData);
+            chartManager.initChart('line_exposure_profile', exposure_profile_options, getExposureProfileData(__level__), setNewData);
         }
 
         function loadData(chart_, data_) {
@@ -342,8 +335,6 @@ var LINECharts = (function () {
 
         // expose a few methods and properties
         return {
-            // getTotalExposure: line_total_exposure,
-            // getProjection: line_exposure_profile,
             initAllCharts: initialiseAllCharts,
             setNewData: setNewData,
             loadData: loadData,
@@ -449,9 +440,10 @@ var DONUTCharts = (function () {
         }
 
         function initialiseAllCharts() {
-            chartManager.initChart('donut_cva', options, getCVAData('Total'), setNewData);
-            chartManager.initChart('donut_fva', options, getFVAData('Total'), setNewData);
-            chartManager.initChart('donut_colva', options, getColVAData('Total'), setNewData);
+            var __level__ = 'Total';
+            chartManager.initChart('donut_cva', options, getCVAData(__level__), setNewData);
+            chartManager.initChart('donut_fva', options, getFVAData(__level__), setNewData);
+            chartManager.initChart('donut_colva', options, getColVAData(__level__), setNewData);
         }
 
         function loadData(chart_, data_) {
@@ -680,6 +672,7 @@ var chartManager = {
         console.log(param);
     },
     getDataFromRestCall: function (url_) {
+        console.debug(url_);
 
         var req_ = new Request({
                 headers: {
@@ -695,8 +688,6 @@ var chartManager = {
 
         var theUrl_ = window.location.protocol + '//' + window.location.host + url_;
 
-        console.debug(req_);
-
         return fetch(
             theUrl_, req_)
             .then(processStatus)
@@ -709,24 +700,20 @@ var chartManager = {
                 return response;
             })
             .catch(function (ex) {
-                console.error(new Error("Request failed : " + ex));
+                var e = new Error('dummy');
+                var stack = e.stack.replace(/^[^\(]+?[\n$]/gm, '')
+                   .replace(/^\s+at\s+/gm, '')
+                   .replace(/^Object.<anonymous>\s*\(/gm, '{anonymous}()@')
+                   .split('\n');
+
+                console.error(new Error("Request failed : " + url_ + '\n' + stack));
                 return {};
             })
-    },
-    loadDataIntoGraph: function(chartTagName_, data_){
-
     },
     load_graph_panel: function (graph_) {
         var trade_type = document.getElementById('tradeContainer.trade.trade_type');
         var current_trade_type = (tradeType || trade_type.options[trade_type.options.selectedIndex].value);
         var loadUrl_ = './' + current_trade_type + '.html';
-
-        //var e = new Error('dummy');
-        //var stack = e.stack.replace(/^[^\(]+?[\n$]/gm, '')
-        //    .replace(/^\s+at\s+/gm, '')
-        //    .replace(/^Object.<anonymous>\s*\(/gm, '{anonymous}()@')
-        //    .split('\n');
-        //console.debug(stack);
 
         return new Promise(function (resolve, reject) {
             try {
@@ -783,86 +770,103 @@ var chartManager = {
         var target = evt.target || evt.srcElement;
         // set the hidden field
         selectedBusdate.value = target.value;
+        sessionStorage.setItem('selectedBusinessDate', target.value);
+
         refreshGraphsOnDateChange();
     },
-    setNewCounterparty: function(evt){
+    setNewHierarchy: function(evt){
         if (isNullOrUndefined(evt))
             return;
 
         evt = evt || window.event;
         var target = evt.target || evt.srcElement;
         // set the hidden field
-        selectedCounterparty.value = target.value;
+        selectedHierarchy.value = target.value;
+        sessionStorage.setItem('selectedHierarchy', target.value);
+        refreshGraphsOnDateChange();
     }
 
 }
 
+function getBarGraphData(__level__, date, hierarchy, metric){
+    var key__;
+
+    if (hierarchy == 'total'){
+        key__ = '/api/bargraph-tree/' + date +'/' + hierarchy + '/Total/' + metric + '/';
+    } else {
+        // /api/bargraph/:date/:hierarchy/:metric/
+        key__ = '/api/bargraph/' + date +'/' + hierarchy + '/' + metric + '/';
+    }
+    return key__;
+}
+
+function getXVAGraphData(__level__, date, hierarchy, metric){
+    var key__;
+
+    if (hierarchy == 'total'){
+        key__ = '/api/xva-tree/' + date +'/' + hierarchy + '/Total/' + metric + '/';
+    } else {
+        // /api/bargraph/:date/:hierarchy/:metric/
+        key__ = '/api/xva/' + date +'/' + hierarchy + '/' + metric + '/';
+    }
+    return key__;
+}
+
+function getBusinessDate(){
+    return sessionStorage.getItem('selectedBusinessDate') || selectedBusdate.value;
+}
+
+function getHierarchy(){
+    return (sessionStorage.getItem('selectedHierarchy') || selectedHierarchy.value).toLowerCase();
+}
+
+
 function getTotalExposureData(key_){
-    level_ = key_;
-    var key__ = '/api/totalexposure-tree/total/' + level_ + '/';
+    var key__ = '/api/totalexposure-tree/' + getHierarchy() + '/Total/';
     // returns a promise (future)
     return chartManager.getDataFromRestCall(key__);
 }
 
 function getExposureProfileData(key_){
-    level_ = key_;
-    var busDate_ = selectedBusdate.value;
-    var key__ = '/api/exposure-tree/' + busDate_ +'/total/' + level_ + '/';
+    var key__ = '/api/exposure-tree/' + getBusinessDate() +'/' + getHierarchy() + '/Total/';
     // returns a promise (future)
     return chartManager.getDataFromRestCall(key__);
 }
 
 function getBar1Data(key_){
-    level_ = key_;
-    var busDate_ = selectedBusdate.value;
-    var key__ = '/api/bargraph-tree/' + busDate_ +'/total/' + level_ + '/ce/';
+    var url_ = getBarGraphData(key_, getBusinessDate(), getHierarchy(), 'ce');
     // returns a promise (future)
-    return chartManager.getDataFromRestCall(key__);
+    return chartManager.getDataFromRestCall(url_);
 }
 
 function getBar2Data(key_){
-    level_ = key_;
-    var busDate_ = selectedBusdate.value;
-    var key__ = '/api/bargraph-tree/' + busDate_ +'/total/' + level_ + '/npv/';
+    var url_ = getBarGraphData(key_, getBusinessDate(), getHierarchy(), 'npv');
     // returns a promise (future)
-    return chartManager.getDataFromRestCall(key__);
+    return chartManager.getDataFromRestCall(url_);
 }
 
 function getBar3Data(key_){
-    level_ = key_;
-    var busDate_ = selectedBusdate.value;
-    var key__ = '/api/bargraph-tree/' + busDate_ +'/total/' + level_ + '/fca/';
-
+    var url_ = getBarGraphData(key_, getBusinessDate(), getHierarchy(), 'fca');
     // returns a promise (future)
-    return chartManager.getDataFromRestCall(key__);
+    return chartManager.getDataFromRestCall(url_);
 }
 
 function getBar4Data(key_){
-    level_ = key_;
-    var busDate_ = selectedBusdate.value;
-    var key__ = '/api/bargraph-tree/' + busDate_ +'/total/' + level_ + '/fba/';
+    var url_ = getBarGraphData(key_, getBusinessDate(), getHierarchy(), 'fba');
     // returns a promise (future)
-    return chartManager.getDataFromRestCall(key__);
-
+    return chartManager.getDataFromRestCall(url_);
 }
-
 
 function getBar5Data(key_){
-    level_ = key_;
-    var busDate_ = selectedBusdate.value;
-    var key__ = '/api/bargraph-tree/' + busDate_ +'/total/' + level_ + '/eepe/';
-
+    var url_ = getBarGraphData(key_, getBusinessDate(), getHierarchy(), 'eepe');
     // returns a promise (future)
-    return chartManager.getDataFromRestCall(key__);
-
-
+    return chartManager.getDataFromRestCall(url_);
 }
+
 function getBar6Data(key_){
-    level_ = key_;
-    var busDate_ = selectedBusdate.value;
-    var key__ = '/api/bargraph-tree/' + busDate_ +'/total/' + level_ + '/cva/';
+    var url_ = getBarGraphData(key_, getBusinessDate(), getHierarchy(), 'cva');
     // returns a promise (future)
-    return chartManager.getDataFromRestCall(key__);
+    return chartManager.getDataFromRestCall(url_);
 }
 
 function flipChart(chartId_, chartType_){
@@ -874,30 +878,25 @@ function flipChart(chartId_, chartType_){
 
 
 function getCVAData(key_){
-    level_ = key_;
-    var busDate_ = selectedBusdate.value;
-    var key__ = '/api/xva-tree/' + busDate_ +'/total/' + level_ + '/cva/';
+    var url_ = getXVAGraphData(key_, getBusinessDate(), getHierarchy(), 'cva');
+    // var key__ = '/api/xva-tree/' + getBusinessDate() +'/' + getHierarchy() + '/Total/cva/';
     // returns a promise (future)
-    return chartManager.getDataFromRestCall(key__);
+    return chartManager.getDataFromRestCall(url_);
 }
 function getFVAData(key_){
-    level_ = key_;
-    var busDate_ = selectedBusdate.value;
-    var key__ = '/api/xva-tree/' + busDate_ +'/total/' + level_ + '/fva/';
+    var url_ = getXVAGraphData(key_, getBusinessDate(), getHierarchy(), 'fva');
+    // var key__ = '/api/xva-tree/' + getBusinessDate() +'/' + getHierarchy() + '/Total/fva/';
     // returns a promise (future)
-    return chartManager.getDataFromRestCall(key__);
+    return chartManager.getDataFromRestCall(url_);
 }
 function getColVAData(key_){
-    level_ = key_;
-    var busDate_ = selectedBusdate.value;
-    var key__ = '/api/xva-tree/' + busDate_ +'/total/' + level_ + '/colva/';
+    var url_ = getXVAGraphData(key_, getBusinessDate(), getHierarchy(), 'colva');
+    // var key__ = '/api/xva-tree/' + getBusinessDate() +'/' + getHierarchy() + '/Total/colva/';
     // returns a promise (future)
-    return chartManager.getDataFromRestCall(key__);
+    return chartManager.getDataFromRestCall(url_);
 }
 
-function refreshGraphsOnDateChange(){
-    var __level__ = selectedHierarchy.value;
-
+function refreshGraphsOnDateChange(__level__){
     chartManager.initChart('bar_1', BARCharts.getInstance().getDefaults, getBar1Data(__level__), BARCharts.getInstance().setNewData);
     chartManager.initChart('bar_2', BARCharts.getInstance().getDefaults, getBar2Data(__level__), BARCharts.getInstance().setNewData);
     chartManager.initChart('bar_3', BARCharts.getInstance().getDefaults, getBar3Data(__level__), BARCharts.getInstance().setNewData);

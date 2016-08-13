@@ -113,11 +113,11 @@
                                 <select class="selectpicker" id="hierarchy">
                                     <!--<select style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc">-->
                                     <option>Choose Hierarchy</option>
-                                    <option>Total</option>
-                                    <option>Credit Rating</option>
-                                    <option>Counterparty</option>
-                                    <option>Netting Set</option>
-                                    <option>Trade</option>
+                                    <option value="total">Total</option>
+                                    <option value="creditrating">Credit Rating</option>
+                                    <option value="counterparty">Counterparty</option>
+                                    <option value="nettingset">Netting Set</option>
+                                    <option value="trade">Trade</option>
                                 </select>
                             </div>
                         </div>
@@ -456,28 +456,24 @@
 <script language="javascript">
 
     var load_ = function () {
-//        $('.select2_single').select2({
-//            placeholder: "Hierarchy",
-//            allowClear: true
-//        });
-
         // add a change event handler to the bus dates dropdown
         _AttachEvent(document.getElementById("businessDates"), "change", chartManager.setNewBusDate);
-        _AttachEvent(document.getElementById("hierarchy"), "change", chartManager.setNewBusDate);
+        _AttachEvent(document.getElementById("hierarchy"), "change", chartManager.setNewHierarchy);
 
         $(document).on('click', '.dropdown-menu li a', function() {
             console.debug('clicked on ' + this.innerText + ' ' + this.parentNode.parentNode.id);
             chartManager.flipChart(id_, type_);
         });
 
+        // set initial values
+        selectedBusdate.value = sessionStorage.getItem('selectedBusinessDate') || '20150630';
+        selectedHierarchy.value = sessionStorage.getItem('selectedHierarchy') || 'Total';
+        sessionStorage.setItem('selectedBusinessDate', selectedBusdate.value);
+        sessionStorage.setItem('selectedHierarchy', selectedHierarchy.value);
+
     }
 
     window.onload = load_;
-
-    function jojo(evt){
-        console.debug(evt);
-    }
-
 </script>
 
 </body>
