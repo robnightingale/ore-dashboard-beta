@@ -772,7 +772,7 @@ var chartManager = {
         selectedBusdate.value = target.value;
         sessionStorage.setItem('selectedBusinessDate', target.value);
 
-        refreshGraphsOnDateChange();
+        refreshGraphsOnDataChange();
     },
     setNewHierarchy: function(evt){
         if (isNullOrUndefined(evt))
@@ -783,7 +783,7 @@ var chartManager = {
         // set the hidden field
         selectedHierarchy.value = target.value;
         sessionStorage.setItem('selectedHierarchy', target.value);
-        refreshGraphsOnDateChange();
+        refreshGraphsOnDataChange();
     }
 
 }
@@ -812,6 +812,30 @@ function getXVAGraphData(__level__, date, hierarchy, metric){
     return key__;
 }
 
+function getExposureGraphData(__level__, date, hierarchy, metric){
+    var key__;
+
+    if (hierarchy == 'total'){
+        key__ = '/api/xva-tree/' + date +'/' + hierarchy + '/Total/' + metric + '/';
+    } else {
+        // /api/bargraph/:date/:hierarchy/:metric/
+        key__ = '/api/xva/' + date +'/' + hierarchy + '/' + metric + '/';
+    }
+    return key__;
+}
+
+function getExposureProfileGraphData(__level__, date, hierarchy, metric){
+    var key__;
+
+    if (hierarchy == 'total'){
+        key__ = '/api/xva-tree/' + date +'/' + hierarchy + '/Total/' + metric + '/';
+    } else {
+        // /api/bargraph/:date/:hierarchy/:metric/
+        key__ = '/api/xva/' + date +'/' + hierarchy + '/' + metric + '/';
+    }
+    return key__;
+}
+
 function getBusinessDate(){
     return sessionStorage.getItem('selectedBusinessDate') || selectedBusdate.value;
 }
@@ -822,13 +846,15 @@ function getHierarchy(){
 
 
 function getTotalExposureData(key_){
-    var key__ = '/api/totalexposure-tree/' + getHierarchy() + '/Total/';
+    var key__ = '/api/totalexposure-tree/total/Total/';
+    // var key__ = '/api/totalexposure-tree/' + getHierarchy() + '/Total/';
     // returns a promise (future)
     return chartManager.getDataFromRestCall(key__);
 }
 
 function getExposureProfileData(key_){
-    var key__ = '/api/exposure-tree/' + getBusinessDate() +'/' + getHierarchy() + '/Total/';
+    // var key__ = '/api/exposure-tree/' + getBusinessDate() +'/' + getHierarchy() + '/Total/';
+    var key__ = '/api/exposure-tree/' + getBusinessDate() +'/total/Total/';
     // returns a promise (future)
     return chartManager.getDataFromRestCall(key__);
 }
@@ -870,10 +896,7 @@ function getBar6Data(key_){
 }
 
 function flipChart(chartId_, chartType_){
-    var chart_ = chartManager.getChartInstanceFromDivId(chartId_);
-    var data_ = chartManager.getDataFromRestCall(chartType_);
-    chart_.setNewData(chart_, data_);
-
+// TODO this is to be hooked to the chart type changer for bar graphs
 }
 
 
@@ -896,7 +919,7 @@ function getColVAData(key_){
     return chartManager.getDataFromRestCall(url_);
 }
 
-function refreshGraphsOnDateChange(__level__){
+function refreshGraphsOnDataChange(__level__){
     chartManager.initChart('bar_1', BARCharts.getInstance().getDefaults, getBar1Data(__level__), BARCharts.getInstance().setNewData);
     chartManager.initChart('bar_2', BARCharts.getInstance().getDefaults, getBar2Data(__level__), BARCharts.getInstance().setNewData);
     chartManager.initChart('bar_3', BARCharts.getInstance().getDefaults, getBar3Data(__level__), BARCharts.getInstance().setNewData);
