@@ -162,7 +162,7 @@ var LINECharts = (function () {
             xAxis: [{
                 type: 'category',
                 axisLabel:{interval: 'auto', formatter: function(value){
-                    return value;
+                    return moment(value,'YYYYMMDD').format('DD-MM-YYYY');
                 }},
 
                 // boundaryGap: false,
@@ -236,7 +236,7 @@ var LINECharts = (function () {
                 type: 'category',
                 boundaryGap: true,
                 axisLabel:{interval: 'auto', formatter: function(value){
-                    return value;
+                    return moment(value,'DD/MM/YYYY').format('DD-MM-YYYY');
                 }},
                 data: []
             }],
