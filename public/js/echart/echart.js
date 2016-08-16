@@ -34,7 +34,7 @@ var BARCharts = (function () {
                 trigger: 'axis'
             },
             legend: {
-                x: 10000,
+                // x: 10000,
                 data: null
             },
             toolbox: {
@@ -50,10 +50,18 @@ var BARCharts = (function () {
             clickable: true,
             xAxis: [{
                 type: 'value',
-                boundaryGap: [0, 0.01]
+                boundaryGap: false,
+                axisLabel:{interval: 'auto', formatter: function(value){
+                    return numeral(value).format('(0.00a)');
+                }},
+
             }],
             yAxis: [{
                 type: 'category',
+                boundaryGap: true,
+                axisLabel:{interval: 'auto', formatter: function(value){
+                    return value;
+                }},
                 data: []
             }],
             series: null
@@ -153,11 +161,18 @@ var LINECharts = (function () {
             calculable: true,
             xAxis: [{
                 type: 'category',
-                boundaryGap: false,
+                axisLabel:{interval: 'auto', formatter: function(value){
+                    return value;
+                }},
+
+                // boundaryGap: false,
                 data: []
             }],
             yAxis: [{
-                type: 'value'
+                type: 'value',
+                axisLabel:{interval: 'auto', formatter: function(value){
+                    return numeral(value).format('(0.00a)');
+                }},
             }],
             series: []
         };
@@ -220,10 +235,17 @@ var LINECharts = (function () {
             xAxis: [{
                 type: 'category',
                 boundaryGap: true,
+                axisLabel:{interval: 'auto', formatter: function(value){
+                    return value;
+                }},
                 data: []
             }],
             yAxis: [{
-                type: 'value'
+                type: 'value',
+                axisLabel:{interval: 'auto', formatter: function(value){
+                    return numeral(value).format('(0.00a)');
+                }},
+
             }],
             series: [],
             // markPoint : {
