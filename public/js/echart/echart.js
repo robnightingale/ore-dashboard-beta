@@ -941,6 +941,12 @@ function getColVAData(key_){
     return chartManager.getDataFromRestCall(url_);
 }
 
+function getSumOfColVA(key__) {
+    Promise.resolve(getColVAData(key__).then(function (res) {
+        return getSumOfArrayValues(res.data);
+    }));
+}
+
 function refreshGraphsOnDataChange(__level__){
     chartManager.initChart('bar_1', BARCharts.getInstance().getDefaults, getBar1Data(__level__), BARCharts.getInstance().setNewData);
     chartManager.initChart('bar_2', BARCharts.getInstance().getDefaults, getBar2Data(__level__), BARCharts.getInstance().setNewData);
@@ -971,4 +977,16 @@ function getTreeAsMenu() {
         )
     });
 
+}
+
+
+// send in the data array from a graph
+function getSumOfArrayValues(array_) {
+    var g = array_.map(function (elem) {
+        return elem.value;
+    }).reduce(function (prev, curr) {
+        return prev + curr;
+    });
+    console.debug(g);
+    return g;
 }
