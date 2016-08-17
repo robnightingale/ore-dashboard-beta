@@ -805,7 +805,7 @@ var chartManager = {
         // set the hidden field
         selectedHierarchy.value = target.value;
         sessionStorage.setItem('selectedHierarchy', target.value);
-        refreshGraphsOnDataChange();
+        refreshGraphsOnDataChange(target.value);
     }
 
 }
@@ -954,9 +954,12 @@ function refreshGraphsOnDataChange(__level__){
     chartManager.initChart('bar_4', BARCharts.getInstance().getDefaults, getBar4Data(__level__), BARCharts.getInstance().setNewData);
     chartManager.initChart('bar_5', BARCharts.getInstance().getDefaults, getBar5Data(__level__), BARCharts.getInstance().setNewData);
     chartManager.initChart('bar_6', BARCharts.getInstance().getDefaults, getBar6Data(__level__), BARCharts.getInstance().setNewData);
-    chartManager.initChart('donut_cva', DONUTCharts.getInstance().getDefaults, getCVAData(__level__), DONUTCharts.getInstance().setNewData);
-    chartManager.initChart('donut_fva', DONUTCharts.getInstance().getDefaults, getFVAData(__level__), DONUTCharts.getInstance().setNewData);
-    chartManager.initChart('donut_colva', DONUTCharts.getInstance().getDefaults, getColVAData(__level__), DONUTCharts.getInstance().setNewData);
+    if (__level__ != 'trade') {
+        // console.debug('above trade lvel');
+        chartManager.initChart('donut_cva', DONUTCharts.getInstance().getDefaults, getCVAData(__level__), DONUTCharts.getInstance().setNewData);
+        chartManager.initChart('donut_fva', DONUTCharts.getInstance().getDefaults, getFVAData(__level__), DONUTCharts.getInstance().setNewData);
+        chartManager.initChart('donut_colva', DONUTCharts.getInstance().getDefaults, getColVAData(__level__), DONUTCharts.getInstance().setNewData);
+    }
 
     chartManager.initChart('line_exposure_profile', LINECharts.getInstance().getDefaultExposureOpts, getExposureProfileData(__level__), LINECharts.getInstance().setNewData);
     chartManager.initChart('line_total_exposure', LINECharts.getInstance().getDefaultTotalOptions, getTotalExposureData(__level__), LINECharts.getInstance().setNewData);
