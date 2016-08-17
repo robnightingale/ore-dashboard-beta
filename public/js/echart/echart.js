@@ -678,7 +678,7 @@ var chartManager = {
         return theChart_;
     },
     eConsole: function (param) {
-        var mes = 'Drill down request - 【' + param.type + '】';
+        var mes = 'Drill down request - 【' + param.type + ':' + param.data.name + '】';
         if (typeof param.seriesIndex != 'undefined') {
             mes += '  seriesIndex : ' + param.seriesIndex;
             mes += '  dataIndex : ' + param.dataIndex;
@@ -689,9 +689,10 @@ var chartManager = {
         else {
             // document.getElementById('console').innerHTML = mes;
             console.log(mes);
-            alert(mes);
+            // alert(mes);
         }
         console.log(param);
+        drillDown(param.data.name);
     },
     getDataFromRestCall: function (url_) {
         console.debug(url_);
@@ -810,27 +811,36 @@ var chartManager = {
 
 }
 
-function getBarGraphData(__level__, date, hierarchy, metric){
+function getBarGraphData(__level__, date, hierarchy, metric, drilldownKey_) {
     var key__;
 
-    if (hierarchy == 'total'){
-        key__ = '/api/bargraph-tree/' + date +'/' + hierarchy + '/Total/' + metric + '/';
+    if (!isNullOrUndefined(drilldownKey_)){
+        key__ = '/api/bargraph-tree/' + date + '/' + hierarchy + '/' + drilldownKey_ + '/' + metric + '/';
     } else {
-        // /api/bargraph/:date/:hierarchy/:metric/
-        key__ = '/api/bargraph/' + date +'/' + hierarchy + '/' + metric + '/';
+        if (hierarchy == 'total') {
+            key__ = '/api/bargraph-tree/' + date + '/' + hierarchy + '/Total/' + metric + '/';
+        } else {
+            // /api/bargraph/:date/:hierarchy/:metric/
+            key__ = '/api/bargraph/' + date + '/' + hierarchy + '/' + metric + '/';
+        }
     }
     return key__;
 }
 
-function getXVAGraphData(__level__, date, hierarchy, metric){
+function getXVAGraphData(__level__, date, hierarchy, metric, drilldownKey_){
     var key__;
 
-    if (hierarchy == 'total'){
-        key__ = '/api/xva-tree/' + date +'/' + hierarchy + '/Total/' + metric + '/';
+    if (!isNullOrUndefined(drilldownKey_)){
+        key__ = '/api/xva-tree/' + date +'/' + hierarchy + '/' + drilldownKey_ +'/' + metric + '/';
     } else {
-        // /api/bargraph/:date/:hierarchy/:metric/
-        key__ = '/api/xva/' + date +'/' + hierarchy + '/' + metric + '/';
+        if (hierarchy == 'total'){
+            key__ = '/api/xva-tree/' + date +'/' + hierarchy + '/Total/' + metric + '/';
+        } else {
+            // /api/bargraph/:date/:hierarchy/:metric/
+            key__ = '/api/xva/' + date +'/' + hierarchy + '/' + metric + '/';
+        }
     }
+
     return key__;
 }
 
@@ -881,38 +891,38 @@ function getExposureProfileData(key_){
     return chartManager.getDataFromRestCall(key__);
 }
 
-function getBar1Data(key_){
-    var url_ = getBarGraphData(key_, getBusinessDate(), getHierarchy(), 'ce');
+function getBar1Data(key_, drilldownKey_){
+    var url_ = getBarGraphData(key_, getBusinessDate(), getHierarchy(), 'ce', drilldownKey_);
     // returns a promise (future)
     return chartManager.getDataFromRestCall(url_);
 }
 
-function getBar2Data(key_){
-    var url_ = getBarGraphData(key_, getBusinessDate(), getHierarchy(), 'npv');
+function getBar2Data(key_, drilldownKey_){
+    var url_ = getBarGraphData(key_, getBusinessDate(), getHierarchy(), 'npv', drilldownKey_);
     // returns a promise (future)
     return chartManager.getDataFromRestCall(url_);
 }
 
-function getBar3Data(key_){
-    var url_ = getBarGraphData(key_, getBusinessDate(), getHierarchy(), 'fca');
+function getBar3Data(key_, drilldownKey_){
+    var url_ = getBarGraphData(key_, getBusinessDate(), getHierarchy(), 'fca', drilldownKey_);
     // returns a promise (future)
     return chartManager.getDataFromRestCall(url_);
 }
 
-function getBar4Data(key_){
-    var url_ = getBarGraphData(key_, getBusinessDate(), getHierarchy(), 'fba');
+function getBar4Data(key_, drilldownKey_){
+    var url_ = getBarGraphData(key_, getBusinessDate(), getHierarchy(), 'fba', drilldownKey_);
     // returns a promise (future)
     return chartManager.getDataFromRestCall(url_);
 }
 
-function getBar5Data(key_){
-    var url_ = getBarGraphData(key_, getBusinessDate(), getHierarchy(), 'eepe');
+function getBar5Data(key_, drilldownKey_){
+    var url_ = getBarGraphData(key_, getBusinessDate(), getHierarchy(), 'eepe', drilldownKey_);
     // returns a promise (future)
     return chartManager.getDataFromRestCall(url_);
 }
 
-function getBar6Data(key_){
-    var url_ = getBarGraphData(key_, getBusinessDate(), getHierarchy(), 'cva');
+function getBar6Data(key_, drilldownKey_){
+    var url_ = getBarGraphData(key_, getBusinessDate(), getHierarchy(), 'cva', drilldownKey_);
     // returns a promise (future)
     return chartManager.getDataFromRestCall(url_);
 }
@@ -922,20 +932,20 @@ function flipChart(chartId_, chartType_){
 }
 
 
-function getCVAData(key_){
-    var url_ = getXVAGraphData(key_, getBusinessDate(), getHierarchy(), 'cva');
+function getCVAData(key_, drilldownKey_){
+    var url_ = getXVAGraphData(key_, getBusinessDate(), getHierarchy(), 'cva', drilldownKey_);
     // var key__ = '/api/xva-tree/' + getBusinessDate() +'/' + getHierarchy() + '/Total/cva/';
     // returns a promise (future)
     return chartManager.getDataFromRestCall(url_);
 }
-function getFVAData(key_){
-    var url_ = getXVAGraphData(key_, getBusinessDate(), getHierarchy(), 'fva');
+function getFVAData(key_, drilldownKey_){
+    var url_ = getXVAGraphData(key_, getBusinessDate(), getHierarchy(), 'fva', drilldownKey_);
     // var key__ = '/api/xva-tree/' + getBusinessDate() +'/' + getHierarchy() + '/Total/fva/';
     // returns a promise (future)
     return chartManager.getDataFromRestCall(url_);
 }
-function getColVAData(key_){
-    var url_ = getXVAGraphData(key_, getBusinessDate(), getHierarchy(), 'colva');
+function getColVAData(key_, drilldownKey_){
+    var url_ = getXVAGraphData(key_, getBusinessDate(), getHierarchy(), 'colva', drilldownKey_);
     // var key__ = '/api/xva-tree/' + getBusinessDate() +'/' + getHierarchy() + '/Total/colva/';
     // returns a promise (future)
     return chartManager.getDataFromRestCall(url_);
@@ -965,6 +975,26 @@ function refreshGraphsOnDataChange(__level__){
     chartManager.initChart('line_total_exposure', LINECharts.getInstance().getDefaultTotalOptions, getTotalExposureData(__level__), LINECharts.getInstance().setNewData);
 }
 
+
+function refreshGraphsOnDrilldown(__level__, drilldownKey_){
+    chartManager.initChart('bar_1', BARCharts.getInstance().getDefaults, getBar1Data(__level__,drilldownKey_), BARCharts.getInstance().setNewData);
+    chartManager.initChart('bar_2', BARCharts.getInstance().getDefaults, getBar2Data(__level__,drilldownKey_), BARCharts.getInstance().setNewData);
+    chartManager.initChart('bar_3', BARCharts.getInstance().getDefaults, getBar3Data(__level__,drilldownKey_), BARCharts.getInstance().setNewData);
+    chartManager.initChart('bar_4', BARCharts.getInstance().getDefaults, getBar4Data(__level__,drilldownKey_), BARCharts.getInstance().setNewData);
+    chartManager.initChart('bar_5', BARCharts.getInstance().getDefaults, getBar5Data(__level__,drilldownKey_), BARCharts.getInstance().setNewData);
+    chartManager.initChart('bar_6', BARCharts.getInstance().getDefaults, getBar6Data(__level__,drilldownKey_), BARCharts.getInstance().setNewData);
+    if (__level__ != 'trade') {
+        // console.debug('above trade lvel');
+        chartManager.initChart('donut_cva', DONUTCharts.getInstance().getDefaults, getCVAData(__level__,drilldownKey_), DONUTCharts.getInstance().setNewData);
+        chartManager.initChart('donut_fva', DONUTCharts.getInstance().getDefaults, getFVAData(__level__,drilldownKey_), DONUTCharts.getInstance().setNewData);
+        chartManager.initChart('donut_colva', DONUTCharts.getInstance().getDefaults, getColVAData(__level__,drilldownKey_), DONUTCharts.getInstance().setNewData);
+    }
+
+    // chartManager.initChart('line_exposure_profile', LINECharts.getInstance().getDefaultExposureOpts, getExposureProfileData(__level__), LINECharts.getInstance().setNewData);
+    // chartManager.initChart('line_total_exposure', LINECharts.getInstance().getDefaultTotalOptions, getTotalExposureData(__level__), LINECharts.getInstance().setNewData);
+}
+
+
 function getTreeAsMenu() {
     var fragment = document.createDocumentFragment();
     var elements = {};
@@ -992,4 +1022,9 @@ function getSumOfArrayValues(array_) {
     });
     console.debug(g);
     return g;
+}
+
+function drillDown(drilldownKey_) {
+    var __level__ = getHierarchy();
+    refreshGraphsOnDrilldown(__level__, drilldownKey_);
 }
