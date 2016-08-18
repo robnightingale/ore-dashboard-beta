@@ -31,7 +31,8 @@ var BARCharts = (function () {
 
         var options = {
             tooltip: {
-                trigger: 'axis'
+                trigger: 'axis',
+                formatter: null
             },
             legend: {
                 // x: 10000,
@@ -119,7 +120,24 @@ var LINECharts = (function () {
                 subtext: 'Subtitle'
             },
             tooltip: {
-                trigger: 'axis'
+                trigger: 'axis',
+
+                formatter: function (params,ticket,callback) {
+                    console.debug(params);
+                    // console.log(params)
+                    // var res = 'Function formatter : <br/>' + params[0].name;
+                    var tot_ = parseFloat(params[2].value) + parseFloat(params[1].value);
+                    var res = 'Total : ' + tot_;
+                    for (var i = 0, l = params.length; i < l; i++) {
+                        res += '<br/>' + params[i].seriesName + ' : ' + params[i].value;
+                    }
+                    return res;
+                    // setTimeout(function (){
+                    //     callback(ticket, res);
+                    // }, 1000)
+                    // return 'loading';
+                }
+                //formatter: "Template formatter: <br/>{b}<br/>{a}:{c}<br/>{a1}:{c1}"
             },
             legend: {
                 x: 140,
@@ -195,7 +213,8 @@ var LINECharts = (function () {
                 subtext: 'Simulated EPE & PFE'
             },
             tooltip: {
-                trigger: 'axis'
+                trigger: 'axis',
+                formatter: null
             },
             legend: {
                 x: 220,
@@ -312,15 +331,10 @@ var LINECharts = (function () {
                     name: "EEPE",
                     data: data_.eepes
                 }
-                var series_3 = {
-                    name: "Total",
-                    data: data_.tes
-                }
                 var series_ = []
                 series_.push(series_0);
                 series_.push((series_1));
                 series_.push((series_2));
-                series_.push((series_3));
 
                 series_.forEach(function (elem) {
                     // only add marklines for exposure profile graph
@@ -389,7 +403,8 @@ var DONUTCharts = (function () {
         var options = {
             tooltip: {
                 trigger: 'item',
-                formatter: "{a} <br/>{b} : {c} <br/>({d}%)"
+                formatter: null
+                // formatter: "{a} <br/>{b} : {c} <br/>({d}%)"
             },
             calculable: true,
             legend: {
@@ -678,21 +693,8 @@ var chartManager = {
         return theChart_;
     },
     eConsole: function (param) {
-        var mes = 'Drill down request - 【' + param.type + ':' + param.data.name + '】';
-        if (typeof param.seriesIndex != 'undefined') {
-            mes += '  seriesIndex : ' + param.seriesIndex;
-            mes += '  dataIndex : ' + param.dataIndex;
-        }
-        if (param.type == 'hover') {
-            document.getElementById('hover-console').innerHTML = 'Event Console : ' + mes;
-        }
-        else {
-            // document.getElementById('console').innerHTML = mes;
-            console.log(mes);
-            // alert(mes);
-        }
         console.log(param);
-        drillDown(param.data.name);
+        drillDown(param.name);
     },
     getDataFromRestCall: function (url_) {
         console.debug(url_);
