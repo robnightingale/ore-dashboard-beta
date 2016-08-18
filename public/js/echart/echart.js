@@ -403,8 +403,7 @@ var DONUTCharts = (function () {
         var options = {
             tooltip: {
                 trigger: 'item',
-                formatter: null
-                // formatter: "{a} <br/>{b} : {c} <br/>({d}%)"
+                formatter: "{a} <br/>{b} : {c} ({d}%)"
             },
             calculable: true,
             legend: {
@@ -1028,5 +1027,22 @@ function getSumOfArrayValues(array_) {
 
 function drillDown(drilldownKey_) {
     var __level__ = getHierarchy();
-    refreshGraphsOnDrilldown(__level__, drilldownKey_);
+    Promise.resolve(refreshGraphsOnDrilldown(__level__, drilldownKey_)).then(function(res){
+        console.log(res);
+        downALevel();
+    });
+}
+
+function downALevel(){
+    if (hierarchy.selectedIndex < hierarchy.options.length-1)
+    {
+        hierarchy.selectedIndex++;
+    }
+}
+
+function upALevel(){
+    if (hierarchy.selectedIndex >0)
+    {
+        hierarchy.selectedIndex--;
+    }
 }
