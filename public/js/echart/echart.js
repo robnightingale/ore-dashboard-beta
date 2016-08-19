@@ -1,8 +1,10 @@
 $(window).load(function () {
-    console.log('[INFO] ORE Dashboard.init');
-    chartManager.populateBusinessDates();
-    chartManager.initAllCharts();
-    console.log('[INFO] ORE Dashboard init completed');
+    // console.log('[INFO] ORE Dashboard.init');
+    // Promise.resolve(chartManager.populateBusinessDates())
+    //     .then(function(res){
+    //     chartManager.initAllCharts();
+    //     });
+    // console.log('[INFO] ORE Dashboard init completed');
 });
 
 /**
@@ -786,49 +788,51 @@ var chartManager = {
             console.error(new Error(e));
         }
     },
-    setNewBusDate: function(evt){
-        if (isNullOrUndefined(evt))
-            return;
-
-        evt = evt || window.event;
-        var target = evt.target || evt.srcElement;
-        // set the hidden field
-        selectedBusdate.value = target.value;
-        sessionStorage.setItem('selectedBusinessDate', target.value);
-
-        refreshGraphsOnDataChange();
-    },
-    setNewHierarchy: function(evt){
-        if (isNullOrUndefined(evt))
-            return;
-
-        evt = evt || window.event;
-        var target = evt.target || evt.srcElement;
-        // set the hidden field
-        selectedHierarchy.value = target.value;
-        sessionStorage.setItem('selectedHierarchy', target.value);
-        refreshGraphsOnDataChange(target.value);
-    }
+    // setNewBusDate: function(evt){
+    //     if (isNullOrUndefined(evt))
+    //         return;
+    //
+    //     evt = evt || window.event;
+    //     var target = evt.target || evt.srcElement;
+    //     // set the hidden field
+    //     selectedBusdate.value = target.value;
+    //     sessionStorage.setItem('selectedBusinessDate', target.value);
+    //
+    //     refreshGraphsOnDataChange();
+    // },
+    // setNewHierarchy: function(evt){
+    //     if (isNullOrUndefined(evt))
+    //         return;
+    //
+    //     evt = evt || window.event;
+    //     var target = evt.target || evt.srcElement;
+    //     // set the hidden field
+    //     selectedHierarchy.value = target.value;
+    //     sessionStorage.setItem('selectedHierarchy', target.value);
+    //     refreshGraphsOnDataChange(target.value);
+    // }
 
 }
 
-function getBarGraphData(__level__, date, hierarchy, metric, drilldownKey_) {
+function getBarGraphData(date, hierarchy, metric, drilldownKey_) {
     var key__;
+    var doodoodoo = drilldownKey_;
 
     if (!isNullOrUndefined(drilldownKey_)){
-        key__ = '/api/bargraph-tree/' + date + '/' + hierarchy + '/' + drilldownKey_ + '/' + metric + '/';
+        if (drilldownKey_ == 'total') doodoodoo = 'Total';
+        key__ = '/api/bargraph-tree/' + date + '/' + hierarchy + '/' + doodoodoo + '/' + metric + '/';
     } else {
-        if (hierarchy == 'total') {
-            key__ = '/api/bargraph-tree/' + date + '/' + hierarchy + '/Total/' + metric + '/';
-        } else {
+        // if (hierarchy == 'total') {
+        //     key__ = '/api/bargraph-tree/' + date + '/' + hierarchy + '/Total/' + metric + '/';
+        // } else {
             // /api/bargraph/:date/:hierarchy/:metric/
             key__ = '/api/bargraph/' + date + '/' + hierarchy + '/' + metric + '/';
-        }
+        // }
     }
     return key__;
 }
 
-function getXVAGraphData(__level__, date, hierarchy, metric, drilldownKey_){
+function getXVAGraphData(date, hierarchy, metric, drilldownKey_){
     var key__;
 
     if (!isNullOrUndefined(drilldownKey_)){
@@ -870,11 +874,11 @@ function getExposureProfileGraphData(__level__, date, hierarchy, metric){
 }
 
 function getBusinessDate(){
-    return sessionStorage.getItem('selectedBusinessDate') || selectedBusdate.value;
+    return sessionStorage.getItem('businessDate') || businessDate.value;
 }
 
 function getHierarchy(){
-    return (sessionStorage.getItem('selectedHierarchy') || selectedHierarchy.value).toLowerCase();
+    return (sessionStorage.getItem('hierarchy') || hierarchy.value).toLowerCase();
 }
 
 
@@ -892,38 +896,38 @@ function getExposureProfileData(key_){
     return chartManager.getDataFromRestCall(key__);
 }
 
-function getBar1Data(key_, drilldownKey_){
-    var url_ = getBarGraphData(key_, getBusinessDate(), getHierarchy(), 'ce', drilldownKey_);
+function getBar1Data(drilldownKey_){
+    var url_ = getBarGraphData(getBusinessDate(), getHierarchy(), 'ce', drilldownKey_);
     // returns a promise (future)
     return chartManager.getDataFromRestCall(url_);
 }
 
-function getBar2Data(key_, drilldownKey_){
-    var url_ = getBarGraphData(key_, getBusinessDate(), getHierarchy(), 'npv', drilldownKey_);
+function getBar2Data(drilldownKey_){
+    var url_ = getBarGraphData(getBusinessDate(), getHierarchy(), 'npv', drilldownKey_);
     // returns a promise (future)
     return chartManager.getDataFromRestCall(url_);
 }
 
-function getBar3Data(key_, drilldownKey_){
-    var url_ = getBarGraphData(key_, getBusinessDate(), getHierarchy(), 'fca', drilldownKey_);
+function getBar3Data(drilldownKey_){
+    var url_ = getBarGraphData(getBusinessDate(), getHierarchy(), 'fca', drilldownKey_);
     // returns a promise (future)
     return chartManager.getDataFromRestCall(url_);
 }
 
-function getBar4Data(key_, drilldownKey_){
-    var url_ = getBarGraphData(key_, getBusinessDate(), getHierarchy(), 'fba', drilldownKey_);
+function getBar4Data(drilldownKey_){
+    var url_ = getBarGraphData(getBusinessDate(), getHierarchy(), 'fba', drilldownKey_);
     // returns a promise (future)
     return chartManager.getDataFromRestCall(url_);
 }
 
-function getBar5Data(key_, drilldownKey_){
-    var url_ = getBarGraphData(key_, getBusinessDate(), getHierarchy(), 'eepe', drilldownKey_);
+function getBar5Data(drilldownKey_){
+    var url_ = getBarGraphData(getBusinessDate(), getHierarchy(), 'eepe', drilldownKey_);
     // returns a promise (future)
     return chartManager.getDataFromRestCall(url_);
 }
 
-function getBar6Data(key_, drilldownKey_){
-    var url_ = getBarGraphData(key_, getBusinessDate(), getHierarchy(), 'cva', drilldownKey_);
+function getBar6Data(drilldownKey_){
+    var url_ = getBarGraphData(getBusinessDate(), getHierarchy(), 'cva', drilldownKey_);
     // returns a promise (future)
     return chartManager.getDataFromRestCall(url_);
 }
@@ -933,20 +937,20 @@ function flipChart(chartId_, chartType_){
 }
 
 
-function getCVAData(key_, drilldownKey_){
-    var url_ = getXVAGraphData(key_, getBusinessDate(), getHierarchy(), 'cva', drilldownKey_);
+function getCVAData(drilldownKey_){
+    var url_ = getXVAGraphData(getBusinessDate(), getHierarchy(), 'cva', drilldownKey_);
     // var key__ = '/api/xva-tree/' + getBusinessDate() +'/' + getHierarchy() + '/Total/cva/';
     // returns a promise (future)
     return chartManager.getDataFromRestCall(url_);
 }
-function getFVAData(key_, drilldownKey_){
-    var url_ = getXVAGraphData(key_, getBusinessDate(), getHierarchy(), 'fva', drilldownKey_);
+function getFVAData(drilldownKey_){
+    var url_ = getXVAGraphData(getBusinessDate(), getHierarchy(), 'fva', drilldownKey_);
     // var key__ = '/api/xva-tree/' + getBusinessDate() +'/' + getHierarchy() + '/Total/fva/';
     // returns a promise (future)
     return chartManager.getDataFromRestCall(url_);
 }
-function getColVAData(key_, drilldownKey_){
-    var url_ = getXVAGraphData(key_, getBusinessDate(), getHierarchy(), 'colva', drilldownKey_);
+function getColVAData(drilldownKey_){
+    var url_ = getXVAGraphData(getBusinessDate(), getHierarchy(), 'colva', drilldownKey_);
     // var key__ = '/api/xva-tree/' + getBusinessDate() +'/' + getHierarchy() + '/Total/colva/';
     // returns a promise (future)
     return chartManager.getDataFromRestCall(url_);
@@ -977,18 +981,18 @@ function refreshGraphsOnDataChange(__level__){
 }
 
 
-function refreshGraphsOnDrilldown(__level__, drilldownKey_){
-    chartManager.initChart('bar_1', BARCharts.getInstance().getDefaults, getBar1Data(__level__,drilldownKey_), BARCharts.getInstance().setNewData);
-    chartManager.initChart('bar_2', BARCharts.getInstance().getDefaults, getBar2Data(__level__,drilldownKey_), BARCharts.getInstance().setNewData);
-    chartManager.initChart('bar_3', BARCharts.getInstance().getDefaults, getBar3Data(__level__,drilldownKey_), BARCharts.getInstance().setNewData);
-    chartManager.initChart('bar_4', BARCharts.getInstance().getDefaults, getBar4Data(__level__,drilldownKey_), BARCharts.getInstance().setNewData);
-    chartManager.initChart('bar_5', BARCharts.getInstance().getDefaults, getBar5Data(__level__,drilldownKey_), BARCharts.getInstance().setNewData);
-    chartManager.initChart('bar_6', BARCharts.getInstance().getDefaults, getBar6Data(__level__,drilldownKey_), BARCharts.getInstance().setNewData);
-    if (__level__ != 'trade') {
+function refreshGraphsOnDrilldown(drilldownKey_){
+    chartManager.initChart('bar_1', BARCharts.getInstance().getDefaults, getBar1Data(drilldownKey_), BARCharts.getInstance().setNewData);
+    chartManager.initChart('bar_2', BARCharts.getInstance().getDefaults, getBar2Data(drilldownKey_), BARCharts.getInstance().setNewData);
+    chartManager.initChart('bar_3', BARCharts.getInstance().getDefaults, getBar3Data(drilldownKey_), BARCharts.getInstance().setNewData);
+    chartManager.initChart('bar_4', BARCharts.getInstance().getDefaults, getBar4Data(drilldownKey_), BARCharts.getInstance().setNewData);
+    chartManager.initChart('bar_5', BARCharts.getInstance().getDefaults, getBar5Data(drilldownKey_), BARCharts.getInstance().setNewData);
+    chartManager.initChart('bar_6', BARCharts.getInstance().getDefaults, getBar6Data(drilldownKey_), BARCharts.getInstance().setNewData);
+    if (getHierarchy() != 'trade') {
         // console.debug('above trade lvel');
-        chartManager.initChart('donut_cva', DONUTCharts.getInstance().getDefaults, getCVAData(__level__,drilldownKey_), DONUTCharts.getInstance().setNewData);
-        chartManager.initChart('donut_fva', DONUTCharts.getInstance().getDefaults, getFVAData(__level__,drilldownKey_), DONUTCharts.getInstance().setNewData);
-        chartManager.initChart('donut_colva', DONUTCharts.getInstance().getDefaults, getColVAData(__level__,drilldownKey_), DONUTCharts.getInstance().setNewData);
+        chartManager.initChart('donut_cva', DONUTCharts.getInstance().getDefaults, getCVAData(drilldownKey_), DONUTCharts.getInstance().setNewData);
+        chartManager.initChart('donut_fva', DONUTCharts.getInstance().getDefaults, getFVAData(drilldownKey_), DONUTCharts.getInstance().setNewData);
+        chartManager.initChart('donut_colva', DONUTCharts.getInstance().getDefaults, getColVAData(drilldownKey_), DONUTCharts.getInstance().setNewData);
     }
 
     // chartManager.initChart('line_exposure_profile', LINECharts.getInstance().getDefaultExposureOpts, getExposureProfileData(__level__), LINECharts.getInstance().setNewData);
@@ -1026,9 +1030,8 @@ function getSumOfArrayValues(array_) {
 }
 
 function drillDown(drilldownKey_) {
-    var __level__ = getHierarchy();
-    Promise.resolve(refreshGraphsOnDrilldown(__level__, drilldownKey_)).then(function(res){
-        console.log(res);
+    // the key value from the graph that was clicked - the data point
+    Promise.resolve(refreshGraphsOnDrilldown(drilldownKey_)).then(function(res){
         downALevel();
     });
 }
@@ -1045,4 +1048,38 @@ function upALevel(){
     {
         hierarchy.selectedIndex--;
     }
+}
+
+function resetPageDefaults(){
+    var nodes = document.getElementsByClassName('selectpicker');
+    for (var node in nodes){
+        node.selectedIndex=0;
+    }
+
+    // set initial values
+    businessDate.value = businessDates.options[businessDates.selectedIndex].value ; //sessionStorage.getItem('businessDate') || '20150630';
+    hierarchy.value = hierarchies.options[hierarchies.selectedIndex].value ; // sessionStorage.getItem('hierarchy') || 'Total';
+    sessionStorage.setItem('businessDate', businessDate.value);
+    sessionStorage.setItem('hierarchy', hierarchy.value);
+
+}
+
+function setItem(evt){
+    if (isNullOrUndefined(evt))
+        return;
+
+    evt = evt || window.event;
+    var target = evt.target || evt.srcElement;
+    sessionStorage.setItem(target.name, target.value);
+    document.getElementById(target.name).value = target.value;
+
+    if (target.name == 'hierarchy')
+        // alert('hierarchy');
+        // we have been triggered by a menu click so
+        // it is always a 'total'
+        drillDown('total');
+
+    if (target.name == 'businessDate')
+        // alert('date');
+        refreshGraphsOnDataChange();
 }

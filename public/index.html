@@ -29,11 +29,8 @@
 <body class="nav-sm">
 <div class="container body" id="export_me_">
     <!-- some defaults for starters -->
-    <input type="hidden" value="20150630" id="selectedBusdate" name="busdate"/>
-    <input type="hidden" value="Total" id="selectedHierarchy" name="hierarchy"/>
-    <input type="hidden" value="AAA" id="selectedCreditrating" name="creditrating"/>
-    <input type="hidden" value="CUST_A" id="selectedCounterparty" name="counterparty"/>
-    <input type="hidden" value="CSA_1" id="selectedNettingset" name="nettingset"/>
+    <input type="hidden" value="20150630" id="businessDate" name="busdate"/>
+    <input type="hidden" value="Total" id="hierarchy" name="hierarchy"/>
 
     <div class="main_container">
         <div class="col-md-3 left_col">
@@ -107,12 +104,11 @@
                         <div class="form-group filter pull-right">
                             <!--<label class="control-label col-md-2 col-sm-2 col-xs-12">Hierarchy level</label>-->
                             <div class="col-md-9 col-sm-9 col-xs-12">
-                                <select class="selectpicker" data-live-search="true" data-size="7" id="businessDates">
+                                <select class="selectpicker" data-live-search="true" data-size="7" id="businessDates" name="businessDate">
                                     <option>Choose Business Date</option>
                                 </select>
-                                <select class="selectpicker" id="hierarchy">
+                                <select class="selectpicker" id="hierarchies" name="hierarchy">
                                     <!--<select style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc">-->
-                                    <!--<option>Choose Hierarchy</option>-->
                                     <option value="total">Total</option>
                                     <option value="creditrating">Credit Rating</option>
                                     <option value="counterparty">Counterparty</option>
@@ -213,7 +209,7 @@
                 <div class="col-md-4 col-sm-4 col-xs-12">
                     <div class="x_title">
                         <h2>CREDIT</h2>
-                        <select class="selectpicker" id="bar1">
+                        <select class="selectpicker" id="bar1" name="bar1">
                             <!--<select style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc">-->
                             <!--<option>Choose Hierarchy</option>-->
                             <option value="total">Total</option>
@@ -490,21 +486,20 @@
 <script language="javascript">
 
     var load_ = function () {
-        // add a change event handler to the bus dates dropdown
-        _AttachEvent(document.getElementById("businessDates"), "change", chartManager.setNewBusDate);
-        _AttachEvent(document.getElementById("hierarchy"), "change", chartManager.setNewHierarchy);
+        console.log('[INFO] ORE Dashboard.init');
 
-        $(document).on('click', '.dropdown-menu li a', function() {
-            console.debug('clicked on ' + this.innerText + ' ' + this.parentNode.parentNode.id);
-            chartManager.flipChart(id_, type_);
-        });
+        Promise.resolve(chartManager.populateBusinessDates())
+                .then(function(res){
+                    chartManager.initAllCharts();
+                    // add a change event handler to the bus dates dropdown
+                    var nodes = document.getElementsByClassName('selectpicker');
+                    [].forEach.call(nodes,function(e){
+                        _AttachEvent(e, 'change', setItem);
+                    });
 
-        // set initial values
-        selectedBusdate.value = sessionStorage.getItem('selectedBusinessDate') || '20150630';
-        selectedHierarchy.value = sessionStorage.getItem('selectedHierarchy') || 'Total';
-        sessionStorage.setItem('selectedBusinessDate', selectedBusdate.value);
-        sessionStorage.setItem('selectedHierarchy', selectedHierarchy.value);
-
+                    resetPageDefaults();
+                });
+        console.log('[INFO] ORE Dashboard init completed');
     }
 
     window.onload = load_;
