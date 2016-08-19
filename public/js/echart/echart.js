@@ -808,6 +808,16 @@ var chartManager = {
         selectedHierarchy.value = target.value;
         sessionStorage.setItem('selectedHierarchy', target.value);
         refreshGraphsOnDataChange(target.value);
+    },
+    flipChart : function(evt){
+        if (isNullOrUndefined(evt))
+            return;
+
+        evt = evt || window.event;
+        var target = evt.target || evt.srcElement;
+        // set the hidden field
+        // tmp.value = target.value;
+        // sessionStorage.setItem(tmp, target.value);
     }
 
 }
@@ -928,11 +938,6 @@ function getBar6Data(key_, drilldownKey_){
     return chartManager.getDataFromRestCall(url_);
 }
 
-function flipChart(chartId_, chartType_){
-// TODO this is to be hooked to the chart type changer for bar graphs
-}
-
-
 function getCVAData(key_, drilldownKey_){
     var url_ = getXVAGraphData(key_, getBusinessDate(), getHierarchy(), 'cva', drilldownKey_);
     // var key__ = '/api/xva-tree/' + getBusinessDate() +'/' + getHierarchy() + '/Total/cva/';
@@ -978,6 +983,7 @@ function refreshGraphsOnDataChange(__level__){
 
 
 function refreshGraphsOnDrilldown(__level__, drilldownKey_){
+    console.debug("Drilling down : " + __level__ + " : " + drilldownKey_);
     chartManager.initChart('bar_1', BARCharts.getInstance().getDefaults, getBar1Data(__level__,drilldownKey_), BARCharts.getInstance().setNewData);
     chartManager.initChart('bar_2', BARCharts.getInstance().getDefaults, getBar2Data(__level__,drilldownKey_), BARCharts.getInstance().setNewData);
     chartManager.initChart('bar_3', BARCharts.getInstance().getDefaults, getBar3Data(__level__,drilldownKey_), BARCharts.getInstance().setNewData);

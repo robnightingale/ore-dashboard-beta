@@ -35,6 +35,14 @@
     <input type="hidden" value="CUST_A" id="selectedCounterparty" name="counterparty"/>
     <input type="hidden" value="CSA_1" id="selectedNettingset" name="nettingset"/>
 
+    <input type="hidden" value="ce" id="bar1" name="bar1"/>
+    <input type="hidden" value="npv" id="bar2" name="bar2"/>
+    <input type="hidden" value="fca" id="bar3" name="bar3"/>
+    <input type="hidden" value="fba" id="bar4" name="bar4"/>
+    <input type="hidden" value="eepe" id="bar5" name="bar5"/>
+    <input type="hidden" value="cva" id="bar6" name="bar6"/>
+
+
     <div class="main_container">
         <div class="col-md-3 left_col">
             <div class="left_col scroll-view">
@@ -213,36 +221,42 @@
                 <div class="col-md-4 col-sm-4 col-xs-12">
                     <div class="x_title">
                         <h2>CREDIT</h2>
-                        <select class="selectpicker" id="bar1">
+                        <select class="selectpicker" id="bar_1">
                             <!--<select style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc">-->
                             <!--<option>Choose Hierarchy</option>-->
-                            <option value="total">Total</option>
-                            <option value="creditrating">Credit Rating</option>
-                            <option value="counterparty">Counterparty</option>
-                            <option value="nettingset">Netting Set</option>
-                            <option value="trade">Trade</option>
+                            <option value="">CE</option>
+                            <option value="">EEPE</option>
+                            <option value="">TOTALEXP</option>
+                            <option value="">CVA</option>
+                            <option value="">DVA</option>
+                            <option value="">NPV</option>
+                            <option value="">FCA</option>
+                            <option value="">FBA</option>
+                            <option value="">FVA</option>
+                            <option value="">ColVA</option>
+                            <option value="">IM</option>
                         </select>
 
-                        <ul class="nav navbar-right panel_toolbox">
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                                   aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                                <ul class="dropdown-menu" role="menu" id="bar_dropdown_1">
-                                    <li><a href="#">CE</a></li>
-                                    <li><a href="#">EEPE</a></li>
-                                    <li><a href="#">TOTALEXP</a></li>
-                                    <li><a href="#">CVA</a></li>
-                                    <li><a href="#">DVA</a></li>
-                                    <li><a href="#">NPV</a></li>
-                                    <li><a href="#">FCA</a></li>
-                                    <li><a href="#">FBA</a></li>
-                                    <li><a href="#">FVA</a></li>
-                                    <li><a href="#">ColVA</a></li>
-                                    <li><a href="#">IM</a></li>
-                                </ul>
-                            </li>
-                            <li><a class="close-link"><i class="fa fa-refresh"></i></a></li>
-                        </ul>
+                        <!--<ul class="nav navbar-right panel_toolbox">-->
+                            <!--<li class="dropdown">-->
+                                <!--<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"-->
+                                   <!--aria-expanded="false"><i class="fa fa-wrench"></i></a>-->
+                                <!--<ul class="dropdown-menu" role="menu" id="bar_dropdown_1">-->
+                                    <!--<li><a href="#">CE</a></li>-->
+                                    <!--<li><a href="#">EEPE</a></li>-->
+                                    <!--<li><a href="#">TOTALEXP</a></li>-->
+                                    <!--<li><a href="#">CVA</a></li>-->
+                                    <!--<li><a href="#">DVA</a></li>-->
+                                    <!--<li><a href="#">NPV</a></li>-->
+                                    <!--<li><a href="#">FCA</a></li>-->
+                                    <!--<li><a href="#">FBA</a></li>-->
+                                    <!--<li><a href="#">FVA</a></li>-->
+                                    <!--<li><a href="#">ColVA</a></li>-->
+                                    <!--<li><a href="#">IM</a></li>-->
+                                <!--</ul>-->
+                            <!--</li>-->
+                            <!--<li><a class="close-link"><i class="fa fa-refresh"></i></a></li>-->
+                        <!--</ul>-->
                         <div class="clearfix"></div>
                     </div>
                     <div class="x_content">
