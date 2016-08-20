@@ -57,12 +57,12 @@ var chartManager = {
                     'Cache-Control': 'no-cache',
                     'If-Modified-Since': '0',
                     'Accept': 'application/json'
-                }
+                },
+                method: 'GET',
+                mode: 'cors',
+                credentials: 'same-origin'
             }
         );
-        req_.method = 'GET';
-        req_.mode = 'cors';
-        req_.credentials = 'same-origin';
 
         var theUrl_ = window.location.protocol + '//' + window.location.host + url_;
 
@@ -181,14 +181,9 @@ var chartManager = {
     }
     , getBarGraphMetric : function(id_) {
         var default_ = barGraphs.filter(function(elem){
-            try {
-                return (elem.id == id_).metric;
-            } catch(itemNotFound){
-                return {};
-            }
+                return elem.name == id_;
         });
-
-        return (sessionStorage.getItem(id_) || default_).toLowerCase();
+        return (sessionStorage.getItem(id_) || default_[0].metric).toLowerCase();
     }
     , getTotalExposureData: function (key_) {
         var key__ = '/api/totalexposure-tree/total/Total/';
@@ -283,9 +278,13 @@ var chartManager = {
     }
     , setBGMetricDefaults : function(){
         var nodes = document.getElementsByClassName('selectpicker-bg');
-        for (var node in nodes){
-            node.selectedIndex=0;
-        }
+        [].forEach.call(nodes,function(e){
+            e.selectedIndex = 0;
+        });
+
+        // for (var node in nodes){
+        //     nodes[node].selectedIndex=0;
+        // }
 
         // set initial values
         barGraphs.forEach(function(elem){
@@ -294,9 +293,9 @@ var chartManager = {
     }
     , resetPageDefaults : function(){
         var nodes = document.getElementsByClassName('selectpicker');
-        for (var node in nodes){
-            node.selectedIndex=0;
-        }
+        [].forEach.call(nodes,function(e){
+            e.selectedIndex = 0;
+        });
 
         // set initial values
         businessDate.value = businessDates.options[businessDates.selectedIndex].value ; //sessionStorage.getItem('businessDate') || '20150630';
