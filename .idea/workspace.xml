@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/public/js/echart/chartManager.js" line="23" />
+    <bookmark url="file://$PROJECT_DIR$/public/js/echart/chartManager.js" line="33" />
+    <bookmark url="file://$PROJECT_DIR$/public/js/echart/chartManager.js" line="178" mnemonic="6" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="caa21dc2-8a18-41a2-9fb6-7ca5b9d0c280" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/index.html" afterPath="$PROJECT_DIR$/public/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/echart/chartManager.js" afterPath="$PROJECT_DIR$/public/js/echart/chartManager.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/echart/echart.js" afterPath="$PROJECT_DIR$/public/js/echart/echart.js" />
     </list>
     <ignored path="ore-dashboard-beta.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -35,15 +34,13 @@
       <file leaf-file-name="chartManager.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/public/js/echart/chartManager.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="227">
-              <caret line="170" column="86" selection-start-line="170" selection-start-column="86" selection-end-line="170" selection-end-column="86" />
+            <state relative-caret-position="197">
+              <caret line="155" column="0" selection-start-line="155" selection-start-column="0" selection-end-line="155" selection-end-column="0" />
               <folding>
-                <element signature="e#887#1211#0" expanded="false" />
-                <element signature="e#1269#1392#0" expanded="false" />
-                <element signature="e#1633#2895#0" expanded="false" />
-                <element signature="e#2937#3981#0" expanded="false" />
-                <element signature="e#4022#5036#0" expanded="false" />
-                <element signature="e#5089#5936#0" expanded="false" />
+                <element signature="e#1201#1525#0" expanded="false" />
+                <element signature="e#1583#1706#0" expanded="false" />
+                <element signature="e#1947#3209#0" expanded="false" />
+                <element signature="e#3251#4295#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -52,7 +49,7 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="279">
+            <state relative-caret-position="333">
               <caret line="386" column="23" selection-start-line="386" selection-start-column="23" selection-end-line="386" selection-end-column="23" />
               <folding />
             </state>
@@ -327,7 +324,7 @@
       <workItem from="1470937404523" duration="10280000" />
       <workItem from="1471080907957" duration="4534000" />
       <workItem from="1471334587180" duration="26802000" />
-      <workItem from="1471561081588" duration="23644000" />
+      <workItem from="1471561081588" duration="24933000" />
     </task>
     <task id="LOCAL-00001" summary="package.json updated for local web running">
       <created>1469372595018</created>
@@ -420,11 +417,18 @@
       <option name="project" value="LOCAL" />
       <updated>1471691578119</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="REPOSIT-0000 bargraph metric flipping supported.">
+      <created>1471700652653</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1471700652653</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="248680000" />
+    <option name="totallyTimeSpent" value="249969000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="3" y="23" width="1277" height="773" extended-state="6" />
@@ -511,7 +515,8 @@
     <MESSAGE value="REPOSIT-0000 added business date change event - update all graphs" />
     <MESSAGE value="REPOSIT-0000 refactored all of the drill down into a generic function" />
     <MESSAGE value="REPOSIT-0000 more refactoring to prepare for release." />
-    <option name="LAST_COMMIT_MESSAGE" value="REPOSIT-0000 more refactoring to prepare for release." />
+    <MESSAGE value="REPOSIT-0000 bargraph metric flipping supported." />
+    <option name="LAST_COMMIT_MESSAGE" value="REPOSIT-0000 bargraph metric flipping supported." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -853,7 +858,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/public/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="279">
+        <state relative-caret-position="333">
           <caret line="386" column="23" selection-start-line="386" selection-start-column="23" selection-end-line="386" selection-end-column="23" />
           <folding />
         </state>
@@ -861,15 +866,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/public/js/echart/chartManager.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="227">
-          <caret line="170" column="86" selection-start-line="170" selection-start-column="86" selection-end-line="170" selection-end-column="86" />
+        <state relative-caret-position="197">
+          <caret line="155" column="0" selection-start-line="155" selection-start-column="0" selection-end-line="155" selection-end-column="0" />
           <folding>
-            <element signature="e#887#1211#0" expanded="false" />
-            <element signature="e#1269#1392#0" expanded="false" />
-            <element signature="e#1633#2895#0" expanded="false" />
-            <element signature="e#2937#3981#0" expanded="false" />
-            <element signature="e#4022#5036#0" expanded="false" />
-            <element signature="e#5089#5936#0" expanded="false" />
+            <element signature="e#1201#1525#0" expanded="false" />
+            <element signature="e#1583#1706#0" expanded="false" />
+            <element signature="e#1947#3209#0" expanded="false" />
+            <element signature="e#3251#4295#0" expanded="false" />
           </folding>
         </state>
       </provider>

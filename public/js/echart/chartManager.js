@@ -2,6 +2,16 @@
  * Created by robnightingale on 20/08/2016.
  */
 
+var userBarGraphs = [
+    {id: 'bar_1', name: 'bar1', metric: 'ce'},
+    {id: 'bar_2', name: 'bar2', metric: 'npv'},
+    {id: 'bar_3', name: 'bar3', metric: 'fca'},
+    {id: 'bar_4', name: 'bar4', metric: 'fba'},
+    {id: 'bar_5', name: 'bar5', metric: 'eepe'},
+    {id: 'bar_6', name: 'bar6', metric: 'cva'}
+];
+
+
 var barGraphs = [
     {id: 'bar_1', name: 'bar1', metric: 'ce'},
     {id: 'bar_2', name: 'bar2', metric: 'npv'},
@@ -143,7 +153,7 @@ var chartManager = {
             sel.options.length = 0;
             var fragment = document.createDocumentFragment();
 
-            ['EEPE','TOTALEXP','CVA','DVA','NPV','FCA','FBA','FVA','ColVA','IM'].forEach(function (dcc, index) {
+            ['EEPE','TOTALEXPOSURE','CVA','DVA','NPV','FCA','FBA','FVA','ColVA','IM'].forEach(function (dcc, index) {
                         var opt = document.createElement('option');
                         // nice format for the user to see
                         opt.innerHTML = dcc;
@@ -164,41 +174,38 @@ var chartManager = {
         var target = evt.target || evt.srcElement;
 
         // refresh the single chart with the right metric
-        console.debug(evt);
         // redraw the barGraph with a new metric
         var bgInstance = BARCharts.getInstance();
-        var hierarchyOrTree_ = sessionStorage.getItem('hierarchyOrTree') || 'Total';
+        var drillDownLevel_ = sessionStorage.getItem('hierarchyOrTree') || 'Total';
         var graphId_ = barGraphs.filter(function(elem){return elem.name == target.name})[0].id;
-        chartManager.initChart(graphId_, bgInstance.getDefaults, getGraphData(hierarchyOrTree_, getBarGraphMetric(target.name),'bargraph'), bgInstance.setNewData);
-    }
-}
+        chartManager.initChart(graphId_, bgInstance.getDefaults, getGraphData(drillDownLevel_, getBarGraphMetric(target.name),'bargraph'), bgInstance.setNewData);
+    },
+    getGenericGraphData : function(args_){
+        var key__;
 
-function getGenericGraphData(args_){
-    var key__;
-
-    console.debug(args_);
-    if (!isNullOrUndefined(args_.drillDownKey)) {
-        if (args_.drillDownKey == 'Total') {
-            // we arrived here from a menu click
-            if (args_.hierarchy == 'total')
-                key__ = '/api/' + args_.chartType + '-tree/' + args_.date + '/' + args_.hierarchy + '/Total/' + args_.metric + '/';
-            else
-            // this is from a menu dropdown at hierarchy level
-                key__ = '/api/' + args_.chartType + '/' + args_.date + '/' + args_.hierarchy + '/' + args_.metric + '/';
+        console.debug(args_);
+        if (!isNullOrUndefined(args_.drillDownKey)) {
+            if (args_.drillDownKey == 'Total') {
+                // we arrived here from a menu click
+                if (args_.hierarchy == 'total')
+                    key__ = '/api/' + args_.chartType + '-tree/' + args_.date + '/' + args_.hierarchy + '/Total/' + args_.metric + '/';
+                else
+                // this is from a menu dropdown at hierarchy level
+                    key__ = '/api/' + args_.chartType + '/' + args_.date + '/' + args_.hierarchy + '/' + args_.metric + '/';
+            } else {
+                // user clicked on a data point
+                console.debug('user click');
+                key__ = '/api/' + args_.chartType + '-tree/' + args_.date + '/' + args_.hierarchy + '/' + args_.drillDownKey + '/' + args_.metric + '/';
+            }
         } else {
-            // user clicked on a data point
-            console.debug('user click');
-            key__ = '/api/' + args_.chartType + '-tree/' + args_.date + '/' + args_.hierarchy + '/' + args_.drillDownKey + '/' + args_.metric + '/';
+            // shouldn't normally arrive here, so just send back a top level
+            // /api/bargraph/:date/:hierarchy/:metric/
+            key__ = '/api/' + args_.chartType + '-tree/' + args_.date + '/' + args_.hierarchy + '/Total/' + args_.metric + '/';
         }
-    } else {
-        // shouldn't normally arrive here, so just send back a top level
-        // /api/bargraph/:date/:hierarchy/:metric/
-        key__ = '/api/' + args_.chartType + '-tree/' + args_.date + '/' + args_.hierarchy + '/Total/' + args_.metric + '/';
+        return key__;
+
     }
-    return key__;
-
 }
-
 
 function getBusinessDate(){
     return sessionStorage.getItem('businessDate') || businessDate.value;
@@ -243,7 +250,7 @@ function getGraphData(drillDownKey_, metric_, chartType_){
         chartType: chartType_
     };
 
-    var url_ = getGenericGraphData(args);
+    var url_ = chartManager.getGenericGraphData(args);
     // returns a promise (future)
     return chartManager.getDataFromRestCall(url_);
 }
@@ -256,7 +263,7 @@ function getSumOfGraphData(key__) {
         drillDownKey: drilldownKey_,
         chartType: 'xva'
     };
-    var url_ = getGenericGraphData(args);
+    var url_ = chartManager.getGenericGraphData(args);
     // returns a promise (future)
     chartManager.getDataFromRestCall(url_).then(
         function(res){
@@ -381,4 +388,7 @@ function setBGMetric(evt){
     var target = evt.target || evt.srcElement;
     sessionStorage.setItem(target.name, target.value);
     chartManager.flipChart(evt);
+    // set the userBG item
+    userBarGraphs.filter(function(elem){return elem.name == target.name})[0].metric = target.value.toLowerCase();
+
 }
