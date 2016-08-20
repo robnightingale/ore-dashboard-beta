@@ -32,14 +32,6 @@
     <input type="hidden" value="20150630" id="businessDate" name="busdate"/>
     <input type="hidden" value="Total" id="hierarchy" name="hierarchy"/>
 
-    <input type="hidden" value="ce" id="bar1" name="bar1"/>
-    <input type="hidden" value="npv" id="bar2" name="bar2"/>
-    <input type="hidden" value="fca" id="bar3" name="bar3"/>
-    <input type="hidden" value="fba" id="bar4" name="bar4"/>
-    <input type="hidden" value="eepe" id="bar5" name="bar5"/>
-    <input type="hidden" value="cva" id="bar6" name="bar6"/>
-
-
     <div class="main_container">
         <div class="col-md-3 left_col">
             <div class="left_col scroll-view">
@@ -217,203 +209,73 @@
                 <div class="col-md-4 col-sm-4 col-xs-12">
                     <div class="x_title">
                         <h2>CREDIT</h2>
-                        <select class="selectpicker" id="bar1_" name="bar1">
-                            <!--<select style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc">-->
-                            <!--<option>Choose Hierarchy</option>-->
-                            <option value="">CE</option>
-                            <option value="">EEPE</option>
-                            <option value="">TOTALEXP</option>
-                            <option value="">CVA</option>
-                            <option value="">DVA</option>
-                            <option value="">NPV</option>
-                            <option value="">FCA</option>
-                            <option value="">FBA</option>
-                            <option value="">FVA</option>
-                            <option value="">ColVA</option>
-                            <option value="">IM</option>
+                        <select class="selectpicker-bg pull-right" id="bar1_" name="bar1">
+                            <!-- the options are filled in by Javascript-->
                         </select>
-
-                        <!--<ul class="nav navbar-right panel_toolbox">-->
-                            <!--<li class="dropdown">-->
-                                <!--<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"-->
-                                   <!--aria-expanded="false"><i class="fa fa-wrench"></i></a>-->
-                                <!--<ul class="dropdown-menu" role="menu" id="bar_dropdown_1">-->
-                                    <!--<li><a href="#">CE</a></li>-->
-                                    <!--<li><a href="#">EEPE</a></li>-->
-                                    <!--<li><a href="#">TOTALEXP</a></li>-->
-                                    <!--<li><a href="#">CVA</a></li>-->
-                                    <!--<li><a href="#">DVA</a></li>-->
-                                    <!--<li><a href="#">NPV</a></li>-->
-                                    <!--<li><a href="#">FCA</a></li>-->
-                                    <!--<li><a href="#">FBA</a></li>-->
-                                    <!--<li><a href="#">FVA</a></li>-->
-                                    <!--<li><a href="#">ColVA</a></li>-->
-                                    <!--<li><a href="#">IM</a></li>-->
-                                <!--</ul>-->
-                            <!--</li>-->
-                            <!--<li><a class="close-link"><i class="fa fa-refresh"></i></a></li>-->
-                        <!--</ul>-->
                         <div class="clearfix"></div>
                     </div>
                     <div class="x_content">
-
                         <div id="bar_1" style="height:200px;"></div>
-
                     </div>
                 </div>
                 <div class="col-md-4 col-sm-4 col-xs-12">
                     <div class="x_title">
                         <h2>MARKET</h2>
-                        <ul class="nav navbar-right panel_toolbox">
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                                   aria-expanded="false"><i class="fa fa-bar-chart-o"></i></a>
-                                <ul class="dropdown-menu" role="menu" id="bar_dropdown_2">
-                                    <li><a href="#">CE</a></li>
-                                    <li><a href="#">EEPE</a></li>
-                                    <li><a href="#">TOTALEXP</a></li>
-                                    <li><a href="#">CVA</a></li>
-                                    <li><a href="#">DVA</a></li>
-                                    <li><a href="#">NPV</a></li>
-                                    <li><a href="#">FCA</a></li>
-                                    <li><a href="#">FBA</a></li>
-                                    <li><a href="#">FVA</a></li>
-                                    <li><a href="#">ColVA</a></li>
-                                    <li><a href="#">IM</a></li>
-                                </ul>
-                            </li>
-                            <li><a class="close-link"><i class="fa fa-refresh"></i></a></li>
-                        </ul>
+                        <select class="selectpicker-bg pull-right" id="bar2_" name="bar2">
+                            <!-- the options are filled in by Javascript-->
+                        </select>
                         <div class="clearfix"></div>
                     </div>
                     <div class="x_content">
-
                         <div id="bar_2" style="height:200px;"></div>
-
                     </div>
                 </div>
                 <div class="col-md-4 col-sm-4 col-xs-12">
                     <div class="x_title">
                         <h2>LIQUIDITY</h2>
-                        <ul class="nav navbar-right panel_toolbox">
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                                   aria-expanded="false"><i class="fa fa-bar-chart-o"></i></a>
-                                <ul class="dropdown-menu" role="menu" id="bar_dropdown_3">
-                                    <li><a href="#">CE</a></li>
-                                    <li><a href="#">EEPE</a></li>
-                                    <li><a href="#">TOTALEXP</a></li>
-                                    <li><a href="#">CVA</a></li>
-                                    <li><a href="#">DVA</a></li>
-                                    <li><a href="#">NPV</a></li>
-                                    <li><a href="#">FCA</a></li>
-                                    <li><a href="#">FBA</a></li>
-                                    <li><a href="#">FVA</a></li>
-                                    <li><a href="#">ColVA</a></li>
-                                    <li><a href="#">IM</a></li>
-                                </ul>
-                            </li>
-                            <li><a class="close-link"><i class="fa fa-refresh"></i></a></li>
-                        </ul>
+                        <select class="selectpicker-bg pull-right" id="bar3_" name="bar3">
+                            <!-- the options are filled in by Javascript-->
+                        </select>
                         <div class="clearfix"></div>
                     </div>
                     <div class="x_content">
-
                         <div id="bar_3" style="height:200px;"></div>
-
                     </div>
                 </div>
                 <div class="col-md-4 col-sm-4 col-xs-12">
                     <div class="x_title">
                         <h2>CREDIT</h2>
-                        <ul class="nav navbar-right panel_toolbox">
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                                   aria-expanded="false"><i class="fa fa-bar-chart-o"></i></a>
-                                <ul class="dropdown-menu" role="menu" id="bar_dropdown_4">
-                                    <li><a href="#">CE</a></li>
-                                    <li><a href="#">EEPE</a></li>
-                                    <li><a href="#">TOTALEXP</a></li>
-                                    <li><a href="#">CVA</a></li>
-                                    <li><a href="#">DVA</a></li>
-                                    <li><a href="#">NPV</a></li>
-                                    <li><a href="#">FCA</a></li>
-                                    <li><a href="#">FBA</a></li>
-                                    <li><a href="#">FVA</a></li>
-                                    <li><a href="#">ColVA</a></li>
-                                    <li><a href="#">IM</a></li>
-                                </ul>
-                            </li>
-                            <li><a class="close-link"><i class="fa fa-refresh"></i></a></li>
-                        </ul>
+                        <select class="selectpicker-bg pull-right" id="bar4_" name="bar4">
+                            <!-- the options are filled in by Javascript-->
+                        </select>
                         <div class="clearfix"></div>
                     </div>
                     <div class="x_content">
-
                         <div id="bar_4" style="height:200px;"></div>
-
                     </div>
                 </div>
                 <div class="col-md-4 col-sm-4 col-xs-12">
                     <div class="x_title">
                         <h2>MARKET</h2>
-                        <ul class="nav navbar-right panel_toolbox">
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                                   aria-expanded="false"><i class="fa fa-bar-chart-o"></i></a>
-                                <ul class="dropdown-menu" role="menu" id="bar_dropdown_5">
-                                    <li><a href="#">CE</a></li>
-                                    <li><a href="#">EEPE</a></li>
-                                    <li><a href="#">TOTALEXP</a></li>
-                                    <li><a href="#">CVA</a></li>
-                                    <li><a href="#">DVA</a></li>
-                                    <li><a href="#">NPV</a></li>
-                                    <li><a href="#">FCA</a></li>
-                                    <li><a href="#">FBA</a></li>
-                                    <li><a href="#">FVA</a></li>
-                                    <li><a href="#">ColVA</a></li>
-                                    <li><a href="#">IM</a></li>
-                                </ul>
-                            </li>
-                            <li><a class="close-link"><i class="fa fa-refresh"></i></a></li>
-                        </ul>
+                        <select class="selectpicker-bg pull-right" id="bar5_" name="bar5">
+                            <!-- the options are filled in by Javascript-->
+                        </select>
                         <div class="clearfix"></div>
                     </div>
                     <div class="x_content">
-
                         <div id="bar_5" style="height:200px;"></div>
-
                     </div>
                 </div>
                 <div class="col-md-4 col-sm-4 col-xs-12">
                     <div class="x_title">
                         <h2>LIQUIDITY</h2>
-                        <ul class="nav navbar-right panel_toolbox">
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                                   aria-expanded="false"><i class="fa fa-bar-chart-o"></i></a>
-                                <ul class="dropdown-menu" role="menu" id="bar_dropdown_6">
-                                    <li><a href="#">CE</a></li>
-                                    <li><a href="#">EEPE</a></li>
-                                    <li><a href="#">TOTALEXP</a></li>
-                                    <li><a href="#">CVA</a></li>
-                                    <li><a href="#">DVA</a></li>
-                                    <li><a href="#">NPV</a></li>
-                                    <li><a href="#">FCA</a></li>
-                                    <li><a href="#">FBA</a></li>
-                                    <li><a href="#">FVA</a></li>
-                                    <li><a href="#">ColVA</a></li>
-                                    <li><a href="#">IM</a></li>
-                                </ul>
-                            </li>
-                            <li><a class="close-link"><i class="fa fa-refresh"></i></a></li>
-                        </ul>
+                        <select class="selectpicker-bg pull-right" id="bar6_" name="bar6">
+                            <!-- the options are filled in by Javascript-->
+                         </select>
                         <div class="clearfix"></div>
                     </div>
                     <div class="x_content">
-
                         <div id="bar_6" style="height:200px;"></div>
-
                     </div>
                 </div>
             </div>
@@ -511,10 +373,17 @@
         Promise.resolve(chartManager.populateBusinessDates())
                 .then(function(res){
                     chartManager.initAllCharts();
-                    // add a change event handler to the bus dates dropdown
+                    // add a change event handler to all the dropdown controls
                     var nodes = document.getElementsByClassName('selectpicker');
                     [].forEach.call(nodes,function(e){
                         _AttachEvent(e, 'change', setItem);
+                    });
+
+                    [].forEach.call(document.getElementsByClassName('selectpicker-bg'),function(e){
+                        // for each bar graph selector, populate the choices list
+                        chartManager.populateBarGraphMetricList(e);
+                        // and add a change event handler
+                        _AttachEvent(e, 'change', setBGMetric);
                     });
 
                     resetPageDefaults();

@@ -66,15 +66,8 @@ var BARCharts = (function () {
             var __level__ = 'Total';
 
             barGraphs.forEach(function(elem){
-                chartManager.initChart(elem.name, options, getGraphData(__level__, elem.metric,'bargraph'), setNewData);
+                chartManager.initChart(elem.id, options, getGraphData(__level__, elem.metric,'bargraph'), setNewData);
             });
-
-            // chartManager.initChart('bar_1', options, getBar1Data(__level__), setNewData);
-            // chartManager.initChart('bar_2', options, getBar2Data(__level__), setNewData);
-            // chartManager.initChart('bar_3', options, getBar3Data(__level__), setNewData);
-            // chartManager.initChart('bar_4', options, getBar4Data(__level__), setNewData);
-            // chartManager.initChart('bar_5', options, getBar5Data(__level__), setNewData);
-            // chartManager.initChart('bar_6', options, getBar6Data(__level__), setNewData);
         }
 
         function loadData(chart_, data_) {
@@ -121,8 +114,7 @@ var LINECharts = (function () {
                 trigger: 'axis',
 
                 formatter: function (params,ticket,callback) {
-                    console.debug(params);
-                    // console.log(params)
+                    // console.debug(params);
                     // var res = 'Function formatter : <br/>' + params[0].name;
                     var tot_ = parseFloat(params[2].value) + parseFloat(params[1].value);
                     var res = 'Total : ' + tot_;
@@ -477,7 +469,7 @@ var DONUTCharts = (function () {
             var __level__ = 'Total';
 
             xvaGraphs.forEach(function(elem){
-                chartManager.initChart(elem.name, options, getGraphData(__level__, elem.metric,'xva'), setNewData);
+                chartManager.initChart(elem.id, options, getGraphData(__level__, elem.metric,'xva'), setNewData);
             });
         }
 

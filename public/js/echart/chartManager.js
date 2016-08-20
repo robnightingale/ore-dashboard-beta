@@ -3,18 +3,18 @@
  */
 
 var barGraphs = [
-    {name: 'bar_1', metric: 'ce'},
-    {name: 'bar_2', metric: 'npv'},
-    {name: 'bar_3', metric: 'fca'},
-    {name: 'bar_4', metric: 'fba'},
-    {name: 'bar_5', metric: 'eepe'},
-    {name: 'bar_6', metric: 'cva'}
+    {id: 'bar_1', name: 'bar1', metric: 'ce'},
+    {id: 'bar_2', name: 'bar2', metric: 'npv'},
+    {id: 'bar_3', name: 'bar3', metric: 'fca'},
+    {id: 'bar_4', name: 'bar4', metric: 'fba'},
+    {id: 'bar_5', name: 'bar5', metric: 'eepe'},
+    {id: 'bar_6', name: 'bar6', metric: 'cva'}
 ];
 
 var xvaGraphs = [
-    {name: 'donut_cva', metric: 'cva'},
-    {name: 'donut_fva', metric: 'fva'},
-    {name: 'donut_colva', metric: 'colva'}
+    {id: 'donut_cva', name: 'donut_cva', metric: 'cva'},
+    {id: 'donut_fva', name: 'donut_fva', metric: 'fva'},
+    {id: 'donut_colva', name: 'donut_colva', metric: 'colva'}
 ]
 
 var chartManager = {
@@ -39,7 +39,9 @@ var chartManager = {
         return theChart_;
     },
     eConsole: function (param) {
-        console.log(param);
+        // if user clicks a graph
+        // console.log(param);
+        sessionStorage.setItem('hierarchyOrTree',param.name);
         drillDown(param.name);
     },
     getDataFromRestCall: function (url_) {
@@ -133,12 +135,41 @@ var chartManager = {
             console.error(new Error(e));
         }
     },
+    populateBarGraphMetricList : function (element){
+        try {
+            // var sel = document.getElementById('businessDates');
+            var sel = element;
+            // zero out the existing options
+            sel.options.length = 0;
+            var fragment = document.createDocumentFragment();
+
+            ['EEPE','TOTALEXP','CVA','DVA','NPV','FCA','FBA','FVA','ColVA','IM'].forEach(function (dcc, index) {
+                        var opt = document.createElement('option');
+                        // nice format for the user to see
+                        opt.innerHTML = dcc;
+                        // nice format for the computer to see
+                        opt.value = dcc;
+                        fragment.appendChild(opt);
+                    });
+                    sel.appendChild(fragment);
+        } catch (e) {
+            console.error(new Error(e));
+        }
+    },
     flipChart : function(evt){
         if (isNullOrUndefined(evt))
             return;
 
         evt = evt || window.event;
         var target = evt.target || evt.srcElement;
+
+        // refresh the single chart with the right metric
+        console.debug(evt);
+        // redraw the barGraph with a new metric
+        var bgInstance = BARCharts.getInstance();
+        var hierarchyOrTree_ = sessionStorage.getItem('hierarchyOrTree') || 'Total';
+        var graphId_ = barGraphs.filter(function(elem){return elem.name == target.name})[0].id;
+        chartManager.initChart(graphId_, bgInstance.getDefaults, getGraphData(hierarchyOrTree_, getBarGraphMetric(target.name),'bargraph'), bgInstance.setNewData);
     }
 }
 
@@ -177,6 +208,17 @@ function getHierarchy(){
     return (sessionStorage.getItem('hierarchy') || hierarchy.value).toLowerCase();
 }
 
+function getBarGraphMetric(id_){
+    var default_ = barGraphs.filter(function(elem){
+        try {
+        return (elem.id == id_).metric;
+        } catch(itemNotFound){
+            return {};
+        }
+    });
+
+    return (sessionStorage.getItem(id_) || default_).toLowerCase();
+}
 
 function getTotalExposureData(key_){
     var key__ = '/api/totalexposure-tree/total/Total/';
@@ -206,14 +248,6 @@ function getGraphData(drillDownKey_, metric_, chartType_){
     return chartManager.getDataFromRestCall(url_);
 }
 
-function flipChart(chartId_, chartType_){
-// TODO this is to be hooked to the chart type changer for bar graphs
-}
-
-
-function getColVAData(drilldownKey_){
-}
-
 function getSumOfGraphData(key__) {
     var args = {
         date: getBusinessDate(),
@@ -237,7 +271,7 @@ function refreshGraphs(__level__){
     var xvInstance = DONUTCharts.getInstance();
 
     barGraphs.forEach(function(elem){
-        chartManager.initChart(elem.name, bgInstance.getDefaults, getGraphData(__level__, elem.metric,'bargraph'), bgInstance.setNewData);
+        chartManager.initChart(elem.id, bgInstance.getDefaults, getGraphData(__level__, getBarGraphMetric(elem.name),'bargraph'), bgInstance.setNewData);
     });
 
     if (__level__ != 'trade') {
@@ -291,6 +325,18 @@ function upALevel(){
     }
 }
 
+function setBGMetricDefaults(){
+    var nodes = document.getElementsByClassName('selectpicker-bg');
+    for (var node in nodes){
+        node.selectedIndex=0;
+    }
+
+    // set initial values
+    barGraphs.forEach(function(elem){
+        sessionStorage.setItem(elem.name, elem.metric.toUpperCase());
+    });
+}
+
 function resetPageDefaults(){
     var nodes = document.getElementsByClassName('selectpicker');
     for (var node in nodes){
@@ -302,6 +348,9 @@ function resetPageDefaults(){
     hierarchy.value = hierarchies.options[hierarchies.selectedIndex].value ; // sessionStorage.getItem('hierarchy') || 'Total';
     sessionStorage.setItem('businessDate', businessDate.value);
     sessionStorage.setItem('hierarchy', hierarchy.value);
+    sessionStorage.setItem('hierarchyOrTree','Total');
+
+    setBGMetricDefaults();
 
 }
 
@@ -313,6 +362,7 @@ function setItem(evt){
     var target = evt.target || evt.srcElement;
     sessionStorage.setItem(target.name, target.value);
     document.getElementById(target.name).value = target.value;
+    sessionStorage.setItem('hierarchyOrTree','Total');
 
     if (target.name == 'hierarchy')
     // we have been triggered by a menu click so
@@ -321,4 +371,14 @@ function setItem(evt){
 
     if (target.name == 'businessDate')
         refreshGraphsOnDataChange();
+}
+
+function setBGMetric(evt){
+    if (isNullOrUndefined(evt))
+        return;
+
+    evt = evt || window.event;
+    var target = evt.target || evt.srcElement;
+    sessionStorage.setItem(target.name, target.value);
+    chartManager.flipChart(evt);
 }
