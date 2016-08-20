@@ -210,21 +210,8 @@ var chartManager = {
         // returns a promise (future)
         return chartManager.getDataFromRestCall(url_);
     }
-    , getSumOfGraphData : function(key__){
-        var args = {
-            date: chartManager.getBusinessDate(),
-            hierarchy: chartManager.getHierarchy(),
-            metric: 'colva',
-            drillDownKey: drilldownKey_,
-            chartType: 'xva'
-        };
-        var url_ = chartManager.getGenericGraphData(args);
-        // returns a promise (future)
-        chartManager.getDataFromRestCall(url_).then(
-            function(res){
-                return getSumOfArrayValues(res.data);
-            }
-        )
+    , getSumOfGraphData : function(graphDivId_){
+        return chartManager.getSumOfArrayValues(graphDivId_);
     }
     , refreshGraphs : function(__level__){
         var bgInstance = BARCharts.getInstance();
@@ -237,6 +224,7 @@ var chartManager = {
         if (__level__ != 'trade') {
             xvaGraphs.forEach(function(elem){
                 chartManager.initChart(elem.name, xvInstance.getDefaults, chartManager.getGraphData(__level__, elem.metric,'xva'), xvInstance.setNewData);
+                console.debug(chartManager.getSumOfGraphData(elem.id));
             });
         }
 
@@ -249,13 +237,16 @@ var chartManager = {
     , refreshGraphsOnDrilldown : function(drilldownKey_){
         chartManager.refreshGraphs(drilldownKey_);
     }
-    , getSumOfArrayValues : function(array_){
+    , getSumOfArrayValues : function(graphDivId_){
+        var graph_ = chartManager.getChartInstanceFromDivId(graphDivId_);
+
+        var array_ = graph_.getOption().series[0].data;
         var g = array_.map(function (elem) {
             return elem.value;
         }).reduce(function (prev, curr) {
             return prev + curr;
         });
-        console.debug(g);
+        // console.debug(g);
         return g;
     }
     , drillDown : function (drilldownKey_){
@@ -265,15 +256,15 @@ var chartManager = {
         });
     }
     , downALevel : function(){
-        if (hierarchy.selectedIndex < hierarchy.options.length-1)
+        if (hierarchies.selectedIndex < hierarchies.options.length-1)
         {
-            hierarchy.selectedIndex++;
+            hierarchies.selectedIndex++;
         }
     }
     , upALevel : function(){
-        if (hierarchy.selectedIndex >0)
+        if (hierarchies.selectedIndex >0)
         {
-            hierarchy.selectedIndex--;
+            hierarchies.selectedIndex--;
         }
     }
     , setBGMetricDefaults : function(){
@@ -281,10 +272,6 @@ var chartManager = {
         [].forEach.call(nodes,function(e){
             e.selectedIndex = 0;
         });
-
-        // for (var node in nodes){
-        //     nodes[node].selectedIndex=0;
-        // }
 
         // set initial values
         barGraphs.forEach(function(elem){
