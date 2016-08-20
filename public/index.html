@@ -217,7 +217,7 @@
                 <div class="col-md-4 col-sm-4 col-xs-12">
                     <div class="x_title">
                         <h2>CREDIT</h2>
-                        <select class="selectpicker" id="bar1" name="bar1">
+                        <select class="selectpicker" id="bar1_" name="bar1">
                             <!--<select style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc">-->
                             <!--<option>Choose Hierarchy</option>-->
                             <option value="">CE</option>
@@ -492,15 +492,21 @@
 
 <script src="js/echart/chart-theme.js"></script>
 <script src="js/echart/echart.js"></script>
+<script src="js/echart/chartManager.js"></script>
 
 
 <!-- bootstrap-daterangepicker -->
-<script src="js/bootstrap-date-filter.js"></script>
+<script src="js/bootstrap-date-filter.js"></script>¡
 
 <script language="javascript">
 
     var load_ = function () {
         console.log('[INFO] ORE Dashboard.init');
+
+        // load the page
+        // build business date list
+        // initialise all the charts
+        // attach change event handlers to the dropdown controls
 
         Promise.resolve(chartManager.populateBusinessDates())
                 .then(function(res){
