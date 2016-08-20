@@ -811,7 +811,16 @@ var chartManager = {
     //     sessionStorage.setItem('selectedHierarchy', target.value);
     //     refreshGraphsOnDataChange(target.value);
     // }
+    flipChart : function(evt){
+        if (isNullOrUndefined(evt))
+            return;
 
+        evt = evt || window.event;
+        var target = evt.target || evt.srcElement;
+        // set the hidden field
+        // tmp.value = target.value;
+        // sessionStorage.setItem(tmp, target.value);
+    }
 }
 
 function getBarGraphData(date, hierarchy, metric, drilldownKey_) {
@@ -939,7 +948,6 @@ function flipChart(chartId_, chartType_){
 
 function getCVAData(drilldownKey_){
     var url_ = getXVAGraphData(getBusinessDate(), getHierarchy(), 'cva', drilldownKey_);
-    // var key__ = '/api/xva-tree/' + getBusinessDate() +'/' + getHierarchy() + '/Total/cva/';
     // returns a promise (future)
     return chartManager.getDataFromRestCall(url_);
 }
