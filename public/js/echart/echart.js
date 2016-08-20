@@ -64,12 +64,17 @@ var BARCharts = (function () {
         function initialiseAllCharts() {
             // set the initial entry point to 'Total' level
             var __level__ = 'Total';
-            chartManager.initChart('bar_1', options, getBar1Data(__level__), setNewData);
-            chartManager.initChart('bar_2', options, getBar2Data(__level__), setNewData);
-            chartManager.initChart('bar_3', options, getBar3Data(__level__), setNewData);
-            chartManager.initChart('bar_4', options, getBar4Data(__level__), setNewData);
-            chartManager.initChart('bar_5', options, getBar5Data(__level__), setNewData);
-            chartManager.initChart('bar_6', options, getBar6Data(__level__), setNewData);
+
+            barGraphs.forEach(function(elem){
+                chartManager.initChart(elem.name, options, getGraphData(__level__, elem.metric,'bargraph'), setNewData);
+            });
+
+            // chartManager.initChart('bar_1', options, getBar1Data(__level__), setNewData);
+            // chartManager.initChart('bar_2', options, getBar2Data(__level__), setNewData);
+            // chartManager.initChart('bar_3', options, getBar3Data(__level__), setNewData);
+            // chartManager.initChart('bar_4', options, getBar4Data(__level__), setNewData);
+            // chartManager.initChart('bar_5', options, getBar5Data(__level__), setNewData);
+            // chartManager.initChart('bar_6', options, getBar6Data(__level__), setNewData);
         }
 
         function loadData(chart_, data_) {
@@ -470,9 +475,10 @@ var DONUTCharts = (function () {
 
         function initialiseAllCharts() {
             var __level__ = 'Total';
-            chartManager.initChart('donut_cva', options, getCVAData(__level__), setNewData);
-            chartManager.initChart('donut_fva', options, getFVAData(__level__), setNewData);
-            chartManager.initChart('donut_colva', options, getColVAData(__level__), setNewData);
+
+            xvaGraphs.forEach(function(elem){
+                chartManager.initChart(elem.name, options, getGraphData(__level__, elem.metric,'xva'), setNewData);
+            });
         }
 
         function loadData(chart_, data_) {

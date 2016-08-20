@@ -2,6 +2,21 @@
  * Created by robnightingale on 20/08/2016.
  */
 
+var barGraphs = [
+    {name: 'bar_1', metric: 'ce'},
+    {name: 'bar_2', metric: 'npv'},
+    {name: 'bar_3', metric: 'fca'},
+    {name: 'bar_4', metric: 'fba'},
+    {name: 'bar_5', metric: 'eepe'},
+    {name: 'bar_6', metric: 'cva'}
+];
+
+var xvaGraphs = [
+    {name: 'donut_cva', metric: 'cva'},
+    {name: 'donut_fva', metric: 'fva'},
+    {name: 'donut_colva', metric: 'colva'}
+]
+
 var chartManager = {
 
     initAllCharts: function(){
@@ -154,30 +169,6 @@ function getGenericGraphData(args_){
 }
 
 
-// function getExposureGraphData(__level__, date, hierarchy, metric){
-//     var key__;
-//
-//     if (hierarchy == 'total'){
-//         key__ = '/api/xva-tree/' + date +'/' + hierarchy + '/Total/' + metric + '/';
-//     } else {
-//         // /api/bargraph/:date/:hierarchy/:metric/
-//         key__ = '/api/xva/' + date +'/' + hierarchy + '/' + metric + '/';
-//     }
-//     return key__;
-// }
-
-// function getExposureProfileGraphData(__level__, date, hierarchy, metric){
-//     var key__;
-//
-//     if (hierarchy == 'total'){
-//         key__ = '/api/xva-tree/' + date +'/' + hierarchy + '/Total/' + metric + '/';
-//     } else {
-//         // /api/bargraph/:date/:hierarchy/:metric/
-//         key__ = '/api/xva/' + date +'/' + hierarchy + '/' + metric + '/';
-//     }
-//     return key__;
-// }
-
 function getBusinessDate(){
     return sessionStorage.getItem('businessDate') || businessDate.value;
 }
@@ -201,85 +192,15 @@ function getExposureProfileData(key_){
     return chartManager.getDataFromRestCall(key__);
 }
 
-function getBar1Data(drilldownKey_){
+function getGraphData(drillDownKey_, metric_, chartType_){
     var args = {
         date: getBusinessDate(),
         hierarchy: getHierarchy(),
-        metric: 'ce',
-        drillDownKey: drilldownKey_,
-        chartType: 'bargraph'
+        metric: metric_,
+        drillDownKey: drillDownKey_,
+        chartType: chartType_
     };
 
-    var url_ = getGenericGraphData(args);
-    // returns a promise (future)
-    return chartManager.getDataFromRestCall(url_);
-}
-
-function getBar2Data(drilldownKey_){
-    var args = {
-        date: getBusinessDate(),
-        hierarchy: getHierarchy(),
-        metric: 'npv',
-        drillDownKey: drilldownKey_,
-        chartType: 'bargraph'
-    };
-
-    var url_ = getGenericGraphData(args);
-
-    // returns a promise (future)
-    return chartManager.getDataFromRestCall(url_);
-}
-
-function getBar3Data(drilldownKey_){
-    var args = {
-        date: getBusinessDate(),
-        hierarchy: getHierarchy(),
-        metric: 'fca',
-        drillDownKey: drilldownKey_,
-        chartType: 'bargraph'
-    };
-
-    var url_ = getGenericGraphData(args);
-    // returns a promise (future)
-    return chartManager.getDataFromRestCall(url_);
-}
-
-function getBar4Data(drilldownKey_){
-    var args = {
-        date: getBusinessDate(),
-        hierarchy: getHierarchy(),
-        metric: 'fba',
-        drillDownKey: drilldownKey_,
-        chartType: 'bargraph'
-    };
-
-    var url_ = getGenericGraphData(args);
-    // returns a promise (future)
-    return chartManager.getDataFromRestCall(url_);
-}
-
-function getBar5Data(drilldownKey_){
-    var args = {
-        date: getBusinessDate(),
-        hierarchy: getHierarchy(),
-        metric: 'eepe',
-        drillDownKey: drilldownKey_,
-        chartType: 'bargraph'
-    };
-
-    var url_ = getGenericGraphData(args);
-    // returns a promise (future)
-    return chartManager.getDataFromRestCall(url_);
-}
-
-function getBar6Data(drilldownKey_){
-    var args = {
-        date: getBusinessDate(),
-        hierarchy: getHierarchy(),
-        metric: 'cva',
-        drillDownKey: drilldownKey_,
-        chartType: 'bargraph'
-    };
     var url_ = getGenericGraphData(args);
     // returns a promise (future)
     return chartManager.getDataFromRestCall(url_);
@@ -290,31 +211,10 @@ function flipChart(chartId_, chartType_){
 }
 
 
-function getCVAData(drilldownKey_){
-    var args = {
-        date: getBusinessDate(),
-        hierarchy: getHierarchy(),
-        metric: 'cva',
-        drillDownKey: drilldownKey_,
-        chartType: 'xva'
-    };
-    var url_ = getGenericGraphData(args);
-    // returns a promise (future)
-    return chartManager.getDataFromRestCall(url_);
-}
-function getFVAData(drilldownKey_){
-    var args = {
-        date: getBusinessDate(),
-        hierarchy: getHierarchy(),
-        metric: 'fva',
-        drillDownKey: drilldownKey_,
-        chartType: 'xva'
-    };
-    var url_ = getGenericGraphData(args);
-    // returns a promise (future)
-    return chartManager.getDataFromRestCall(url_);
-}
 function getColVAData(drilldownKey_){
+}
+
+function getSumOfGraphData(key__) {
     var args = {
         date: getBusinessDate(),
         hierarchy: getHierarchy(),
@@ -324,70 +224,40 @@ function getColVAData(drilldownKey_){
     };
     var url_ = getGenericGraphData(args);
     // returns a promise (future)
-    return chartManager.getDataFromRestCall(url_);
+    chartManager.getDataFromRestCall(url_).then(
+        function(res){
+            return getSumOfArrayValues(res.data);
+        }
+    )
 }
 
-function getSumOfColVA(key__) {
-    Promise.resolve(getColVAData(key__).then(function (res) {
-        return getSumOfArrayValues(res.data);
-    }));
-}
 
-function refreshGraphsOnDataChange(__level__){
-    chartManager.initChart('bar_1', BARCharts.getInstance().getDefaults, getBar1Data(__level__), BARCharts.getInstance().setNewData);
-    chartManager.initChart('bar_2', BARCharts.getInstance().getDefaults, getBar2Data(__level__), BARCharts.getInstance().setNewData);
-    chartManager.initChart('bar_3', BARCharts.getInstance().getDefaults, getBar3Data(__level__), BARCharts.getInstance().setNewData);
-    chartManager.initChart('bar_4', BARCharts.getInstance().getDefaults, getBar4Data(__level__), BARCharts.getInstance().setNewData);
-    chartManager.initChart('bar_5', BARCharts.getInstance().getDefaults, getBar5Data(__level__), BARCharts.getInstance().setNewData);
-    chartManager.initChart('bar_6', BARCharts.getInstance().getDefaults, getBar6Data(__level__), BARCharts.getInstance().setNewData);
+function refreshGraphs(__level__){
+    var bgInstance = BARCharts.getInstance();
+    var xvInstance = DONUTCharts.getInstance();
+
+    barGraphs.forEach(function(elem){
+        chartManager.initChart(elem.name, bgInstance.getDefaults, getGraphData(__level__, elem.metric,'bargraph'), bgInstance.setNewData);
+    });
+
     if (__level__ != 'trade') {
-        // console.debug('above trade lvel');
-        chartManager.initChart('donut_cva', DONUTCharts.getInstance().getDefaults, getCVAData(__level__), DONUTCharts.getInstance().setNewData);
-        chartManager.initChart('donut_fva', DONUTCharts.getInstance().getDefaults, getFVAData(__level__), DONUTCharts.getInstance().setNewData);
-        chartManager.initChart('donut_colva', DONUTCharts.getInstance().getDefaults, getColVAData(__level__), DONUTCharts.getInstance().setNewData);
+        xvaGraphs.forEach(function(elem){
+            chartManager.initChart(elem.name, xvInstance.getDefaults, getGraphData(__level__, elem.metric,'xva'), xvInstance.setNewData);
+        });
     }
 
     chartManager.initChart('line_exposure_profile', LINECharts.getInstance().getDefaultExposureOpts, getExposureProfileData(__level__), LINECharts.getInstance().setNewData);
     chartManager.initChart('line_total_exposure', LINECharts.getInstance().getDefaultTotalOptions, getTotalExposureData(__level__), LINECharts.getInstance().setNewData);
+
 }
 
+function refreshGraphsOnDataChange(__level__){
+    refreshGraphs('Total');
+}
 
 function refreshGraphsOnDrilldown(drilldownKey_){
-    chartManager.initChart('bar_1', BARCharts.getInstance().getDefaults, getBar1Data(drilldownKey_), BARCharts.getInstance().setNewData);
-    chartManager.initChart('bar_2', BARCharts.getInstance().getDefaults, getBar2Data(drilldownKey_), BARCharts.getInstance().setNewData);
-    chartManager.initChart('bar_3', BARCharts.getInstance().getDefaults, getBar3Data(drilldownKey_), BARCharts.getInstance().setNewData);
-    chartManager.initChart('bar_4', BARCharts.getInstance().getDefaults, getBar4Data(drilldownKey_), BARCharts.getInstance().setNewData);
-    chartManager.initChart('bar_5', BARCharts.getInstance().getDefaults, getBar5Data(drilldownKey_), BARCharts.getInstance().setNewData);
-    chartManager.initChart('bar_6', BARCharts.getInstance().getDefaults, getBar6Data(drilldownKey_), BARCharts.getInstance().setNewData);
-    if (getHierarchy() != 'trade') {
-        // console.debug('above trade lvel');
-        chartManager.initChart('donut_cva', DONUTCharts.getInstance().getDefaults, getCVAData(drilldownKey_), DONUTCharts.getInstance().setNewData);
-        chartManager.initChart('donut_fva', DONUTCharts.getInstance().getDefaults, getFVAData(drilldownKey_), DONUTCharts.getInstance().setNewData);
-        chartManager.initChart('donut_colva', DONUTCharts.getInstance().getDefaults, getColVAData(drilldownKey_), DONUTCharts.getInstance().setNewData);
-    }
-
-    // chartManager.initChart('line_exposure_profile', LINECharts.getInstance().getDefaultExposureOpts, getExposureProfileData(__level__), LINECharts.getInstance().setNewData);
-    // chartManager.initChart('line_total_exposure', LINECharts.getInstance().getDefaultTotalOptions, getTotalExposureData(__level__), LINECharts.getInstance().setNewData);
+    refreshGraphs(drilldownKey_);
 }
-
-
-function getTreeAsMenu() {
-    var fragment = document.createDocumentFragment();
-    var elements = {};
-    var busDateList_ = chartManager.getDataFromRestCall('/api/tree2/');
-    busDateList_.then(function (res) {
-        res.forEach(function (elem) {
-                var cur = elements;
-                elem.split("/").slice(1).forEach(function (elem_) {
-                    cur[elem_] = cur[elem_] || {};
-                    cur = cur[elem_];
-                });
-            }
-        )
-    });
-
-}
-
 
 // send in the data array from a graph
 function getSumOfArrayValues(array_) {
