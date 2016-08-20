@@ -66,7 +66,7 @@ var BARCharts = (function () {
             var __level__ = 'Total';
 
             barGraphs.forEach(function(elem){
-                chartManager.initChart(elem.id, options, getGraphData(__level__, elem.metric,'bargraph'), setNewData);
+                chartManager.initChart(elem.id, options, chartManager.getGraphData(__level__, elem.metric,'bargraph'), setNewData);
             });
         }
 
@@ -281,7 +281,7 @@ var LINECharts = (function () {
                     name: "PFE",
                     data: data_.pfes
                 }
-                var series_ = []
+                var series_ = [];
                 series_.push(series_0);
                 series_.push((series_1));
 
@@ -351,8 +351,8 @@ var LINECharts = (function () {
 
         function initialiseAllCharts() {
             var __level__ = 'Total';
-            chartManager.initChart('line_total_exposure', total_exposure_options, getTotalExposureData(__level__), setNewData);
-            chartManager.initChart('line_exposure_profile', exposure_profile_options, getExposureProfileData(__level__), setNewData);
+            chartManager.initChart('line_total_exposure', total_exposure_options, chartManager.getTotalExposureData(__level__), setNewData);
+            chartManager.initChart('line_exposure_profile', exposure_profile_options, chartManager.getExposureProfileData(__level__), setNewData);
         }
 
         function loadData(chart_, data_) {
@@ -469,7 +469,7 @@ var DONUTCharts = (function () {
             var __level__ = 'Total';
 
             xvaGraphs.forEach(function(elem){
-                chartManager.initChart(elem.id, options, getGraphData(__level__, elem.metric,'xva'), setNewData);
+                chartManager.initChart(elem.id, options, chartManager.getGraphData(__level__, elem.metric,'xva'), setNewData);
             });
         }
 

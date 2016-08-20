@@ -376,17 +376,17 @@
                     // add a change event handler to all the dropdown controls
                     var nodes = document.getElementsByClassName('selectpicker');
                     [].forEach.call(nodes,function(e){
-                        _AttachEvent(e, 'change', setItem);
+                        _AttachEvent(e, 'change', chartManager.setItem);
                     });
 
                     [].forEach.call(document.getElementsByClassName('selectpicker-bg'),function(e){
                         // for each bar graph selector, populate the choices list
                         chartManager.populateBarGraphMetricList(e);
                         // and add a change event handler
-                        _AttachEvent(e, 'change', setBGMetric);
+                        _AttachEvent(e, 'change', chartManager.setBGMetric);
                     });
 
-                    resetPageDefaults();
+                    chartManager.resetPageDefaults();
                 });
         console.log('[INFO] ORE Dashboard init completed');
     }

@@ -2,15 +2,7 @@
  * Created by robnightingale on 20/08/2016.
  */
 
-var userBarGraphs = [
-    {id: 'bar_1', name: 'bar1', metric: 'ce'},
-    {id: 'bar_2', name: 'bar2', metric: 'npv'},
-    {id: 'bar_3', name: 'bar3', metric: 'fca'},
-    {id: 'bar_4', name: 'bar4', metric: 'fba'},
-    {id: 'bar_5', name: 'bar5', metric: 'eepe'},
-    {id: 'bar_6', name: 'bar6', metric: 'cva'}
-];
-
+"use strict";
 
 var barGraphs = [
     {id: 'bar_1', name: 'bar1', metric: 'ce'},
@@ -20,6 +12,9 @@ var barGraphs = [
     {id: 'bar_5', name: 'bar5', metric: 'eepe'},
     {id: 'bar_6', name: 'bar6', metric: 'cva'}
 ];
+
+// deep copy clone
+var userBarGraphs = JSON.parse(JSON.stringify(barGraphs));
 
 var xvaGraphs = [
     {id: 'donut_cva', name: 'donut_cva', metric: 'cva'},
@@ -38,7 +33,7 @@ var chartManager = {
     initChart: function (chartTagName_, options, data_, fnLoadData_) {
         var theChart_ = echarts.init(document.getElementById(chartTagName_), theme);
         theChart_.setOption(options);
-        theChart_.on('click', this.eConsole);
+        theChart_.on('click', chartManager.eConsole);
         // once data is resolved, render it
         Promise.resolve(data_).then(function(res){
             fnLoadData_(theChart_, res);
@@ -52,7 +47,7 @@ var chartManager = {
         // if user clicks a graph
         // console.log(param);
         sessionStorage.setItem('hierarchyOrTree',param.name);
-        drillDown(param.name);
+        chartManager.drillDown(param.name);
     },
     getDataFromRestCall: function (url_) {
         console.debug(url_);
@@ -92,33 +87,6 @@ var chartManager = {
                 console.error(new Error("Request failed : " + url_ + '\n' + stack));
                 return {};
             })
-    },
-    load_graph_panel: function (graph_) {
-        var trade_type = document.getElementById('tradeContainer.trade.trade_type');
-        var current_trade_type = (tradeType || trade_type.options[trade_type.options.selectedIndex].value);
-        var loadUrl_ = './' + current_trade_type + '.html';
-
-        return new Promise(function (resolve, reject) {
-            try {
-                $('#trade').load(loadUrl_, function () {
-                    if (current_trade_type === 'VNS')
-                        vnsFormManager.getInstance().initTable();
-                    if (current_trade_type === 'INF') {
-                        $("#roll_convention_label").hide();
-                        $("#roll_convention").hide();
-                    }
-                    else {
-                        $("#roll_convention_label").show();
-                        $("#roll_convention").show();
-                    }
-
-                    return resolve(tradeType);
-                });
-            }
-            catch (e) {
-                return reject(new Error(e));
-            }
-        });
     },
     populateBusinessDates: function () {
         try {
@@ -178,7 +146,7 @@ var chartManager = {
         var bgInstance = BARCharts.getInstance();
         var drillDownLevel_ = sessionStorage.getItem('hierarchyOrTree') || 'Total';
         var graphId_ = barGraphs.filter(function(elem){return elem.name == target.name})[0].id;
-        chartManager.initChart(graphId_, bgInstance.getDefaults, getGraphData(drillDownLevel_, getBarGraphMetric(target.name),'bargraph'), bgInstance.setNewData);
+        chartManager.initChart(graphId_, bgInstance.getDefaults, chartManager.getGraphData(drillDownLevel_, chartManager.getBarGraphMetric(target.name),'bargraph'), bgInstance.setNewData);
     },
     getGenericGraphData : function(args_){
         var key__;
@@ -205,190 +173,168 @@ var chartManager = {
         return key__;
 
     }
-}
+    , getBusinessDate : function(){
+        return sessionStorage.getItem('businessDate') || businessDate.value;
+    }
+    , getHierarchy : function (){
+        return (sessionStorage.getItem('hierarchy') || hierarchy.value).toLowerCase();
+    }
+    , getBarGraphMetric : function(id_) {
+        var default_ = barGraphs.filter(function(elem){
+            try {
+                return (elem.id == id_).metric;
+            } catch(itemNotFound){
+                return {};
+            }
+        });
 
-function getBusinessDate(){
-    return sessionStorage.getItem('businessDate') || businessDate.value;
-}
+        return (sessionStorage.getItem(id_) || default_).toLowerCase();
+    }
+    , getTotalExposureData: function (key_) {
+        var key__ = '/api/totalexposure-tree/total/Total/';
+        // var key__ = '/api/totalexposure-tree/' + getHierarchy() + '/Total/';
+        // returns a promise (future)
+        return chartManager.getDataFromRestCall(key__);
+    }
+    , getExposureProfileData : function(key_){
+        // var key__ = '/api/exposure-tree/' + getBusinessDate() +'/' + getHierarchy() + '/Total/';
+        var key__ = '/api/exposure-tree/' + chartManager.getBusinessDate() +'/total/Total/';
+        // returns a promise (future)
+        return chartManager.getDataFromRestCall(key__);
+    }
+    , getGraphData : function(drillDownKey_, metric_, chartType_) {
+        var args = {
+            date: chartManager.getBusinessDate(),
+            hierarchy: chartManager.getHierarchy(),
+            metric: metric_,
+            drillDownKey: drillDownKey_,
+            chartType: chartType_
+        };
 
-function getHierarchy(){
-    return (sessionStorage.getItem('hierarchy') || hierarchy.value).toLowerCase();
-}
+        var url_ = chartManager.getGenericGraphData(args);
+        // returns a promise (future)
+        return chartManager.getDataFromRestCall(url_);
+    }
+    , getSumOfGraphData : function(key__){
+        var args = {
+            date: chartManager.getBusinessDate(),
+            hierarchy: chartManager.getHierarchy(),
+            metric: 'colva',
+            drillDownKey: drilldownKey_,
+            chartType: 'xva'
+        };
+        var url_ = chartManager.getGenericGraphData(args);
+        // returns a promise (future)
+        chartManager.getDataFromRestCall(url_).then(
+            function(res){
+                return getSumOfArrayValues(res.data);
+            }
+        )
+    }
+    , refreshGraphs : function(__level__){
+        var bgInstance = BARCharts.getInstance();
+        var xvInstance = DONUTCharts.getInstance();
 
-function getBarGraphMetric(id_){
-    var default_ = barGraphs.filter(function(elem){
-        try {
-        return (elem.id == id_).metric;
-        } catch(itemNotFound){
-            return {};
+        barGraphs.forEach(function(elem){
+            chartManager.initChart(elem.id, bgInstance.getDefaults, chartManager.getGraphData(__level__, chartManager.getBarGraphMetric(elem.name),'bargraph'), bgInstance.setNewData);
+        });
+
+        if (__level__ != 'trade') {
+            xvaGraphs.forEach(function(elem){
+                chartManager.initChart(elem.name, xvInstance.getDefaults, chartManager.getGraphData(__level__, elem.metric,'xva'), xvInstance.setNewData);
+            });
         }
-    });
 
-    return (sessionStorage.getItem(id_) || default_).toLowerCase();
-}
-
-function getTotalExposureData(key_){
-    var key__ = '/api/totalexposure-tree/total/Total/';
-    // var key__ = '/api/totalexposure-tree/' + getHierarchy() + '/Total/';
-    // returns a promise (future)
-    return chartManager.getDataFromRestCall(key__);
-}
-
-function getExposureProfileData(key_){
-    // var key__ = '/api/exposure-tree/' + getBusinessDate() +'/' + getHierarchy() + '/Total/';
-    var key__ = '/api/exposure-tree/' + getBusinessDate() +'/total/Total/';
-    // returns a promise (future)
-    return chartManager.getDataFromRestCall(key__);
-}
-
-function getGraphData(drillDownKey_, metric_, chartType_){
-    var args = {
-        date: getBusinessDate(),
-        hierarchy: getHierarchy(),
-        metric: metric_,
-        drillDownKey: drillDownKey_,
-        chartType: chartType_
-    };
-
-    var url_ = chartManager.getGenericGraphData(args);
-    // returns a promise (future)
-    return chartManager.getDataFromRestCall(url_);
-}
-
-function getSumOfGraphData(key__) {
-    var args = {
-        date: getBusinessDate(),
-        hierarchy: getHierarchy(),
-        metric: 'colva',
-        drillDownKey: drilldownKey_,
-        chartType: 'xva'
-    };
-    var url_ = chartManager.getGenericGraphData(args);
-    // returns a promise (future)
-    chartManager.getDataFromRestCall(url_).then(
-        function(res){
-            return getSumOfArrayValues(res.data);
-        }
-    )
-}
-
-
-function refreshGraphs(__level__){
-    var bgInstance = BARCharts.getInstance();
-    var xvInstance = DONUTCharts.getInstance();
-
-    barGraphs.forEach(function(elem){
-        chartManager.initChart(elem.id, bgInstance.getDefaults, getGraphData(__level__, getBarGraphMetric(elem.name),'bargraph'), bgInstance.setNewData);
-    });
-
-    if (__level__ != 'trade') {
-        xvaGraphs.forEach(function(elem){
-            chartManager.initChart(elem.name, xvInstance.getDefaults, getGraphData(__level__, elem.metric,'xva'), xvInstance.setNewData);
+        chartManager.initChart('line_exposure_profile', LINECharts.getInstance().getDefaultExposureOpts, chartManager.getExposureProfileData(__level__), LINECharts.getInstance().setNewData);
+        chartManager.initChart('line_total_exposure', LINECharts.getInstance().getDefaultTotalOptions, chartManager.getTotalExposureData(__level__), LINECharts.getInstance().setNewData);
+    }
+    , refreshGraphsOnDataChange : function(__level__){
+        chartManager.refreshGraphs('Total');
+    }
+    , refreshGraphsOnDrilldown : function(drilldownKey_){
+        chartManager.refreshGraphs(drilldownKey_);
+    }
+    , getSumOfArrayValues : function(array_){
+        var g = array_.map(function (elem) {
+            return elem.value;
+        }).reduce(function (prev, curr) {
+            return prev + curr;
+        });
+        console.debug(g);
+        return g;
+    }
+    , drillDown : function (drilldownKey_){
+        // the key value from the graph that was clicked - the data point
+        Promise.resolve(chartManager.refreshGraphsOnDrilldown(drilldownKey_)).then(function(res){
+            chartManager.downALevel();
         });
     }
-
-    chartManager.initChart('line_exposure_profile', LINECharts.getInstance().getDefaultExposureOpts, getExposureProfileData(__level__), LINECharts.getInstance().setNewData);
-    chartManager.initChart('line_total_exposure', LINECharts.getInstance().getDefaultTotalOptions, getTotalExposureData(__level__), LINECharts.getInstance().setNewData);
-
-}
-
-function refreshGraphsOnDataChange(__level__){
-    refreshGraphs('Total');
-}
-
-function refreshGraphsOnDrilldown(drilldownKey_){
-    refreshGraphs(drilldownKey_);
-}
-
-// send in the data array from a graph
-function getSumOfArrayValues(array_) {
-    var g = array_.map(function (elem) {
-        return elem.value;
-    }).reduce(function (prev, curr) {
-        return prev + curr;
-    });
-    console.debug(g);
-    return g;
-}
-
-function drillDown(drilldownKey_) {
-    // the key value from the graph that was clicked - the data point
-    Promise.resolve(refreshGraphsOnDrilldown(drilldownKey_)).then(function(res){
-        downALevel();
-    });
-}
-
-function downALevel(){
-    if (hierarchy.selectedIndex < hierarchy.options.length-1)
-    {
-        hierarchy.selectedIndex++;
+    , downALevel : function(){
+        if (hierarchy.selectedIndex < hierarchy.options.length-1)
+        {
+            hierarchy.selectedIndex++;
+        }
     }
-}
-
-function upALevel(){
-    if (hierarchy.selectedIndex >0)
-    {
-        hierarchy.selectedIndex--;
+    , upALevel : function(){
+        if (hierarchy.selectedIndex >0)
+        {
+            hierarchy.selectedIndex--;
+        }
     }
-}
+    , setBGMetricDefaults : function(){
+        var nodes = document.getElementsByClassName('selectpicker-bg');
+        for (var node in nodes){
+            node.selectedIndex=0;
+        }
 
-function setBGMetricDefaults(){
-    var nodes = document.getElementsByClassName('selectpicker-bg');
-    for (var node in nodes){
-        node.selectedIndex=0;
+        // set initial values
+        barGraphs.forEach(function(elem){
+            sessionStorage.setItem(elem.name, elem.metric.toUpperCase());
+        });
     }
+    , resetPageDefaults : function(){
+        var nodes = document.getElementsByClassName('selectpicker');
+        for (var node in nodes){
+            node.selectedIndex=0;
+        }
 
-    // set initial values
-    barGraphs.forEach(function(elem){
-        sessionStorage.setItem(elem.name, elem.metric.toUpperCase());
-    });
-}
+        // set initial values
+        businessDate.value = businessDates.options[businessDates.selectedIndex].value ; //sessionStorage.getItem('businessDate') || '20150630';
+        hierarchy.value = hierarchies.options[hierarchies.selectedIndex].value ; // sessionStorage.getItem('hierarchy') || 'Total';
+        sessionStorage.setItem('businessDate', businessDate.value);
+        sessionStorage.setItem('hierarchy', hierarchy.value);
+        sessionStorage.setItem('hierarchyOrTree','Total');
 
-function resetPageDefaults(){
-    var nodes = document.getElementsByClassName('selectpicker');
-    for (var node in nodes){
-        node.selectedIndex=0;
+        chartManager.setBGMetricDefaults();
     }
+    , setItem : function (evt){
+        if (isNullOrUndefined(evt))
+            return;
 
-    // set initial values
-    businessDate.value = businessDates.options[businessDates.selectedIndex].value ; //sessionStorage.getItem('businessDate') || '20150630';
-    hierarchy.value = hierarchies.options[hierarchies.selectedIndex].value ; // sessionStorage.getItem('hierarchy') || 'Total';
-    sessionStorage.setItem('businessDate', businessDate.value);
-    sessionStorage.setItem('hierarchy', hierarchy.value);
-    sessionStorage.setItem('hierarchyOrTree','Total');
+        evt = evt || window.event;
+        var target = evt.target || evt.srcElement;
+        sessionStorage.setItem(target.name, target.value);
+        document.getElementById(target.name).value = target.value;
+        sessionStorage.setItem('hierarchyOrTree','Total');
 
-    setBGMetricDefaults();
+        if (target.name == 'hierarchy')
+        // we have been triggered by a menu click so
+        // it is always a 'total'
+            chartManager.drillDown('Total');
 
-}
+        if (target.name == 'businessDate')
+            chartManager.refreshGraphsOnDataChange();
+    }
+    , setBGMetric : function(evt){
+        if (isNullOrUndefined(evt))
+            return;
 
-function setItem(evt){
-    if (isNullOrUndefined(evt))
-        return;
-
-    evt = evt || window.event;
-    var target = evt.target || evt.srcElement;
-    sessionStorage.setItem(target.name, target.value);
-    document.getElementById(target.name).value = target.value;
-    sessionStorage.setItem('hierarchyOrTree','Total');
-
-    if (target.name == 'hierarchy')
-    // we have been triggered by a menu click so
-    // it is always a 'total'
-        drillDown('Total');
-
-    if (target.name == 'businessDate')
-        refreshGraphsOnDataChange();
-}
-
-function setBGMetric(evt){
-    if (isNullOrUndefined(evt))
-        return;
-
-    evt = evt || window.event;
-    var target = evt.target || evt.srcElement;
-    sessionStorage.setItem(target.name, target.value);
-    chartManager.flipChart(evt);
-    // set the userBG item
-    userBarGraphs.filter(function(elem){return elem.name == target.name})[0].metric = target.value.toLowerCase();
+        evt = evt || window.event;
+        var target = evt.target || evt.srcElement;
+        sessionStorage.setItem(target.name, target.value);
+        chartManager.flipChart(evt);
+        // set the userBG item
+        userBarGraphs.filter(function(elem){return elem.name == target.name})[0].metric = target.value.toLowerCase();
+    }
 
 }
