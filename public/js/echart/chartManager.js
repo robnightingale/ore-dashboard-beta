@@ -1,5 +1,6 @@
 /**
- * Created by robnightingale on 20/08/2016.
+ * Copyright (C) 2016 Quaternion Risk Management Ltd
+ * All rights reserved.
  */
 
 "use strict";
@@ -149,7 +150,7 @@ var chartManager = {
             sel.options.length = 0;
             var fragment = document.createDocumentFragment();
 
-            ['EEPE','TOTALEXPOSURE','CVA','DVA','NPV','FCA','FBA','FVA','ColVA','IM'].forEach(function (dcc, index) {
+            ['EEPE','TOTALEXPOSURE','CVA','DVA','NPV','FCA','FBA','FVA','ColVA','IM', 'VAR'].forEach(function (dcc, index) {
                         var opt = document.createElement('option');
                         // nice format for the user to see
                         opt.innerHTML = dcc;
@@ -199,8 +200,11 @@ var chartManager = {
                 // this is from a menu dropdown at hierarchy level
                     key__ = '/api/' + args_.chartType + '/' + args_.date + '/' + args_.hierarchy + '/' + args_.metric + '/';
             } else {
-                // user clicked on a data point
-                console.debug('user click');
+                // user clicked on a data point - if we are on the total hierarchy setting,
+                // send 'creditrating' as the rest parameter
+                if (args_.hierarchy == 'total') {
+                    args_.hierarchy = 'creditrating';
+                }
                 key__ = '/api/' + args_.chartType + '-tree/' + args_.date + '/' + args_.hierarchy + '/' + args_.drillDownKey + '/' + args_.metric + '/';
             }
         } else {
