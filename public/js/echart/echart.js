@@ -469,7 +469,13 @@ var DONUTCharts = (function () {
             var __level__ = 'Total';
 
             xvaGraphs.forEach(function(elem){
-                chartManager.initChart(elem.id, options, chartManager.getGraphData(__level__, elem.metric,'xva'), setNewData);
+                var p_ = chartManager.getGraphData(__level__, elem.metric,'xva');
+                chartManager.initChart(elem.name, options, p_, setNewData);
+                // chartManager.initChart(elem.id, options, chartManager.getGraphData(__level__, elem.metric,'xva'), setNewData);
+                p_.then(function(res){
+                    document.getElementsByName(elem.name)[0].innerText = elem.text + ' : '+ numeral(chartManager.getSumOfArrayValues(res.data)).format('(0.00a)');
+                });
+
             });
         }
 

@@ -831,3 +831,24 @@ function getContextPath() {
         ctx.indexOf('/', 1) + 1) : ctx;
     return path + (/\/$/.test(path) ? '' : '/');
 }
+
+/**
+ * Native JS way to filter an array
+ * @param array
+ * @param fn
+ * @returns {Array}
+ *
+ * Usage:
+ * var list = [1,2,3,...,500];
+ * var predicate = function(n){ ... };
+ * var matching = filter(list, predicate);
+ */
+function filter(array, fn) {
+    var results = [];
+    var item;
+    for (var i = 0, len = array.length; i < len; i++) {
+        item = array[i];
+        if (fn(item)) results.push(item);
+    }
+    return results;
+}

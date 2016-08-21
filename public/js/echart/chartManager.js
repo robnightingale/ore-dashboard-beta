@@ -4,22 +4,50 @@
 
 "use strict";
 
+var chartCategory =
+    [
+        {metric: 'npv', category: 'CREDIT'},
+        {metric: 'ce', category: 'CREDIT'},
+        {metric: 'epe', category: 'CREDIT'},
+        {metric: 'ene', category: 'CREDIT'},
+        {metric: 'pfe', category: 'CREDIT'},
+        {metric: 'eepe', category: 'CREDIT'},
+        {metric: 'totalexposure', category: 'CREDIT'},
+        {metric: 'cva', category: 'CREDIT'},
+        {metric: 'dva', category: 'CREDIT'},
+        {metric: 'saccr', category: 'CREDIT'},
+        {metric: 'el', category: 'CREDIT'},
+        {metric: 'uel', category: 'CREDIT'},
+        {metric: 'var', category: 'MARKET'},
+        {metric: 'es', category: 'MARKET'},
+        {metric: 'fca', category: 'LIQUIDITY'},
+        {metric: 'fba', category: 'LIQUIDITY'},
+        {metric: 'fva', category: 'LIQUIDITY'},
+        {metric: 'colva', category: 'LIQUIDITY'},
+        {metric: 'mva', category: 'LIQUIDITY'},
+        {metric: 'im', category: 'LIQUIDITY'},
+        {metric: 'vm', category: 'LIQUIDITY'},
+        {metric: 'snco', category: 'LIQUIDITY'},
+        {metric: 'rsf', category: 'LIQUIDITY'}
+    ]
+
+
 var barGraphs = [
-    {id: 'bar_1', name: 'bar1', metric: 'ce'},
-    {id: 'bar_2', name: 'bar2', metric: 'npv'},
-    {id: 'bar_3', name: 'bar3', metric: 'fca'},
-    {id: 'bar_4', name: 'bar4', metric: 'fba'},
-    {id: 'bar_5', name: 'bar5', metric: 'eepe'},
-    {id: 'bar_6', name: 'bar6', metric: 'cva'}
+    {id: 'bar_1', name: 'bar1', metric: 'ce', text: ''},
+    {id: 'bar_2', name: 'bar2', metric: 'npv', text: ''},
+    {id: 'bar_3', name: 'bar3', metric: 'fca', text: ''},
+    {id: 'bar_4', name: 'bar4', metric: 'fba', text: ''},
+    {id: 'bar_5', name: 'bar5', metric: 'eepe', text: ''},
+    {id: 'bar_6', name: 'bar6', metric: 'cva', text: ''}
 ];
 
 // deep copy clone
 var userBarGraphs = JSON.parse(JSON.stringify(barGraphs));
 
 var xvaGraphs = [
-    {id: 'donut_cva', name: 'donut_cva', metric: 'cva'},
-    {id: 'donut_fva', name: 'donut_fva', metric: 'fva'},
-    {id: 'donut_colva', name: 'donut_colva', metric: 'colva'}
+    {id: 'donut_cva', name: 'donut_cva', metric: 'cva', text: 'CVA'},
+    {id: 'donut_fva', name: 'donut_fva', metric: 'fva', text: 'FVA'},
+    {id: 'donut_colva', name: 'donut_colva', metric: 'colva', text: 'ColVA'}
 ]
 
 var chartManager = {
@@ -145,7 +173,9 @@ var chartManager = {
         // redraw the barGraph with a new metric
         var bgInstance = BARCharts.getInstance();
         var drillDownLevel_ = sessionStorage.getItem('hierarchyOrTree') || 'Total';
-        var graphId_ = barGraphs.filter(function(elem){return elem.name == target.name})[0].id;
+        // var graphId_ = barGraphs.filter(function(elem){return elem.name == target.name})[0].id;
+        var graphId_ = filter(barGraphs, function(elem){return elem.name == target.name})[0].id;
+
         chartManager.initChart(graphId_, bgInstance.getDefaults, chartManager.getGraphData(drillDownLevel_, chartManager.getBarGraphMetric(target.name),'bargraph'), bgInstance.setNewData);
     },
     getGenericGraphData : function(args_){
@@ -180,9 +210,11 @@ var chartManager = {
         return (sessionStorage.getItem('hierarchy') || hierarchy.value).toLowerCase();
     }
     , getBarGraphMetric : function(id_) {
-        var default_ = barGraphs.filter(function(elem){
-                return elem.name == id_;
-        });
+        var default_ = filter(barGraphs, function(elem){return elem.name == id_});
+
+        // var default_ = barGraphs.filter(function(elem){
+        //         return elem.name == id_;
+        // });
         return (sessionStorage.getItem(id_) || default_[0].metric).toLowerCase();
     }
     , getTotalExposureData: function (key_) {
@@ -211,20 +243,28 @@ var chartManager = {
         return chartManager.getDataFromRestCall(url_);
     }
     , getSumOfGraphData : function(graphDivId_){
-        return chartManager.getSumOfArrayValues(graphDivId_);
+        var graph_ = chartManager.getChartInstanceFromDivId(graphDivId_);
+        var array_ = graph_.getOption().series[0].data;
+        return chartManager.getSumOfArrayValues(array_);
     }
     , refreshGraphs : function(__level__){
         var bgInstance = BARCharts.getInstance();
         var xvInstance = DONUTCharts.getInstance();
 
         barGraphs.forEach(function(elem){
-            chartManager.initChart(elem.id, bgInstance.getDefaults, chartManager.getGraphData(__level__, chartManager.getBarGraphMetric(elem.name),'bargraph'), bgInstance.setNewData);
+            var p_ = chartManager.getGraphData(__level__, chartManager.getBarGraphMetric(elem.name),'bargraph');
+            chartManager.initChart(elem.id, bgInstance.getDefaults, p_, bgInstance.setNewData);
         });
 
         if (__level__ != 'trade') {
             xvaGraphs.forEach(function(elem){
-                chartManager.initChart(elem.name, xvInstance.getDefaults, chartManager.getGraphData(__level__, elem.metric,'xva'), xvInstance.setNewData);
-                console.debug(chartManager.getSumOfGraphData(elem.id));
+                var p_ = chartManager.getGraphData(__level__, elem.metric,'xva');
+                chartManager.initChart(elem.name, xvInstance.getDefaults, p_, xvInstance.setNewData);
+
+                p_.then(function(res){
+                    document.getElementsByName(elem.name)[0].innerText = elem.text + ' : '+ numeral(chartManager.getSumOfArrayValues(res.data)).format('(0.00a)');
+                });
+
             });
         }
 
@@ -237,10 +277,7 @@ var chartManager = {
     , refreshGraphsOnDrilldown : function(drilldownKey_){
         chartManager.refreshGraphs(drilldownKey_);
     }
-    , getSumOfArrayValues : function(graphDivId_){
-        var graph_ = chartManager.getChartInstanceFromDivId(graphDivId_);
-
-        var array_ = graph_.getOption().series[0].data;
+    , getSumOfArrayValues : function(array_){
         var g = array_.map(function (elem) {
             return elem.value;
         }).reduce(function (prev, curr) {
@@ -252,20 +289,20 @@ var chartManager = {
     , drillDown : function (drilldownKey_){
         // the key value from the graph that was clicked - the data point
         Promise.resolve(chartManager.refreshGraphsOnDrilldown(drilldownKey_)).then(function(res){
-            chartManager.downALevel();
+            if (drilldownKey_ != 'Total')
+                // if a user clicked the graph, bring the menu into line
+                chartManager.downALevel();
         });
     }
     , downALevel : function(){
         if (hierarchies.selectedIndex < hierarchies.options.length-1)
-        {
             hierarchies.selectedIndex++;
-        }
+        // TODO update breadcrumb
     }
     , upALevel : function(){
         if (hierarchies.selectedIndex >0)
-        {
             hierarchies.selectedIndex--;
-        }
+        // TODO update breadcrumb
     }
     , setBGMetricDefaults : function(){
         var nodes = document.getElementsByClassName('selectpicker-bg');
@@ -320,7 +357,9 @@ var chartManager = {
         sessionStorage.setItem(target.name, target.value);
         chartManager.flipChart(evt);
         // set the userBG item
-        userBarGraphs.filter(function(elem){return elem.name == target.name})[0].metric = target.value.toLowerCase();
+        var default_ = filter(userBarGraphs, function(elem){return elem.name == target.name});
+        default_[0].metric = target.value.toLowerCase();
+        // userBarGraphs.filter(function(elem){return elem.name == target.name})[0].metric = target.value.toLowerCase();
     }
 
 }
