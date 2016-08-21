@@ -175,8 +175,16 @@ var chartManager = {
         var drillDownLevel_ = sessionStorage.getItem('hierarchyOrTree') || 'Total';
         // var graphId_ = barGraphs.filter(function(elem){return elem.name == target.name})[0].id;
         var graphId_ = filter(barGraphs, function(elem){return elem.name == target.name})[0].id;
+        var metric_ = chartManager.getBarGraphMetric(target.name);
+        var p_ = chartManager.getGraphData(drillDownLevel_, metric_,'bargraph');
+        chartManager.initChart(graphId_, bgInstance.getDefaults, p_, bgInstance.setNewData);
 
-        chartManager.initChart(graphId_, bgInstance.getDefaults, chartManager.getGraphData(drillDownLevel_, chartManager.getBarGraphMetric(target.name),'bargraph'), bgInstance.setNewData);
+        p_.then(function(res){
+            // lookup the category in the chartCategories array
+            var cat_ = filter(chartCategory, function(elem){return elem.metric == metric_;});
+            document.getElementById(graphId_).parentNode.parentNode.getElementsByTagName('h2')[0].innerText = cat_[0].category;
+        });
+
     },
     getGenericGraphData : function(args_){
         var key__;
@@ -252,8 +260,16 @@ var chartManager = {
         var xvInstance = DONUTCharts.getInstance();
 
         barGraphs.forEach(function(elem){
-            var p_ = chartManager.getGraphData(__level__, chartManager.getBarGraphMetric(elem.name),'bargraph');
+            var metric_ = chartManager.getBarGraphMetric(elem.name);
+            var p_ = chartManager.getGraphData(__level__, metric_,'bargraph');
             chartManager.initChart(elem.id, bgInstance.getDefaults, p_, bgInstance.setNewData);
+
+            p_.then(function(res){
+                // lookup the category in the chartCategories array
+                var cat_ = filter(chartCategory, function(elem){return elem.metric == metric_;});
+                document.getElementById(elem.id).parentNode.parentNode.getElementsByTagName('h2')[0].innerText = cat_[0].category;
+            });
+
         });
 
         if (__level__ != 'trade') {
