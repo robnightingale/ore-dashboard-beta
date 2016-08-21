@@ -1,6 +1,3 @@
-/**
- * Created by robnightingale on 16/08/2016.
- */
 /*!
  * numeral.js
  * version : 1.5.3

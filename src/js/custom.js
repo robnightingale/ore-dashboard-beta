@@ -1,7 +1,7 @@
 /**
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Copyright (C) 2016 Quaternion Risk Management Ltd
+ * All rights reserved.
+ * @type {*}
  */
 
 var CURRENT_URL = window.location.href.split('?')[0],
@@ -347,4 +347,48 @@ function getContextPath() {
     var ctx = window.location.pathname, path = '/' !== ctx ? ctx.substring(0,
         ctx.indexOf('/', 1) + 1) : ctx;
     return path + (/\/$/.test(path) ? '' : '/');
+}
+
+/**
+ * Native JS way to filter an array
+ * @param array
+ * @param fn
+ * @returns {Array}
+ *
+ * Usage:
+ * var list = [1,2,3,...,500];
+ * var predicate = function(n){ ... };
+ * var matching = filter(list, predicate);
+ */
+function filter(array, fn) {
+    var results = [];
+    var item;
+    for (var i = 0, len = array.length; i < len; i++) {
+        item = array[i];
+        if (fn(item)) results.push(item);
+    }
+    return results;
+}
+
+
+/**
+ * Copy a canvas to a new blank canvas
+ * @param oldCanvas
+ * @returns {Element}
+ */
+function cloneCanvas(oldCanvas) {
+
+    //create a new canvas
+    var newCanvas = document.createElement('canvas');
+    var context = newCanvas.getContext('2d');
+
+    //set dimensions
+    newCanvas.width = oldCanvas.width;
+    newCanvas.height = oldCanvas.height;
+
+    //apply the old canvas to the new one
+    context.drawImage(oldCanvas, 0, 0);
+
+    //return the new canvas
+    return newCanvas;
 }

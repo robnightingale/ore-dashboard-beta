@@ -46,7 +46,7 @@ var BARCharts = (function () {
                 type: 'value',
                 boundaryGap: false,
                 axisLabel:{interval: 'auto', formatter: function(value){
-                    return numeral(value).format('(0.00a)');
+                    return numeral(value).format('(0.0a)');
                 }},
 
             }],
@@ -65,9 +65,23 @@ var BARCharts = (function () {
             // set the initial entry point to 'Total' level
             var __level__ = 'Total';
 
+            // barGraphs.forEach(function(elem){
+            //     chartManager.initChart(elem.id, options, chartManager.getGraphData(__level__, elem.metric,'bargraph'), setNewData);
+            // });
+
             barGraphs.forEach(function(elem){
-                chartManager.initChart(elem.id, options, getGraphData(__level__, elem.metric,'bargraph'), setNewData);
+                var p_ = chartManager.getGraphData(__level__, elem.metric,'bargraph');
+                chartManager.initChart(elem.id, options, p_, setNewData);
+
+                p_.then(function(res){
+                    // lookup the category in the chartCategories array
+                    var cat_ = filter(chartCategory, function(e){return e.metric == elem.metric;});
+                    document.getElementById(elem.id).parentNode.parentNode.getElementsByTagName('h2')[0].innerText = cat_[0].category;
+                });
+
             });
+
+
         }
 
         function loadData(chart_, data_) {
@@ -179,7 +193,7 @@ var LINECharts = (function () {
             yAxis: [{
                 type: 'value',
                 axisLabel:{interval: 'auto', formatter: function(value){
-                    return numeral(value).format('(0.00a)');
+                    return numeral(value).format('(0.0a)');
                 }},
             }],
             series: []
@@ -252,7 +266,7 @@ var LINECharts = (function () {
             yAxis: [{
                 type: 'value',
                 axisLabel:{interval: 'auto', formatter: function(value){
-                    return numeral(value).format('(0.00a)');
+                    return numeral(value).format('(0a)');
                 }},
 
             }],
@@ -281,7 +295,7 @@ var LINECharts = (function () {
                     name: "PFE",
                     data: data_.pfes
                 }
-                var series_ = []
+                var series_ = [];
                 series_.push(series_0);
                 series_.push((series_1));
 
@@ -351,8 +365,8 @@ var LINECharts = (function () {
 
         function initialiseAllCharts() {
             var __level__ = 'Total';
-            chartManager.initChart('line_total_exposure', total_exposure_options, getTotalExposureData(__level__), setNewData);
-            chartManager.initChart('line_exposure_profile', exposure_profile_options, getExposureProfileData(__level__), setNewData);
+            chartManager.initChart('line_total_exposure', total_exposure_options, chartManager.getTotalExposureData(__level__), setNewData);
+            chartManager.initChart('line_exposure_profile', exposure_profile_options, chartManager.getExposureProfileData(__level__), setNewData);
         }
 
         function loadData(chart_, data_) {
@@ -469,7 +483,13 @@ var DONUTCharts = (function () {
             var __level__ = 'Total';
 
             xvaGraphs.forEach(function(elem){
-                chartManager.initChart(elem.id, options, getGraphData(__level__, elem.metric,'xva'), setNewData);
+                var p_ = chartManager.getGraphData(__level__, elem.metric,'xva');
+                chartManager.initChart(elem.name, options, p_, setNewData);
+                // chartManager.initChart(elem.id, options, chartManager.getGraphData(__level__, elem.metric,'xva'), setNewData);
+                p_.then(function(res){
+                    document.getElementsByName(elem.name)[0].innerText = elem.text + ' : '+ numeral(chartManager.getSumOfArrayValues(res.data)).format('(0.00a)');
+                });
+
             });
         }
 

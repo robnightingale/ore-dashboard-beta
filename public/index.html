@@ -7,6 +7,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <!--Copyright (C) 2016 Quaternion Risk Management Ltd-->
+    <!--All rights reserved.-->
+
     <title>Open Risk Engine | Dashboard</title>
 
     <!-- Bootstrap -->
@@ -145,48 +148,44 @@
                 <div class="x_title"></div>
                 <div class="col-md-3 col-sm-3 col-xs-12">
                     <div class="x_title">
-                        <h2>CVA</h2>
-
+                        <h2 name="donut_cva">CVA</h2>
                         <ul class="nav navbar-right panel_toolbox">
                             <li><a class="close-link" data-toggle="modal" data-target=".bs-example-modal-sm"><i class="fa fa-search-plus"></i></a></li>
                         </ul>
-                        <div class="clearfix"></div>
+                        <div class="clearfix">
+                        </div>
                     </div>
                     <div class="x_content">
                         <div id="donut_cva" style="height:280px;"></div>
                     </div>
-                    <span>Total #CVA $$,$$$,$$$.$$</span>
-
                 </div>
 
                 <div class="col-md-3 col-sm-3 col-xs-12">
                     <div class="x_title">
-                        <h2>FVA</h2>
+                        <h2 name="donut_fva">FVA</h2>
                         <ul class="nav navbar-right panel_toolbox">
                             <li><a class="close-link" data-toggle="modal" data-target=".bs-example-modal-sm"><i class="fa fa-search-plus"></i></a></li>
                         </ul>
-                        <div class="clearfix"></div>
+                        <div class="clearfix">
+                        </div>
                     </div>
                     <div class="x_content">
                         <div id="donut_fva" style="height:280px"></div>
                     </div>
-                    <span>Total #FVA $$,$$$,$$$.$$</span>
-
                 </div>
                 <div class="col-md-3 col-sm-3 col-xs-12">
                     <div class="x_title">
-                        <h2>ColVA</h2>
+                        <h2 name="donut_colva">ColVA</h2>
                         <ul class="nav navbar-right panel_toolbox">
                             <li><a class="close-link" data-toggle="modal" data-target=".bs-example-modal-sm"><i class="fa fa-search-plus"></i></a></li>
                         </ul>
 
-                        <div class="clearfix"></div>
+                        <div class="clearfix">
+                        </div>
                     </div>
                     <div class="x_content">
                         <div id="donut_colva" style="height:280px"></div>
                     </div>
-                    <span>Total #ColVA $$,$$$,$$$.$$</span>
-
                 </div>
                 <div class="col-md-3 col-sm-3 col-xs-12">
                     <div class="x_title">
@@ -208,7 +207,7 @@
 
                 <div class="col-md-4 col-sm-4 col-xs-12">
                     <div class="x_title">
-                        <h2>CREDIT</h2>
+                        <h2 name="bar1"></h2>
                         <select class="selectpicker-bg pull-right" id="bar1_" name="bar1">
                             <!-- the options are filled in by Javascript-->
                         </select>
@@ -220,7 +219,7 @@
                 </div>
                 <div class="col-md-4 col-sm-4 col-xs-12">
                     <div class="x_title">
-                        <h2>MARKET</h2>
+                        <h2 name="bar2"></h2>
                         <select class="selectpicker-bg pull-right" id="bar2_" name="bar2">
                             <!-- the options are filled in by Javascript-->
                         </select>
@@ -232,7 +231,7 @@
                 </div>
                 <div class="col-md-4 col-sm-4 col-xs-12">
                     <div class="x_title">
-                        <h2>LIQUIDITY</h2>
+                        <h2 name="bar3"></h2>
                         <select class="selectpicker-bg pull-right" id="bar3_" name="bar3">
                             <!-- the options are filled in by Javascript-->
                         </select>
@@ -244,7 +243,7 @@
                 </div>
                 <div class="col-md-4 col-sm-4 col-xs-12">
                     <div class="x_title">
-                        <h2>CREDIT</h2>
+                        <h2 name="bar4"></h2>
                         <select class="selectpicker-bg pull-right" id="bar4_" name="bar4">
                             <!-- the options are filled in by Javascript-->
                         </select>
@@ -256,7 +255,7 @@
                 </div>
                 <div class="col-md-4 col-sm-4 col-xs-12">
                     <div class="x_title">
-                        <h2>MARKET</h2>
+                        <h2 name="bar5"></h2>
                         <select class="selectpicker-bg pull-right" id="bar5_" name="bar5">
                             <!-- the options are filled in by Javascript-->
                         </select>
@@ -268,7 +267,7 @@
                 </div>
                 <div class="col-md-4 col-sm-4 col-xs-12">
                     <div class="x_title">
-                        <h2>LIQUIDITY</h2>
+                        <h2 name="bar6"></h2>
                         <select class="selectpicker-bg pull-right" id="bar6_" name="bar6">
                             <!-- the options are filled in by Javascript-->
                          </select>
@@ -376,17 +375,17 @@
                     // add a change event handler to all the dropdown controls
                     var nodes = document.getElementsByClassName('selectpicker');
                     [].forEach.call(nodes,function(e){
-                        _AttachEvent(e, 'change', setItem);
+                        _AttachEvent(e, 'change', chartManager.setItem);
                     });
 
                     [].forEach.call(document.getElementsByClassName('selectpicker-bg'),function(e){
                         // for each bar graph selector, populate the choices list
                         chartManager.populateBarGraphMetricList(e);
                         // and add a change event handler
-                        _AttachEvent(e, 'change', setBGMetric);
+                        _AttachEvent(e, 'change', chartManager.setBGMetric);
                     });
 
-                    resetPageDefaults();
+                    chartManager.resetPageDefaults();
                 });
         console.log('[INFO] ORE Dashboard init completed');
     }
