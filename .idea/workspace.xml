@@ -8,8 +8,6 @@
     <list default="true" id="caa21dc2-8a18-41a2-9fb6-7ca5b9d0c280" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/index.html" afterPath="$PROJECT_DIR$/public/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/echart/chartManager.js" afterPath="$PROJECT_DIR$/public/js/echart/chartManager.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/echart/echart.js" afterPath="$PROJECT_DIR$/public/js/echart/echart.js" />
     </list>
     <ignored path="ore-dashboard-beta.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -46,9 +44,13 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/public/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="420">
+              <caret line="28" column="52" selection-start-line="28" selection-start-column="52" selection-end-line="28" selection-end-column="52" />
+              <folding>
+                <marker date="1471856129000" expanded="false" signature="7626:7639" ph="..." />
+                <marker date="1471856129000" expanded="false" signature="8303:8315" ph="..." />
+                <marker date="1471856129000" expanded="false" signature="8985:8997" ph="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -321,7 +323,7 @@
       <workItem from="1471561081588" duration="24933000" />
       <workItem from="1471715159587" duration="31000" />
       <workItem from="1471770748934" duration="321000" />
-      <workItem from="1471813171264" duration="3763000" />
+      <workItem from="1471813171264" duration="4816000" />
     </task>
     <task id="LOCAL-00001" summary="package.json updated for local web running">
       <created>1469372595018</created>
@@ -421,11 +423,18 @@
       <option name="project" value="LOCAL" />
       <updated>1471700652653</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="REPOSIT-0000 Tidy ups from Scotts email.">
+      <created>1471850237853</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1471850237853</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="254084000" />
+    <option name="totallyTimeSpent" value="255137000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="773" extended-state="6" />
@@ -513,7 +522,8 @@
     <MESSAGE value="REPOSIT-0000 refactored all of the drill down into a generic function" />
     <MESSAGE value="REPOSIT-0000 more refactoring to prepare for release." />
     <MESSAGE value="REPOSIT-0000 bargraph metric flipping supported." />
-    <option name="LAST_COMMIT_MESSAGE" value="REPOSIT-0000 bargraph metric flipping supported." />
+    <MESSAGE value="REPOSIT-0000 Tidy ups from Scotts email." />
+    <option name="LAST_COMMIT_MESSAGE" value="REPOSIT-0000 Tidy ups from Scotts email." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -854,9 +864,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/public/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="420">
+          <caret line="28" column="52" selection-start-line="28" selection-start-column="52" selection-end-line="28" selection-end-column="52" />
+          <folding>
+            <marker date="1471856129000" expanded="false" signature="7626:7639" ph="..." />
+            <marker date="1471856129000" expanded="false" signature="8303:8315" ph="..." />
+            <marker date="1471856129000" expanded="false" signature="8985:8997" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
