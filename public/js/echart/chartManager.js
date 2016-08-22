@@ -150,7 +150,7 @@ var chartManager = {
             sel.options.length = 0;
             var fragment = document.createDocumentFragment();
 
-            ['EEPE','TOTALEXPOSURE','CVA','DVA','NPV','FCA','FBA','FVA','ColVA','IM', 'VAR'].forEach(function (dcc, index) {
+            ["CE",'EEPE','TOTALEXPOSURE','CVA','DVA','NPV','FCA','FBA','FVA','ColVA','IM', 'VAR'].forEach(function (dcc, index) {
                         var opt = document.createElement('option');
                         // nice format for the user to see
                         opt.innerHTML = dcc;

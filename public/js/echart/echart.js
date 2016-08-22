@@ -53,9 +53,12 @@ var BARCharts = (function () {
             yAxis: [{
                 type: 'category',
                 boundaryGap: true,
-                axisLabel:{interval: 'auto', formatter: function(value){
-                    return value;
-                }},
+                axisLabel: {
+                    interval: 'auto'
+                    // , formatter: function (value) {
+                    //     return value;
+                    // }
+                },
                 data: []
             }],
             series: null
@@ -122,25 +125,25 @@ var LINECharts = (function () {
 
             title: {
                 text: 'Total Exposure',
-                subtext: 'Subtitle'
+                subtext: 'Historical Credit Exposure Trends'
             },
             tooltip: {
                 trigger: 'axis',
 
-                formatter: function (params,ticket,callback) {
-                    // console.debug(params);
-                    // var res = 'Function formatter : <br/>' + params[0].name;
-                    var tot_ = parseFloat(params[2].value) + parseFloat(params[1].value);
-                    var res = 'Total : ' + tot_;
-                    for (var i = 0, l = params.length; i < l; i++) {
-                        res += '<br/>' + params[i].seriesName + ' : ' + params[i].value;
-                    }
-                    return res;
-                    // setTimeout(function (){
-                    //     callback(ticket, res);
-                    // }, 1000)
-                    // return 'loading';
-                }
+                // formatter: function (params,ticket,callback) {
+                //     // console.debug(params);
+                //     // var res = 'Function formatter : <br/>' + params[0].name;
+                //     var tot_ = parseFloat(params[2].value) + parseFloat(params[1].value);
+                //     var res = 'Total : ' + tot_;
+                //     for (var i = 0, l = params.length; i < l; i++) {
+                //         res += '<br/>' + params[i].seriesName + ' : ' + params[i].value;
+                //     }
+                //     return res;
+                //     // setTimeout(function (){
+                //     //     callback(ticket, res);
+                //     // }, 1000)
+                //     // return 'loading';
+                // }
                 //formatter: "Template formatter: <br/>{b}<br/>{a}:{c}<br/>{a1}:{c1}"
             },
             legend: {
@@ -198,18 +201,17 @@ var LINECharts = (function () {
             }],
             series: []
         };
-        var profile_marklines = {
-            data: [
-                // Vertical axis, default
-                {type: 'max', name: 'max', itemStyle: {normal: {color: '#dc143c'}}},
-                {type: 'min', name: 'min', itemStyle: {normal: {color: '#dc143c'}}},
-                {type: 'average', name: 'avg', itemStyle: {normal: {color: '#dc143c'}}},
-                // Horizontal axis
-                {type: 'max', name: 'max', valueIndex: 0, itemStyle: {normal: {color: '#1e90ff'}}},
-                {type: 'min', name: 'min', valueIndex: 0, itemStyle: {normal: {color: '#1e90ff'}}},
-                {type: 'average', name: 'avg', valueIndex: 0, itemStyle: {normal: {color: '#1e90ff'}}}
-            ]
-        };
+        var profile_marklines = {};
+            // data: [
+            //     Vertical axis, default
+            //     {type: 'max', name: 'max', itemStyle: {normal: {color: '#dc143c'}}},
+            //     {type: 'min', name: 'min', itemStyle: {normal: {color: '#dc143c'}}},
+            //     {type: 'average', name: 'avg', itemStyle: {normal: {color: '#dc143c'}}},
+            //     Horizontal axis
+            //     {type: 'max', name: 'max', valueIndex: 0, itemStyle: {normal: {color: '#1e90ff'}}},
+            //     {type: 'min', name: 'min', valueIndex: 0, itemStyle: {normal: {color: '#1e90ff'}}},
+            //     {type: 'average', name: 'avg', valueIndex: 0, itemStyle: {normal: {color: '#1e90ff'}}}
+            // ]};
 
         var exposure_profile_options = {
             title: {
@@ -295,14 +297,18 @@ var LINECharts = (function () {
                     name: "PFE",
                     data: data_.pfes
                 }
+                // var series_2 = {
+                //     name: "ENE",
+                //     data: data_.enes
+                // }
                 var series_ = [];
                 series_.push(series_0);
                 series_.push((series_1));
 
                 series_.forEach(function (elem) {
                     // only add marklines for exposure profile graph
-                    if (chart_.getOption().title[0].text == 'Exposure Profile')
-                        elem.markLine = profile_marklines;
+                    // if (chart_.getOption().title[0].text == 'Exposure Profile')
+                    //     elem.markLine = profile_marklines;
                     elem.type = 'line';
                     elem.smooth = true;
                     elem.itemStyle = {
@@ -335,15 +341,21 @@ var LINECharts = (function () {
                     name: "EEPE",
                     data: data_.eepes
                 }
+                var series_3 = {
+                    name: "Total",
+                    data: data_.tes
+                }
+
                 var series_ = []
                 series_.push(series_0);
                 series_.push((series_1));
                 series_.push((series_2));
+                series_.push((series_3));
 
                 series_.forEach(function (elem) {
                     // only add marklines for exposure profile graph
-                    if (chart_.getOption().title[0].text == 'Exposure Profile')
-                        elem.markLine = profile_marklines;
+                    // if (chart_.getOption().title[0].text == 'Exposure Profile')
+                    //     elem.markLine = profile_marklines;
                     elem.type = 'line';
                     elem.smooth = true;
                     elem.itemStyle = {
