@@ -194,18 +194,20 @@ var chartManager = {
         if (!isNullOrUndefined(args_.drillDownKey)) {
             if (args_.drillDownKey == 'Total') {
                 // we arrived here from a menu click
-                if (args_.hierarchy == 'total')
-                    key__ = '/api/' + args_.chartType + '-tree/' + args_.date + '/' + args_.hierarchy + '/Total/' + args_.metric + '/';
-                else
+                // if (args_.hierarchy == 'total')
+                //     key__ = '/api/' + args_.chartType + '-tree/' + args_.date + '/' + args_.hierarchy + '/Total/' + args_.metric + '/';
+                // else
                 // this is from a menu dropdown at hierarchy level
                     key__ = '/api/' + args_.chartType + '/' + args_.date + '/' + args_.hierarchy + '/' + args_.metric + '/';
             } else {
-                // user clicked on a data point - if we are on the total hierarchy setting,
-                // send 'creditrating' as the rest parameter
-                if (args_.hierarchy == 'total') {
-                    args_.hierarchy = 'creditrating';
-                }
-                key__ = '/api/' + args_.chartType + '-tree/' + args_.date + '/' + args_.hierarchy + '/' + args_.drillDownKey + '/' + args_.metric + '/';
+                if (args_.chartType =='totalexposure')
+                    args_.date = '';
+                // user clicked on a data point, check if we can drill down
+                if (chartManager.canDrillDown(args_))
+                    key__ = '/api/' + args_.chartType + '-tree/' + args_.date + '/' + args_.hierarchy + '/' + args_.drillDownKey + '/' + args_.metric + '/';
+                // otherwise just show the total level for that hierarchy instead of a filter
+                else
+                    key__ = '/api/' + args_.chartType + '/' + args_.date + '/' + args_.hierarchy + '/' + args_.metric + '/';
             }
         } else {
             // shouldn't normally arrive here, so just send back a top level
@@ -214,6 +216,11 @@ var chartManager = {
         }
         return key__;
 
+    },
+    canDrillDown : function(args){
+        if (args.chartType == 'bargraph') return true;
+        if (args.hierarchy == 'creditrating' || args.hierarchy == 'counterparty') return true;
+        return false;
     }
     , getBusinessDate : function(){
         return sessionStorage.getItem('businessDate') || businessDate.value;
@@ -262,6 +269,7 @@ var chartManager = {
     , refreshGraphs : function(__level__){
         var bgInstance = BARCharts.getInstance();
         var xvInstance = DONUTCharts.getInstance();
+        var lineInstance = LINECharts.getInstance();
 
         barGraphs.forEach(function(elem){
             var metric_ = chartManager.getBarGraphMetric(elem.name);
@@ -277,6 +285,8 @@ var chartManager = {
         });
 
         if (__level__ != 'trade') {
+            if (chartManager.getHierarchy() != 'trade'){
+
             xvaGraphs.forEach(function(elem){
                 var p_ = chartManager.getGraphData(__level__, elem.metric,'xva');
                 chartManager.initChart(elem.name, xvInstance.getDefaults, p_, xvInstance.setNewData);
@@ -286,10 +296,16 @@ var chartManager = {
                 });
 
             });
+            }
         }
 
+        if (__level__ != 'Total') {
+            var p_ = chartManager.getGraphData(__level__, '', 'totalexposure');
+            chartManager.initChart('line_total_exposure', lineInstance.getDefaultTotalOptions, p_, lineInstance.setNewData);
+        } else {
+           chartManager.initChart('line_total_exposure', LINECharts.getInstance().getDefaultTotalOptions, chartManager.getTotalExposureData(__level__), LINECharts.getInstance().setNewData);
+        }
         chartManager.initChart('line_exposure_profile', LINECharts.getInstance().getDefaultExposureOpts, chartManager.getExposureProfileData(__level__), LINECharts.getInstance().setNewData);
-        chartManager.initChart('line_total_exposure', LINECharts.getInstance().getDefaultTotalOptions, chartManager.getTotalExposureData(__level__), LINECharts.getInstance().setNewData);
     }
     , refreshGraphsOnDataChange : function(__level__){
         chartManager.refreshGraphs('Total');
@@ -307,6 +323,7 @@ var chartManager = {
         return g;
     }
     , drillDown : function (drilldownKey_){
+        // don't drill down the total exposure graph unless a data point has been clicked
         // the key value from the graph that was clicked - the data point
         Promise.resolve(chartManager.refreshGraphsOnDrilldown(drilldownKey_)).then(function(res){
             if (drilldownKey_ != 'Total')
@@ -315,13 +332,18 @@ var chartManager = {
         });
     }
     , downALevel : function(){
-        if (hierarchies.selectedIndex < hierarchies.options.length-1)
+        if (hierarchies.selectedIndex < hierarchies.options.length-1) {
             hierarchies.selectedIndex++;
+            hierarchy.value = hierarchies.options[hierarchies.selectedIndex].value ; // sessionStorage.getItem('hierarchy') || 'Total';
+            sessionStorage.setItem('hierarchy', hierarchy.value);
+        }
         // TODO update breadcrumb
     }
     , upALevel : function(){
         if (hierarchies.selectedIndex >0)
             hierarchies.selectedIndex--;
+        hierarchy.value = hierarchies.options[hierarchies.selectedIndex].value ; // sessionStorage.getItem('hierarchy') || 'Total';
+        sessionStorage.setItem('hierarchy', hierarchy.value);
         // TODO update breadcrumb
     }
     , setBGMetricDefaults : function(){
