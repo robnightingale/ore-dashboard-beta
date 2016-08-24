@@ -95,13 +95,20 @@
                     <div class="x_title clearfix">
                         <h2>ORE Risk Dashboard</h2>
                         <div class="col-md-4 col-sm-4 col-xs-12 pull-left">
-                                <ol class="breadcrumb">
-                                    <li><a href="#">Home</a></li>
-                                    <li><a href="#">Credit</a></li>
-                                    <li><a href="#">Counter</a></li>
-                                    <li><a href="#">Netting</a></li>
-                                </ol>
 
+                            <div class="btn-group btn-sm" data-toggle="buttons">
+                                <label name="options" class="btn btn-sm active">
+                                    <input type="radio" name="options" id="option0" value="0" autocomplete="off" checked> Credit
+                                    Rating </label>
+                                <label name="options" class="btn btn-sm">
+                                    <input type="radio" name="options" id="option1" value="1" autocomplete="off"> Counterparty
+                                </label>
+                                <label name="options" class="btn btn-sm">
+                                    <input type="radio" name="options" id="option2" value="2" autocomplete="off"> Netting Set
+                                </label>
+                                <label name="options" class="btn btn-sm">
+                                    <input type="radio" name="options" id="option3" value="3" autocomplete="off"> Trade </label>
+                            </div>
                         </div>
 
                         <div class="form-group filter pull-right">
@@ -110,9 +117,7 @@
                                 <select class="selectpicker" data-live-search="true" data-size="7" id="businessDates" name="businessDate">
                                     <option>Choose Business Date</option>
                                 </select>
-                                <select class="selectpicker" id="hierarchies" name="hierarchy">
-                                    <!--<select style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc">-->
-                                    <!--<option value="total">Total</option>-->
+                                <select class="selectpicker hidden" id="hierarchies" name="hierarchy">
                                     <option value="creditrating">Credit Rating</option>
                                     <option value="counterparty">Counterparty</option>
                                     <option value="nettingset">Netting Set</option>
@@ -384,6 +389,10 @@
                         // and add a change event handler
                         _AttachEvent(e, 'change', chartManager.setBGMetric);
                     });
+
+                    [].forEach.call($('label[name^="option"]'), function(e){
+                        _AttachEvent(e, 'click', chartManager.drilldownMenuClick);
+                    })
 
                     chartManager.resetPageDefaults();
                 });

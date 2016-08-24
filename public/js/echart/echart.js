@@ -66,14 +66,15 @@ var BARCharts = (function () {
 
         function initialiseAllCharts() {
             // set the initial entry point to 'Total' level
-            var __level__ = 'Total';
-
-            // barGraphs.forEach(function(elem){
-            //     chartManager.initChart(elem.id, options, chartManager.getGraphData(__level__, elem.metric,'bargraph'), setNewData);
-            // });
+            var args = {
+                date: chartManager.getBusinessDate(),
+                hierarchy: chartManager.getHierarchy(),
+                item: 'Total',
+                level: chartManager.getDrillDownLevel()[0].level
+            };
 
             barGraphs.forEach(function(elem){
-                var p_ = chartManager.getGraphData(__level__, elem.metric,'bargraph');
+                var p_ = chartManager.getGraphData(args, elem.metric,'bargraph');
                 chartManager.initChart(elem.id, options, p_, setNewData);
 
                 p_.then(function(res){
@@ -492,10 +493,15 @@ var DONUTCharts = (function () {
         }
 
         function initialiseAllCharts() {
-            var __level__ = 'Total';
+            var args = {
+                date: chartManager.getBusinessDate(),
+                hierarchy: chartManager.getHierarchy(),
+                item: 'Total',
+                level: chartManager.getDrillDownLevel()[0].level
+            };
 
             xvaGraphs.forEach(function(elem){
-                var p_ = chartManager.getGraphData(__level__, elem.metric,'xva');
+                var p_ = chartManager.getGraphData(args, elem.metric,'xva');
                 chartManager.initChart(elem.name, options, p_, setNewData);
                 // chartManager.initChart(elem.id, options, chartManager.getGraphData(__level__, elem.metric,'xva'), setNewData);
                 p_.then(function(res){
