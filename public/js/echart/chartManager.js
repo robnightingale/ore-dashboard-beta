@@ -177,7 +177,16 @@ var chartManager = {
         var drillDownLevel_ = sessionStorage.getItem('hierarchyOrTree') || 'Total';
         var graphId_ = filter(barGraphs, function(elem){return elem.name == target.name})[0].id;
         var metric_ = chartManager.getBarGraphMetric(target.name);
-        var p_ = chartManager.getGraphData(drillDownLevel_, metric_,'bargraph');
+
+        var args = {
+            date: chartManager.getBusinessDate(),
+            hierarchy: chartManager.getHierarchy(),
+            item: drillDownLevel_,
+            level: chartManager.getDrillDownLevel()[0].level
+        };
+        // chartManager.drillDown(args);
+
+        var p_ = chartManager.getGraphData(args, metric_,'bargraph');
         chartManager.initChart(graphId_, bgInstance.getDefaults, p_, bgInstance.setNewData);
 
         p_.then(function(res){
