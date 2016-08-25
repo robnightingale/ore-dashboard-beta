@@ -7,7 +7,6 @@
     <list default="true" id="caa21dc2-8a18-41a2-9fb6-7ca5b9d0c280" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gulpfile.js" afterPath="$PROJECT_DIR$/gulpfile.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/index.html" afterPath="$PROJECT_DIR$/public/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/echart/chartManager.js" afterPath="$PROJECT_DIR$/public/js/echart/chartManager.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/echart/echart.js" afterPath="$PROJECT_DIR$/public/js/echart/echart.js" />
     </list>
@@ -36,9 +35,33 @@
       <file leaf-file-name="chartManager.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/public/js/echart/chartManager.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="184" column="60" selection-start-line="184" selection-start-column="60" selection-end-line="184" selection-end-column="60" />
+            <state relative-caret-position="4">
+              <caret line="72" column="43" selection-start-line="72" selection-start-column="43" selection-end-line="72" selection-end-column="43" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="echart.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/js/echart/echart.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="3270">
+              <caret line="224" column="0" selection-start-line="224" selection-start-column="0" selection-end-line="224" selection-end-column="0" />
+              <folding>
+                <marker date="1472057869000" expanded="true" signature="23725:23833" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Series.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/vendors/echarts-3.2.2/src/model/Series.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="481">
+              <caret line="230" column="0" selection-start-line="230" selection-start-column="0" selection-end-line="230" selection-end-column="0" />
+              <folding>
+                <marker date="1471329858000" expanded="true" signature="6947:7063" ph="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -46,8 +69,8 @@
       <file leaf-file-name="gulpfile.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/gulpfile.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="900">
-              <caret line="60" column="62" selection-start-line="60" selection-start-column="62" selection-end-line="60" selection-end-column="62" />
+            <state relative-caret-position="118">
+              <caret line="60" column="65" selection-start-line="60" selection-start-column="65" selection-end-line="60" selection-end-column="65" />
               <folding />
             </state>
           </provider>
@@ -56,9 +79,22 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5730">
-              <caret line="382" column="68" selection-start-line="382" selection-start-column="68" selection-end-line="382" selection-end-column="68" />
-              <folding />
+            <state relative-caret-position="108">
+              <caret line="151" column="29" selection-start-line="151" selection-start-column="29" selection-end-line="151" selection-end-column="29" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#1;n#div#1;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#1;n#div#2;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#1;n#div#3;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#1;n#div#4;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#1;n#div#1;n#div#2;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#1;n#div#2;n#div#2;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#1;n#div#3;n#div#2;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#1;n#div#4;n#div#2;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#1;n#div#5;n#div#2;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#1;n#div#6;n#div#2;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#2;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -94,10 +130,10 @@
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/src/js/custom.js" />
         <option value="$PROJECT_DIR$/src/js/helpers/numeral.js" />
-        <option value="$PROJECT_DIR$/public/index.html" />
-        <option value="$PROJECT_DIR$/public/js/echart/echart.js" />
         <option value="$PROJECT_DIR$/gulpfile.js" />
         <option value="$PROJECT_DIR$/public/js/echart/chartManager.js" />
+        <option value="$PROJECT_DIR$/public/index.html" />
+        <option value="$PROJECT_DIR$/public/js/echart/echart.js" />
       </list>
     </option>
   </component>
@@ -185,13 +221,13 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../atomic-staircase" />
     <property name="settings.editor.selected.configurable" value="editor.preferences.import" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
     <property name="nodejs_interpreter_path" value="/usr/local/bin/node" />
-    <property name="SearchEverywhereHistoryKey" value="echart.&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/public/js/echart/echart.js&#10;echa&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/public/js/echart/echart.js&#10;chartMan&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/public/js/echart/chartManager.js&#10;echart.j&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/public/js/echart/echart.js&#10;index.html&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/public/index.html&#10;index.ht&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/public/index.html&#10;echart&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/vendors/echarts-3.2.2/src/echarts.js&#10;index.&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/public/index.html&#10;populate&#9;null&#9;null&#10;custom.j&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/src/js/custom.js&#10;index.h&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/public/index.html&#10;index&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/public/index.html&#10;echarts.j&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/vendors/echarts/dist/echarts.js&#10;custom&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/public/js/custom.js&#10;html2canvas&#9;null&#9;null&#10;pack&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/package.json&#10;pdf&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/vendors/pdfmake/build/pdfmake.js&#10;gulpf&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/gulpfile.js&#10;server.&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/node_modules/browser-sync-ui/lib/server.js&#10;echart.js&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/vendors/echarts/dist/echarts.js&#10;index2&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/production/index2.html&#10;echarts.js&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/vendors/echarts/dist/echarts.js&#10;server.js&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/node_modules/browser-sync-ui/lib/server.js&#10;3000&#9;null&#9;null" />
+    <property name="SearchEverywhereHistoryKey" value="Series.j&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/vendors/echarts-3.2.2/src/model/Series.js&#10;echart.j&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/public/js/echart/echart.js&#10;echart.&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/public/js/echart/echart.js&#10;echa&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/public/js/echart/echart.js&#10;chartMan&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/public/js/echart/chartManager.js&#10;index.html&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/public/index.html&#10;index.ht&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/public/index.html&#10;echart&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/vendors/echarts-3.2.2/src/echarts.js&#10;index.&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/public/index.html&#10;populate&#9;null&#9;null&#10;custom.j&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/src/js/custom.js&#10;index.h&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/public/index.html&#10;index&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/public/index.html&#10;echarts.j&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/vendors/echarts/dist/echarts.js&#10;custom&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/public/js/custom.js&#10;html2canvas&#9;null&#9;null&#10;pack&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/package.json&#10;pdf&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/vendors/pdfmake/build/pdfmake.js&#10;gulpf&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/gulpfile.js&#10;server.&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/node_modules/browser-sync-ui/lib/server.js&#10;echart.js&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/vendors/echarts/dist/echarts.js&#10;index2&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/production/index2.html&#10;echarts.js&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/vendors/echarts/dist/echarts.js&#10;server.js&#9;FILE&#9;file:///Users/robnightingale/Documents/workspace/repos/reposit/ore-dashboard-beta/node_modules/browser-sync-ui/lib/server.js&#10;3000&#9;null&#9;null" />
     <property name="js.buildTools.gulp.gulp_package_dir" value="$PROJECT_DIR$/node_modules/gulp" />
     <property name="js-jscs-nodeInterpreter" value="/usr/local/bin/node" />
     <property name="aspect.path.notification.shown" value="true" />
@@ -333,7 +369,8 @@
       <workItem from="1471770748934" duration="321000" />
       <workItem from="1471813171264" duration="4816000" />
       <workItem from="1471907330631" duration="18168000" />
-      <workItem from="1472004397715" duration="5000" />
+      <workItem from="1472004397715" duration="500000" />
+      <workItem from="1472036949858" duration="5086000" />
     </task>
     <task id="LOCAL-00001" summary="package.json updated for local web running">
       <created>1469372595018</created>
@@ -444,21 +481,25 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="273310000" />
+    <option name="totallyTimeSpent" value="278891000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="773" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.117553614" sideWeight="0.5212922" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.15286624" sideWeight="0.50934577" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32776934" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1513158" sideWeight="0.35204855" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34597877" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.117553614" sideWeight="0.4787078" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.34508076" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32305434" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32776934" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.117553614" sideWeight="0.529148" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.15286624" sideWeight="0.50934577" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32452276" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.117553614" sideWeight="0.47085202" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1513158" sideWeight="0.35204855" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39908952" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -469,14 +510,10 @@
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39908952" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.323217" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32473445" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -545,20 +582,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/documentation/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="30" column="31" selection-start-line="30" selection-start-column="31" selection-end-line="30" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/express/node_modules/connect/lib/connect.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-645">
-          <caret line="12" column="8" selection-start-line="12" selection-start-column="8" selection-end-line="12" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/express/Readme.md" />
     <entry file="file://$PROJECT_DIR$/node_modules/express-session/README.md" />
     <entry file="file://$PROJECT_DIR$/node_modules/express/bin/express">
@@ -694,6 +717,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!doc" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -701,6 +727,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
           <caret line="0" column="614" selection-start-line="0" selection-start-column="614" selection-end-line="0" selection-end-column="614" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -736,6 +763,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -844,33 +872,67 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/js/echart/echart.js">
+    <entry file="file://$PROJECT_DIR$/gulpfile.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-5918">
-          <caret line="75" column="0" selection-start-line="75" selection-start-column="0" selection-end-line="75" selection-end-column="0" />
+        <state relative-caret-position="118">
+          <caret line="60" column="65" selection-start-line="60" selection-start-column="65" selection-end-line="60" selection-end-column="65" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendors/echarts-3.2.2/src/model/Series.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="481">
+          <caret line="230" column="0" selection-start-line="230" selection-start-column="0" selection-end-line="230" selection-end-column="0" />
+          <folding>
+            <marker date="1471329858000" expanded="true" signature="6947:7063" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendors/echarts-3.2.2/dist/echarts.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="1309" column="8" selection-start-line="1309" selection-start-column="8" selection-end-line="1309" selection-end-column="8" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5730">
-          <caret line="382" column="68" selection-start-line="382" selection-start-column="68" selection-end-line="382" selection-end-column="68" />
-          <folding />
+        <state relative-caret-position="108">
+          <caret line="151" column="29" selection-start-line="151" selection-start-column="29" selection-end-line="151" selection-end-column="29" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#1;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#2;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#3;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#4;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#1;n#div#2;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#2;n#div#2;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#3;n#div#2;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#4;n#div#2;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#5;n#div#2;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#6;n#div#2;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#2;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/gulpfile.js">
+    <entry file="file://$PROJECT_DIR$/public/js/echart/echart.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="900">
-          <caret line="60" column="62" selection-start-line="60" selection-start-column="62" selection-end-line="60" selection-end-column="62" />
-          <folding />
+        <state relative-caret-position="3270">
+          <caret line="224" column="0" selection-start-line="224" selection-start-column="0" selection-end-line="224" selection-end-column="0" />
+          <folding>
+            <marker date="1472057869000" expanded="true" signature="23725:23833" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/js/echart/chartManager.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="184" column="60" selection-start-line="184" selection-start-column="60" selection-end-line="184" selection-end-column="60" />
+        <state relative-caret-position="4">
+          <caret line="72" column="43" selection-start-line="72" selection-start-column="43" selection-end-line="72" selection-end-column="43" />
           <folding />
         </state>
       </provider>

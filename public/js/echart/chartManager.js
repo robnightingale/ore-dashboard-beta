@@ -79,6 +79,12 @@ var chartManager = {
         var theChart_ = echarts.getInstanceByDom(document.getElementById(chartTagName_));
         return theChart_;
     },
+    cloneChart: function(sourceChart, targetChart){
+        var oldChart_ = chartManager.getChartInstanceFromDivId(sourceChart);
+        var defaults_ = DONUTCharts.getInstance().getDefaults();
+        var theChart_ = echarts.init(document.getElementById(targetChart), theme, oldChart_.getOption());
+        // theChart_.setOption(oldChart_.getOption());
+    },
     getDataFromRestCall: function (url_) {
         console.debug(url_);
 
@@ -197,7 +203,7 @@ var chartManager = {
 
     },
     canDrillDown : function(args){
-        if (args.chartType == 'bargraph' || args.chartType == 'totalexposure') return true;
+        if ((args.chartType == 'bargraph' || args.chartType == 'totalexposure') && args.level <3) return true;
         if (args.level <2) return true;
         return false;
     },
