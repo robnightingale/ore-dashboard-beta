@@ -46,7 +46,7 @@ var BARCharts = (function () {
                 type: 'value',
                 boundaryGap: false,
                 axisLabel:{interval: 'auto', formatter: function(value){
-                    return numeral(value).format('(0.0a)');
+                    return numeral(value).format('(0a)');
                 }},
 
             }],
@@ -221,7 +221,7 @@ var LINECharts = (function () {
             },
             tooltip: {
                 trigger: 'axis',
-                formatter: null
+                // formatter: formatTooltip(0, false)
             },
             legend: {
                 x: 220,
@@ -412,7 +412,6 @@ var DONUTCharts = (function () {
 
     'use strict';
     var instance;
-
 
     function init() {
 
@@ -698,3 +697,55 @@ var RISKGauge = (function () {
     };
 
 })();
+
+
+/**
+ * Default tooltip formatter
+ *
+ * @param {number} dataIndex
+ * @param {boolean} [multipleSeries=false]
+ * @param {number} [dataType]
+ */
+function formatTooltip (dataIndex, multipleSeries, dataType) {
+    function formatArrayValue(value) {
+        return zrUtil.map(value, function (val, idx) {
+            var dimInfo = data.getDimensionInfo(idx);
+            var dimType = dimInfo && dimInfo.type;
+            if (dimType === 'ordinal') {
+                return val;
+            }
+            else if (dimType === 'time') {
+                return multipleSeries ? '' : formatUtil.formatTime('yyyy/mm/dd hh:mm:ss', val);
+            }
+            else {
+                return addCommas(val);
+            }
+        }).filter(function (val) {
+            return !!val;
+        }).join(', ');
+    }
+
+    var data = this._data;
+
+    var value = this.getRawValue(dataIndex);
+    var formattedValue = zrUtil.isArray(value)
+        ? formatArrayValue(value) : addCommas(value);
+    var name = data.getName(dataIndex);
+    var color = data.getItemVisual(dataIndex, 'color');
+    var colorEl = '<span style="display:inline-block;margin-right:5px;'
+        + 'border-radius:10px;width:9px;height:9px;background-color:' + color + '"></span>';
+
+    var seriesName = this.name;
+    // FIXME
+    if (seriesName === '\0-') {
+        // Not show '-'
+        seriesName = '';
+    }
+    return !multipleSeries
+        ? ((seriesName && encodeHTML(seriesName) + '<br />') + colorEl
+        + (name
+            ? encodeHTML(name) + ' : ' + formattedValue
+            : formattedValue)
+    )
+        : (colorEl + encodeHTML(this.name) + ' : ' + formattedValue);
+};
