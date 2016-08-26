@@ -25,7 +25,7 @@ var BARCharts = (function () {
         var options = {
             tooltip: {
                 trigger: 'axis',
-                formatter: null
+                formatter: barChartTooltipFormatter
             },
             legend: {
                 // x: 10000,
@@ -130,22 +130,7 @@ var LINECharts = (function () {
             },
             tooltip: {
                 trigger: 'axis',
-
-                // formatter: function (params,ticket,callback) {
-                //     // console.debug(params);
-                //     // var res = 'Function formatter : <br/>' + params[0].name;
-                //     var tot_ = parseFloat(params[2].value) + parseFloat(params[1].value);
-                //     var res = 'Total : ' + tot_;
-                //     for (var i = 0, l = params.length; i < l; i++) {
-                //         res += '<br/>' + params[i].seriesName + ' : ' + params[i].value;
-                //     }
-                //     return res;
-                //     // setTimeout(function (){
-                //     //     callback(ticket, res);
-                //     // }, 1000)
-                //     // return 'loading';
-                // }
-                //formatter: "Template formatter: <br/>{b}<br/>{a}:{c}<br/>{a1}:{c1}"
+                formatter: lineChartTooltipFormatter
             },
             legend: {
                 x: 140,
@@ -419,7 +404,8 @@ var DONUTCharts = (function () {
         var options = {
             tooltip: {
                 trigger: 'item',
-                formatter: "{a} <br/>{b} : {c} ({d}%)"
+                // formatter: "{a} <br/>{b} : {c} ({d}%)"
+                formatter: donutChartTooltipFormatter
             },
             calculable: true,
             legend: {
@@ -697,55 +683,3 @@ var RISKGauge = (function () {
     };
 
 })();
-
-
-/**
- * Default tooltip formatter
- *
- * @param {number} dataIndex
- * @param {boolean} [multipleSeries=false]
- * @param {number} [dataType]
- */
-function formatTooltip (dataIndex, multipleSeries, dataType) {
-    function formatArrayValue(value) {
-        return zrUtil.map(value, function (val, idx) {
-            var dimInfo = data.getDimensionInfo(idx);
-            var dimType = dimInfo && dimInfo.type;
-            if (dimType === 'ordinal') {
-                return val;
-            }
-            else if (dimType === 'time') {
-                return multipleSeries ? '' : formatUtil.formatTime('yyyy/mm/dd hh:mm:ss', val);
-            }
-            else {
-                return addCommas(val);
-            }
-        }).filter(function (val) {
-            return !!val;
-        }).join(', ');
-    }
-
-    var data = this._data;
-
-    var value = this.getRawValue(dataIndex);
-    var formattedValue = zrUtil.isArray(value)
-        ? formatArrayValue(value) : addCommas(value);
-    var name = data.getName(dataIndex);
-    var color = data.getItemVisual(dataIndex, 'color');
-    var colorEl = '<span style="display:inline-block;margin-right:5px;'
-        + 'border-radius:10px;width:9px;height:9px;background-color:' + color + '"></span>';
-
-    var seriesName = this.name;
-    // FIXME
-    if (seriesName === '\0-') {
-        // Not show '-'
-        seriesName = '';
-    }
-    return !multipleSeries
-        ? ((seriesName && encodeHTML(seriesName) + '<br />') + colorEl
-        + (name
-            ? encodeHTML(name) + ' : ' + formattedValue
-            : formattedValue)
-    )
-        : (colorEl + encodeHTML(this.name) + ' : ' + formattedValue);
-};

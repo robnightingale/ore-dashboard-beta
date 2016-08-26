@@ -12,6 +12,14 @@ var drilldownLevels = [
     , {name: 'trade', level:3, text: 'Trade'}
 ]
 
+var drillDownStack = [];
+var drillDownItem = {
+    date: '',
+    hierarchy: '',
+    item: ''
+};
+
+
 var chartCategory =
     [
         {metric: 'npv', category: 'CREDIT'},
@@ -67,17 +75,16 @@ var chartManager = {
         RISKGauge.getInstance().initAllCharts();
     },
     initChart: function (chartTagName_, options, data_, fnLoadData_) {
-        var theChart_ = echarts.init(document.getElementById(chartTagName_), theme);
-        theChart_.setOption(options);
-        theChart_.on('click', chartManager.drilldownChartClick);
         // once data is resolved, render it
         Promise.resolve(data_).then(function(res){
+            var theChart_ = echarts.init(document.getElementById(chartTagName_), theme);
+            theChart_.setOption(options);
+            theChart_.on('click', chartManager.drilldownChartClick);
             fnLoadData_(theChart_, res);
         });
     },
     getChartInstanceFromDivId: function (chartTagName_) {
-        var theChart_ = echarts.getInstanceByDom(document.getElementById(chartTagName_));
-        return theChart_;
+        return echarts.getInstanceByDom(document.getElementById(chartTagName_));
     },
     getDataFromRestCall: function (url_) {
         console.debug(url_);
