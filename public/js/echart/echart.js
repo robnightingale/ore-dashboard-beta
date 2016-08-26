@@ -362,9 +362,17 @@ var LINECharts = (function () {
         }
 
         function initialiseAllCharts() {
-            var __level__ = 'Total';
-            chartManager.initChart('line_total_exposure', total_exposure_options, chartManager.getTotalExposureData(__level__), setNewData);
-            chartManager.initChart('line_exposure_profile', exposure_profile_options, chartManager.getExposureProfileData(__level__), setNewData);
+            var args = {
+                date: chartManager.getBusinessDate(),
+                hierarchy: 'total',
+                item: 'Total',
+                level: chartManager.getDrillDownLevel()[0].level
+            };
+            var totexp_ = chartManager.getGraphData(args, '', 'totalexposure');
+            var exp_ = chartManager.getGraphData(args, '', 'exposure');
+
+            chartManager.initChart('line_total_exposure', total_exposure_options, totexp_, setNewData);
+            chartManager.initChart('line_exposure_profile', exposure_profile_options, exp_, setNewData);
         }
 
         function loadData(chart_, data_) {

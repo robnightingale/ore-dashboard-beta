@@ -12,12 +12,12 @@ var drilldownLevels = [
     , {name: 'trade', level:3, text: 'Trade'}
 ]
 
-var drillDownStack = [];
 var drillDownItem = {
     date: '',
     hierarchy: '',
     item: ''
 };
+var drillDownStack = [];
 
 
 var chartCategory =
@@ -73,6 +73,7 @@ var chartManager = {
         BARCharts.getInstance().initAllCharts();
         DONUTCharts.getInstance().initAllCharts();
         RISKGauge.getInstance().initAllCharts();
+        drillDownStack = [];
     },
     initChart: function (chartTagName_, options, data_, fnLoadData_) {
         // once data is resolved, render it
@@ -143,6 +144,10 @@ var chartManager = {
                         fragment.appendChild(opt);
                     });
                     sel.appendChild(fragment);
+
+                    var bus_ = businessDates.options[0].value ;
+                    sessionStorage.setItem('businessDate', bus_);
+
                 }).catch(function (e) {
                     return new Error(e);
                 })
@@ -158,7 +163,7 @@ var chartManager = {
             sel.options.length = 0;
             var fragment = document.createDocumentFragment();
 
-            ["CE",'EEPE','TOTALEXPOSURE','CVA','DVA','NPV','FCA','FBA','FVA','ColVA','IM', 'VAR'].forEach(function (dcc, index) {
+            ["CE",'EEPE','TOTALEXPOSURE','CVA','DVA','NPV','FCA','FBA','FVA','ColVA','IM'].forEach(function (dcc, index) {
                         var opt = document.createElement('option');
                         // nice format for the user to see
                         opt.innerHTML = dcc;
@@ -222,32 +227,41 @@ var chartManager = {
     },
     getGenericGraphData : function(args_){
         var key__;
+        // clone args
+        var localArgs_ = JSON.parse(JSON.stringify(args_));
 
-        console.debug(args_);
-        if (!isNullOrUndefined(args_.item)) {
-            if (args_.item == 'Total') {
+        console.debug(localArgs_);
+        if (!isNullOrUndefined(localArgs_.item)) {
+             //total exposure chart doesnt regard dates
+            if (localArgs_.chartType =='totalexposure' || localArgs_.chartType=='exposure') {
+                if (localArgs_.chartType == 'totalexposure')
+                    localArgs_.date = '';
+                if (localArgs_.item == 'Total') {
+                    // we arrived here from a menu click
+                    key__ = '/api/' + localArgs_.chartType + '-tree/' + localArgs_.date + '/' + localArgs_.hierarchy + '/' + localArgs_.item + '/';
+                } else {
+
+                    var key__ = '/api/' + localArgs_.chartType + '-tree/' + localArgs_.date + '/' + localArgs_.hierarchy + '/' + localArgs_.item + '/';
+                }
+                return key__;
+            }
+
+            if (localArgs_.item == 'Total') {
                 // we arrived here from a menu click
-                // if (args_.hierarchy == 'total')
-                //     key__ = '/api/' + args_.chartType + '-tree/' + args_.date + '/' + args_.hierarchy + '/Total/' + args_.metric + '/';
-                // else
-                // this is from a menu dropdown at hierarchy level
-                    key__ = '/api/' + args_.chartType + '/' + args_.date + '/' + args_.hierarchy + '/' + args_.metric + '/';
+                    key__ = '/api/' + localArgs_.chartType + '/' + localArgs_.date + '/' + localArgs_.hierarchy + '/' + localArgs_.metric + '/';
             } else {
                 // user clicked on a data point
-                if (args_.chartType =='totalexposure')
-                    args_.date = '';
-
-                if (chartManager.canDrillDown(args_))
-                    key__ = '/api/' + args_.chartType + '-tree/' + args_.date + '/' + args_.hierarchy + '/' + args_.item + '/' + args_.metric + '/';
+                if (chartManager.canDrillDown(localArgs_))
+                    key__ = '/api/' + localArgs_.chartType + '-tree/' + localArgs_.date + '/' + localArgs_.hierarchy + '/' + localArgs_.item + '/' + localArgs_.metric + '/';
                 // otherwise just show the total level for that hierarchy instead of a filter
                 else
-                    key__ = '/api/' + args_.chartType + '/' + args_.date + '/' + args_.hierarchy + '/' + args_.metric + '/';
-                // key__ = '/api/' + args_.chartType + '-tree/' + args_.date + '/' + args_.hierarchy + '/' + args_.item + '/' + args_.metric + '/';
+                    key__ = '/api/' + localArgs_.chartType + '/' + localArgs_.date + '/' + localArgs_.hierarchy + '/' + localArgs_.metric + '/';
+                // key__ = '/api/' + localArgs_.chartType + '-tree/' + localArgs_.date + '/' + localArgs_.hierarchy + '/' + localArgs_.item + '/' + localArgs_.metric + '/';
             }
         } else {
             // shouldn't normally arrive here, so just send back a top level
             // /api/bargraph/:date/:hierarchy/:metric/
-            key__ = '/api/' + args_.chartType + '-tree/' + args_.date + '/' + args_.hierarchy + '/Total/' + args_.metric + '/';
+            key__ = '/api/' + localArgs_.chartType + '-tree/' + localArgs_.date + '/' + localArgs_.hierarchy + '/Total/' + localArgs_.metric + '/';
         }
         return key__;
 
@@ -262,18 +276,14 @@ var chartManager = {
         var default_ = filter(barGraphs, function(elem){return elem.name == id_});
         return (sessionStorage.getItem(id_) || default_[0].metric).toLowerCase();
     }
-    , getTotalExposureData: function (key_) {
-        var key__ = '/api/totalexposure-tree/total/Total/';
-        // var key__ = '/api/totalexposure-tree/' + getHierarchy() + '/Total/';
-        // returns a promise (future)
-        return chartManager.getDataFromRestCall(key__);
-    }
-    , getExposureProfileData : function(key_){
-        // var key__ = '/api/exposure-tree/' + getBusinessDate() +'/' + getHierarchy() + '/Total/';
-        var key__ = '/api/exposure-tree/' + chartManager.getBusinessDate() +'/total/Total/';
-        // returns a promise (future)
-        return chartManager.getDataFromRestCall(key__);
-    }
+    // , getTotalExposureData: function (key_) {
+    //     var key__ = '/api/totalexposure-tree/total/Total/';
+    //     return chartManager.getDataFromRestCall(key__);
+    // }
+    // , getExposureProfileData : function(key_){
+    //     var key__ = '/api/exposure-tree/' + chartManager.getBusinessDate() +'/total/Total/';
+    //     return chartManager.getDataFromRestCall(key__);
+    // }
     , getGraphData : function(args, metric_, chartType_) {
         var localArgs = args;
         localArgs.metric = metric_;
@@ -321,16 +331,10 @@ var chartManager = {
             });
         }
 
-        if (args.item != 'Total') {
-            var p_ = chartManager.getGraphData(args, '', 'totalexposure');
-            chartManager.initChart('line_total_exposure', lineInstance.getDefaultTotalOptions, p_, lineInstance.setNewData);
-        } else {
-            chartManager.initChart('line_total_exposure', LINECharts.getInstance().getDefaultTotalOptions, chartManager.getTotalExposureData(args), LINECharts.getInstance().setNewData);
-        }
-        chartManager.initChart('line_exposure_profile', LINECharts.getInstance().getDefaultExposureOpts, chartManager.getExposureProfileData(args), LINECharts.getInstance().setNewData);
-
-        // chartManager.initChart('line_exposure_profile', LINECharts.getInstance().getDefaultExposureOpts, chartManager.getExposureProfileData(__level__), LINECharts.getInstance().setNewData);
-        // chartManager.initChart('line_total_exposure', LINECharts.getInstance().getDefaultTotalOptions, chartManager.getTotalExposureData(__level__), LINECharts.getInstance().setNewData);
+        var totexp_ = chartManager.getGraphData(args, '', 'totalexposure');
+        var exp_ = chartManager.getGraphData(args, '', 'exposure');
+        chartManager.initChart('line_total_exposure',lineInstance.getDefaultTotalOptions, totexp_, lineInstance.setNewData);
+        chartManager.initChart('line_exposure_profile',lineInstance.getDefaultExposureOpts, exp_, lineInstance.setNewData);
     }
     , getSumOfArrayValues : function(array_){
         var g = array_.map(function (elem) {
@@ -415,6 +419,8 @@ var chartManager = {
         sessionStorage.setItem('hierarchy', chartManager.getDrillDownLevel()[0].name);
     }
     , drillDown : function (args){
+        drillDownStack.push(args);
+        
         // the key value from the graph that was clicked - the data point
         Promise.resolve(chartManager.refreshGraphs(args)).then(function(res){
             if (args.item != 'Total'){

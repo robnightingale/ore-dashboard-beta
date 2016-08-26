@@ -873,6 +873,13 @@ function cloneCanvas(oldCanvas) {
     return newCanvas;
 }
 
+// window.onresize = function() {
+//     $(".ga-charts").each(function(){
+//         var id = $(this).attr('_echarts_instance_');
+//         window.echarts.getInstanceById(id).resize();
+//     });
+// };
+
 function lineChartTooltipFormatter(params, ticket, callback) {
     // console.debug(params);
     var res = moment(params[0].name,'YYYYMMDD').format('DD-MM-YYYY') + '<br/>';
