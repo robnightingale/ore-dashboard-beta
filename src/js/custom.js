@@ -392,3 +392,40 @@ function cloneCanvas(oldCanvas) {
     //return the new canvas
     return newCanvas;
 }
+
+function lineChartTooltipFormatter(params, ticket, callback) {
+    // console.debug(params);
+    var res = moment(params[0].name,'YYYYMMDD').format('DD-MM-YYYY') + '<br/>';
+    for (var i = 0, l = params.length; i < l; i++) {
+
+        var colorEl = '<span style="display:inline-block;margin-right:5px;'
+            + 'border-radius:10px;width:9px;height:9px;background-color:' + params[i].color + '"></span>';
+
+        res += colorEl + ' '+ params[i].seriesName + ' : ' + numeral(params[i].value).format('(0,0)') + '<br/>';
+    }
+    return res;
+}
+//formatter: "Template formatter: <br/>{b}<br/>{a}:{c}<br/>{a1}:{c1}"
+
+function donutChartTooltipFormatter(params, ticket, callback) {
+    console.debug(params);
+    var res = '';
+    var colorEl = '<span style="display:inline-block;margin-right:5px;'
+        + 'border-radius:10px;width:9px;height:9px;background-color:' + params.color + '"></span>';
+
+    res += colorEl + ' ' + params.name + ' : ' + numeral(params.value).format('(0,0)') + ' : ' + params.percent + '%<br/>';
+    return res;
+}
+
+function barChartTooltipFormatter(params, ticket, callback) {
+    // console.debug(params);
+    var res = ''; //'Total : ' + tot_;
+    for (var i = 0, l = params.length; i < l; i++) {
+
+        var colorEl = '<span style="display:inline-block;margin-right:5px;'
+            + 'border-radius:10px;width:9px;height:9px;background-color:' + params[i].color + '"></span>';
+
+        res += colorEl + ' '+ params[i].name + ' : ' + numeral(params[i].value).format('(0,0)') + '<br/>';
+    }
+    return res;
+}

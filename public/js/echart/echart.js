@@ -25,7 +25,7 @@ var BARCharts = (function () {
         var options = {
             tooltip: {
                 trigger: 'axis',
-                formatter: null
+                formatter: barChartTooltipFormatter
             },
             legend: {
                 // x: 10000,
@@ -46,7 +46,7 @@ var BARCharts = (function () {
                 type: 'value',
                 boundaryGap: false,
                 axisLabel:{interval: 'auto', formatter: function(value){
-                    return numeral(value).format('(0.0a)');
+                    return numeral(value).format('(0a)');
                 }},
 
             }],
@@ -130,22 +130,7 @@ var LINECharts = (function () {
             },
             tooltip: {
                 trigger: 'axis',
-
-                // formatter: function (params,ticket,callback) {
-                //     // console.debug(params);
-                //     // var res = 'Function formatter : <br/>' + params[0].name;
-                //     var tot_ = parseFloat(params[2].value) + parseFloat(params[1].value);
-                //     var res = 'Total : ' + tot_;
-                //     for (var i = 0, l = params.length; i < l; i++) {
-                //         res += '<br/>' + params[i].seriesName + ' : ' + params[i].value;
-                //     }
-                //     return res;
-                //     // setTimeout(function (){
-                //     //     callback(ticket, res);
-                //     // }, 1000)
-                //     // return 'loading';
-                // }
-                //formatter: "Template formatter: <br/>{b}<br/>{a}:{c}<br/>{a1}:{c1}"
+                formatter: lineChartTooltipFormatter
             },
             legend: {
                 x: 140,
@@ -221,7 +206,7 @@ var LINECharts = (function () {
             },
             tooltip: {
                 trigger: 'axis',
-                formatter: null
+                // formatter: formatTooltip(0, false)
             },
             legend: {
                 x: 220,
@@ -377,9 +362,17 @@ var LINECharts = (function () {
         }
 
         function initialiseAllCharts() {
-            var __level__ = 'Total';
-            chartManager.initChart('line_total_exposure', total_exposure_options, chartManager.getTotalExposureData(__level__), setNewData);
-            chartManager.initChart('line_exposure_profile', exposure_profile_options, chartManager.getExposureProfileData(__level__), setNewData);
+            var args = {
+                date: chartManager.getBusinessDate(),
+                hierarchy: 'total',
+                item: 'Total',
+                level: chartManager.getDrillDownLevel()[0].level
+            };
+            var totexp_ = chartManager.getGraphData(args, '', 'totalexposure');
+            var exp_ = chartManager.getGraphData(args, '', 'exposure');
+
+            chartManager.initChart('line_total_exposure', total_exposure_options, totexp_, setNewData);
+            chartManager.initChart('line_exposure_profile', exposure_profile_options, exp_, setNewData);
         }
 
         function loadData(chart_, data_) {
@@ -413,14 +406,14 @@ var DONUTCharts = (function () {
     'use strict';
     var instance;
 
-
     function init() {
 
         var donut_cva, donut_fva, donut_colva, echartGauge;
         var options = {
             tooltip: {
                 trigger: 'item',
-                formatter: "{a} <br/>{b} : {c} ({d}%)"
+                // formatter: "{a} <br/>{b} : {c} ({d}%)"
+                formatter: donutChartTooltipFormatter
             },
             calculable: true,
             legend: {
