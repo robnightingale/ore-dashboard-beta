@@ -1,8 +1,9 @@
-/**
- * Copyright (C) 2016 Quaternion Risk Management Ltd
- * All rights reserved.
- * @type {*}
+/*
+ *  Copyright (C) 2016 Quaternion Risk Management Ltd
+ *  All rights reserved
+ *
  */
+
 
 var CURRENT_URL = window.location.href.split('?')[0],
     $BODY = $('body'),

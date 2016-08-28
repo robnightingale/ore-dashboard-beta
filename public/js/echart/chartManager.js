@@ -1,6 +1,7 @@
-/**
- * Copyright (C) 2016 Quaternion Risk Management Ltd
- * All rights reserved.
+/*
+ *  Copyright (C) 2016 Quaternion Risk Management Ltd
+ *  All rights reserved
+ *
  */
 
 "use strict";
@@ -424,21 +425,26 @@ var chartManager = {
         default_[0].metric = target.value.toLowerCase();
     }
     , getDrillDownLevel : function() {
+        StackTrace.get().then(function(stack){console.debug(stack);}).catch(function(err){console.error(err)});
         return filter(drilldownLevels, function(elem) {
             return elem.level == +sessionStorage.getItem('level');
         });
     }
     , setDrillDownLevel : function(e) {
+        StackTrace.get().then(function(stack){console.debug(stack);}).catch(function(err){console.error(err)});
         sessionStorage.setItem('level', +e);
     }
     , setDrilldownMenu : function(level){
+        StackTrace.get().then(function(stack){console.debug(stack);}).catch(function(err){console.error(err)});
+
         var lvl = level || chartManager.getDrillDownLevel()[0].level;
         $('input:radio')[lvl].checked = true;
         $($('label[name^="option"]')[lvl]).button('toggle');
-        sessionStorage.setItem('level', lvl);
+        setDrillDownLevel(lvl);
         sessionStorage.setItem('hierarchy', chartManager.getDrillDownLevel()[0].name);
     }
     , drillDown : function (args){
+        StackTrace.get().then(function(stack){console.debug(stack);}).catch(function(err){console.error(err)});
         drillDownStack.push(args);
         
         // the key value from the graph that was clicked - the data point
@@ -458,9 +464,11 @@ var chartManager = {
 
         evt = evt || window.event;
         var target = evt.target || evt.srcElement;
-        sessionStorage.setItem('level', target.children[0].value);
+
+        chartManager.setDrillDownLevel(target.children[0].value);
         sessionStorage.setItem('hierarchy', chartManager.getDrillDownLevel()[0].name);
         sessionStorage.setItem('hierarchyOrTree','Total');
+
         var args = {
             date: chartManager.getBusinessDate(),
             hierarchy: chartManager.getHierarchy(),
@@ -475,6 +483,9 @@ var chartManager = {
         if (isNullOrUndefined(evt))
             return;
 
+        evt = evt || window.event;
+        var target = evt.target || evt.srcElement;
+
         sessionStorage.setItem('hierarchyOrTree',evt.name);
         var level = +chartManager.getDrillDownLevel()[0].level ;
 
@@ -482,7 +493,7 @@ var chartManager = {
             date: chartManager.getBusinessDate(),
             hierarchy: chartManager.getHierarchy(),
             item: evt.name,
-            level: level
+            level: chartManager.getDrillDownLevel()[0].level
         };
         chartManager.drillDown(args);
     }
