@@ -98,7 +98,7 @@ var chartManager = {
     initChart: function (chartTagName_, options, data_, fnLoadData_) {
         // once data is resolved, render it
         Promise.resolve(data_).then(function(res){
-            console.debug( chartTagName_, data_ );
+            // console.debug( chartTagName_, data_ );
 
             var theChart_ = echarts.init(document.getElementById(chartTagName_), theme);
             theChart_.setOption(options);
@@ -123,8 +123,7 @@ var chartManager = {
             }
         );
 
-        console.debug(url_);
-        // console.debug(req_);
+        console.log(url_);
         var theUrl_ = window.location.protocol + '//' + window.location.host + url_;
 
         return fetch(
@@ -138,13 +137,7 @@ var chartManager = {
             .catch(function (ex) {
                 StackTrace.fromError(ex)
                     .then(console.error);
-                // var e = new Error('dummy');
-                // var stack = e.stack.replace(/^[^\(]+?[\n$]/gm, '')
-                //     .replace(/^\s+at\s+/gm, '')
-                //     .replace(/^Object.<anonymous>\s*\(/gm, '{anonymous}()@')
-                //     .split('\n');
-
-                // console.error(new Error("Request failed : " + url_ + '\n' + e.stack));
+                StackTrace.get().then(StackTraceCallback).catch(StackTraceErrback);
                 return Promise.reject(ex);
             })
     },
@@ -253,7 +246,9 @@ var chartManager = {
         // clone args with a deep (non reference) copy
         var localArgs_ = JSON.parse(JSON.stringify(args_));
 
-        console.debug(localArgs_);
+        // console.debug(localArgs_);
+        StackTrace.get().then(StackTraceCallback).catch(StackTraceErrback);
+
         if (!isNullOrUndefined(localArgs_.item)) {
              //total exposure chart doesnt regard dates
             if (localArgs_.chartType =='totalexposure' || localArgs_.chartType=='exposure') {
@@ -361,22 +356,18 @@ var chartManager = {
         }).reduce(function (prev, curr) {
             return prev + curr;
         });
-        // console.debug(g);
         return g;
     }
     , setBGMetricDefaults : function(){
         var nodes = document.getElementsByClassName('selectpicker-bg');
-        [].forEach.call(nodes,function(e){
-            e.selectedIndex = 0;
-        });
-
         // set initial values
         barGraphs.forEach(function(elem){
             sessionStorage.setItem(elem.name, elem.metric.toUpperCase());
+            filter(nodes,function(e){return e.name == elem.name})[0].value = elem.metric.toUpperCase();
         });
     }
     , resetPageDefaults : function(){
-        StackTrace.get().then(function(stack){console.debug(stack);}).catch(function(err){console.error(err)});
+        StackTrace.get().then(StackTraceCallback).catch(StackTraceErrback);
 
         var nodes = document.getElementsByClassName('selectpicker');
         [].forEach.call(nodes,function(e){
@@ -425,26 +416,27 @@ var chartManager = {
         default_[0].metric = target.value.toLowerCase();
     }
     , getDrillDownLevel : function() {
-        StackTrace.get().then(function(stack){console.debug(stack);}).catch(function(err){console.error(err)});
+        StackTrace.get().then(StackTraceCallback).catch(StackTraceErrback);
+
         return filter(drilldownLevels, function(elem) {
             return elem.level == +sessionStorage.getItem('level');
         });
     }
     , setDrillDownLevel : function(e) {
-        StackTrace.get().then(function(stack){console.debug(stack);}).catch(function(err){console.error(err)});
+        StackTrace.get().then(StackTraceCallback).catch(StackTraceErrback);
         sessionStorage.setItem('level', +e);
     }
     , setDrilldownMenu : function(level){
-        StackTrace.get().then(function(stack){console.debug(stack);}).catch(function(err){console.error(err)});
+        StackTrace.get().then(StackTraceCallback).catch(StackTraceErrback);
 
         var lvl = level || chartManager.getDrillDownLevel()[0].level;
         $('input:radio')[lvl].checked = true;
         $($('label[name^="option"]')[lvl]).button('toggle');
-        setDrillDownLevel(lvl);
+        chartManager.setDrillDownLevel(lvl);
         sessionStorage.setItem('hierarchy', chartManager.getDrillDownLevel()[0].name);
     }
     , drillDown : function (args){
-        StackTrace.get().then(function(stack){console.debug(stack);}).catch(function(err){console.error(err)});
+        StackTrace.get().then(StackTraceCallback).catch(StackTraceErrback);
         drillDownStack.push(args);
         
         // the key value from the graph that was clicked - the data point
@@ -499,3 +491,13 @@ var chartManager = {
     }
 
 }
+
+
+var StackTraceCallback = function(stackframes) {
+    var stringifiedStack = stackframes.map(function(sf) {
+        return sf.toString();
+    }).join('\n');
+    console.log(stringifiedStack);
+};
+
+var StackTraceErrback = function(err) { console.log(err.message); };
