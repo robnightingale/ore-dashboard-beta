@@ -366,7 +366,7 @@ var LINECharts = (function () {
         }
 
         function initialiseAllCharts() {
-            StackTrace.get().then(function(stack){console.debug(stack);}).catch(function(err){console.error(err)});
+            StackTrace.get().then(StackTraceCallback).catch(StackTraceErrback);
             var args = {
                 date: chartManager.getBusinessDate(),
                 hierarchy: 'total',
