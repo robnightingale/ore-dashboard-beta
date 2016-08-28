@@ -1,6 +1,8 @@
 /**
- * Created by Rob on 28/10/2015.
+ * Copyright (C) 2016 Quaternion Risk Management Ltd
+ * All rights reserved.
  */
+
 var BARCharts = (function () {
     "use strict";
     var instance;
@@ -206,7 +208,7 @@ var LINECharts = (function () {
             },
             tooltip: {
                 trigger: 'axis',
-                // formatter: formatTooltip(0, false)
+                formatter: lineChartTooltipFormatter
             },
             legend: {
                 x: 220,
@@ -283,13 +285,14 @@ var LINECharts = (function () {
                     name: "PFE",
                     data: data_.pfes
                 }
-                // var series_2 = {
-                //     name: "ENE",
-                //     data: data_.enes
-                // }
+                var series_2 = {
+                    name: "ENE",
+                    data: data_.enes
+                }
                 var series_ = [];
                 series_.push(series_0);
                 series_.push((series_1));
+                series_.push((series_2));
 
                 series_.forEach(function (elem) {
                     // only add marklines for exposure profile graph
@@ -362,6 +365,7 @@ var LINECharts = (function () {
         }
 
         function initialiseAllCharts() {
+            StackTrace.get().then(function(stack){console.debug(stack);}).catch(function(err){console.error(err)});
             var args = {
                 date: chartManager.getBusinessDate(),
                 hierarchy: 'total',
@@ -371,8 +375,14 @@ var LINECharts = (function () {
             var totexp_ = chartManager.getGraphData(args, '', 'totalexposure');
             var exp_ = chartManager.getGraphData(args, '', 'exposure');
 
-            chartManager.initChart('line_total_exposure', total_exposure_options, totexp_, setNewData);
-            chartManager.initChart('line_exposure_profile', exposure_profile_options, exp_, setNewData);
+            return Promise.all([totexp_, exp_]).then(function (values) {
+                chartManager.initChart('line_total_exposure', total_exposure_options, totexp_, setNewData);
+                chartManager.initChart('line_exposure_profile', exposure_profile_options, exp_, setNewData);
+                return 'done';
+            }).catch(function(error){
+                console.error(new Error(error));
+            })
+
         }
 
         function loadData(chart_, data_) {
@@ -496,7 +506,6 @@ var DONUTCharts = (function () {
             xvaGraphs.forEach(function(elem){
                 var p_ = chartManager.getGraphData(args, elem.metric,'xva');
                 chartManager.initChart(elem.name, options, p_, setNewData);
-                // chartManager.initChart(elem.id, options, chartManager.getGraphData(__level__, elem.metric,'xva'), setNewData);
                 p_.then(function(res){
                     document.getElementsByName(elem.name)[0].innerText = elem.text + ' : '+ numeral(chartManager.getSumOfArrayValues(res.data)).format('(0.00a)');
                 });
