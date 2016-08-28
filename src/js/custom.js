@@ -405,10 +405,9 @@ function lineChartTooltipFormatter(params, ticket, callback) {
     }
     return res;
 }
-//formatter: "Template formatter: <br/>{b}<br/>{a}:{c}<br/>{a1}:{c1}"
 
 function donutChartTooltipFormatter(params, ticket, callback) {
-    console.debug(params);
+    // console.debug(params);
     var res = '';
     var colorEl = '<span style="display:inline-block;margin-right:5px;'
         + 'border-radius:10px;width:9px;height:9px;background-color:' + params.color + '"></span>';
@@ -429,3 +428,10 @@ function barChartTooltipFormatter(params, ticket, callback) {
     }
     return res;
 }
+
+// window.onresize = function() {
+//     $(".ga-charts").each(function(){
+//         var id = $(this).attr('_echarts_instance_');
+//         window.echarts.getInstanceById(id).resize();
+//     });
+// };

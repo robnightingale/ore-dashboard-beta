@@ -20,6 +20,25 @@ var drillDownItem = {
 var drillDownStack = [];
 
 
+var currencyMap = [
+    {ccy: 'BRL', symbol: 'R$'}
+    ,{ccy: 'CNY', symbol: '¥'}
+    ,{ccy: 'CZK', symbol: 'Kč'}
+    ,{ccy: 'DKK', symbol: 'kr'}
+    ,{ccy: 'EUR', symbol: '€'}
+    ,{ccy: 'HUF', symbol: 'Ft'}
+    ,{ccy: 'ISK', symbol: 'kr'}
+    ,{ccy: 'IDR', symbol: 'Rp'}
+    ,{ccy: 'JPY', symbol: '¥'}
+    ,{ccy: 'KRW', symbol: '₩'}
+    ,{ccy: 'NOK', symbol: 'kr'}
+    ,{ccy: 'RUB', symbol: 'руб'}
+    ,{ccy: 'SEK', symbol: 'kr'}
+    ,{ccy: 'CHF', symbol: 'CHF'}
+    ,{ccy: 'GBP', symbol: '£'}
+    ,{ccy: 'USD', symbol: '$'}
+]
+
 var chartCategory =
     [
         {metric: 'npv', category: 'CREDIT'},
@@ -78,6 +97,8 @@ var chartManager = {
     initChart: function (chartTagName_, options, data_, fnLoadData_) {
         // once data is resolved, render it
         Promise.resolve(data_).then(function(res){
+            console.debug( chartTagName_, data_ );
+
             var theChart_ = echarts.init(document.getElementById(chartTagName_), theme);
             theChart_.setOption(options);
             theChart_.on('click', chartManager.drilldownChartClick);
@@ -88,7 +109,6 @@ var chartManager = {
         return echarts.getInstanceByDom(document.getElementById(chartTagName_));
     },
     getDataFromRestCall: function (url_) {
-        console.debug(url_);
 
         var req_ = new Request({
                 headers: {
@@ -102,6 +122,8 @@ var chartManager = {
             }
         );
 
+        console.debug(url_);
+        // console.debug(req_);
         var theUrl_ = window.location.protocol + '//' + window.location.host + url_;
 
         return fetch(
@@ -110,20 +132,19 @@ var chartManager = {
             .then(parseJson)
             .then(function (response) {
                 console.debug(response);
-                // response.forEach(function(elem) {
-                //     console.debug(elem);
-                // })
                 return response;
             })
             .catch(function (ex) {
-                var e = new Error('dummy');
-                var stack = e.stack.replace(/^[^\(]+?[\n$]/gm, '')
-                    .replace(/^\s+at\s+/gm, '')
-                    .replace(/^Object.<anonymous>\s*\(/gm, '{anonymous}()@')
-                    .split('\n');
+                StackTrace.fromError(ex)
+                    .then(console.error);
+                // var e = new Error('dummy');
+                // var stack = e.stack.replace(/^[^\(]+?[\n$]/gm, '')
+                //     .replace(/^\s+at\s+/gm, '')
+                //     .replace(/^Object.<anonymous>\s*\(/gm, '{anonymous}()@')
+                //     .split('\n');
 
-                console.error(new Error("Request failed : " + url_ + '\n' + stack));
-                return {};
+                // console.error(new Error("Request failed : " + url_ + '\n' + e.stack));
+                return Promise.reject(ex);
             })
     },
     populateBusinessDates: function () {
@@ -145,11 +166,10 @@ var chartManager = {
                     });
                     sel.appendChild(fragment);
 
-                    var bus_ = businessDates.options[0].value ;
-                    sessionStorage.setItem('businessDate', bus_);
+                    sessionStorage.setItem('businessDate', businessDates.options[0].value );
 
                 }).catch(function (e) {
-                    return new Error(e);
+                    return Promise.reject(new Error(e));
                 })
         } catch (e) {
             console.error(new Error(e));
@@ -196,15 +216,17 @@ var chartManager = {
             item: drillDownLevel_,
             level: chartManager.getDrillDownLevel()[0].level
         };
-        // chartManager.drillDown(args);
 
         var p_ = chartManager.getGraphData(args, metric_,'bargraph');
-        chartManager.initChart(graphId_, bgInstance.getDefaults, p_, bgInstance.setNewData);
-
         p_.then(function(res){
+        chartManager.initChart(graphId_, bgInstance.getDefaults, p_, bgInstance.setNewData);
             // lookup the category in the chartCategories array
             var cat_ = filter(chartCategory, function(elem){return elem.metric == metric_;});
             document.getElementById(graphId_).parentNode.parentNode.getElementsByTagName('h2')[0].innerText = cat_[0].category;
+        }).catch(function(err){
+            // FIXME if the chart flip returns no data or an error, revert the change
+            // with a popup?
+            console.error(new Error(err));
         });
 
     },
@@ -227,7 +249,7 @@ var chartManager = {
     },
     getGenericGraphData : function(args_){
         var key__;
-        // clone args
+        // clone args with a deep (non reference) copy
         var localArgs_ = JSON.parse(JSON.stringify(args_));
 
         console.debug(localArgs_);
@@ -237,7 +259,9 @@ var chartManager = {
                 if (localArgs_.chartType == 'totalexposure')
                     localArgs_.date = '';
                 if (localArgs_.item == 'Total') {
+                        localArgs_.hierarchy = 'total';
                     // we arrived here from a menu click
+                    // FIXME hierarchy must be 'total' when item = Total for line graphs
                     key__ = '/api/' + localArgs_.chartType + '-tree/' + localArgs_.date + '/' + localArgs_.hierarchy + '/' + localArgs_.item + '/';
                 } else {
 
@@ -276,14 +300,6 @@ var chartManager = {
         var default_ = filter(barGraphs, function(elem){return elem.name == id_});
         return (sessionStorage.getItem(id_) || default_[0].metric).toLowerCase();
     }
-    // , getTotalExposureData: function (key_) {
-    //     var key__ = '/api/totalexposure-tree/total/Total/';
-    //     return chartManager.getDataFromRestCall(key__);
-    // }
-    // , getExposureProfileData : function(key_){
-    //     var key__ = '/api/exposure-tree/' + chartManager.getBusinessDate() +'/total/Total/';
-    //     return chartManager.getDataFromRestCall(key__);
-    // }
     , getGraphData : function(args, metric_, chartType_) {
         var localArgs = args;
         localArgs.metric = metric_;
@@ -299,9 +315,7 @@ var chartManager = {
         return chartManager.getSumOfArrayValues(array_);
     }
     , refreshGraphs : function(args){
-
         // console.debug(args);
-
         var bgInstance = BARCharts.getInstance();
         var xvInstance = DONUTCharts.getInstance();
         var lineInstance = LINECharts.getInstance();
@@ -309,9 +323,9 @@ var chartManager = {
         barGraphs.forEach(function(elem){
             var metric_ = chartManager.getBarGraphMetric(elem.name);
             var p_ = chartManager.getGraphData(args, metric_,'bargraph');
-            chartManager.initChart(elem.id, bgInstance.getDefaults, p_, bgInstance.setNewData);
 
             p_.then(function(res){
+                chartManager.initChart(elem.id, bgInstance.getDefaults, p_, bgInstance.setNewData);
                 // lookup the category in the chartCategories array
                 var cat_ = filter(chartCategory, function(elem){return elem.metric == metric_;});
                 document.getElementById(elem.id).parentNode.parentNode.getElementsByTagName('h2')[0].innerText = cat_[0].category;
@@ -322,19 +336,23 @@ var chartManager = {
         if (chartManager.getDrillDownLevel()[0].level < 3) {
             xvaGraphs.forEach(function(elem){
                 var p_ = chartManager.getGraphData(args, elem.metric,'xva');
-                chartManager.initChart(elem.name, xvInstance.getDefaults, p_, xvInstance.setNewData);
-
                 p_.then(function(res){
+                chartManager.initChart(elem.name, xvInstance.getDefaults, p_, xvInstance.setNewData);
                     document.getElementsByName(elem.name)[0].innerText = elem.text + ' : '+ numeral(chartManager.getSumOfArrayValues(res.data)).format('(0.00a)');
                 });
-
             });
         }
 
         var totexp_ = chartManager.getGraphData(args, '', 'totalexposure');
         var exp_ = chartManager.getGraphData(args, '', 'exposure');
-        chartManager.initChart('line_total_exposure',lineInstance.getDefaultTotalOptions, totexp_, lineInstance.setNewData);
-        chartManager.initChart('line_exposure_profile',lineInstance.getDefaultExposureOpts, exp_, lineInstance.setNewData);
+
+        return Promise.all([totexp_, exp_]).then(function (values) {
+            chartManager.initChart('line_total_exposure',lineInstance.getDefaultTotalOptions, totexp_, lineInstance.setNewData);
+            chartManager.initChart('line_exposure_profile',lineInstance.getDefaultExposureOpts, exp_, lineInstance.setNewData);
+            return 'done';
+        }).catch(function(error){
+            console.error(new Error(error));
+        })
     }
     , getSumOfArrayValues : function(array_){
         var g = array_.map(function (elem) {
@@ -357,6 +375,8 @@ var chartManager = {
         });
     }
     , resetPageDefaults : function(){
+        StackTrace.get().then(function(stack){console.debug(stack);}).catch(function(err){console.error(err)});
+
         var nodes = document.getElementsByClassName('selectpicker');
         [].forEach.call(nodes,function(e){
             e.selectedIndex = 0;

@@ -376,27 +376,28 @@
         // attach change event handlers to the dropdown controls
 
         Promise.resolve(chartManager.populateBusinessDates())
-                .then(function(res){
+                .then(function (res) {
                     chartManager.initAllCharts();
                     // add a change event handler to all the dropdown controls
                     var nodes = document.getElementsByClassName('selectpicker');
-                    [].forEach.call(nodes,function(e){
+                    [].forEach.call(nodes, function (e) {
                         _AttachEvent(e, 'change', chartManager.setItem);
                     });
 
-                    [].forEach.call(document.getElementsByClassName('selectpicker-bg'),function(e){
+                    [].forEach.call(document.getElementsByClassName('selectpicker-bg'), function (e) {
                         // for each bar graph selector, populate the choices list
                         chartManager.populateBarGraphMetricList(e);
                         // and add a change event handler
                         _AttachEvent(e, 'change', chartManager.setBGMetric);
                     });
 
-                    [].forEach.call($('label[name^="option"]'), function(e){
+                    [].forEach.call($('label[name^="option"]'), function (e) {
                         _AttachEvent(e, 'click', chartManager.drilldownMenuClick);
                     })
+                }).then(function (res) {
+            chartManager.resetPageDefaults()
+        });
 
-                    chartManager.resetPageDefaults();
-                });
         console.log('[INFO] ORE Dashboard init completed');
     }
 
