@@ -1,3 +1,9 @@
+/*
+ *  Copyright (C) 2016 Quaternion Risk Management Ltd
+ *  All rights reserved
+ *
+ */
+
 /**
  * Created by robnightingale on 23/07/2016.
  */
