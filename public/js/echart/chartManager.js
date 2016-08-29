@@ -6,6 +6,56 @@
 
 "use strict";
 
+var load_ = function () {
+    console.log('[INFO] ORE Dashboard.init');
+
+    // load the page
+    // build business date list
+    // initialise all the charts
+    // attach change event handlers to the dropdown controls
+
+    Promise.resolve(chartManager.populateBusinessDates())
+        .then(function (res) {
+            chartManager.resetPageDefaults()
+        }).then(function (res) {
+
+        chartManager.initAllCharts();
+        // add a change event handler to all the dropdown controls
+        var nodes = document.getElementsByClassName('selectpicker');
+        [].forEach.call(nodes, function (e) {
+            _AttachEvent(e, 'change', chartManager.setItem);
+        });
+
+        [].forEach.call(document.getElementsByClassName('selectpicker-bg'), function (e) {
+            // for each bar graph selector, populate the choices list
+            chartManager.populateBarGraphMetricList(e);
+            chartManager.setBGMetricDefaults();
+            // and add a change event handler
+            _AttachEvent(e, 'change', chartManager.setBGMetric);
+        });
+
+        [].forEach.call($('label[name^="option"]'), function (e) {
+            _AttachEvent(e, 'click', chartManager.drilldownMenuClick);
+        })
+
+        $('#xva-zoom').on('shown.bs.modal', function(e){
+            var graphId = $(e.relatedTarget).data('id');
+            var args = {
+                date: chartManager.getBusinessDate(),
+                hierarchy: chartManager.getHierarchy(),
+                item: chartManager.getItem(),
+                level: chartManager.getDrillDownLevel()[0].level
+            };
+
+            var p_ = chartManager.getGraphData(args, graphId,'xva');
+            chartManager.initChart('donut_xva', DONUTCharts.getInstance().getDefaults, p_, DONUTCharts.getInstance().setNewData);
+        });
+
+    });
+
+    console.log('[INFO] ORE Dashboard init completed');
+}
+
 var drilldownLevels = [
     {name: 'creditrating', level: 0, text: 'Credit Rating'}
     , {name: 'counterparty', level: 1, text: 'Counterparty'}
@@ -42,7 +92,7 @@ var currencyMap = [
 
 var chartCategory =
     [
-        {metric: 'npv', category: 'CREDIT'},
+        {metric: 'npv', category: 'MARKET'},
         {metric: 'ce', category: 'CREDIT'},
         {metric: 'epe', category: 'CREDIT'},
         {metric: 'ene', category: 'CREDIT'},
@@ -131,13 +181,13 @@ var chartManager = {
             .then(processStatus)
             .then(parseJson)
             .then(function (response) {
-                console.debug(response);
+                // console.debug(response);
                 return response;
             })
             .catch(function (ex) {
+
                 StackTrace.fromError(ex)
                     .then(console.error);
-                StackTrace.get().then(StackTraceCallback).catch(StackTraceErrback);
                 return Promise.reject(ex);
             })
     },
@@ -224,18 +274,6 @@ var chartManager = {
         });
 
     },
-    cloneDonutChart: function(sourceChart, targetChart){
-        var oldChart_ = chartManager.getChartInstanceFromDivId(sourceChart);
-        var defaults_ = DONUTCharts.getInstance().getDefaults();
-        var oldOptions_ = oldChart_.getOption();
-
-        var series= [{
-            data: oldOptions_.series.data,
-            name: oldOptions_.series.name
-        }];
-        var legend = {data: oldOptions_.legend.data};
-        // var newChart_ = chartManager.initChart('donut_xva', defaults_, )
-    },
     canDrillDown : function(args){
         if ((args.chartType == 'bargraph' || args.chartType == 'totalexposure') && args.level < 3) return true;
         if (args.level <2) return true;
@@ -247,7 +285,6 @@ var chartManager = {
         var localArgs_ = JSON.parse(JSON.stringify(args_));
 
         // console.debug(localArgs_);
-        StackTrace.get().then(StackTraceCallback).catch(StackTraceErrback);
 
         if (!isNullOrUndefined(localArgs_.item)) {
              //total exposure chart doesnt regard dates
@@ -291,6 +328,9 @@ var chartManager = {
     }
     , getHierarchy : function (){
         return (sessionStorage.getItem('hierarchy') || hierarchy.value).toLowerCase();
+    }
+    , getItem : function (){
+        return (sessionStorage.getItem('hierarchyOrTree'));
     }
     , getBarGraphMetric : function(id_) {
         var default_ = filter(barGraphs, function(elem){return elem.name == id_});
@@ -367,8 +407,6 @@ var chartManager = {
         });
     }
     , resetPageDefaults : function(){
-        StackTrace.get().then(StackTraceCallback).catch(StackTraceErrback);
-
         var nodes = document.getElementsByClassName('selectpicker');
         [].forEach.call(nodes,function(e){
             e.selectedIndex = 0;
@@ -393,6 +431,11 @@ var chartManager = {
         document.getElementById(target.name).value = target.value;
 
         if (target.name == 'businessDate') {
+            // reset graphs to top level Totals
+            // sessionStorage.setItem('level', drilldownLevels[0].level);
+            // sessionStorage.setItem('hierarchyOrTree','Total');
+            // sessionStorage.setItem('hierarchy', chartManager.getDrillDownLevel()[0].name);
+
             var args = {
                 date: chartManager.getBusinessDate(),
                 hierarchy: chartManager.getHierarchy(),
@@ -416,19 +459,17 @@ var chartManager = {
         default_[0].metric = target.value.toLowerCase();
     }
     , getDrillDownLevel : function() {
-        StackTrace.get().then(StackTraceCallback).catch(StackTraceErrback);
-
         return filter(drilldownLevels, function(elem) {
             return elem.level == +sessionStorage.getItem('level');
         });
     }
+    , getDrillDownLevelAsInteger : function(){
+        return chartManager.getDrillDownLevel()[0].level;
+    }
     , setDrillDownLevel : function(e) {
-        StackTrace.get().then(StackTraceCallback).catch(StackTraceErrback);
         sessionStorage.setItem('level', +e);
     }
     , setDrilldownMenu : function(level){
-        StackTrace.get().then(StackTraceCallback).catch(StackTraceErrback);
-
         var lvl = level || chartManager.getDrillDownLevel()[0].level;
         $('input:radio')[lvl].checked = true;
         $($('label[name^="option"]')[lvl]).button('toggle');
@@ -436,8 +477,7 @@ var chartManager = {
         sessionStorage.setItem('hierarchy', chartManager.getDrillDownLevel()[0].name);
     }
     , drillDown : function (args){
-        StackTrace.get().then(StackTraceCallback).catch(StackTraceErrback);
-        drillDownStack.push(args);
+        // drillDownStack.push(args);
         
         // the key value from the graph that was clicked - the data point
         Promise.resolve(chartManager.refreshGraphs(args)).then(function(res){
@@ -492,6 +532,7 @@ var chartManager = {
 
 }
 
+// StackTrace.instrument(chartManager.drillDown, StackTraceCallback, StackTraceErrback);
 
 var StackTraceCallback = function(stackframes) {
     var stringifiedStack = stackframes.map(function(sf) {
@@ -501,3 +542,5 @@ var StackTraceCallback = function(stackframes) {
 };
 
 var StackTraceErrback = function(err) { console.log(err.message); };
+
+
