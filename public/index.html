@@ -100,37 +100,45 @@
                 <div class="col-md-12">
                     <div class="x_title clearfix">
                         <h2>ORE Risk Dashboard</h2>
-                        <div class="col-md-4 col-sm-4 col-xs-12 pull-left">
 
+                        <div class="col-md-6 col-sm-6 col-xs-12 pull-right">
                             <div class="btn-group btn-sm" data-toggle="buttons">
                                 <label name="options" class="btn btn-sm active">
-                                    <input type="radio" name="options" id="option0" value="0" autocomplete="off" checked> Credit
+                                    <input type="radio" name="options" id="option0" value="0" autocomplete="off"
+                                           checked>
+                                    Credit
                                     Rating </label>
                                 <label name="options" class="btn btn-sm">
-                                    <input type="radio" name="options" id="option1" value="1" autocomplete="off"> Counterparty
+                                    <input type="radio" name="options" id="option1" value="1" autocomplete="off">
+                                    Counterparty
                                 </label>
                                 <label name="options" class="btn btn-sm">
-                                    <input type="radio" name="options" id="option2" value="2" autocomplete="off"> Netting Set
+                                    <input type="radio" name="options" id="option2" value="2" autocomplete="off">
+                                    Netting
+                                    Set
                                 </label>
                                 <label name="options" class="btn btn-sm">
-                                    <input type="radio" name="options" id="option3" value="3" autocomplete="off"> Trade </label>
+                                    <input type="radio" name="options" id="option3" value="3" autocomplete="off"> Trade
+                                </label>
+
+                                <label name="options" class="btn btn-sm"> Bus Date :
+                                    <select class="selectpicker pull-right" data-live-search="true" data-size="7"
+                                            id="businessDates" name="businessDate">
+                                        <option>Choose Business Date</option>
+                                    </select>
+                                </label>
+                            </div>
+                            <div>
+                                <nav class="breadcrumb">
+                                    <a type="button" class="btn btn-secondary">Back</a>
+                                    <a class="breadcrumb-item" href="#" name="0">AAA </a>
+                                    <a class="breadcrumb-item" href="#" name="1">cust_a</a>
+                                    <a class="breadcrumb-item" href="#" name="2">csa_1 </a>
+                                    <span class="breadcrumb-item" href="#" name="3">Trade </span>
+                                </nav>
                             </div>
                         </div>
 
-                        <div class="form-group filter pull-right">
-                            <!--<label class="control-label col-md-2 col-sm-2 col-xs-12">Hierarchy level</label>-->
-                            <div class="col-md-9 col-sm-9 col-xs-12">
-                                <select class="selectpicker pull-right" data-live-search="true" data-size="7" id="businessDates" name="businessDate">
-                                    <option>Choose Business Date</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <!--<div class="form-group filter">-->
-                            <!--<label class="control-label col-md-2 col-sm-2 col-xs-12">Hierarchy level</label>-->
-                            <!--<div class="col-md-9 col-sm-9 col-xs-12">-->
-                            <!--</div>-->
-                        <!--</div>-->
                     </div>
                     <div class="x_content">
                         <div class="col-md-6 col-sm-12 col-xs-12">
@@ -155,7 +163,7 @@
                     <div class="x_title">
                         <h2 name="donut_cva">CVA</h2>
                         <ul class="nav navbar-right panel_toolbox">
-                            <li><a class="close-link" data-toggle="modal" data-target=".bs-example-modal-sm"><i class="fa fa-search-plus"></i></a></li>
+                            <li><a class="close-link" href="#xva-zoom" data-toggle="modal" data-id="cva" data-target=".bs-example-modal-sm"><i class="fa fa-search-plus"></i></a></li>
                         </ul>
                         <div class="clearfix">
                         </div>
@@ -169,7 +177,7 @@
                     <div class="x_title">
                         <h2 name="donut_fva">FVA</h2>
                         <ul class="nav navbar-right panel_toolbox">
-                            <li><a class="close-link" data-toggle="modal" data-target=".bs-example-modal-sm"><i class="fa fa-search-plus"></i></a></li>
+                            <li><a class="close-link" href="#xva-zoom" data-toggle="modal" data-id="fva" data-target=".bs-example-modal-sm"><i class="fa fa-search-plus"></i></a></li>
                         </ul>
                         <div class="clearfix">
                         </div>
@@ -182,7 +190,7 @@
                     <div class="x_title">
                         <h2 name="donut_colva">ColVA</h2>
                         <ul class="nav navbar-right panel_toolbox">
-                            <li><a class="close-link" data-toggle="modal" data-target=".bs-example-modal-sm"><i class="fa fa-search-plus"></i></a></li>
+                            <li><a class="close-link" href="#xva-zoom" data-toggle="modal" data-id="colva" data-target=".bs-example-modal-sm"><i class="fa fa-search-plus"></i></a></li>
                         </ul>
 
                         <div class="clearfix">
@@ -287,27 +295,21 @@
 
         <!-- Small modal -->
 
-        <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-hidden="true">
+        <div id="xva-zoom" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
 
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span>
                         </button>
-                        <h4 class="modal-title" id="myModalLabel2">Modal title</h4>
+                        <h4 class="modal-title" id="myModalLabel2">XVA Graph</h4>
                     </div>
                     <div class="modal-body">
-                            <div id="donut_xva" style="height:350px;"></div>
-                        <span>Total #CVA $$,$$$,$$$.$$</span>
-
-                        <!--<h4>Text in a modal</h4>-->
-                        <!--<p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>-->
-                        <!--<p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>-->
+                            <div id="donut_xva" style="height:450px;width:450px"></div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -366,41 +368,6 @@
 <script src="js/bootstrap-date-filter.js"></script>¡
 
 <script language="javascript">
-
-    var load_ = function () {
-        console.log('[INFO] ORE Dashboard.init');
-
-        // load the page
-        // build business date list
-        // initialise all the charts
-        // attach change event handlers to the dropdown controls
-
-        Promise.resolve(chartManager.populateBusinessDates())
-                .then(function (res) {
-                    chartManager.initAllCharts();
-                    // add a change event handler to all the dropdown controls
-                    var nodes = document.getElementsByClassName('selectpicker');
-                    [].forEach.call(nodes, function (e) {
-                        _AttachEvent(e, 'change', chartManager.setItem);
-                    });
-
-                    [].forEach.call(document.getElementsByClassName('selectpicker-bg'), function (e) {
-                        // for each bar graph selector, populate the choices list
-                        chartManager.populateBarGraphMetricList(e);
-                        // and add a change event handler
-                        _AttachEvent(e, 'change', chartManager.setBGMetric);
-                    });
-
-                    [].forEach.call($('label[name^="option"]'), function (e) {
-                        _AttachEvent(e, 'click', chartManager.drilldownMenuClick);
-                    })
-                }).then(function (res) {
-            chartManager.resetPageDefaults()
-        });
-
-        console.log('[INFO] ORE Dashboard init completed');
-    }
-
     window.onload = load_;
 </script>
 
