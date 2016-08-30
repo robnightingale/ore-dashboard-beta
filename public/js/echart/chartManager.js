@@ -36,6 +36,11 @@ var load_ = function () {
 
         [].forEach.call($('label[name^="option"]'), function (e) {
             _AttachEvent(e, 'click', chartManager.drilldownMenuClick);
+        });
+
+        // [].forEach.call($('a[name^="breadcrumb"]'), function (e) {
+        [].forEach.call($('ol[id^="periscope"]'), function (e) {
+            _AttachEvent(e, 'click', chartManager.updateBreadcrumb);
         })
 
         $('#xva-zoom').on('shown.bs.modal', function(e){
@@ -488,6 +493,20 @@ var chartManager = {
                 chartManager.setDrilldownMenu(level);
             }
         });
+    }
+    , updateBreadcrumb : function(args){
+        var graphId = $(args.relatedTarget).data('id');
+
+        // get the parent tree JSON
+        // var url_ = '/api/periscope/' + args.hierarchy  + '/' + args.item;
+        // var parentTree = chartManager.getDataFromRestCall(url_);
+        // parentTree.then(function(res){
+        //
+        // }).catch(function(e){
+        // });
+
+        // upodate the breadcrumb
+
     },
     drilldownMenuClick : function(evt){
         // user clicked on the menu
@@ -527,6 +546,7 @@ var chartManager = {
             item: evt.name,
             level: chartManager.getDrillDownLevel()[0].level
         };
+        chartManager.updateBreadcrumb(args);
         chartManager.drillDown(args);
     }
 
