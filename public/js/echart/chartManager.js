@@ -29,11 +29,12 @@ var load_ = function () {
         [].forEach.call(document.getElementsByClassName('selectpicker-bg'), function (e) {
             // for each bar graph selector, populate the choices list
             chartManager.populateBarGraphMetricList(e);
-            chartManager.setBGMetricDefaults();
             // and add a change event handler
             _AttachEvent(e, 'change', chartManager.setBGMetric);
         });
+        chartManager.setBGMetricDefaults();
 
+        // add a click event handler to the radio buttons for credit rating/counterparty etc
         [].forEach.call($('label[name^="option"]'), function (e) {
             _AttachEvent(e, 'click', chartManager.drilldownMenuClick);
         })
