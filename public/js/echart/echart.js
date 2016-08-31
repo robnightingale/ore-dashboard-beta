@@ -250,7 +250,7 @@ var LINECharts = (function () {
                 type: 'category',
                 boundaryGap: true,
                 axisLabel:{interval: 'auto', formatter: function(value){
-                    return moment(value,'DD/MM/YYYY').format('DD-MM-YYYY');
+                    return moment(value,'YYYYMMDD').format('DD-MM-YYYY');
                 }},
                 data: []
             }],
