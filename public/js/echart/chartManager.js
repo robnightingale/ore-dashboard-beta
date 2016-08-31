@@ -37,6 +37,11 @@ var load_ = function () {
         // add a click event handler to the radio buttons for credit rating/counterparty etc
         [].forEach.call($('label[name^="option"]'), function (e) {
             _AttachEvent(e, 'click', chartManager.drilldownMenuClick);
+        });
+
+        // add a click event handler to the breadcrumb for credit rating/counterparty etc
+        [].forEach.call($('ol[id^="periscope"]'), function (e) {
+            _AttachEvent(e, 'click', chartManager.breadcrumbClick);
         })
 
         $('#xva-zoom').on('shown.bs.modal', function(e){
@@ -444,7 +449,6 @@ var chartManager = {
                 level: chartManager.getDrillDownLevel()[0].level
             };
             chartManager.drillDown(args);
-
         }
     }
     , setBGMetric : function(evt){
@@ -478,8 +482,6 @@ var chartManager = {
         sessionStorage.setItem('hierarchy', chartManager.getDrillDownLevel()[0].name);
     }
     , drillDown : function (args){
-        // drillDownStack.push(args);
-        
         // the key value from the graph that was clicked - the data point
         Promise.resolve(chartManager.refreshGraphs(args)).then(function(res){
             if (args.item != 'Total'){
@@ -489,6 +491,82 @@ var chartManager = {
                 chartManager.setDrilldownMenu(level);
             }
         });
+    }
+    , updateBreadcrumb : function(args){
+        // get the parent tree JSON
+        var url_ = '/api/periscope/' + args.hierarchy  + '/' + args.item;
+        var parentTree = chartManager.getDataFromRestCall(url_);
+        parentTree.then(function(res){
+            // draw the bread crumb items
+            chartManager.setCrumbs(res);
+        }).catch(function(e){
+
+        });
+    },
+    resetCrumbs : function(){
+        var bcList = document.getElementById('periscope');
+        while (bcList.firstChild) {
+            bcList.removeChild(bcList.firstChild);
+        }
+        var listItem = document.createElement('li');
+        listItem.className="breadcrumb-item";
+        var a = document.createElement('a');
+        a.href="#";
+        a.id = "crumb";
+        a.setAttribute('data-hierarchy', 'total');
+        a.setAttribute('data-item', 'Total');
+        a.setAttribute('data-level', '0');
+        var i = document.createElement('i');
+        i.className="fa fa-home";
+        a.appendChild(i);
+        listItem.appendChild(a);
+        bcList.appendChild(listItem);
+
+    },
+    setCrumbs : function(breadcrumbStack_){
+        // set the breadcrumbs according to the response from the JSON message
+        // in periscope rest endpoint
+        chartManager.resetCrumbs();
+        var bcList = document.getElementById('periscope');
+
+        [].forEach.call(breadcrumbStack_, function (e) {
+            var listItem = document.createElement('li');
+            listItem.className="breadcrumb-item";
+            var a = document.createElement('a');
+            a.href="#";
+            a.id = "crumb" +e.level;
+            a.setAttribute('data-hierarchy', e.hierarchy);
+            a.setAttribute('data-item', e.item);
+            a.setAttribute('data-level', e.level);
+            a.innerText = e.item;
+            listItem.appendChild(a);
+            bcList.appendChild(listItem);
+        });
+
+    },
+    breadcrumbClick : function(evt){
+        // user clicked on the menu
+        if (isNullOrUndefined(evt))
+            return;
+
+        evt = evt || window.event;
+        var target = evt.target || evt.srcElement;
+
+        var hierarchy_ = target.getAttribute('data-hierarchy');
+        var item_ = target.getAttribute('data-item');
+        var level_ = target.getAttribute('data-level');
+        sessionStorage.setItem('level', level_);
+        sessionStorage.setItem('hierarchy', hierarchy_);
+        sessionStorage.setItem('hierarchyOrTree',item_);
+
+        var args = {
+            date: chartManager.getBusinessDate(),
+            hierarchy: hierarchy_,
+            item: item_,
+            level: level_
+        };
+        chartManager.updateBreadcrumb(args);
+        chartManager.drillDown(args);
     },
     drilldownMenuClick : function(evt){
         // user clicked on the menu
@@ -508,6 +586,7 @@ var chartManager = {
             item: 'Total',
             level: chartManager.getDrillDownLevel()[0].level
         };
+        chartManager.resetCrumbs();
         chartManager.drillDown(args);
 
     }
@@ -528,6 +607,7 @@ var chartManager = {
             item: evt.name,
             level: chartManager.getDrillDownLevel()[0].level
         };
+        chartManager.updateBreadcrumb(args);
         chartManager.drillDown(args);
     }
 

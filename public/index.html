@@ -32,7 +32,7 @@
     <!--<link href="../vendors/select2/dist/css/select2.min.css" rel="stylesheet">-->
 
     <!-- Custom Theme Style -->
-    <link href="css/custom.min.css" type="text/css" rel="stylesheet">
+    <link href="css/custom.css" type="text/css" rel="stylesheet">
 </head>
 
 <body class="nav-sm">
@@ -101,43 +101,60 @@
                     <div class="x_title clearfix">
                         <h2>ORE Risk Dashboard</h2>
 
-                        <div class="col-md-6 col-sm-6 col-xs-12 pull-right">
-                            <div class="btn-group btn-sm" data-toggle="buttons">
-                                <label name="options" class="btn btn-sm active">
-                                    <input type="radio" name="options" id="option0" value="0" autocomplete="off"
-                                           checked>
-                                    Credit
-                                    Rating </label>
-                                <label name="options" class="btn btn-sm">
-                                    <input type="radio" name="options" id="option1" value="1" autocomplete="off">
-                                    Counterparty
-                                </label>
-                                <label name="options" class="btn btn-sm">
-                                    <input type="radio" name="options" id="option2" value="2" autocomplete="off">
-                                    Netting
-                                    Set
-                                </label>
-                                <label name="options" class="btn btn-sm">
-                                    <input type="radio" name="options" id="option3" value="3" autocomplete="off"> Trade
-                                </label>
+                        <div class="col-md-8 col-sm-8 col-xs-12">
 
-                                <label class="btn btn-sm"> Bus Date :
-                                    <select class="selectpicker pull-right" data-live-search="true" data-size="7"
-                                            id="businessDates" name="businessDate">
-                                        <option>Choose Business Date</option>
-                                    </select>
-                                </label>
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <div class="btn-group btn-sm" data-toggle="buttons">
+                                    <label name="options" class="btn btn-sm active">
+                                        <input type="radio" name="options" id="option0" value="0" autocomplete="off"
+                                               checked>
+                                        Credit
+                                        Rating </label>
+                                    <label name="options" class="btn btn-sm">
+                                        <input type="radio" name="options" id="option1" value="1" autocomplete="off">
+                                        Counterparty
+                                    </label>
+                                    <label name="options" class="btn btn-sm">
+                                        <input type="radio" name="options" id="option2" value="2" autocomplete="off">
+                                        Netting
+                                        Set
+                                    </label>
+                                    <label name="options" class="btn btn-sm">
+                                        <input type="radio" name="options" id="option3" value="3" autocomplete="off"> Trade
+                                    </label>
+
+                                    <label class="btn btn-sm"> Bus Date :
+                                        <select class="selectpicker pull-right" data-live-search="true" data-size="7"
+                                                id="businessDates" name="businessDate">
+                                            <option>Choose Business Date</option>
+                                        </select>
+                                    </label>
+                                </div>
                             </div>
-                            <div>
-                                <nav class="breadcrumb">
-                                    <a class="breadcrumb-item" href="#" name="0">AAA </a>
-                                    <a class="breadcrumb-item" href="#" name="1">cust_a</a>
-                                    <a class="breadcrumb-item" href="#" name="2">csa_1 </a>
-                                    <span class="breadcrumb-item" href="#" name="3">Trade </span>
-                                </nav>
+
+                            <div class="row col-md-12 col-sm-12 col-xs-12">
+                                <div>
+                                    <ol id="periscope" class="breadcrumb dynamic-crumbs">
+                                    <li class="breadcrumb-item"><a href="#" id="crumb0" data-hierarchy="total" data-item="Total" data-level="0"><i class="fa fa-home"></i></a></li>
+                                    <li class="breadcrumb-item"><a href="#" id="crumb1" data-hierarchy="creditrating" data-item="AAA" data-level="0">CCC</a></li>
+                                    <li class="breadcrumb-item"><a href="#" id="crumb2" data-hierarchy="counterparty" data-item="" data-level="1">CUST_A</a></li>
+                                    <li class="breadcrumb-item"><a href="#" id="crumb3" data-hierarchy="nettingset" data-item="" data-level="2">CSA_12</a></li>
+                                    <li class="breadcrumb-item active">Trade</li>
+                                    </ol>
+
+                                    <!--<div id="bc2" class="btn-group btn-breadcrumb">-->
+                                        <!--<a name="breadcrumb" href="#" class="btn btn-default" data-hierarchy="total" data-item="Total" data-level="0"><i class="fa fa-home"></i></a>-->
+                                        <!--&lt;!&ndash;<div class="btn btn-default">...</div>&ndash;&gt;-->
+                                        <!--<a name="breadcrumb" href="#" class="btn btn-default" data-hierarchy="creditrating" data-item="CCC" data-level="0"><div>CCC</div></a>-->
+                                        <!--<a name="breadcrumb" href="#" class="btn btn-default" data-hierarchy="counterparty" data-item="CUST_G" data-level="1"><div>CUST_G</div></a>-->
+                                        <!--<a name="breadcrumb" href="#" class="btn btn-default" data-hierarchy="nettingset" data-item="CSA_12" data-level="2"><div>CSA_12</div></a>-->
+                                        <!--<a name="breadcrumb" href="#" class="btn btn-default" data-hierarchy="trade" data-item="Trade_1234" data-level="3"><div>Trade_1234</div></a>-->
+                                    <!--</div>-->
+
+                                </div>
                             </div>
+
                         </div>
-
                     </div>
                     <div class="x_content">
                         <div class="col-md-6 col-sm-12 col-xs-12">
