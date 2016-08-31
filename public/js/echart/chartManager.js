@@ -179,8 +179,8 @@ var chartManager = {
             }
         );
 
-        console.log(url_);
         var theUrl_ = window.location.protocol + '//' + window.location.host + url_;
+        console.log(theUrl_);
 
         return fetch(
             theUrl_, req_)
