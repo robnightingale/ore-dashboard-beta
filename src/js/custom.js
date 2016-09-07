@@ -396,7 +396,7 @@ function cloneCanvas(oldCanvas) {
 
 function lineChartTooltipFormatter(params, ticket, callback) {
     // console.debug(params);
-    var res = moment(params[0].name,'YYYYMMDD').format('DD-MM-YYYY') + '<br/>';
+    var res = moment(params[0].name).format('DD-MM-YYYY') + '<br/>';
     for (var i = 0, l = params.length; i < l; i++) {
 
         var colorEl = '<span style="display:inline-block;margin-right:5px;'

@@ -66,6 +66,7 @@
                         <h3>Live On</h3>
                         <ul class="nav side-menu" style="">
                             <li class=""><a onclick="pdfMe();"><i class="fa fa-download"></i> PDF </span></a></li>
+                            <li class=""><a class="close-link" href="#glossary" data-toggle="modal" data-id="glossary" data-target=".bs-example-modal-sm1"><i class="fa fa-question-circle-o"></i> Glossary </a></li>
                         </ul>
                     </div>
 
@@ -149,6 +150,7 @@
                     <div class="x_content">
                         <div class="col-md-6 col-sm-12 col-xs-12">
                             <div class="demo-container" style="height:275px">
+                                <!--<a type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Popup help"><i class="fa fa-help"/></a>-->
                                 <div id="line_total_exposure" style="height:275px;"></div>
                             </div>
                         </div>
@@ -320,6 +322,24 @@
             </div>
         </div>
         <!-- /modals -->
+        <div id="glossary" class="modal fade bs-example-modal-sm1" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span>
+                        </button>
+                        <h4 class="modal-title" id="myModalLabel3"> Glossary of terms </h4>
+                    </div>
+                    <div class="modal-body">
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <!-- /page content -->
 
@@ -360,7 +380,6 @@
 <script src="../vendors/pdfmake/build/pdfmake.min.js"></script>
 <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/numeral.js/1.4.5/numeral.min.js"></script>-->
 
-
 <!-- Custom Theme Scripts -->
 <script src="js/custom.min.js"></script>
 <script src="js/common/fetch.js"></script>
@@ -368,13 +387,31 @@
 <script src="js/echart/chart-theme.js"></script>
 <script src="js/echart/echart.js"></script>
 <script src="js/echart/chartManager.js"></script>
-
+<!--<script src="js/echart/Student.js"></script>-->
+<!--<script src="js/echart/chartController.js"></script>-->
 
 <!-- bootstrap-daterangepicker -->
 <script src="js/bootstrap-date-filter.js"></script>¡
 
 <script language="javascript">
     window.onload = load_;
+</script>
+
+<script>
+    $('#glossary').on('shown.bs.modal', function(e){
+        // 1 :the content that we want to inject inside our modal
+        //  this content can be loaded from another external file, this is just an example
+        var content = {title:"Glossary of Terms ",body:"this is the body content"};
+
+        // reference my modal
+        var modal1=$('#glossary');
+        $(modal1).find('.modal-title').html(content.title);
+        $(modal1).find('.modal-body').html(content.body);
+
+        // show the modal
+        $(modal1).modal();
+    });
+
 </script>
 
 </body>

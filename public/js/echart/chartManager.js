@@ -16,6 +16,7 @@ var load_ = function () {
 
     Promise.resolve(chartManager.populateBusinessDates())
         .then(function (res) {
+            chartManager.setBaseCcy();
             chartManager.resetPageDefaults()
         }).then(function (res) {
 
@@ -197,6 +198,18 @@ var chartManager = {
                 return Promise.reject(ex);
             })
     },
+    setBaseCcy: function(){
+        return chartManager.getDataFromRestCall('/api/baseccy')
+            .then(function (response) {
+                sessionStorage.setItem('baseccy', response || 'USD');
+                return response;
+            })
+    },
+    getBaseCcy: function(){
+        var ccy_ = sessionStorage.getItem('baseccy') || chartManager.setBaseCcy();
+        var symbol_ = filter(currencyMap, function(elem){return elem.ccy === ccy_;})[0].symbol;
+        return symbol_;
+    },
     populateBusinessDates: function () {
         try {
             var sel = document.getElementById('businessDates');
@@ -204,7 +217,7 @@ var chartManager = {
             sel.options.length = 0;
 
             var fragment = document.createDocumentFragment();
-            return chartManager.getDataFromRestCall('/api/dates/')
+            return chartManager.getDataFromRestCall('/api/dates')
                 .then(function (response) {
                     response.forEach(function (dcc, index) {
                         var opt = document.createElement('option');
@@ -281,9 +294,19 @@ var chartManager = {
 
     },
     canDrillDown : function(args){
-        if ((args.chartType == 'bargraph' || args.chartType == 'totalexposure') && args.level < 3) return true;
-        if (args.level <2) return true;
-        return false;
+        switch (args.chartType) {
+            case "bargraph":
+            case "totalexposure":
+                return args.level < 3 ? true : false;
+                break;
+            case "xva":
+            case "expousre":
+                return args.level < 2 ? true : false;
+                break;
+            default:
+                return args.level < 3 ? true : false;
+                break;
+        }
     },
     getGenericGraphData : function(args_){
         var key__;
@@ -301,30 +324,30 @@ var chartManager = {
                         localArgs_.hierarchy = 'total';
                     // we arrived here from a menu click
                     // FIXME hierarchy must be 'total' when item = Total for line graphs
-                    key__ = '/api/' + localArgs_.chartType + '-tree/' + localArgs_.date + '/' + localArgs_.hierarchy + '/' + localArgs_.item + '/';
+                    key__ = '/api/' + localArgs_.chartType + '-tree/' + localArgs_.date + '/' + localArgs_.hierarchy + '/' + localArgs_.item;
                 } else {
 
-                    var key__ = '/api/' + localArgs_.chartType + '-tree/' + localArgs_.date + '/' + localArgs_.hierarchy + '/' + localArgs_.item + '/';
+                    var key__ = '/api/' + localArgs_.chartType + '-tree/' + localArgs_.date + '/' + localArgs_.hierarchy + '/' + localArgs_.item;
                 }
                 return key__;
             }
 
             if (localArgs_.item == 'Total') {
                 // we arrived here from a menu click
-                    key__ = '/api/' + localArgs_.chartType + '/' + localArgs_.date + '/' + localArgs_.hierarchy + '/' + localArgs_.metric + '/';
+                    key__ = '/api/' + localArgs_.chartType + '/' + localArgs_.date + '/' + localArgs_.hierarchy + '/' + localArgs_.metric;
             } else {
                 // user clicked on a data point
                 if (chartManager.canDrillDown(localArgs_))
-                    key__ = '/api/' + localArgs_.chartType + '-tree/' + localArgs_.date + '/' + localArgs_.hierarchy + '/' + localArgs_.item + '/' + localArgs_.metric + '/';
+                    key__ = '/api/' + localArgs_.chartType + '-tree/' + localArgs_.date + '/' + localArgs_.hierarchy + '/' + localArgs_.item + '/' + localArgs_.metric ;
                 // otherwise just show the total level for that hierarchy instead of a filter
                 else
-                    key__ = '/api/' + localArgs_.chartType + '/' + localArgs_.date + '/' + localArgs_.hierarchy + '/' + localArgs_.metric + '/';
+                    key__ = '/api/' + localArgs_.chartType + '/' + localArgs_.date + '/' + localArgs_.hierarchy + '/' + localArgs_.metric ;
                 // key__ = '/api/' + localArgs_.chartType + '-tree/' + localArgs_.date + '/' + localArgs_.hierarchy + '/' + localArgs_.item + '/' + localArgs_.metric + '/';
             }
         } else {
             // shouldn't normally arrive here, so just send back a top level
             // /api/bargraph/:date/:hierarchy/:metric/
-            key__ = '/api/' + localArgs_.chartType + '-tree/' + localArgs_.date + '/' + localArgs_.hierarchy + '/Total/' + localArgs_.metric + '/';
+            key__ = '/api/' + localArgs_.chartType + '-tree/' + localArgs_.date + '/' + localArgs_.hierarchy + '/Total/' + localArgs_.metric ;
         }
         return key__;
 
@@ -375,12 +398,14 @@ var chartManager = {
 
         });
 
-        if (chartManager.getDrillDownLevel()[0].level < 3) {
+        // if (chartManager.getDrillDownLevel()[0].level < 2) {
+        if (args.level < 2 || (args.item == 'Total' && args.level < 3)) {
             xvaGraphs.forEach(function(elem){
                 var p_ = chartManager.getGraphData(args, elem.metric,'xva');
                 p_.then(function(res){
                 chartManager.initChart(elem.name, xvInstance.getDefaults, p_, xvInstance.setNewData);
-                    document.getElementsByName(elem.name)[0].innerText = elem.text + ' : '+ numeral(chartManager.getSumOfArrayValues(res.data)).format('(0.00a)');
+                    var titleText_ = elem.text + " : " + chartManager.getBaseCcy() + ' ' + numeral(chartManager.getSumOfArrayValues(res.data)).format('(0.00a)');
+                    document.getElementsByName(elem.name)[0].innerText = titleText_;
                 });
             });
         }
