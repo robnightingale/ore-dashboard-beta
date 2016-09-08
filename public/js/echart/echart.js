@@ -124,16 +124,17 @@ var LINECharts = (function () {
     function init() {
 
         var line_total_exposure, line_exposure_profile;
+        var baseccy_ = chartManager.getBaseCcy();
 
         var total_exposure_options = {
 
             title: {
-                text: 'Total Exposure',
-                subtext: 'Historical Credit Exposure Trends'
+                text: 'Total Exposure  ' + baseccy_,
+                subtext: 'Historical Credit Exposure Trends: NPV, CE, EEPE'
             },
             tooltip: {
                 trigger: 'axis',
-                formatter: lineChartTooltipFormatter
+                // formatter: lineChartTooltipFormatter
             },
             legend: {
                 x: 140,
@@ -174,9 +175,9 @@ var LINECharts = (function () {
             },
             calculable: true,
             xAxis: [{
-                type: 'category',
+                type: 'time',
                 axisLabel:{interval: 'auto', formatter: function(value){
-                    return moment(value,'YYYYMMDD').format('DD-MM-YYYY');
+                    return moment(value).format('DD-MM-YYYY');
                 }},
 
                 // boundaryGap: false,
@@ -204,12 +205,12 @@ var LINECharts = (function () {
 
         var exposure_profile_options = {
             title: {
-                text: 'Exposure Profile',
-                subtext: 'Simulated EPE & PFE'
+                text: 'Exposure Profile  '  + baseccy_,
+                subtext: 'Simulated EPE, ENE & PFE'
             },
             tooltip: {
                 trigger: 'axis',
-                formatter: lineChartTooltipFormatter
+                // formatter: lineChartTooltipFormatter
             },
             legend: {
                 x: 220,
@@ -247,10 +248,10 @@ var LINECharts = (function () {
             },
             calculable: true,
             xAxis: [{
-                type: 'category',
+                type: 'time',
                 boundaryGap: true,
                 axisLabel:{interval: 'auto', formatter: function(value){
-                    return moment(value,'YYYYMMDD').format('DD-MM-YYYY');
+                    return moment(value).format('DD-MM-YYYY');
                 }},
                 data: []
             }],
@@ -275,20 +276,33 @@ var LINECharts = (function () {
         };
 
         function setNewData(chart_, data_) {
-            if (chart_.getOption().title[0].text == 'Exposure Profile'){
+            if (chart_.getOption().title[0].text.startsWith('Exposure')){
                 // yuk
                 var xAxisData_ = data_.dates;
+
+                var data_epes = [];
+                var data_pfes = [];
+                var data_enes = [];
+
+                // merge in the dates with the data for x axis labels
+                for (var j = 0;j< xAxisData_.length;j++){
+                    xAxisData_[j] = moment(xAxisData_[j], 'YYYYMMDD').toDate();
+                    data_epes.push([xAxisData_[j], data_.epes[j]]);
+                    data_pfes.push([xAxisData_[j], data_.pfes[j]]);
+                    data_enes.push([xAxisData_[j], data_.enes[j]]);
+                }
+
                 var series_0 = {
                     name: "EPE",
-                    data: data_.epes
+                    data: data_epes
                 }
                 var series_1 = {
                     name: "PFE",
-                    data: data_.pfes
+                    data: data_pfes
                 }
                 var series_2 = {
                     name: "ENE",
-                    data: data_.enes
+                    data: data_enes
                 }
                 var series_ = [];
                 series_.push(series_0);
@@ -311,32 +325,47 @@ var LINECharts = (function () {
                 });
                 var localOptions_ = exposure_profile_options;
                 localOptions_.legend.data = data_.name;
-                localOptions_.xAxis[0].data = xAxisData_;
+                // localOptions_.xAxis[0].data = xAxisData_;
                 localOptions_.series = series_;
                 chart_.setOption(localOptions_, true);
 
             } else {
-                // yuk
                 var xAxisData_ = data_.dates;
+
+
+                var data_npvs = [];
+                var data_ces = [];
+                var data_eepes = [];
+                var data_tes = [];
+
+                // merge in the dates with the data for x axis labels
+                for (var j = 0;j< xAxisData_.length;j++){
+                    xAxisData_[j] = moment(xAxisData_[j], 'YYYYMMDD').toDate();
+                    data_npvs.push([xAxisData_[j], data_.npvs[j]]);
+                    data_ces.push([xAxisData_[j], data_.ces[j]]);
+                    data_eepes.push([xAxisData_[j], data_.eepes[j]]);
+                    data_tes.push([xAxisData_[j], data_.tes[j]]);
+                }
 
                 var series_0 = {
                     name: "NPV",
-                    data: data_.npvs
+                    data: data_npvs
                 }
                 var series_1 = {
                     name: "CE",
-                    data: data_.ces
+                    data: data_ces
                 }
                 var series_2 = {
                     name: "EEPE",
-                    data: data_.eepes
+                    data: data_eepes
                 }
                 var series_3 = {
                     name: "Total",
-                    data: data_.tes
+                    data: data_tes
                 }
 
                 var series_ = []
+                // series_.push({name: 'dates', data: xAxisData_});
                 series_.push(series_0);
                 series_.push((series_1));
                 series_.push((series_2));
@@ -359,7 +388,7 @@ var LINECharts = (function () {
 
                 var localOptions_ = total_exposure_options;
                 localOptions_.legend.data = data_.name;
-                localOptions_.xAxis[0].data = xAxisData_;
+                // localOptions_.xAxis[0].data = xAxisData_;
                 localOptions_.series = series_;
                 chart_.setOption(localOptions_, true);
             }
@@ -508,7 +537,9 @@ var DONUTCharts = (function () {
                 var p_ = chartManager.getGraphData(args, elem.metric,'xva');
                 chartManager.initChart(elem.name, options, p_, setNewData);
                 p_.then(function(res){
-                    document.getElementsByName(elem.name)[0].innerText = elem.text + ' : '+ numeral(chartManager.getSumOfArrayValues(res.data)).format('(0.00a)');
+                    var titleText_ = elem.text + " : " + chartManager.getBaseCcy() + ' ' + numeral(chartManager.getSumOfArrayValues(res.data)).format('(0.00a)');
+                    document.getElementsByName(elem.name)[0].innerText = titleText_;
+                    // document.getElementsByName(elem.name)[0].innerText = elem.text + ' : '+ numeral(chartManager.getSumOfArrayValues(res.data)).format('(0.00a)');
                 });
 
             });
