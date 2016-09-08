@@ -206,7 +206,11 @@ var chartManager = {
             })
     },
     getBaseCcy: function(){
-        var ccy_ = sessionStorage.getItem('baseccy') || chartManager.setBaseCcy();
+
+        var ccy_ = sessionStorage.getItem('baseccy');
+        if (isNullOrUndefined(ccy_)){
+            ccy_ = Promise.resolve(chartManager.setBaseCcy());
+        }
         var symbol_ = filter(currencyMap, function(elem){return elem.ccy === ccy_;})[0].symbol;
         return symbol_;
     },

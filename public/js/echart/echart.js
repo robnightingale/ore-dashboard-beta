@@ -134,7 +134,7 @@ var LINECharts = (function () {
             },
             tooltip: {
                 trigger: 'axis',
-                // formatter: lineChartTooltipFormatter
+                formatter: lineChartTooltipFormatter
             },
             legend: {
                 x: 140,
@@ -210,7 +210,7 @@ var LINECharts = (function () {
             },
             tooltip: {
                 trigger: 'axis',
-                // formatter: lineChartTooltipFormatter
+                formatter: lineChartTooltipFormatter
             },
             legend: {
                 x: 220,

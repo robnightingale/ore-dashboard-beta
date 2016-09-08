@@ -4092,36 +4092,41 @@ function cloneCanvas(oldCanvas) {
 
 function lineChartTooltipFormatter(params, ticket, callback) {
     // console.debug(params);
-    var res = moment(params[0].name).format('DD-MM-YYYY') + '<br/>';
+    var symbol_ = chartManager.getBaseCcy();
+    var res = moment(params[0].value[0]).format('DD-MM-YYYY') + '<br/>';
     for (var i = 0, l = params.length; i < l; i++) {
 
         var colorEl = '<span style="display:inline-block;margin-right:5px;'
             + 'border-radius:10px;width:9px;height:9px;background-color:' + params[i].color + '"></span>';
 
-        res += colorEl + ' '+ params[i].seriesName + ' : ' + numeral(params[i].value).format('(0,0)') + '<br/>';
+        res += colorEl + ' '+ params[i].seriesName + ' : ' + symbol_ + ' ' + numeral(params[i].value[1]).format('(0,0)') + '<br/>';
     }
     return res;
 }
 
 function donutChartTooltipFormatter(params, ticket, callback) {
     // console.debug(params);
+    var symbol_ = chartManager.getBaseCcy();
+
     var res = '';
     var colorEl = '<span style="display:inline-block;margin-right:5px;'
         + 'border-radius:10px;width:9px;height:9px;background-color:' + params.color + '"></span>';
 
-    res += colorEl + ' ' + params.name + ' : ' + numeral(params.value).format('(0,0)') + ' : ' + params.percent + '%<br/>';
+    res += colorEl + ' ' + params.name + ' : ' + symbol_ + ' ' + numeral(params.value).format('(0,0)') + ' : ' + params.percent + '%<br/>';
     return res;
 }
 
 function barChartTooltipFormatter(params, ticket, callback) {
     // console.debug(params);
     var res = ''; //'Total : ' + tot_;
+    var symbol_ = chartManager.getBaseCcy();
+
     for (var i = 0, l = params.length; i < l; i++) {
 
         var colorEl = '<span style="display:inline-block;margin-right:5px;'
             + 'border-radius:10px;width:9px;height:9px;background-color:' + params[i].color + '"></span>';
 
-        res += colorEl + ' '+ params[i].name + ' : ' + numeral(params[i].value).format('(0,0)') + '<br/>';
+        res += colorEl + ' '+ params[i].name + ' : ' + symbol_ + ' ' + numeral(params[i].value).format('(0,0)') + '<br/>';
     }
     return res;
 }
