@@ -234,6 +234,7 @@ var chartManager = {
                     sel.appendChild(fragment);
 
                     sessionStorage.setItem('businessDate', businessDates.options[0].value );
+                    return 'done';
 
                 }).catch(function (e) {
                     return Promise.reject(new Error(e));

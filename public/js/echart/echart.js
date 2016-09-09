@@ -49,7 +49,7 @@ var BARCharts = (function () {
                 type: 'value',
                 boundaryGap: false,
                 axisLabel:{interval: 'auto', formatter: function(value){
-                    return numeral(value).format('(0a)');
+                    return numeral(value).format('(0.0a)');
                 }},
 
             }],
