@@ -7,33 +7,36 @@
 "use strict";
 
 var load_ = function () {
-    console.log('[INFO] ORE Dashboard.init');
-
     // load the page
     // build business date list
     // initialise all the charts
     // attach change event handlers to the dropdown controls
+    console.log('[INFO] ORE Dashboard.init');
 
-    Promise.resolve(chartManager.populateBusinessDates())
-        .then(function (res) {
-            chartManager.setBaseCcy();
-            chartManager.resetPageDefaults()
-        }).then(function (res) {
+    var pDates_ = chartManager.populateBusinessDates();
+    var pCcy_ = chartManager.setBaseCcy();
 
-        chartManager.initAllCharts();
+    return Promise.all([pDates_, pCcy_]).then(function (values) {
+        console.log('[INFO] bus date calls and base ccy complete');
+        // when the bus date and base ccy rest calls have resolved
+        // reset the page defaults and init the charts
+        return chartManager.initAllCharts();
+        // return 'done';
+    }).then(function (res) {
+        console.log('[INFO] init charts complete');
+        chartManager.resetPageDefaults();
         // add a change event handler to all the dropdown controls
         var nodes = document.getElementsByClassName('selectpicker');
         [].forEach.call(nodes, function (e) {
             _AttachEvent(e, 'change', chartManager.setItem);
         });
 
+        // for each bar graph selector, populate the choices listz
+        // and add a change event handler
         [].forEach.call(document.getElementsByClassName('selectpicker-bg'), function (e) {
-            // for each bar graph selector, populate the choices list
             chartManager.populateBarGraphMetricList(e);
-            // and add a change event handler
             _AttachEvent(e, 'change', chartManager.setBGMetric);
         });
-        chartManager.setBGMetricDefaults();
 
         // add a click event handler to the radio buttons for credit rating/counterparty etc
         [].forEach.call($('label[name^="option"]'), function (e) {
@@ -43,9 +46,10 @@ var load_ = function () {
         // add a click event handler to the breadcrumb for credit rating/counterparty etc
         [].forEach.call($('ol[id^="periscope"]'), function (e) {
             _AttachEvent(e, 'click', chartManager.breadcrumbClick);
-        })
+        });
 
-        $('#xva-zoom').on('shown.bs.modal', function(e){
+        // function to zoom a xva graph
+        $('#xva-zoom').on('shown.bs.modal', function (e) {
             var graphId = $(e.relatedTarget).data('id');
             var args = {
                 date: chartManager.getBusinessDate(),
@@ -54,11 +58,18 @@ var load_ = function () {
                 level: chartManager.getDrillDownLevel()[0].level
             };
 
-            var p_ = chartManager.getGraphData(args, graphId,'xva');
+            var p_ = chartManager.getGraphData(args, graphId, 'xva');
             chartManager.initChart('donut_xva', DONUTCharts.getInstance().getDefaults, p_, DONUTCharts.getInstance().setNewData);
         });
+        return 'done';
 
-    });
+    }).then(function (res) {
+        chartManager.setBGMetricDefaults();
+        return 'done';
+    })
+        .catch(function (error) {
+            console.error(new Error(error));
+        });
 
     console.log('[INFO] ORE Dashboard init completed');
 }
@@ -146,21 +157,22 @@ var xvaGraphs = [
 var chartManager = {
 
     initAllCharts: function(){
-        LINECharts.getInstance().initAllCharts();
-        BARCharts.getInstance().initAllCharts();
-        DONUTCharts.getInstance().initAllCharts();
-        RISKGauge.getInstance().initAllCharts();
-        drillDownStack = [];
+            LINECharts.getInstance().initAllCharts();
+            BARCharts.getInstance().initAllCharts();
+            DONUTCharts.getInstance().initAllCharts();
+            RISKGauge.getInstance().initAllCharts();
+            drillDownStack = [];
+        return Promise.resolve('done');
     },
     initChart: function (chartTagName_, options, data_, fnLoadData_) {
         // once data is resolved, render it
-        Promise.resolve(data_).then(function(res){
+        return Promise.resolve(data_).then(function(res){
             // console.debug( chartTagName_, data_ );
-
             var theChart_ = echarts.init(document.getElementById(chartTagName_), theme);
             theChart_.setOption(options);
             theChart_.on('click', chartManager.drilldownChartClick);
             fnLoadData_(theChart_, res);
+            return ['done', 'initChart', chartTagName_];
         });
     },
     getChartInstanceFromDivId: function (chartTagName_) {
@@ -206,7 +218,6 @@ var chartManager = {
             })
     },
     getBaseCcy: function(){
-
         var ccy_ = sessionStorage.getItem('baseccy');
         if (isNullOrUndefined(ccy_)){
             ccy_ = Promise.resolve(chartManager.setBaseCcy());
@@ -443,6 +454,7 @@ var chartManager = {
         });
     }
     , resetPageDefaults : function(){
+        // set all bus dates to the first item in the list
         var nodes = document.getElementsByClassName('selectpicker');
         [].forEach.call(nodes,function(e){
             e.selectedIndex = 0;
@@ -494,8 +506,10 @@ var chartManager = {
         default_[0].metric = target.value.toLowerCase();
     }
     , getDrillDownLevel : function() {
+        // get the level stored in the sessionStorage
+        var storedLevel_ = +sessionStorage.getItem('level') || 0;
         return filter(drilldownLevels, function(elem) {
-            return elem.level == +sessionStorage.getItem('level');
+            return elem.level == storedLevel_;
         });
     }
     , getDrillDownLevelAsInteger : function(){
@@ -541,7 +555,7 @@ var chartManager = {
         var listItem = document.createElement('li');
         listItem.className="breadcrumb-item";
         var a = document.createElement('a');
-        a.href="#";
+        a.href="index.html";
         a.id = "crumb";
         a.setAttribute('data-hierarchy', 'total');
         a.setAttribute('data-item', 'Total');
