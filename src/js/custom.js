@@ -420,6 +420,18 @@ function donutChartTooltipFormatter(params, ticket, callback) {
     return res;
 }
 
+function riskGuageTooltipFormatter(params, ticket, callback) {
+    // console.debug(params);
+    var symbol_ = chartManager.getBaseCcy();
+
+    var res = '';
+    var colorEl = '<span style="display:inline-block;margin-right:5px;'
+        + 'border-radius:10px;width:9px;height:9px;background-color:' + params.color + '"></span>';
+
+    res += colorEl + ' ' + params.name + ' : ' + symbol_ + ' ' + numeral(params.value).format('(0,0)') + ' : ' + params.percent + '%<br/>';
+    return res;
+}
+
 function barChartTooltipFormatter(params, ticket, callback) {
     // console.debug(params);
     var res = ''; //'Total : ' + tot_;

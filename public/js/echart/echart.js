@@ -13,14 +13,26 @@ var BARCharts = (function () {
         function setNewData(chart_, data_) {
             var localOptions_ = options;
 
+            var dataStyle = {
+                normal: {
+                    label : {
+                        show: true,
+                        position: 'insideLeft',
+                        formatter: '{b}'
+                    }
+                }
+            };
+
             localOptions_.series = [{
+                    itemStyle: dataStyle,
                     type: data_.seriesType,
                     data: data_.yaxisValues,
                     name: data_.seriesName
                 }];
             localOptions_.title = [{text: data_.title, subtext: data_.subTitleText}];
-            localOptions_.legend.data = data_.yaxisLabels;
+            // localOptions_.legend.data = data_.yaxisLabels;
             localOptions_.yAxis[0].data = data_.yaxisLabels;
+            localOptions_.yAxis[0].axisLabel = {show:false};
 
             chart_.setOption(localOptions_, true);
         }
@@ -58,9 +70,9 @@ var BARCharts = (function () {
                 boundaryGap: true,
                 axisLabel: {
                     interval: 'auto'
-                    // , formatter: function (value) {
-                    //     return value;
-                    // }
+                    , formatter: function (value) {
+                        return value;
+                    }
                 },
                 data: []
             }],
@@ -70,15 +82,15 @@ var BARCharts = (function () {
         function initialiseAllCharts() {
             // set the initial entry point to 'Total' level
             var args = {
-                date: chartManager.getBusinessDate(),
+                mode: chartManager.getMode(),
                 hierarchy: chartManager.getHierarchy(),
-                item: 'Total',
-                level: chartManager.getDrillDownLevel()[0].level
+                node: chartManager.getNode()
             };
 
             barGraphs.forEach(function(elem){
-                var p_ = chartManager.getGraphData(args, elem.metric,'bargraph');
-                chartManager.initChart(elem.id, options, p_, setNewData);
+                var p_ = chartManager.getGraphData(args, elem.metric, 'bargraph');
+                var clickable = chartManager.getDrillDownLevel() < 3;
+                chartManager.initChart(elem.id, options, p_, setNewData, clickable);
 
                 p_.then(function(res){
                     // lookup the category in the chartCategories array
@@ -397,22 +409,20 @@ var LINECharts = (function () {
         function initialiseAllCharts() {
             StackTrace.get().then(StackTraceCallback).catch(StackTraceErrback);
             var args = {
-                date: chartManager.getBusinessDate(),
-                hierarchy: 'total',
-                item: 'Total',
-                level: chartManager.getDrillDownLevel()[0].level
+                mode: chartManager.getMode(),
+                hierarchy: chartManager.getHierarchy(),
+                node: chartManager.getNode()
             };
             var totexp_ = chartManager.getGraphData(args, '', 'totalexposure');
             var exp_ = chartManager.getGraphData(args, '', 'exposure');
 
             return Promise.all([totexp_, exp_]).then(function (values) {
-                chartManager.initChart('line_total_exposure', total_exposure_options, totexp_, setNewData);
-                chartManager.initChart('line_exposure_profile', exposure_profile_options, exp_, setNewData);
+                chartManager.initChart('line_total_exposure', total_exposure_options, totexp_, setNewData, false);
+                chartManager.initChart('line_exposure_profile', exposure_profile_options, exp_, setNewData, false);
                 return 'done';
             }).catch(function(error){
                 console.error(new Error(error));
             })
-
         }
 
         function loadData(chart_, data_) {
@@ -527,19 +537,17 @@ var DONUTCharts = (function () {
 
         function initialiseAllCharts() {
             var args = {
-                date: chartManager.getBusinessDate(),
+                mode: chartManager.getMode(),
                 hierarchy: chartManager.getHierarchy(),
-                item: 'Total',
-                level: chartManager.getDrillDownLevel()[0].level
+                node: chartManager.getNode()
             };
 
             xvaGraphs.forEach(function(elem){
                 var p_ = chartManager.getGraphData(args, elem.metric,'xva');
-                chartManager.initChart(elem.name, options, p_, setNewData);
+                chartManager.initChart(elem.name, options, p_, setNewData, true);
                 p_.then(function(res){
-                    var titleText_ = elem.text + " : " + chartManager.getBaseCcy() + ' ' + numeral(chartManager.getSumOfArrayValues(res.data)).format('(0.00a)');
+                    var titleText_ = elem.text + " : " + chartManager.getBaseCcy() + ' ' + numeral(res.sum).format('(0.00a)');
                     document.getElementsByName(elem.name)[0].innerText = titleText_;
-                    // document.getElementsByName(elem.name)[0].innerText = elem.text + ' : '+ numeral(chartManager.getSumOfArrayValues(res.data)).format('(0.00a)');
                 });
 
             });
@@ -703,7 +711,7 @@ var RISKGauge = (function () {
         }
 
         function initialiseAllCharts() {
-            chartManager.initChart('echart_guage', options, [], setNewData);
+            chartManager.initChart('echart_gauge', options, [], setNewData, false);
         }
 
         function loadData(chart_, data_) {
