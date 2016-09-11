@@ -69,6 +69,9 @@ var load_ = function() {
 
             var p_ = chartManager.getGraphData(args, graphId, 'xva');
             chartManager.initChart('donut_xva', DONUTCharts.getInstance().getDefaults, p_, DONUTCharts.getInstance().setNewData, false);
+
+            var parentHeader = document.getElementsByName('donut_' + graphId)[0];
+            document.getElementById('myModalLabel2').innerText = parentHeader.innerText;
         });
         return 'done';
 

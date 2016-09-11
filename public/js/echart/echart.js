@@ -18,7 +18,10 @@ var BARCharts = (function () {
                     label : {
                         show: true,
                         position: 'insideLeft',
-                        formatter: '{b}'
+                        formatter: '{b}',
+                        textStyle : {
+                            color: 'black'
+                        }
                     }
                 }
             };
