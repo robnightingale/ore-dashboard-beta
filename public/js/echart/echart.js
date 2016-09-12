@@ -87,7 +87,9 @@ var BARCharts = (function () {
             var args = {
                 mode: chartManager.getMode(),
                 hierarchy: chartManager.getHierarchy(),
-                node: chartManager.getNode()
+                node: chartManager.getNode(),
+                xvaHierarchy: chartManager.getHierarchy(),
+                xvaNode: chartManager.getNode()
             };
 
             barGraphs.forEach(function(elem){
@@ -384,7 +386,7 @@ var LINECharts = (function () {
                 series_.push(series_0);
                 series_.push((series_1));
                 series_.push((series_2));
-                series_.push((series_3));
+                // series_.push((series_3));
 
                 series_.forEach(function (elem) {
                     // only add marklines for exposure profile graph
@@ -414,7 +416,9 @@ var LINECharts = (function () {
             var args = {
                 mode: chartManager.getMode(),
                 hierarchy: chartManager.getHierarchy(),
-                node: chartManager.getNode()
+                node: chartManager.getNode(),
+                xvaHierarchy: chartManager.getHierarchy(),
+                xvaNode: chartManager.getNode()
             };
             var totexp_ = chartManager.getGraphData(args, '', 'totalexposure');
             var exp_ = chartManager.getGraphData(args, '', 'exposure');
@@ -542,7 +546,9 @@ var DONUTCharts = (function () {
             var args = {
                 mode: chartManager.getMode(),
                 hierarchy: chartManager.getHierarchy(),
-                node: chartManager.getNode()
+                node: chartManager.getNode(),
+                xvaHierarchy: chartManager.getHierarchy(),
+                xvaNode: chartManager.getNode()
             };
 
             xvaGraphs.forEach(function(elem){

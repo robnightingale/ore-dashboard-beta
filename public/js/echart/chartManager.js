@@ -55,16 +55,16 @@ var load_ = function() {
 
             if (1 == chartManager.getMode())
                 // if we are in hierarchy view then use the selected hierarchy.
-                var hierarchy = chartManager.getHierarchy();
+                var xvaHierarchy = chartManager.getHierarchy();
             else
                 // if we are in tree view then use the hierarchy above
                 // (that of the parent node whose children the dashboard is displaying).
-                var hierarchy = drilldownLevels[chartManager.getDrillDownLevel()-1].name;
+                var xvaHierarchy = drilldownLevels[chartManager.getDrillDownLevel()-1].name;
 
             var args = {
                 mode: chartManager.getMode(),
-                hierarchy: hierarchy,
-                node: chartManager.getNode()
+                xvaHierarchy: xvaHierarchy,
+                xvaNode: chartManager.getNode()
             };
 
             var p_ = chartManager.getGraphData(args, graphId, 'xva');
@@ -166,8 +166,6 @@ var chartManager = {
     , initChart: function(chartTagName_, options, data_, fnLoadData_, clickable) {
         // once data is resolved, render it
         return Promise.resolve(data_).then(function(res){
-            // console.debug( chartTagName_, data_ );
-
             var theChart_ = echarts.init(document.getElementById(chartTagName_), theme);
             theChart_.setOption(options);
             if (clickable)
@@ -315,7 +313,7 @@ var chartManager = {
             if ('bargraph' === args_.chartType) {
                 return '/api/bargraph/' + args_.date + '/' + args_.hierarchy + '/' + args_.metric;
             } else if ('xva' === args_.chartType) {
-                return '/api/xva/' + args_.date + '/' + args_.hierarchy + '/' + args_.metric;
+                return '/api/xva/' + args_.date + '/' + args_.xvaHierarchy + '/' + args_.metric;
             } else if ('exposure' === args_.chartType) {
                 // exposure does not support hierarchy view, just display the root node.
                 return '/api/exposure-tree/' + args_.date + '/total/Total';
@@ -330,7 +328,7 @@ var chartManager = {
             if ('bargraph' === args_.chartType) {
                 return '/api/bargraph-tree/' + args_.date + '/' + args_.hierarchy + '/' + args_.node + "/" + args_.metric;
             } else if ('xva' === args_.chartType) {
-                return '/api/xva-tree/' + args_.date + '/' + args_.hierarchy + '/' + args_.node + "/" + args_.metric;
+                return '/api/xva-tree/' + args_.date + '/' + args_.xvaHierarchy + '/' + args_.xvaNode + "/" + args_.metric;
             } else if ('exposure' === args_.chartType) {
                 return '/api/exposure-tree/' + args_.date + '/' + args_.hierarchy + '/' + args_.node;
             } else if ('totalexposure' === args_.chartType) {
@@ -389,17 +387,14 @@ var chartManager = {
             });
         });
 
-        // Only rerender donut graphs if a) hierarchy mode, nettingset or above or b) tree mode, counterparty or above
-        if ((1 == args.mode && chartManager.getDrillDownLevel() < 3) || (2 == args.mode && chartManager.getDrillDownLevel() < 2)) {
-            xvaGraphs.forEach(function(elem) {
-                var p_ = chartManager.getGraphData(args, elem.metric, 'xva');
-                p_.then(function(res) {
-                    chartManager.initChart(elem.name, xvInstance.getDefaults, p_, xvInstance.setNewData, true);
-                    var titleText_ = elem.text + " : " + chartManager.getBaseCcy() + ' ' + numeral(res.sum).format('(0.00a)');
-                    document.getElementsByName(elem.name)[0].innerText = titleText_;
-                });
+        xvaGraphs.forEach(function(elem) {
+            var p_ = chartManager.getGraphData(args, elem.metric, 'xva');
+            p_.then(function(res) {
+                chartManager.initChart(elem.name, xvInstance.getDefaults, p_, xvInstance.setNewData, true);
+                var titleText_ = elem.text + " : " + chartManager.getBaseCcy() + ' ' + numeral(res.sum).format('(0.00a)');
+                document.getElementsByName(elem.name)[0].innerText = titleText_;
             });
-        }
+        });
 
         var totexp_ = chartManager.getGraphData(args, '', 'totalexposure');
         totexp_.then(function(res) {
@@ -457,19 +452,10 @@ var chartManager = {
             // rerender the dashboard with the new date
             // without changing the selected hierarchy.
 
-            if (1 == chartManager.getMode())
-                // if we are in hierarchy view then use the selected hierarchy.
-                var hierarchy = chartManager.getHierarchy();
-            else
-                // if we are in tree view then use the hierarchy above
-                // (that of the parent node whose children the dashboard is displaying).
-                var hierarchy = drilldownLevels[chartManager.getDrillDownLevel()-1].name;
-
             var args = {
                 mode: chartManager.getMode(),
-                hierarchy: hierarchy,
-                node: chartManager.getNode(),
-                drillDown : false
+                level: chartManager.getDrillDownLevel(),
+                node: chartManager.getNode()
             };
             // Reload the page with the new business date.
             chartManager.drillDown(args);
@@ -502,35 +488,57 @@ var chartManager = {
     , setDrilldownMenu : function(level) {
         $('input:radio')[level].checked = true;
         $($('label[name^="option"]')[level]).button('toggle');
-        chartManager.setDrillDownLevel(level);
     }
-// Function drillDown: Rerender the dashboard, then maybe drill down on the selected node after.
+// Function drillDown:  Rerender the dashboard.
+//                      Whether or not this actually drills down depends on whether the caller incremented the level.
 //
 //  var args = {
 //      mode: xxx,          1=hierarchy (view all nodes in selected level) 2=tree (view children of selected node)
-//      hierarchy: xxx,     if mode=1, this is the selected hierarchy, if mode=2 this is the hierarchy of the parent node
+//      level: xxx,         The level of the hierarchy to be displayed.
 //      node: xxx,          if mode=1, this value is ignored and should be set to '', if node=2 this is the selected node
-//      drillDown : xxx     if mode=2 you can set this to true to drill down on the selected node after the rerender
 //  };
     , drillDown : function(args) {
-        // the key value from the graph that was clicked - the data point
-        Promise.resolve(chartManager.refreshGraphs(args)).then(function(res) {
-            if (args.drillDown) {
-                // if a user clicked the graph, bring the menu into line
-                var level = +chartManager.getDrillDownLevel();
-                level++;
-                chartManager.setDrilldownMenu(level);
-            }
-        });
-    }
-    , updateBreadcrumb : function(args) {
-        // get the parent tree JSON
-        var url_ = '/api/periscope/' + args.hierarchy  + '/' + args.node;
-        var parentTree = chartManager.getDataFromRestCall(url_);
-        parentTree.then(function(res) {
-            // draw the bread crumb items
-            chartManager.setCrumbs(res);
-        });
+
+        // Save the new state.
+        chartManager.setMode(args.mode);
+        chartManager.setDrillDownLevel(args.level);
+        chartManager.setNode(args.node);
+
+        if (1 == args.mode) {
+            // Hierarchy view - display all nodes in selected level.
+            args.hierarchy = chartManager.getHierarchy();
+            // Donut graphs don't go below nettingset level.
+            args.xvaHierarchy = 'trade' == args.hierarchy ? 'nettingset' : args.hierarchy;
+            // Delete the breadcrumbs.
+            chartManager.resetCrumbs();
+            // Rerender the page.
+            chartManager.refreshGraphs(args);
+        } else {
+            // Tree view - display all children of selected node.
+            // Get the hierarchy to which the parent node belongs.
+            args.hierarchy = drilldownLevels[chartManager.getDrillDownLevel()-1].name;
+            // Mark the corresponding radio button as pressed (hierarchy view).
+            chartManager.setDrilldownMenu(args.level);
+            // Retrieve the stack leading to the selected node.
+            var url_ = '/api/periscope/' + args.hierarchy  + '/' + args.node;
+            chartManager.getDataFromRestCall(url_).then(function(res) {
+                // Donut graphs don't go below nettingset level.
+                if (res.length > 1) {
+                    // Set the donut graph hierarchy to "counterparty":
+                    args.xvaHierarchy = res[1].hierarchy;
+                    // Set the donut graph node to whichever counterparty is the parent of the selected node:
+                    args.xvaNode = res[1].item;
+                } else {
+                    // We are at nettingset level or above, so the donut graphs just display the selected node:
+                    args.xvaHierarchy = args.hierarchy;
+                    args.xvaNode = args.node;
+                }
+                // Update the breadcrumbs.
+                chartManager.setCrumbs(res);
+                // Rerender the page.
+                chartManager.refreshGraphs(args);
+            });
+        };
     }
     , resetCrumbs : function() {
         var bcList = document.getElementById('periscope');
@@ -581,20 +589,14 @@ var chartManager = {
 
         var mode = 2;
         var node = target.getAttribute('data-item');
-        var level = target.getAttribute('data-level');
+        var level = Math.min(+target.getAttribute('data-level') + 1, 3);
         //var hierarchy = target.getAttribute('data-hierarchy');
-
-        chartManager.setMode(mode);
-        chartManager.setNode(node);
-        chartManager.setDrillDownLevel(level);
 
         var args = {
             mode: mode,
-            hierarchy: chartManager.getHierarchy(),
-            node: node,
-            drillDown : true
+            level: level,
+            node: node
         };
-        chartManager.updateBreadcrumb(args);
         chartManager.drillDown(args);
     }
     , drilldownMenuClick : function(evt) {
@@ -605,21 +607,11 @@ var chartManager = {
         evt = evt || window.event;
         var target = evt.target || evt.srcElement;
 
-        var mode = 1;
-        var level = target.children[0].value;
-        var node = '';
-
-        chartManager.setMode(mode);
-        chartManager.setDrillDownLevel(level);
-        chartManager.setNode(node);
-
         var args = {
-            mode: mode,
-            hierarchy: chartManager.getHierarchy(),
-            node: node,
-            drillDown : false
+            mode: 1,
+            level: target.children[0].value,
+            node: ''
         };
-        chartManager.resetCrumbs();
         chartManager.drillDown(args);
     }
     , drilldownChartClick : function(evt) {
@@ -629,33 +621,13 @@ var chartManager = {
 
         evt = evt || window.event;
 
-        var mode = 2;
-        var node = evt.name;
-
-        if (3 == chartManager.getDrillDownLevel()) {
-            // We are already at the lowest hierarchy (trade).
-            // The user has selected a netting set from the donut graph.
-            // Display the children of the selected netting set,
-            // without drilling down further.
-            var hierarchy = drilldownLevels[2].name;    // nettingset
-            var drillDown = false;
-        } else {
-            // We are not yet at the bottom of the tree,
-            // so drill down on the selected node.
-            var hierarchy = chartManager.getHierarchy();
-            var drillDown = true;
-        }
-
-        chartManager.setMode(mode);
-        chartManager.setNode(node);
+        var level = Math.min(chartManager.getDrillDownLevel() + 1, 3);
 
         var args = {
-            mode: mode,
-            hierarchy: hierarchy,
-            node: node,
-            drillDown : drillDown
+            mode: 2,
+            level: level,
+            node: evt.name
         };
-        chartManager.updateBreadcrumb(args);
         chartManager.drillDown(args);
     }
 }
