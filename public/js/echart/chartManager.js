@@ -39,6 +39,11 @@ var load_ = function() {
             _AttachEvent(e, 'change', chartManager.setBGMetric);
         });
 
+        [].forEach.call(document.getElementsByClassName('selectpicker-riskgauge'), function(e) {
+            chartManager.populateBarGraphMetricList(e);
+            _AttachEvent(e, 'change', chartManager.setRiskGaugeMetric);
+        });
+
         // add a click event handler to the radio buttons for credit rating/counterparty etc
         [].forEach.call($('label[name^="option"]'), function(e) {
             _AttachEvent(e, 'click', chartManager.drilldownMenuClick);
@@ -145,8 +150,13 @@ var barGraphs = [
     {id: 'bar_6', name: 'bar6', metric: 'cva', text: ''}
 ];
 
+var riskGauge = [
+    {id: 'gauge_1', name: 'gauge1', metric: 'ce', text: ''},
+];
+
 // deep copy clone
 var userBarGraphs = JSON.parse(JSON.stringify(barGraphs));
+var userRiskGauges = JSON.parse(JSON.stringify(riskGauge));
 
 var xvaGraphs = [
     {id: 'donut_cva', name: 'donut_cva', metric: 'cva', text: 'CVA'},
@@ -173,8 +183,11 @@ var chartManager = {
             fnLoadData_(theChart_, res);
             return ['done', 'initChart', chartTagName_];
         });
-    }
-   , getDataFromRestCall: function(url_) {
+    },
+    getChartInstanceFromDivId: function (chartTagName_) {
+        return echarts.getInstanceByDom(document.getElementById(chartTagName_));
+    },
+    getDataFromRestCall: function(url_) {
 
         var req_ = new Request({
                 headers: {
@@ -269,6 +282,29 @@ var chartManager = {
             console.error(new Error(e));
         }
     }
+    , tickleRiskGauge : function(evt) {
+        if (isNullOrUndefined(evt))
+            return;
+
+        evt = evt || window.event;
+        var target = evt.target || evt.srcElement;
+
+        // refresh the single chart with the right metric
+        // redraw the gauge with a new metric
+        var gaugeInstance = RISKGauge.getInstance();
+        var graphId_ = filter(riskGauge, function(elem){return elem.name == target.name})[0].id;
+        var metric_ = chartManager.getRiskGaugeMetric(target.name);
+
+        if (1 == chartManager.getMode())
+            var hierarchy = chartManager.getHierarchy();
+        else
+            var hierarchy = drilldownLevels[chartManager.getDrillDownLevel()-1].name;
+
+        var limit =  (Math.random()*100).toFixed(2) - 0;
+        var value =  (Math.random()*100).toFixed(2) - 0;
+        var data = {limit: limit, value : value, name: target.name};
+        chartManager.initChart('gauge_1', gaugeInstance.getDefaults, data, gaugeInstance.setNewData, false);
+    }
     , flipChart : function(evt) {
         if (isNullOrUndefined(evt))
             return;
@@ -354,6 +390,10 @@ var chartManager = {
     }
     , getBarGraphMetric : function(id_) {
         var default_ = filter(barGraphs, function(elem){return elem.name == id_});
+        return (sessionStorage.getItem(id_) || default_[0].metric).toLowerCase();
+    }
+    , getRiskGaugeMetric : function(id_) {
+        var default_ = filter(riskGauge, function(elem){return elem.name == id_});
         return (sessionStorage.getItem(id_) || default_[0].metric).toLowerCase();
     }
     , getGraphData : function(args, metric_, chartType_) {
@@ -473,6 +513,17 @@ var chartManager = {
         var default_ = filter(userBarGraphs, function(elem){return elem.name == target.name});
         default_[0].metric = target.value.toLowerCase();
     }
+    , setRiskGaugeMetric : function(evt) {
+        if (isNullOrUndefined(evt))
+            return;
+
+        evt = evt || window.event;
+        var target = evt.target || evt.srcElement;
+        sessionStorage.setItem(target.name, target.value);
+        chartManager.tickleRiskGauge(evt);
+        var default_ = filter(userRiskGauges, function(elem){return elem.name == target.name});
+        default_[0].metric = target.value.toLowerCase();
+    }
     , setMode : function(m) {
         sessionStorage.setItem('mode', +m);
     }
@@ -513,6 +564,11 @@ var chartManager = {
             chartManager.resetCrumbs();
             // Rerender the page.
             chartManager.refreshGraphs(args);
+
+            // FIXME PROTOTYPE RISK GAUGE TICKLER for DEMO ONLY
+            var evt = {target: {name: 'gauge1', id: 'gauge_1'}};
+            chartManager.tickleRiskGauge(evt);
+
         } else {
             // Tree view - display all children of selected node.
             // Get the hierarchy to which the parent node belongs.
@@ -537,6 +593,11 @@ var chartManager = {
                 chartManager.setCrumbs(res);
                 // Rerender the page.
                 chartManager.refreshGraphs(args);
+
+                // FIXME PROTOTYPE RISK GAUGE TICKLER for DEMO ONLY
+                var evt = {target: {name: 'gauge1', id: 'gauge_1'}};
+                chartManager.tickleRiskGauge(evt);
+
             });
         };
     }

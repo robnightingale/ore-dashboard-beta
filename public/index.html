@@ -20,17 +20,15 @@
     <title>ORE Risk Dashboard</title>
 
     <!-- Bootstrap -->
-    <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" type="text/css" rel="stylesheet">
+    <link href="vendors/bootstrap/dist/css/bootstrap.min.css" type="text/css" rel="stylesheet">
     <!-- Font Awesome -->
-    <link href="../vendors/font-awesome/css/font-awesome.min.css" type="text/css" rel="stylesheet">
+    <link href="vendors/font-awesome/css/font-awesome.min.css" type="text/css" rel="stylesheet">
     <!-- NProgress -->
-    <link href="../vendors/nprogress/nprogress.css" type="text/css" rel="stylesheet">
+    <link href="vendors/nprogress/nprogress.css" type="text/css" rel="stylesheet">
     <!-- iCheck -->
-    <link href="../vendors/iCheck/skins/flat/green.css" type="text/css" rel="stylesheet">
+    <link href="vendors/iCheck/skins/flat/green.css" type="text/css" rel="stylesheet">
     <!-- bootstrap-progressbar -->
-    <link href="../vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.css" type="text/css" rel="stylesheet">
-    <!-- Select2 -->
-    <!--<link href="../vendors/select2/dist/css/select2.min.css" rel="stylesheet">-->
+    <link href="vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.css" type="text/css" rel="stylesheet">
 
     <!-- Custom Theme Style -->
     <link href="css/custom.min.css" type="text/css" rel="stylesheet">
@@ -67,7 +65,7 @@
                         <h3>Live On</h3>
                         <ul class="nav side-menu" style="">
                             <li class=""><a onclick="pdfMe();"><i class="fa fa-download"></i> PDF </span></a></li>
-                            <li class=""><a class="close-link" href="#"><i class="fa fa-table"></i> Limits </a></li>
+                            <li class=""><a class="close-link" href="tables_dynamic.html"><i class="fa fa-table"></i> Limits </a></li>
                             <li class=""><a class="close-link" href="#glossary" data-toggle="modal" data-id="glossary" data-target=".bs-example-modal-sm1"><i class="fa fa-question-circle-o"></i> Glossary </a></li>
                         </ul>
                     </div>
@@ -215,7 +213,7 @@
                         <h2>Risk Gauge</h2>
                         <ul class="nav navbar-right panel_toolbox">
                             <li>
-                                <select class="selectpicker-bg pull-right" id="gauge_" name="gauge" data-toggle="tooltip" data-placement="top" data-title="Select Risk Metric">
+                                <select class="selectpicker-riskgauge pull-right" id="gauge1_" name="gauge1" data-toggle="tooltip" data-placement="top" data-title="Select Risk Metric">
                                     <!-- the options are filled in by Javascript-->
                                 </select>
                             </li>
@@ -224,7 +222,7 @@
                         <div class="clearfix"></div>
                     </div>
                     <div class="x_content">
-                        <div id="echart_gauge" style="height:200px;"></div>
+                        <div id="gauge_1" style="height:280px;"></div>
                     </div>
 
                 </div>
@@ -351,7 +349,7 @@
                         <h4 class="modal-title" id="myModalLabel2">XVA Graph</h4>
                     </div>
                     <div class="modal-body">
-                            <div id="donut_xva" style="height:450px;width:450px"></div>
+                            <div id="donut_xva" style="height:600px;width:550px"></div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -393,43 +391,27 @@
 </div>
 
 <!-- jQuery -->
-<script src="../vendors/jquery/dist/jquery.min.js"></script>
+<script src="vendors/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap -->
-<script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="vendors/bootstrap/dist/js/bootstrap.min.js"></script>
 <!-- FastClick -->
-<script src="../vendors/fastclick/lib/fastclick.js"></script>
+<script src="vendors/fastclick/lib/fastclick.js"></script>
 <!-- NProgress -->
-<script src="../vendors/nprogress/nprogress.js"></script>
-<!-- Select2 -->
-<script src="../vendors/select2/dist/js/select2.full.min.js"></script>
-<!-- ECharts -->
-<script src="../vendors/echarts-3.2.2/dist/echarts.min.js"></script>
-<!--<script src="../vendors/echarts-3.2.2/dist/echarts.js"></script>-->
-<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/3.2.2/echarts.min.js"></script>-->
-
-<!-- DateJS -->
-<script src="../vendors/DateJS/build/date.js"></script>
-<!-- bootstrap-daterangepicker -->
-<script src="js/moment/moment.min.js"></script>
-<script src="js/datepicker/daterangepicker.js"></script>
-
-<script src="../vendors/html2canvas/dist/html2canvas.min.js"></script>
-<script src="../vendors/html2canvas/dist/html2canvas.svg.min.js"></script>
-<script src="../vendors/pdfmake/build/pdfmake.min.js"></script>
+<script src="vendors/nprogress/nprogress.js"></script>
+<script src="vendors/echarts-3.2.3/dist/echarts.min.js"></script>
+<script src="vendors/html2canvas/dist/html2canvas.min.js"></script>
+<script src="vendors/html2canvas/dist/html2canvas.svg.min.js"></script>
+<script src="vendors/pdfmake/build/pdfmake.min.js"></script>
 <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/numeral.js/1.4.5/numeral.min.js"></script>-->
 
-<!-- Custom Theme Scripts -->
+<!-- Custom Themes/Scripts -->
+<script src="js/moment/moment.min.js"></script>
 <script src="js/custom.min.js"></script>
 <script src="js/common/fetch.js"></script>
 
 <script src="js/echart/chart-theme.js"></script>
 <script src="js/echart/echart.js"></script>
 <script src="js/echart/chartManager.js"></script>
-<!--<script src="js/echart/Student.js"></script>-->
-<!--<script src="js/echart/chartController.js"></script>-->
-
-<!-- bootstrap-daterangepicker -->
-<script src="js/bootstrap-date-filter.js"></script>¡
 
 <script language="javascript">
     window.onload = load_;

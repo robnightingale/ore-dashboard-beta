@@ -172,7 +172,7 @@ var LINECharts = (function () {
                             stack: 'Stack',
                             tiled: 'Tiled'
                         },
-                        type: ['line', 'bar', 'stack', 'tiled']
+                        type: ['line', 'bar']
                     },
                     restore: {
                         show: true,
@@ -190,7 +190,6 @@ var LINECharts = (function () {
                 start: 0,
                 end: 100
             },
-            calculable: true,
             xAxis: [{
                 type: 'time',
                 axisLabel:{interval: 'auto', formatter: function(value){
@@ -245,7 +244,7 @@ var LINECharts = (function () {
                             stack: 'Stack',
                             tiled: 'Tiled'
                         },
-                        type: ['line', 'bar', 'stack', 'tiled']
+                        type: ['line', 'bar']
                     },
                     restore: {
                         show: true,
@@ -263,7 +262,6 @@ var LINECharts = (function () {
                 start: 0,
                 end: 100
             },
-            calculable: true,
             xAxis: [{
                 type: 'time',
                 boundaryGap: true,
@@ -332,6 +330,7 @@ var LINECharts = (function () {
                     //     elem.markLine = profile_marklines;
                     elem.type = 'line';
                     elem.smooth = true;
+                    elem.symbolSize = 1;
                     elem.itemStyle = {
                         normal: {
                             areaStyle: {
@@ -353,7 +352,7 @@ var LINECharts = (function () {
                 var data_npvs = [];
                 var data_ces = [];
                 var data_eepes = [];
-                var data_tes = [];
+                //var data_tes = [];
 
                 // merge in the dates with the data for x axis labels
                 for (var j = 0;j< xAxisData_.length;j++){
@@ -361,7 +360,7 @@ var LINECharts = (function () {
                     data_npvs.push([xAxisData_[j], data_.npvs[j]]);
                     data_ces.push([xAxisData_[j], data_.ces[j]]);
                     data_eepes.push([xAxisData_[j], data_.eepes[j]]);
-                    data_tes.push([xAxisData_[j], data_.tes[j]]);
+                    //data_tes.push([xAxisData_[j], data_.tes[j]]);
                 }
 
                 var series_0 = {
@@ -376,10 +375,10 @@ var LINECharts = (function () {
                     name: "EEPE",
                     data: data_eepes
                 }
-                var series_3 = {
-                    name: "Total",
-                    data: data_tes
-                }
+                //var series_3 = {
+                //    name: "Total",
+                //    data: data_tes
+                //}
 
                 var series_ = []
                 // series_.push({name: 'dates', data: xAxisData_});
@@ -394,6 +393,8 @@ var LINECharts = (function () {
                     //     elem.markLine = profile_marklines;
                     elem.type = 'line';
                     elem.smooth = true;
+                    // elem.showAllSymbol= false;
+                    elem.symbolSize = 1;
                     elem.itemStyle = {
                         normal: {
                             areaStyle: {
@@ -507,7 +508,7 @@ var DONUTCharts = (function () {
             series: [{
                 name: '',
                 type: 'pie',
-                radius: ['35%', '55%'],
+                radius: ['40%', '60%'],
                 itemStyle: {
                     normal: {
                         label: {
@@ -599,128 +600,107 @@ var RISKGauge = (function () {
 
         var options = {
             tooltip: {
-                formatter: "{a} <br/>{b} : {c}%"
+                formatter: riskGuageTooltipFormatter
             },
-            toolbox: {
-                show: false,
-                feature: {
-                    restore: {
-                        show: true,
-                        title: "Restore"
+            series: [
+                {
+                    pointer : {
+                        width : 8,
+                        length: '85%',
+                        color: 'black'
                     },
-                    saveAsImage: {
-                        show: true,
-                        title: "Save Image"
-                    }
-                }
-            },
-            series: [{
-                name: 'Risk Gauge',
-                type: 'gauge',
-                center: ['50%', '50%'],
-                startAngle: 240,
-                endAngle: -60,
-                min: 0,
-                max: 100,
-                precision: 0,
-                splitNumber: 10,
-                axisLine: {
-                    show: true,
-                    lineStyle: {
-                        color: [
-                            [0.3, 'lightgreen'],
-                            [0.8, 'orange'],
-                            // [0.8, 'skyblue'],
-                            [1, '#ff4500']
-                        ],
-                        width: 30
-                    }
-                },
-                axisTick: {
-                    show: true,
-                    splitNumber: 5,
-                    length: 8,
-                    lineStyle: {
-                        color: '#eee',
-                        width: 1,
-                        type: 'solid'
-                    }
-                },
-                axisLabel: {
-                    show: true,
-                    formatter: function (v) {
-                        switch (v + '') {
-                            case '10':
-                                return 'a';
-                            case '30':
-                                return 'b';
-                            case '60':
-                                return 'c';
-                            case '90':
-                                return 'd';
-                            default:
-                                return '';
+                    name: 'Risky',
+                    type: 'gauge',
+                    splitNumber: 10,
+                    axisLine: {
+                        lineStyle: {
+                            // rgba green value matches the olive green of the other charts
+                            color: [[0.3, 'rgba(120,178,88,0.5)'], [0.8, 'rgba(255, 150, 0, 0.5)'], [1, 'rgba(255, 69, 0, 0.5)']],
+                            width: 200
                         }
                     },
-                    textStyle: {
-                        color: '#333'
-                    }
-                },
-                splitLine: {
-                    show: true,
-                    length: 30,
-                    lineStyle: {
-                        color: '#eee',
-                        width: 2,
-                        type: 'solid'
-                    }
-                },
-                pointer: {
-                    length: '80%',
-                    width: 8,
-                    color: 'auto'
-                },
-                title: {
-                    show: true,
-                    offsetCenter: ['0%', -140],
-                    textStyle: {
-                        color: '#333',
-                        fontSize: 15
-                    }
-                },
-                detail: {
-                    show: true,
-                    backgroundColor: 'rgba(0,0,0,0)',
-                    borderWidth: 0,
-                    borderColor: '#ccc',
-                    width: 100,
-                    height: 40,
-                    offsetCenter: ['-60%', 110],
-                    formatter: '{value}%',
-                    textStyle: {
-                        color: 'auto',
-                        fontSize: 30
-                    }
-                },
-                data: [{
-                    value: 43
-                }]
-            }]
+                    axisTick: {
+                        splitNumber: 2,
+                        length: 10,
+                        lineStyle: {
+                            color: 'black'
+                        }
+                    },
+                    axisLabel: {
+                        formatter: function (v) {
+                            switch (v + '') {
+                                case '10':
+                                    return 'ok';
+                                case '50':
+                                    return 'warn';
+                                case '90':
+                                    return 'limit';
+                                default:
+                                    return '';
+                            }
+                        },
+                        textStyle: {color: 'black'}
+                    },
+                    splitLine: {
+                        show: true,
+                        length: 20,
+                        lineStyle: {
+                            color: 'black'
+                        }
+                    },
+                    title: {
+                        show: true,
+                        offsetCenter: [0, '-40%'],
+                        textStyle: {
+                            fontWeight: 'bolder'
+                        }
+                    },
+                    detail: {
+                        offsetCenter: ['-5%', 95],
+                        // formatter: riskGaugeLegendFormatter,
+                        formatter: function(value) {
+                            var res = '';
+                            if (value > 90)
+                                res += 'LIMIT BREACH ';
+                            res += numeral(value).format('(0.00)');
+                            res += '%';
+                            return res;
+
+                        },
+                        textStyle: {
+                            color: 'auto',
+                            fontWeight: 'bolder',
+                            fontSize: 20
+                        }
+                    },
+                    data: [{value: 50, name: 'Risk'}]
+                }
+            ]
         };
 
         function setNewData(chart_, data_) {
+
             chart_.setOption({
                 series: [{
-                    data: data_.yaxisValues,
-                    name: data_.title
+                    data: data_.value,
+                    name: data_.name,
+                    lemons: 'poo'
                 }],
-                legend: {data: data_.yaxisLabels}
+                legend: {data: data_.name}
             });
 
         }
 
         function initialiseAllCharts() {
-            chartManager.initChart('echart_gauge', options, [], setNewData, false);
+            var data = {value : (Math.random()*100).toFixed(2) - 0, name: 'Risk'};
+            chartManager.initChart('gauge_1', options, data, setNewData, false);
+            // var timeTicket = setInterval(function (){
+            //     data = {value : (Math.random()*100).toFixed(2) - 0, name: 'Risk'};
+            //     var theChart_ = chartManager.getChartInstanceFromDivId('gauge_1');
+            //     setNewData(theChart_, data);
+            // },2000);
+            // clearInterval(timeTicket);
+
         }
 
         function loadData(chart_, data_) {
