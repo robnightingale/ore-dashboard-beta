@@ -6,6 +6,21 @@
 
 "use strict";
 
+var donutZoom = function(graphId, xvaHierarchy, xvaNode) {
+
+    var args = {
+        mode: chartManager.getMode(),
+        xvaHierarchy: xvaHierarchy,
+        xvaNode: xvaNode
+    };
+
+    var p_ = chartManager.getGraphData(args, graphId, 'xva');
+    chartManager.initChart('donut_xva', DONUTCharts.getInstance().getDefaults, p_, DONUTCharts.getInstance().setNewData, false);
+
+    var parentHeader = document.getElementsByName('donut_' + graphId)[0];
+    document.getElementById('myModalLabel2').innerText = parentHeader.innerText;
+}
+
 var load_ = function() {
     // load the page
     // build business date list
@@ -56,27 +71,34 @@ var load_ = function() {
 
         // function to zoom a xva graph
         $('#xva-zoom').on('shown.bs.modal', function(e) {
+
             var graphId = $(e.relatedTarget).data('id');
 
-            if (1 == chartManager.getMode())
-                // if we are in hierarchy view then use the selected hierarchy.
-                var xvaHierarchy = chartManager.getHierarchy();
-            else
-                // if we are in tree view then use the hierarchy above
-                // (that of the parent node whose children the dashboard is displaying).
-                var xvaHierarchy = drilldownLevels[chartManager.getDrillDownLevel()-1].name;
-
-            var args = {
-                mode: chartManager.getMode(),
-                xvaHierarchy: xvaHierarchy,
-                xvaNode: chartManager.getNode()
-            };
-
-            var p_ = chartManager.getGraphData(args, graphId, 'xva');
-            chartManager.initChart('donut_xva', DONUTCharts.getInstance().getDefaults, p_, DONUTCharts.getInstance().setNewData, false);
-
-            var parentHeader = document.getElementsByName('donut_' + graphId)[0];
-            document.getElementById('myModalLabel2').innerText = parentHeader.innerText;
+            // Determine what parameters to pass to donutZoom().
+            if (1 == chartManager.getMode()) {
+                // HIERARCHY MODE: if the chosen hierarchy is trade then use nettingset instead.
+                var level = Math.min(chartManager.getLevel(), 2);
+                var xvaHierarchy = drilldownLevels[level].name;
+                donutZoom(graphId, xvaHierarchy, '');
+            } else {
+                // TREE MODE: retrieve the stack, if we are below counterparty then use the parent counterparty.
+                // NB: This copies some logic that is also implemented in fuction drillDown() - maybe consolidate?
+                var url_ = '/api/periscope/' + chartManager.getHierarchy()  + '/' + chartManager.getNode();
+                chartManager.getDataFromRestCall(url_).then(function(res) {
+                    // Donut graphs don't go below nettingset level (i.e. displaying the children of a counterparty).
+                    if (res.length > 1) {
+                        // Set the donut graph hierarchy to "counterparty":
+                        var xvaHierarchy = res[1].hierarchy;
+                        // Set the donut graph node to whichever counterparty is the (grand)parent of the selected node:
+                        var xvaNode = res[1].item;
+                    } else {
+                        // We are at nettingset level or above, so the donut graphs just display the selected node:
+                        var xvaHierarchy = chartManager.getHierarchy();
+                        var xvaNode = chartManager.getNode();
+                    }
+                    donutZoom(graphId, xvaHierarchy, xvaNode);
+                });
+            }
         });
         return 'done';
 
@@ -295,10 +317,7 @@ var chartManager = {
         var graphId_ = filter(riskGauge, function(elem){return elem.name == target.name})[0].id;
         var metric_ = chartManager.getRiskGaugeMetric(target.name);
 
-        if (1 == chartManager.getMode())
-            var hierarchy = chartManager.getHierarchy();
-        else
-            var hierarchy = drilldownLevels[chartManager.getDrillDownLevel()-1].name;
+        //var hierarchy = chartManager.getHierarchy();
 
         var limit =  (Math.random()*100).toFixed(2) - 0;
         var value =  (Math.random()*100).toFixed(2) - 0;
@@ -318,20 +337,15 @@ var chartManager = {
         var graphId_ = filter(barGraphs, function(elem){return elem.name == target.name})[0].id;
         var metric_ = chartManager.getBarGraphMetric(target.name);
 
-        if (1 == chartManager.getMode())
-            var hierarchy = chartManager.getHierarchy();
-        else
-            var hierarchy = drilldownLevels[chartManager.getDrillDownLevel()-1].name;
-
         var args = {
             mode: chartManager.getMode(),
-            hierarchy: hierarchy,
+            hierarchy: chartManager.getHierarchy(),
             node: chartManager.getNode()
         };
 
         var p_ = chartManager.getGraphData(args, metric_, 'bargraph');
         p_.then(function(res) {
-            var clickable = chartManager.getDrillDownLevel() < 3;
+            var clickable = chartManager.getLevel() < 3;
             chartManager.initChart(graphId_, bgInstance.getDefaults, p_, bgInstance.setNewData, clickable);
             // lookup the category in the chartCategories array
             var cat_ = filter(chartCategory, function(elem){return elem.metric == metric_;});
@@ -380,7 +394,7 @@ var chartManager = {
         return sessionStorage.getItem('businessDate')/* || businessDate.value*/;
     }
     , getHierarchy : function() {
-        return drilldownLevels[chartManager.getDrillDownLevel()].name;
+        return drilldownLevels[chartManager.getLevel()].name;
     }
     , setNode : function(i) {
         sessionStorage.setItem('node', i);
@@ -419,7 +433,7 @@ var chartManager = {
             var p_ = chartManager.getGraphData(args, metric_, 'bargraph');
 
             p_.then(function(res) {
-                var clickable = chartManager.getDrillDownLevel() < 3;
+                var clickable = chartManager.getLevel() < 3;
                 chartManager.initChart(elem.id, bgInstance.getDefaults, p_, bgInstance.setNewData, clickable);
                 // lookup the category in the chartCategories array
                 var cat_ = filter(chartCategory, function(elem){return elem.metric == metric_;});
@@ -468,7 +482,7 @@ var chartManager = {
         chartManager.setMode(1);
         var bus_ = businessDates.options[businessDates.selectedIndex].value ;
         sessionStorage.setItem('businessDate', bus_);
-        chartManager.setDrillDownLevel(0);
+        chartManager.setLevel(0);
         chartManager.setNode('');
 
         chartManager.setBGMetricDefaults();
@@ -494,7 +508,7 @@ var chartManager = {
 
             var args = {
                 mode: chartManager.getMode(),
-                level: chartManager.getDrillDownLevel(),
+                level: chartManager.getLevel(),
                 node: chartManager.getNode()
             };
             // Reload the page with the new business date.
@@ -530,10 +544,10 @@ var chartManager = {
     , getMode : function() {
         return +sessionStorage.getItem('mode');
     }
-    , setDrillDownLevel : function(e) {
+    , setLevel : function(e) {
         sessionStorage.setItem('level', +e);
     }
-    , getDrillDownLevel : function() {
+    , getLevel : function() {
         return +sessionStorage.getItem('level');
     }
     , setDrilldownMenu : function(level) {
@@ -552,7 +566,7 @@ var chartManager = {
 
         // Save the new state.
         chartManager.setMode(args.mode);
-        chartManager.setDrillDownLevel(args.level);
+        chartManager.setLevel(args.level);
         chartManager.setNode(args.node);
 
         if (1 == args.mode) {
@@ -571,8 +585,7 @@ var chartManager = {
 
         } else {
             // Tree view - display all children of selected node.
-            // Get the hierarchy to which the parent node belongs.
-            args.hierarchy = drilldownLevels[chartManager.getDrillDownLevel()-1].name;
+            args.hierarchy = chartManager.getHierarchy();
             // Mark the corresponding radio button as pressed (hierarchy view).
             chartManager.setDrilldownMenu(args.level);
             // Retrieve the stack leading to the selected node.
@@ -650,7 +663,7 @@ var chartManager = {
 
         var mode = 2;
         var node = target.getAttribute('data-item');
-        var level = Math.min(+target.getAttribute('data-level') + 1, 3);
+        var level = Math.min(+target.getAttribute('data-level'), 3);
         //var hierarchy = target.getAttribute('data-hierarchy');
 
         var args = {
@@ -681,8 +694,23 @@ var chartManager = {
             return;
 
         evt = evt || window.event;
+        console.log(evt);
 
-        var level = Math.min(chartManager.getDrillDownLevel() + 1, 3);
+        // Determine the level for the new render.
+        if (1 == chartManager.getMode()) {
+            // Switching from hierarchy (mode=1) to tree (mode=2) - don't change the level:
+            var level = chartManager.getLevel();
+        } else {
+            // Already in tree mode, the user has clicked on a graph.
+            if (evt.seriesType === 'pie') {
+                // If it's a donut graph, drill down, but not below level 2 (nettingset):
+                var level = Math.min(chartManager.getLevel() + 1, 2);
+            } else {
+                // Bar graph - always drill down.  Note that bar graphs are not clickable
+                // at trade level so there is no danger of drilling down too far.
+                var level = chartManager.getLevel() + 1;
+            }
+        }
 
         var args = {
             mode: 2,

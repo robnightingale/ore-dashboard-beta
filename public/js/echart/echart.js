@@ -22,18 +22,37 @@ var BARCharts = (function () {
                         textStyle : {
                             color: 'black'
                         }
+                    },
+                    color: function(params) {
+                        // red '#C1232B'
+                        // salmon '#FE8463'
+                        var colorList = [
+                            'rgba(120,178,88,0.5)', 'rgba(255, 69, 0, 0.5)'
+                        ];
+                        return colorList[params.seriesIndex]
                     }
                 }
             };
 
-            localOptions_.series = [{
+            localOptions_.series = [
+                {
                     itemStyle: dataStyle,
                     type: data_.seriesType,
                     data: data_.yaxisValues,
-                    name: data_.seriesName
-                }];
+                    name: 'bar data',
+                    // stack: 'bar data'
+
+                },
+                {
+                    itemStyle: dataStyle,
+                    type: data_.seriesType,
+                    data: data_.yaxisLimits,
+                    name: 'limits',
+                    // stack: 'bar data'
+                }
+                ];
             localOptions_.title = [{text: data_.title, subtext: data_.subTitleText}];
-            // localOptions_.legend.data = data_.yaxisLabels;
+            localOptions_.legend.data = ['limits'];
             localOptions_.yAxis[0].data = data_.yaxisLabels;
             localOptions_.yAxis[0].axisLabel = {show:false};
 
@@ -52,6 +71,23 @@ var BARCharts = (function () {
             toolbox: {
                 show: false,
                 feature: {
+                    dataView: {
+                        show: false, title: 'view data', lang: ['Data', 'ok', 'refresh']
+                    },
+                    magicType: {
+                        show: true,
+                        title: {
+                            line: 'Line',
+                            bar: 'Bar',
+                            stack: 'Stack',
+                            tiled: 'Tiled'
+                        },
+                        type: ['stack','tiled']
+                    },
+                    restore: {
+                        show: true,
+                        title: "Restore"
+                    },
                     saveAsImage: {
                         show: true,
                         title: "Save Image"
@@ -66,7 +102,6 @@ var BARCharts = (function () {
                 axisLabel:{interval: 'auto', formatter: function(value){
                     return numeral(value).format('(0.0a)');
                 }},
-
             }],
             yAxis: [{
                 type: 'category',
@@ -94,7 +129,7 @@ var BARCharts = (function () {
 
             barGraphs.forEach(function(elem){
                 var p_ = chartManager.getGraphData(args, elem.metric, 'bargraph');
-                var clickable = chartManager.getDrillDownLevel() < 3;
+                var clickable = chartManager.getLevel() < 3;
                 chartManager.initChart(elem.id, options, p_, setNewData, clickable);
 
                 p_.then(function(res){
@@ -207,17 +242,6 @@ var LINECharts = (function () {
             }],
             series: []
         };
-        var profile_marklines = {};
-            // data: [
-            //     Vertical axis, default
-            //     {type: 'max', name: 'max', itemStyle: {normal: {color: '#dc143c'}}},
-            //     {type: 'min', name: 'min', itemStyle: {normal: {color: '#dc143c'}}},
-            //     {type: 'average', name: 'avg', itemStyle: {normal: {color: '#dc143c'}}},
-            //     Horizontal axis
-            //     {type: 'max', name: 'max', valueIndex: 0, itemStyle: {normal: {color: '#1e90ff'}}},
-            //     {type: 'min', name: 'min', valueIndex: 0, itemStyle: {normal: {color: '#1e90ff'}}},
-            //     {type: 'average', name: 'avg', valueIndex: 0, itemStyle: {normal: {color: '#1e90ff'}}}
-            // ]};
 
         var exposure_profile_options = {
             title: {
@@ -277,17 +301,7 @@ var LINECharts = (function () {
                 }},
 
             }],
-            series: [],
-            // markPoint : {
-            //     data : [
-            //         // Vertical axis, default
-            //         {type : 'max', name: 'max',symbol: 'emptyCircle', itemStyle:{normal:{color:'#dc143c',label:{position:'top'}}}},
-            //         {type : 'min', name: 'min',symbol: 'emptyCircle', itemStyle:{normal:{color:'#dc143c',label:{position:'bottom'}}}},
-            //         // Horizontal axis
-            //         {type : 'max', name: 'max', valueIndex: 0, symbol: 'emptyCircle', itemStyle:{normal:{color:'#1e90ff',label:{position:'right'}}}},
-            //         {type : 'min', name: 'min', valueIndex: 0, symbol: 'emptyCircle', itemStyle:{normal:{color:'#1e90ff',label:{position:'left'}}}}
-            //     ]
-            // },
+            series: []
         };
 
         function setNewData(chart_, data_) {
@@ -321,13 +335,10 @@ var LINECharts = (function () {
                 }
                 var series_ = [];
                 series_.push(series_0);
-                series_.push((series_1));
-                series_.push((series_2));
+                series_.push(series_1);
+                series_.push(series_2);
 
                 series_.forEach(function (elem) {
-                    // only add marklines for exposure profile graph
-                    // if (chart_.getOption().title[0].text == 'Exposure Profile')
-                    //     elem.markLine = profile_marklines;
                     elem.type = 'line';
                     elem.smooth = true;
                     elem.symbolSize = 1;
@@ -341,13 +352,12 @@ var LINECharts = (function () {
                 });
                 var localOptions_ = exposure_profile_options;
                 localOptions_.legend.data = data_.name;
-                // localOptions_.xAxis[0].data = xAxisData_;
+                localOptions_.xAxis[0].data = xAxisData_;
                 localOptions_.series = series_;
                 chart_.setOption(localOptions_, true);
 
             } else {
                 var xAxisData_ = data_.dates;
-
 
                 var data_npvs = [];
                 var data_ces = [];
@@ -371,6 +381,7 @@ var LINECharts = (function () {
                     name: "CE",
                     data: data_ces
                 }
+
                 var series_2 = {
                     name: "EEPE",
                     data: data_eepes
@@ -381,16 +392,29 @@ var LINECharts = (function () {
                 //}
 
                 var series_ = []
-                // series_.push({name: 'dates', data: xAxisData_});
                 series_.push(series_0);
-                series_.push((series_1));
-                series_.push((series_2));
+                series_.push(series_1);
+                series_.push(series_2);
                 // series_.push((series_3));
 
                 series_.forEach(function (elem) {
-                    // only add marklines for exposure profile graph
-                    // if (chart_.getOption().title[0].text == 'Exposure Profile')
-                    //     elem.markLine = profile_marklines;
+                    switch (elem.name) {
+                        case 'CE' :
+                            elem.markLine = {
+                                data: [
+                                    {yAxis: +data_.limitCE, name: 'limit', itemStyle: {normal: {color: '#dc143c'}}}
+                                ]};
+                            break;
+                        case 'EEPE':
+                            elem.markLine = {
+                                data: [
+                                    {yAxis: +data_.limitEEPE, name: 'limit', itemStyle: {normal: {color: '#dc143c'}}}
+                                ]};
+                            break;
+                        default:
+                            break;
+                    }
+
                     elem.type = 'line';
                     elem.smooth = true;
                     // elem.showAllSymbol= false;
@@ -405,8 +429,10 @@ var LINECharts = (function () {
                 });
 
                 var localOptions_ = total_exposure_options;
-                localOptions_.legend.data = data_.name;
-                // localOptions_.xAxis[0].data = xAxisData_;
+                series_.forEach(function(elem){
+                    localOptions_.legend.data.push(elem.name);
+                });
+
                 localOptions_.series = series_;
                 chart_.setOption(localOptions_, true);
             }
