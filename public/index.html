@@ -166,6 +166,24 @@
                 <div class="x_title"></div>
                 <div class="col-md-3 col-sm-3 col-xs-12">
                     <div class="x_title" >
+                        <h2>Risk Gauge</h2>
+                        <ul class="nav navbar-right panel_toolbox">
+                            <li>
+                                <select class="selectpicker-riskgauge pull-right" id="gauge1_" name="gauge1" data-toggle="tooltip" data-placement="top" data-title="Select Risk Metric">
+                                    <!-- the options are filled in by Javascript-->
+                                </select>
+                            </li>
+                            <li><a class="close-link" href="#glossary" data-toggle="modal" data-id="glossary" data-target=".bs-example-modal-sm1"><i class="fa fa-question-circle-o" data-toggle="tooltip" data-placement="top" data-title="Help"></i></a></li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <div id="gauge_1" style="height:280px;"></div>
+                    </div>
+
+                </div>
+                <div class="col-md-3 col-sm-3 col-xs-12">
+                    <div class="x_title" >
                         <h2 name="donut_cva">CVA</h2>
                         <ul class="nav navbar-right panel_toolbox">
                             <li><a class="close-link" href="#xva-zoom" data-toggle="modal" data-id="cva" data-target=".bs-example-modal-sm"><i class="fa fa-search-plus" data-toggle="tooltip" data-placement="top" data-title="Zoom"></i></a></li>
@@ -178,7 +196,6 @@
                         <div id="donut_cva" style="height:280px;"></div>
                     </div>
                 </div>
-
                 <div class="col-md-3 col-sm-3 col-xs-12">
                     <div class="x_title" >
                         <h2 name="donut_fva">FVA</h2>
@@ -207,24 +224,6 @@
                     <div class="x_content">
                         <div id="donut_colva" style="height:280px"></div>
                     </div>
-                </div>
-                <div class="col-md-3 col-sm-3 col-xs-12">
-                    <div class="x_title" >
-                        <h2>Risk Gauge</h2>
-                        <ul class="nav navbar-right panel_toolbox">
-                            <li>
-                                <select class="selectpicker-riskgauge pull-right" id="gauge1_" name="gauge1" data-toggle="tooltip" data-placement="top" data-title="Select Risk Metric">
-                                    <!-- the options are filled in by Javascript-->
-                                </select>
-                            </li>
-                            <li><a class="close-link" href="#glossary" data-toggle="modal" data-id="glossary" data-target=".bs-example-modal-sm1"><i class="fa fa-question-circle-o" data-toggle="tooltip" data-placement="top" data-title="Help"></i></a></li>
-                        </ul>
-                        <div class="clearfix"></div>
-                    </div>
-                    <div class="x_content">
-                        <div id="gauge_1" style="height:280px;"></div>
-                    </div>
-
                 </div>
             </div>
 
@@ -406,7 +405,7 @@
 
 <!-- Custom Themes/Scripts -->
 <script src="js/moment/moment.min.js"></script>
-<script src="js/custom.min.js"></script>
+<script src="js/custom.js"></script>
 <script src="js/common/fetch.js"></script>
 
 <script src="js/echart/chart-theme.js"></script>
