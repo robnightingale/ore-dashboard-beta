@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>DataTables | Gentellela</title>
+
+    <!-- Bootstrap -->
+    <link href="vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="vendors/nprogress/nprogress.css" rel="stylesheet">
+    <!-- iCheck -->
+    <link href="vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+    <!-- Datatables -->
+    <link href="vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
+    <link href="vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
+    <link href="vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
+    <link href="vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
+    <link href="vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom Theme Style -->
+    <link href="css/custom.min.css" type="text/css" rel="stylesheet">
+  </head>
+
+  <body class="nav-sm">
+    <div class="container body">
+      <div class="main_container">
+        <div class="col-md-3 left_col">
+          <div class="left_col scroll-view">
+            <div class="navbar nav_title" style="border: 0;">
+              <a href="index.html" class="site_title"><i class="fa fa-home"></i> <span>Gentellela Alela!</span></a>
+            </div>
+
+            <div class="clearfix"></div>
+
+            <!-- menu profile quick info -->
+            <div class="profile">
+              <div class="profile_pic">
+                <img src="" alt="..." class="img-circle profile_img">
+              </div>
+            </div>
+            <!-- /menu profile quick info -->
+
+            <br>
+
+            <!-- sidebar menu -->
+            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+              <div class="menu_section active">
+                <h3>Live On</h3>
+                <ul class="nav side-menu" style="">
+                  <li class=""><a onclick="pdfMe();"><i class="fa fa-download"></i> PDF </span></a></li>
+                  <li class=""><a class="close-link" href="tables_dynamic.html"><i class="fa fa-table"></i> Limits </a></li>
+                  <li class=""><a class="close-link" href="#glossary" data-toggle="modal" data-id="glossary" data-target=".bs-example-modal-sm1"><i class="fa fa-question-circle-o"></i> Glossary </a></li>
+                </ul>
+              </div>
+
+            </div>
+            <!-- /sidebar menu -->
+
+            <!-- /menu footer buttons -->
+            <div class="sidebar-footer hidden-small">
+              <a data-toggle="tooltip" data-placement="top" title="Settings">
+                <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+              </a>
+              <a data-toggle="tooltip" data-placement="top" title="FullScreen">
+                <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
+              </a>
+              <a data-toggle="tooltip" data-placement="top" title="Lock">
+                <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
+              </a>
+              <a data-toggle="tooltip" data-placement="top" title="Logout">
+                <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+              </a>
+            </div>
+            <!-- /menu footer buttons -->
+          </div>
+        </div>
+
+        <!-- page content -->
+        <div class="right_col" role="main">
+          <div class="">
+            <div class="page-title">
+              <div class="title_left">
+                <h3>Limits Report <small>Some examples to get you started</small></h3>
+              </div>
+
+              <div class="title_right">
+                <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                  <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search for...">
+                    <span class="input-group-btn">
+                      <button class="btn btn-default" type="button">Go!</button>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="clearfix"></div>
+
+            <div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>Responsive example <small>Trade level limits report - FAKE DATA AHEAD!!</small></h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                      </li>
+                      <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                        <ul class="dropdown-menu" role="menu">
+                          <li><a href="#">Settings 1</a>
+                          </li>
+                          <li><a href="#">Settings 2</a>
+                          </li>
+                        </ul>
+                      </li>
+                      <li><a class="close-link"><i class="fa fa-close"></i></a>
+                      </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <p class="text-muted font-13 m-b-30">
+                      Responsive is an extension for DataTables that resolves that problem by optimising the table's layout for different screen sizes through the dynamic insertion and removal of columns from the table.
+                    </p>
+                    <table id="datatable-responsive" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+                      <thead>
+                        <tr>
+                          <th>Credit Rating</th>
+                          <th>Counterparty</th>
+                          <th>Netting Set</th>
+                          <th>Trade</th>
+                          <th>breach?</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr><td>CCC</td><td>CUST_A</td><td>CSA_1</td><td>Trade_9765</td><td/></tr>
+                        <tr><td>CCC</td><td>CUST_A</td><td>CSA_1</td><td>Trade_7634</td><td/></tr>
+                        <tr><td>CCC</td><td>CUST_A</td><td>CSA_1</td><td>Trade_1112</td><td/></tr>
+                        <tr><td>CCC</td><td>CUST_A</td><td>CSA_1</td><td>Trade_1935</td><td/></tr>
+                        <tr><td>CCC</td><td>CUST_A</td><td>CSA_1</td><td>Trade_3609</td><td/></tr>
+                        <tr><td>CCC</td><td>CUST_A</td><td>CSA_2</td><td>Trade_6044</td><td/></tr>
+                        <tr><td>CCC</td><td>CUST_A</td><td>CSA_2</td><td>Trade_5234</td><td/></tr>
+                        <tr><td>CCC</td><td>CUST_A</td><td>CSA_2</td><td>Trade_5627</td><td/></tr>
+                        <tr><td>CCC</td><td>CUST_A</td><td>CSA_2</td><td>Trade_7726</td><td/></tr>
+                        <tr><td>CCC</td><td>CUST_A</td><td>CSA_2</td><td>Trade_8055</td><td/></tr>
+                        <tr><td>CCC</td><td>CUST_A</td><td>CSA_3</td><td>Trade_1439</td><td/></tr>
+                        <tr><td>CCC</td><td>CUST_A</td><td>CSA_3</td><td>Trade_8557</td><td/></tr>
+                        <tr><td>CCC</td><td>CUST_A</td><td>CSA_3</td><td>Trade_7877</td><td/></tr>
+                        <tr><td>CCC</td><td>CUST_A</td><td>CSA_3</td><td>Trade_2251</td><td/></tr>
+                        <tr><td>CCC</td><td>CUST_A</td><td>CSA_3</td><td>Trade_8770</td><td/></tr>
+                        <tr><td>CCC</td><td>CUST_A</td><td>CSA_4</td><td>Trade_9164</td><td/></tr>
+                        <tr><td>CCC</td><td>CUST_A</td><td>CSA_4</td><td>Trade_6739</td><td/></tr>
+                        <tr><td>CCC</td><td>CUST_A</td><td>CSA_4</td><td>Trade_9479</td><td/></tr>
+                        <tr><td>CCC</td><td>CUST_A</td><td>CSA_4</td><td>Trade_5653</td><td/></tr>
+                        <tr><td>CCC</td><td>CUST_A</td><td>CSA_4</td><td>Trade_5418</td><td/></tr>
+                        <tr><td>CCC</td><td>CUST_A</td><td>CSA_5</td><td>Trade_9846</td><td/></tr>
+                        <tr><td>CCC</td><td>CUST_A</td><td>CSA_5</td><td>Trade_6981</td><td/></tr>
+                        <tr><td>CCC</td><td>CUST_A</td><td>CSA_5</td><td>Trade_4976</td><td/></tr>
+                        <tr><td>CCC</td><td>CUST_A</td><td>CSA_5</td><td>Trade_2386</td><td/></tr>
+                        <tr><td>CCC</td><td>CUST_A</td><td>CSA_5</td><td>Trade_6469</td><td/></tr>
+                        <tr><td>NR</td><td>CUST_B</td><td>CSA_6</td><td>Trade_5795</td><td/></tr>
+                        <tr><td>NR</td><td>CUST_B</td><td>CSA_6</td><td>Trade_8082</td><td/></tr>
+                        <tr><td>NR</td><td>CUST_B</td><td>CSA_6</td><td>Trade_4865</td><td/></tr>
+                        <tr><td>NR</td><td>CUST_B</td><td>CSA_6</td><td>Trade_4199</td><td/></tr>
+                        <tr><td>NR</td><td>CUST_B</td><td>CSA_6</td><td>Trade_2557</td><td/></tr>
+                        <tr><td>NR</td><td>CUST_B</td><td>CSA_7</td><td>Trade_5420</td><td/></tr>
+                        <tr><td>NR</td><td>CUST_B</td><td>CSA_7</td><td>Trade_1613</td><td/></tr>
+                        <tr><td>NR</td><td>CUST_B</td><td>CSA_7</td><td>Trade_2697</td><td/></tr>
+                        <tr><td>NR</td><td>CUST_B</td><td>CSA_7</td><td>Trade_7746</td><td/></tr>
+                        <tr><td>NR</td><td>CUST_B</td><td>CSA_7</td><td>Trade_7209</td><td/></tr>
+                        <tr><td>NR</td><td>CUST_B</td><td>CSA_8</td><td>Trade_5961</td><td/></tr>
+                        <tr><td>NR</td><td>CUST_B</td><td>CSA_8</td><td>Trade_7178</td><td/></tr>
+                        <tr><td>NR</td><td>CUST_B</td><td>CSA_8</td><td>Trade_9933</td><td/></tr>
+                        <tr><td>NR</td><td>CUST_B</td><td>CSA_8</td><td>Trade_8446</td><td/></tr>
+                        <tr><td>NR</td><td>CUST_B</td><td>CSA_8</td><td>Trade_4368</td><td/></tr>
+                        <tr><td>NR</td><td>CUST_B</td><td>CSA_9</td><td>Trade_3305</td><td/></tr>
+                        <tr><td>NR</td><td>CUST_B</td><td>CSA_9</td><td>Trade_7259</td><td/></tr>
+                        <tr><td>NR</td><td>CUST_B</td><td>CSA_9</td><td>Trade_4919</td><td/></tr>
+                        <tr><td>NR</td><td>CUST_B</td><td>CSA_9</td><td>Trade_5160</td><td/></tr>
+                        <tr><td>NR</td><td>CUST_B</td><td>CSA_9</td><td>Trade_1216</td><td/></tr>
+                        <tr><td>NR</td><td>CUST_B</td><td>CSA_10</td><td>Trade_5367</td><td/></tr>
+                        <tr><td>NR</td><td>CUST_B</td><td>CSA_10</td><td>Trade_8951</td><td/></tr>
+                        <tr><td>NR</td><td>CUST_B</td><td>CSA_10</td><td>Trade_8675</td><td/></tr>
+                        <tr><td>NR</td><td>CUST_B</td><td>CSA_10</td><td>Trade_1104</td><td/></tr>
+                        <tr><td>NR</td><td>CUST_B</td><td>CSA_10</td><td>Trade_5410</td><td/></tr>
+                        <tr><td>BB</td><td>CUST_C</td><td>CSA_11</td><td>Trade_2607</td><td/></tr>
+                        <tr><td>BB</td><td>CUST_C</td><td>CSA_11</td><td>Trade_5345</td><td/></tr>
+                        <tr><td>BB</td><td>CUST_C</td><td>CSA_11</td><td>Trade_7917</td><td/></tr>
+                        <tr><td>BB</td><td>CUST_C</td><td>CSA_11</td><td>Trade_4968</td><td/></tr>
+                        <tr><td>BB</td><td>CUST_C</td><td>CSA_11</td><td>Trade_1416</td><td/></tr>
+                        <tr><td>BB</td><td>CUST_C</td><td>CSA_12</td><td>Trade_7317</td><td/></tr>
+                        <tr><td>BB</td><td>CUST_C</td><td>CSA_12</td><td>Trade_5859</td><td/></tr>
+                        <tr><td>BB</td><td>CUST_C</td><td>CSA_12</td><td>Trade_7138</td><td/></tr>
+                        <tr><td>BB</td><td>CUST_C</td><td>CSA_12</td><td>Trade_5621</td><td/></tr>
+                        <tr><td>BB</td><td>CUST_C</td><td>CSA_12</td><td>Trade_1515</td><td/></tr>
+                        <tr><td>BB</td><td>CUST_C</td><td>CSA_13</td><td>Trade_9298</td><td/></tr>
+                        <tr><td>BB</td><td>CUST_C</td><td>CSA_13</td><td>Trade_6088</td><td/></tr>
+                        <tr><td>BB</td><td>CUST_C</td><td>CSA_13</td><td>Trade_7173</td><td/></tr>
+                        <tr><td>BB</td><td>CUST_C</td><td>CSA_13</td><td>Trade_2022</td><td/></tr>
+                        <tr><td>BB</td><td>CUST_C</td><td>CSA_13</td><td>Trade_5674</td><td/></tr>
+                        <tr><td>BB</td><td>CUST_C</td><td>CSA_14</td><td>Trade_6205</td><td/></tr>
+                        <tr><td>BB</td><td>CUST_C</td><td>CSA_14</td><td>Trade_7283</td><td/></tr>
+                        <tr><td>BB</td><td>CUST_C</td><td>CSA_14</td><td>Trade_3378</td><td/></tr>
+                        <tr><td>BB</td><td>CUST_C</td><td>CSA_14</td><td>Trade_6183</td><td/></tr>
+                        <tr><td>BB</td><td>CUST_C</td><td>CSA_14</td><td>Trade_1391</td><td/></tr>
+                        <tr><td>BB</td><td>CUST_C</td><td>CSA_15</td><td>Trade_3482</td><td/></tr>
+                        <tr><td>BB</td><td>CUST_C</td><td>CSA_15</td><td>Trade_8280</td><td/></tr>
+                        <tr><td>BB</td><td>CUST_C</td><td>CSA_15</td><td>Trade_1723</td><td/></tr>
+                        <tr><td>BB</td><td>CUST_C</td><td>CSA_15</td><td>Trade_9193</td><td/></tr>
+                        <tr><td>BB</td><td>CUST_C</td><td>CSA_15</td><td>Trade_1920</td><td/></tr>
+                        <tr><td>AA</td><td>CUST_D</td><td>CSA_16</td><td>Trade_6531</td><td/></tr>
+                        <tr><td>AA</td><td>CUST_D</td><td>CSA_16</td><td>Trade_1418</td><td/></tr>
+                        <tr><td>AA</td><td>CUST_D</td><td>CSA_16</td><td>Trade_4055</td><td/></tr>
+                        <tr><td>AA</td><td>CUST_D</td><td>CSA_16</td><td>Trade_6405</td><td/></tr>
+                        <tr><td>AA</td><td>CUST_D</td><td>CSA_16</td><td>Trade_1589</td><td/></tr>
+                        <tr><td>AA</td><td>CUST_D</td><td>CSA_17</td><td>Trade_7633</td><td/></tr>
+                        <tr><td>AA</td><td>CUST_D</td><td>CSA_17</td><td>Trade_4320</td><td/></tr>
+                        <tr><td>AA</td><td>CUST_D</td><td>CSA_17</td><td>Trade_6494</td><td/></tr>
+                        <tr><td>AA</td><td>CUST_D</td><td>CSA_17</td><td>Trade_8826</td><td/></tr>
+                        <tr><td>AA</td><td>CUST_D</td><td>CSA_17</td><td>Trade_1681</td><td/></tr>
+                        <tr><td>AA</td><td>CUST_D</td><td>CSA_18</td><td>Trade_5828</td><td/></tr>
+                        <tr><td>AA</td><td>CUST_D</td><td>CSA_18</td><td>Trade_6164</td><td/></tr>
+                        <tr><td>AA</td><td>CUST_D</td><td>CSA_18</td><td>Trade_5341</td><td/></tr>
+                        <tr><td>AA</td><td>CUST_D</td><td>CSA_18</td><td>Trade_9730</td><td/></tr>
+                        <tr><td>AA</td><td>CUST_D</td><td>CSA_18</td><td>Trade_9500</td><td/></tr>
+                        <tr><td>AA</td><td>CUST_D</td><td>CSA_19</td><td>Trade_9435</td><td/></tr>
+                        <tr><td>AA</td><td>CUST_D</td><td>CSA_19</td><td>Trade_3147</td><td/></tr>
+                        <tr><td>AA</td><td>CUST_D</td><td>CSA_19</td><td>Trade_7753</td><td/></tr>
+                        <tr><td>AA</td><td>CUST_D</td><td>CSA_19</td><td>Trade_5617</td><td/></tr>
+                        <tr><td>AA</td><td>CUST_D</td><td>CSA_19</td><td>Trade_7936</td><td/></tr>
+                        <tr><td>AA</td><td>CUST_D</td><td>CSA_20</td><td>Trade_7577</td><td/></tr>
+                        <tr><td>AA</td><td>CUST_D</td><td>CSA_20</td><td>Trade_9119</td><td/></tr>
+                        <tr><td>AA</td><td>CUST_D</td><td>CSA_20</td><td>Trade_3312</td><td/></tr>
+                        <tr><td>AA</td><td>CUST_D</td><td>CSA_20</td><td>Trade_1221</td><td/></tr>
+                        <tr><td>AA</td><td>CUST_D</td><td>CSA_20</td><td>Trade_7292</td><td/></tr>
+                        <tr><td>BBB</td><td>CUST_E</td><td>CSA_21</td><td>Trade_1024</td><td/></tr>
+                        <tr><td>BBB</td><td>CUST_E</td><td>CSA_21</td><td>Trade_6422</td><td/></tr>
+                        <tr><td>BBB</td><td>CUST_E</td><td>CSA_21</td><td>Trade_5538</td><td/></tr>
+                        <tr><td>BBB</td><td>CUST_E</td><td>CSA_21</td><td>Trade_8129</td><td/></tr>
+                        <tr><td>BBB</td><td>CUST_E</td><td>CSA_21</td><td>Trade_5288</td><td/></tr>
+                        <tr><td>BBB</td><td>CUST_E</td><td>CSA_22</td><td>Trade_9158</td><td/></tr>
+                        <tr><td>BBB</td><td>CUST_E</td><td>CSA_22</td><td>Trade_7468</td><td/></tr>
+                        <tr><td>BBB</td><td>CUST_E</td><td>CSA_22</td><td>Trade_3127</td><td/></tr>
+                        <tr><td>BBB</td><td>CUST_E</td><td>CSA_22</td><td>Trade_8703</td><td/></tr>
+                        <tr><td>BBB</td><td>CUST_E</td><td>CSA_22</td><td>Trade_8590</td><td/></tr>
+                        <tr><td>BBB</td><td>CUST_E</td><td>CSA_23</td><td>Trade_4614</td><td/></tr>
+                        <tr><td>BBB</td><td>CUST_E</td><td>CSA_23</td><td>Trade_7058</td><td/></tr>
+                        <tr><td>BBB</td><td>CUST_E</td><td>CSA_23</td><td>Trade_6056</td><td/></tr>
+                        <tr><td>BBB</td><td>CUST_E</td><td>CSA_23</td><td>Trade_5721</td><td/></tr>
+                        <tr><td>BBB</td><td>CUST_E</td><td>CSA_23</td><td>Trade_5448</td><td/></tr>
+                        <tr><td>BBB</td><td>CUST_E</td><td>CSA_24</td><td>Trade_4528</td><td/></tr>
+                        <tr><td>BBB</td><td>CUST_E</td><td>CSA_24</td><td>Trade_5760</td><td/></tr>
+                        <tr><td>BBB</td><td>CUST_E</td><td>CSA_24</td><td>Trade_7186</td><td/></tr>
+                        <tr><td>BBB</td><td>CUST_E</td><td>CSA_24</td><td>Trade_5599</td><td/></tr>
+                        <tr><td>BBB</td><td>CUST_E</td><td>CSA_24</td><td>Trade_3246</td><td/></tr>
+                        <tr><td>BBB</td><td>CUST_E</td><td>CSA_25</td><td>Trade_7104</td><td/></tr>
+                        <tr><td>BBB</td><td>CUST_E</td><td>CSA_25</td><td>Trade_6963</td><td/></tr>
+                        <tr><td>BBB</td><td>CUST_E</td><td>CSA_25</td><td>Trade_7354</td><td/></tr>
+                        <tr><td>BBB</td><td>CUST_E</td><td>CSA_25</td><td>Trade_5324</td><td/></tr>
+                        <tr><td>BBB</td><td>CUST_E</td><td>CSA_25</td><td>Trade_1465</td><td/></tr>
+                        <tr><td>B</td><td>CUST_F</td><td>CSA_26</td><td>Trade_2066</td><td/></tr>
+                        <tr><td>B</td><td>CUST_F</td><td>CSA_26</td><td>Trade_6429</td><td/></tr>
+                        <tr><td>B</td><td>CUST_F</td><td>CSA_26</td><td>Trade_9027</td><td/></tr>
+                        <tr><td>B</td><td>CUST_F</td><td>CSA_26</td><td>Trade_2598</td><td/></tr>
+                        <tr><td>B</td><td>CUST_F</td><td>CSA_26</td><td>Trade_7817</td><td/></tr>
+                        <tr><td>B</td><td>CUST_F</td><td>CSA_27</td><td>Trade_9826</td><td/></tr>
+                        <tr><td>B</td><td>CUST_F</td><td>CSA_27</td><td>Trade_3801</td><td/></tr>
+                        <tr><td>B</td><td>CUST_F</td><td>CSA_27</td><td>Trade_8757</td><td/></tr>
+                        <tr><td>B</td><td>CUST_F</td><td>CSA_27</td><td>Trade_1627</td><td/></tr>
+                        <tr><td>B</td><td>CUST_F</td><td>CSA_27</td><td>Trade_1376</td><td/></tr>
+                        <tr><td>B</td><td>CUST_F</td><td>CSA_28</td><td>Trade_4477</td><td/></tr>
+                        <tr><td>B</td><td>CUST_F</td><td>CSA_28</td><td>Trade_4123</td><td/></tr>
+                        <tr><td>B</td><td>CUST_F</td><td>CSA_28</td><td>Trade_6104</td><td/></tr>
+                        <tr><td>B</td><td>CUST_F</td><td>CSA_28</td><td>Trade_1691</td><td/></tr>
+                        <tr><td>B</td><td>CUST_F</td><td>CSA_28</td><td>Trade_6979</td><td/></tr>
+                        <tr><td>B</td><td>CUST_F</td><td>CSA_29</td><td>Trade_7529</td><td/></tr>
+                        <tr><td>B</td><td>CUST_F</td><td>CSA_29</td><td>Trade_8263</td><td/></tr>
+                        <tr><td>B</td><td>CUST_F</td><td>CSA_29</td><td>Trade_1000</td><td/></tr>
+                        <tr><td>B</td><td>CUST_F</td><td>CSA_29</td><td>Trade_9407</td><td/></tr>
+                        <tr><td>B</td><td>CUST_F</td><td>CSA_29</td><td>Trade_2293</td><td/></tr>
+                        <tr><td>B</td><td>CUST_F</td><td>CSA_30</td><td>Trade_1230</td><td/></tr>
+                        <tr><td>B</td><td>CUST_F</td><td>CSA_30</td><td>Trade_1699</td><td/></tr>
+                        <tr><td>B</td><td>CUST_F</td><td>CSA_30</td><td>Trade_9091</td><td/></tr>
+                        <tr><td>B</td><td>CUST_F</td><td>CSA_30</td><td>Trade_9063</td><td/></tr>
+                        <tr><td>B</td><td>CUST_F</td><td>CSA_30</td><td>Trade_6415</td><td/></tr>
+                        <tr><td>AAA</td><td>CUST_G</td><td>CSA_31</td><td>Trade_4367</td><td/></tr>
+                        <tr><td>AAA</td><td>CUST_G</td><td>CSA_31</td><td>Trade_9229</td><td/></tr>
+                        <tr><td>AAA</td><td>CUST_G</td><td>CSA_31</td><td>Trade_7747</td><td/></tr>
+                        <tr><td>AAA</td><td>CUST_G</td><td>CSA_31</td><td>Trade_9862</td><td/></tr>
+                        <tr><td>AAA</td><td>CUST_G</td><td>CSA_31</td><td>Trade_2525</td><td/></tr>
+                        <tr><td>AAA</td><td>CUST_G</td><td>CSA_32</td><td>Trade_8531</td><td/></tr>
+                        <tr><td>AAA</td><td>CUST_G</td><td>CSA_32</td><td>Trade_2481</td><td/></tr>
+                        <tr><td>AAA</td><td>CUST_G</td><td>CSA_32</td><td>Trade_4569</td><td/></tr>
+                        <tr><td>AAA</td><td>CUST_G</td><td>CSA_32</td><td>Trade_4673</td><td/></tr>
+                        <tr><td>AAA</td><td>CUST_G</td><td>CSA_32</td><td>Trade_7036</td><td/></tr>
+                        <tr><td>AAA</td><td>CUST_G</td><td>CSA_33</td><td>Trade_6487</td><td/></tr>
+                        <tr><td>AAA</td><td>CUST_G</td><td>CSA_33</td><td>Trade_5412</td><td/></tr>
+                        <tr><td>AAA</td><td>CUST_G</td><td>CSA_33</td><td>Trade_8728</td><td/></tr>
+                        <tr><td>AAA</td><td>CUST_G</td><td>CSA_33</td><td>Trade_2499</td><td/></tr>
+                        <tr><td>AAA</td><td>CUST_G</td><td>CSA_33</td><td>Trade_5487</td><td/></tr>
+                        <tr><td>AAA</td><td>CUST_G</td><td>CSA_34</td><td>Trade_1700</td><td/></tr>
+                        <tr><td>AAA</td><td>CUST_G</td><td>CSA_34</td><td>Trade_4782</td><td/></tr>
+                        <tr><td>AAA</td><td>CUST_G</td><td>CSA_34</td><td>Trade_3640</td><td/></tr>
+                        <tr><td>AAA</td><td>CUST_G</td><td>CSA_34</td><td>Trade_8528</td><td/></tr>
+                        <tr><td>AAA</td><td>CUST_G</td><td>CSA_34</td><td>Trade_9802</td><td/></tr>
+                        <tr><td>AAA</td><td>CUST_G</td><td>CSA_35</td><td>Trade_7899</td><td/></tr>
+                        <tr><td>AAA</td><td>CUST_G</td><td>CSA_35</td><td>Trade_8884</td><td/></tr>
+                        <tr><td>AAA</td><td>CUST_G</td><td>CSA_35</td><td>Trade_8519</td><td/></tr>
+                        <tr><td>AAA</td><td>CUST_G</td><td>CSA_35</td><td>Trade_3939</td><td/></tr>
+                        <tr><td>AAA</td><td>CUST_G</td><td>CSA_35</td><td>Trade_1053</td><td/></tr>
+                        <tr><td>CC</td><td>CUST_H</td><td>CSA_36</td><td>Trade_5774</td><td/></tr>
+                        <tr><td>CC</td><td>CUST_H</td><td>CSA_36</td><td>Trade_7788</td><td/></tr>
+                        <tr><td>CC</td><td>CUST_H</td><td>CSA_36</td><td>Trade_5690</td><td/></tr>
+                        <tr><td>CC</td><td>CUST_H</td><td>CSA_36</td><td>Trade_2085</td><td/></tr>
+                        <tr><td>CC</td><td>CUST_H</td><td>CSA_36</td><td>Trade_7865</td><td/></tr>
+                        <tr><td>CC</td><td>CUST_H</td><td>CSA_37</td><td>Trade_1207</td><td/></tr>
+                        <tr><td>CC</td><td>CUST_H</td><td>CSA_37</td><td>Trade_7281</td><td/></tr>
+                        <tr><td>CC</td><td>CUST_H</td><td>CSA_37</td><td>Trade_6743</td><td/></tr>
+                        <tr><td>CC</td><td>CUST_H</td><td>CSA_37</td><td>Trade_2854</td><td/></tr>
+                        <tr><td>CC</td><td>CUST_H</td><td>CSA_37</td><td>Trade_8975</td><td/></tr>
+                        <tr><td>CC</td><td>CUST_H</td><td>CSA_38</td><td>Trade_9898</td><td/></tr>
+                        <tr><td>CC</td><td>CUST_H</td><td>CSA_38</td><td>Trade_2571</td><td/></tr>
+                        <tr><td>CC</td><td>CUST_H</td><td>CSA_38</td><td>Trade_4065</td><td/></tr>
+                        <tr><td>CC</td><td>CUST_H</td><td>CSA_38</td><td>Trade_8972</td><td/></tr>
+                        <tr><td>CC</td><td>CUST_H</td><td>CSA_38</td><td>Trade_4152</td><td/></tr>
+                        <tr><td>CC</td><td>CUST_H</td><td>CSA_39</td><td>Trade_2155</td><td/></tr>
+                        <tr><td>CC</td><td>CUST_H</td><td>CSA_39</td><td>Trade_5683</td><td/></tr>
+                        <tr><td>CC</td><td>CUST_H</td><td>CSA_39</td><td>Trade_2502</td><td/></tr>
+                        <tr><td>CC</td><td>CUST_H</td><td>CSA_39</td><td>Trade_9577</td><td/></tr>
+                        <tr><td>CC</td><td>CUST_H</td><td>CSA_39</td><td>Trade_3931</td><td/></tr>
+                        <tr><td>CC</td><td>CUST_H</td><td>CSA_40</td><td>Trade_3170</td><td/></tr>
+                        <tr><td>CC</td><td>CUST_H</td><td>CSA_40</td><td>Trade_5103</td><td/></tr>
+                        <tr><td>CC</td><td>CUST_H</td><td>CSA_40</td><td>Trade_2426</td><td/></tr>
+                        <tr><td>CC</td><td>CUST_H</td><td>CSA_40</td><td>Trade_3916</td><td/></tr>
+                        <tr><td>CC</td><td>CUST_H</td><td>CSA_40</td><td>Trade_3107</td><td/></tr>
+                        <tr><td>C</td><td>CUST_I</td><td>CSA_41</td><td>Trade_5509</td><td/></tr>
+                        <tr><td>C</td><td>CUST_I</td><td>CSA_41</td><td>Trade_4362</td><td/></tr>
+                        <tr><td>C</td><td>CUST_I</td><td>CSA_41</td><td>Trade_1454</td><td/></tr>
+                        <tr><td>C</td><td>CUST_I</td><td>CSA_41</td><td>Trade_2719</td><td/></tr>
+                        <tr><td>C</td><td>CUST_I</td><td>CSA_41</td><td>Trade_1369</td><td/></tr>
+                        <tr><td>C</td><td>CUST_I</td><td>CSA_42</td><td>Trade_4550</td><td/></tr>
+                        <tr><td>C</td><td>CUST_I</td><td>CSA_42</td><td>Trade_7424</td><td/></tr>
+                        <tr><td>C</td><td>CUST_I</td><td>CSA_42</td><td>Trade_8746</td><td/></tr>
+                        <tr><td>C</td><td>CUST_I</td><td>CSA_42</td><td>Trade_4208</td><td/></tr>
+                        <tr><td>C</td><td>CUST_I</td><td>CSA_42</td><td>Trade_8320</td><td/></tr>
+                        <tr><td>C</td><td>CUST_I</td><td>CSA_43</td><td>Trade_4724</td><td/></tr>
+                        <tr><td>C</td><td>CUST_I</td><td>CSA_43</td><td>Trade_4734</td><td/></tr>
+                        <tr><td>C</td><td>CUST_I</td><td>CSA_43</td><td>Trade_3661</td><td/></tr>
+                        <tr><td>C</td><td>CUST_I</td><td>CSA_43</td><td>Trade_3673</td><td/></tr>
+                        <tr><td>C</td><td>CUST_I</td><td>CSA_43</td><td>Trade_9895</td><td/></tr>
+                        <tr><td>C</td><td>CUST_I</td><td>CSA_44</td><td>Trade_2377</td><td/></tr>
+                        <tr><td>C</td><td>CUST_I</td><td>CSA_44</td><td>Trade_5734</td><td/></tr>
+                        <tr><td>C</td><td>CUST_I</td><td>CSA_44</td><td>Trade_3217</td><td/></tr>
+                        <tr><td>C</td><td>CUST_I</td><td>CSA_44</td><td>Trade_1718</td><td/></tr>
+                        <tr><td>C</td><td>CUST_I</td><td>CSA_44</td><td>Trade_5291</td><td/></tr>
+                        <tr><td>C</td><td>CUST_I</td><td>CSA_45</td><td>Trade_1706</td><td/></tr>
+                        <tr><td>C</td><td>CUST_I</td><td>CSA_45</td><td>Trade_4312</td><td/></tr>
+                        <tr><td>C</td><td>CUST_I</td><td>CSA_45</td><td>Trade_9302</td><td/></tr>
+                        <tr><td>C</td><td>CUST_I</td><td>CSA_45</td><td>Trade_4426</td><td/></tr>
+                        <tr><td>C</td><td>CUST_I</td><td>CSA_45</td><td>Trade_3818</td><td/></tr>
+                        <tr><td>A</td><td>CUST_J</td><td>CSA_46</td><td>Trade_5450</td><td/></tr>
+                        <tr><td>A</td><td>CUST_J</td><td>CSA_46</td><td>Trade_7805</td><td/></tr>
+                        <tr><td>A</td><td>CUST_J</td><td>CSA_46</td><td>Trade_8268</td><td/></tr>
+                        <tr><td>A</td><td>CUST_J</td><td>CSA_46</td><td>Trade_3409</td><td/></tr>
+                        <tr><td>A</td><td>CUST_J</td><td>CSA_46</td><td>Trade_3336</td><td/></tr>
+                        <tr><td>A</td><td>CUST_J</td><td>CSA_47</td><td>Trade_8640</td><td/></tr>
+                        <tr><td>A</td><td>CUST_J</td><td>CSA_47</td><td>Trade_9847</td><td/></tr>
+                        <tr><td>A</td><td>CUST_J</td><td>CSA_47</td><td>Trade_3614</td><td/></tr>
+                        <tr><td>A</td><td>CUST_J</td><td>CSA_47</td><td>Trade_3934</td><td/></tr>
+                        <tr><td>A</td><td>CUST_J</td><td>CSA_47</td><td>Trade_8170</td><td/></tr>
+                        <tr><td>A</td><td>CUST_J</td><td>CSA_48</td><td>Trade_5664</td><td/></tr>
+                        <tr><td>A</td><td>CUST_J</td><td>CSA_48</td><td>Trade_9532</td><td/></tr>
+                        <tr><td>A</td><td>CUST_J</td><td>CSA_48</td><td>Trade_9956</td><td/></tr>
+                        <tr><td>A</td><td>CUST_J</td><td>CSA_48</td><td>Trade_8036</td><td/></tr>
+                        <tr><td>A</td><td>CUST_J</td><td>CSA_48</td><td>Trade_5759</td><td/></tr>
+                        <tr><td>A</td><td>CUST_J</td><td>CSA_49</td><td>Trade_5033</td><td/></tr>
+                        <tr><td>A</td><td>CUST_J</td><td>CSA_49</td><td>Trade_4925</td><td/></tr>
+                        <tr><td>A</td><td>CUST_J</td><td>CSA_49</td><td>Trade_7426</td><td/></tr>
+                        <tr><td>A</td><td>CUST_J</td><td>CSA_49</td><td>Trade_5350</td><td/></tr>
+                        <tr><td>A</td><td>CUST_J</td><td>CSA_49</td><td>Trade_1773</td><td/></tr>
+                        <tr><td>A</td><td>CUST_J</td><td>CSA_50</td><td>Trade_5598</td><td/></tr>
+                        <tr><td>A</td><td>CUST_J</td><td>CSA_50</td><td>Trade_4177</td><td/></tr>
+                        <tr><td>A</td><td>CUST_J</td><td>CSA_50</td><td>Trade_8809</td><td/></tr>
+                        <tr><td>A</td><td>CUST_J</td><td>CSA_50</td><td>Trade_3654</td><td/></tr>
+                        <tr><td>A</td><td>CUST_J</td><td>CSA_50</td><td>Trade_4651</td><td/></tr>
+                        <tr><td>BBB</td><td>CUST_K</td><td>CSA_51</td><td>Trade_2254</td><td/></tr>
+                        <tr><td>BBB</td><td>CUST_K</td><td>CSA_51</td><td>Trade_2516</td><td/></tr>
+                        <tr><td>BBB</td><td>CUST_K</td><td>CSA_51</td><td>Trade_5925</td><td/></tr>
+                        <tr><td>BBB</td><td>CUST_K</td><td>CSA_51</td><td>Trade_3525</td><td/></tr>
+                        <tr><td>BBB</td><td>CUST_K</td><td>CSA_51</td><td>Trade_2879</td><td/></tr>
+                        <tr><td>BBB</td><td>CUST_K</td><td>CSA_52</td><td>Trade_2871</td><td/></tr>
+                        <tr><td>BBB</td><td>CUST_K</td><td>CSA_52</td><td>Trade_4166</td><td/></tr>
+                        <tr><td>BBB</td><td>CUST_K</td><td>CSA_52</td><td>Trade_5009</td><td/></tr>
+                        <tr><td>BBB</td><td>CUST_K</td><td>CSA_52</td><td>Trade_1903</td><td/></tr>
+                        <tr><td>BBB</td><td>CUST_K</td><td>CSA_52</td><td>Trade_7929</td><td/></tr>
+                        <tr><td>BBB</td><td>CUST_K</td><td>CSA_53</td><td>Trade_4995</td><td/></tr>
+                        <tr><td>BBB</td><td>CUST_K</td><td>CSA_53</td><td>Trade_1641</td><td/></tr>
+                        <tr><td>BBB</td><td>CUST_K</td><td>CSA_53</td><td>Trade_5528</td><td/></tr>
+                        <tr><td>BBB</td><td>CUST_K</td><td>CSA_53</td><td>Trade_1970</td><td/></tr>
+                        <tr><td>BBB</td><td>CUST_K</td><td>CSA_53</td><td>Trade_2031</td><td/></tr>
+                        <tr><td>BBB</td><td>CUST_K</td><td>CSA_54</td><td>Trade_6027</td><td/></tr>
+                        <tr><td>BBB</td><td>CUST_K</td><td>CSA_54</td><td>Trade_6363</td><td/></tr>
+                        <tr><td>BBB</td><td>CUST_K</td><td>CSA_54</td><td>Trade_7894</td><td/></tr>
+                        <tr><td>BBB</td><td>CUST_K</td><td>CSA_54</td><td>Trade_7486</td><td/></tr>
+                        <tr><td>BBB</td><td>CUST_K</td><td>CSA_54</td><td>Trade_7074</td><td/></tr>
+                        <tr><td>BBB</td><td>CUST_K</td><td>CSA_55</td><td>Trade_7766</td><td/></tr>
+                        <tr><td>BBB</td><td>CUST_K</td><td>CSA_55</td><td>Trade_5889</td><td/></tr>
+                        <tr><td>BBB</td><td>CUST_K</td><td>CSA_55</td><td>Trade_4557</td><td/></tr>
+                        <tr><td>BBB</td><td>CUST_K</td><td>CSA_55</td><td>Trade_2902</td><td/></tr>
+                        <tr><td>BBB</td><td>CUST_K</td><td>CSA_55</td><td>Trade_3958</td><td/></tr>
+                        <tr><td>CCC</td><td>CUST_L</td><td>CSA_56</td><td>Trade_6639</td><td/></tr>
+                        <tr><td>CCC</td><td>CUST_L</td><td>CSA_56</td><td>Trade_4692</td><td/></tr>
+                        <tr><td>CCC</td><td>CUST_L</td><td>CSA_56</td><td>Trade_7966</td><td/></tr>
+                        <tr><td>CCC</td><td>CUST_L</td><td>CSA_56</td><td>Trade_1680</td><td/></tr>
+                        <tr><td>CCC</td><td>CUST_L</td><td>CSA_56</td><td>Trade_5585</td><td/></tr>
+                        <tr><td>CCC</td><td>CUST_L</td><td>CSA_57</td><td>Trade_4244</td><td/></tr>
+                        <tr><td>CCC</td><td>CUST_L</td><td>CSA_57</td><td>Trade_6117</td><td/></tr>
+                        <tr><td>CCC</td><td>CUST_L</td><td>CSA_57</td><td>Trade_1245</td><td/></tr>
+                        <tr><td>CCC</td><td>CUST_L</td><td>CSA_57</td><td>Trade_9413</td><td/></tr>
+                        <tr><td>CCC</td><td>CUST_L</td><td>CSA_57</td><td>Trade_8709</td><td/></tr>
+                        <tr><td>CCC</td><td>CUST_L</td><td>CSA_58</td><td>Trade_4850</td><td/></tr>
+                        <tr><td>CCC</td><td>CUST_L</td><td>CSA_58</td><td>Trade_5195</td><td/></tr>
+                        <tr><td>CCC</td><td>CUST_L</td><td>CSA_58</td><td>Trade_7026</td><td/></tr>
+                        <tr><td>CCC</td><td>CUST_L</td><td>CSA_58</td><td>Trade_6906</td><td/></tr>
+                        <tr><td>CCC</td><td>CUST_L</td><td>CSA_58</td><td>Trade_5818</td><td/></tr>
+                        <tr><td>CCC</td><td>CUST_L</td><td>CSA_59</td><td>Trade_4873</td><td/></tr>
+                        <tr><td>CCC</td><td>CUST_L</td><td>CSA_59</td><td>Trade_8550</td><td/></tr>
+                        <tr><td>CCC</td><td>CUST_L</td><td>CSA_59</td><td>Trade_6600</td><td/></tr>
+                        <tr><td>CCC</td><td>CUST_L</td><td>CSA_59</td><td>Trade_9104</td><td/></tr>
+                        <tr><td>CCC</td><td>CUST_L</td><td>CSA_59</td><td>Trade_4819</td><td/></tr>
+                        <tr><td>CCC</td><td>CUST_L</td><td>CSA_60</td><td>Trade_3368</td><td/></tr>
+                        <tr><td>CCC</td><td>CUST_L</td><td>CSA_60</td><td>Trade_6887</td><td/></tr>
+                        <tr><td>CCC</td><td>CUST_L</td><td>CSA_60</td><td>Trade_6523</td><td/></tr>
+                        <tr><td>CCC</td><td>CUST_L</td><td>CSA_60</td><td>Trade_2236</td><td/></tr>
+                        <tr><td>CCC</td><td>CUST_L</td><td>CSA_60</td><td>Trade_9062</td><td/></tr>
+                        <tr><td>NR</td><td>CUST_M</td><td>CSA_61</td><td>Trade_9336</td><td/></tr>
+                        <tr><td>NR</td><td>CUST_M</td><td>CSA_61</td><td>Trade_1912</td><td/></tr>
+                        <tr><td>NR</td><td>CUST_M</td><td>CSA_61</td><td>Trade_4085</td><td/></tr>
+                        <tr><td>NR</td><td>CUST_M</td><td>CSA_61</td><td>Trade_8146</td><td/></tr>
+                        <tr><td>NR</td><td>CUST_M</td><td>CSA_61</td><td>Trade_7498</td><td/></tr>
+                        <tr><td>NR</td><td>CUST_M</td><td>CSA_62</td><td>Trade_7183</td><td/></tr>
+                        <tr><td>NR</td><td>CUST_M</td><td>CSA_62</td><td>Trade_6528</td><td/></tr>
+                        <tr><td>NR</td><td>CUST_M</td><td>CSA_62</td><td>Trade_7460</td><td/></tr>
+                        <tr><td>NR</td><td>CUST_M</td><td>CSA_62</td><td>Trade_9801</td><td/></tr>
+                        <tr><td>NR</td><td>CUST_M</td><td>CSA_62</td><td>Trade_6106</td><td/></tr>
+                        <tr><td>NR</td><td>CUST_M</td><td>CSA_63</td><td>Trade_9028</td><td/></tr>
+                        <tr><td>NR</td><td>CUST_M</td><td>CSA_63</td><td>Trade_3158</td><td/></tr>
+                        <tr><td>NR</td><td>CUST_M</td><td>CSA_63</td><td>Trade_9296</td><td/></tr>
+                        <tr><td>NR</td><td>CUST_M</td><td>CSA_63</td><td>Trade_7097</td><td/></tr>
+                        <tr><td>NR</td><td>CUST_M</td><td>CSA_63</td><td>Trade_5047</td><td/></tr>
+                        <tr><td>NR</td><td>CUST_M</td><td>CSA_64</td><td>Trade_6408</td><td/></tr>
+                        <tr><td>NR</td><td>CUST_M</td><td>CSA_64</td><td>Trade_8209</td><td/></tr>
+                        <tr><td>NR</td><td>CUST_M</td><td>CSA_64</td><td>Trade_3930</td><td/></tr>
+                        <tr><td>NR</td><td>CUST_M</td><td>CSA_64</td><td>Trade_3393</td><td/></tr>
+                        <tr><td>NR</td><td>CUST_M</td><td>CSA_64</td><td>Trade_9770</td><td/></tr>
+                        <tr><td>NR</td><td>CUST_M</td><td>CSA_65</td><td>Trade_6652</td><td/></tr>
+                        <tr><td>NR</td><td>CUST_M</td><td>CSA_65</td><td>Trade_7640</td><td/></tr>
+                        <tr><td>NR</td><td>CUST_M</td><td>CSA_65</td><td>Trade_9666</td><td/></tr>
+                        <tr><td>NR</td><td>CUST_M</td><td>CSA_65</td><td>Trade_1011</td><td/></tr>
+                        <tr><td>NR</td><td>CUST_M</td><td>CSA_65</td><td>Trade_3886</td><td/></tr>
+                        <tr><td>BB</td><td>CUST_N</td><td>CSA_66</td><td>Trade_5337</td><td/></tr>
+                        <tr><td>BB</td><td>CUST_N</td><td>CSA_66</td><td>Trade_6109</td><td/></tr>
+                        <tr><td>BB</td><td>CUST_N</td><td>CSA_66</td><td>Trade_1081</td><td/></tr>
+                        <tr><td>BB</td><td>CUST_N</td><td>CSA_66</td><td>Trade_2360</td><td/></tr>
+                        <tr><td>BB</td><td>CUST_N</td><td>CSA_66</td><td>Trade_6761</td><td/></tr>
+                        <tr><td>BB</td><td>CUST_N</td><td>CSA_67</td><td>Trade_9540</td><td/></tr>
+                        <tr><td>BB</td><td>CUST_N</td><td>CSA_67</td><td>Trade_7475</td><td/></tr>
+                        <tr><td>BB</td><td>CUST_N</td><td>CSA_67</td><td>Trade_4346</td><td/></tr>
+                        <tr><td>BB</td><td>CUST_N</td><td>CSA_67</td><td>Trade_9017</td><td/></tr>
+                        <tr><td>BB</td><td>CUST_N</td><td>CSA_67</td><td>Trade_7648</td><td/></tr>
+                        <tr><td>BB</td><td>CUST_N</td><td>CSA_68</td><td>Trade_4676</td><td/></tr>
+                        <tr><td>BB</td><td>CUST_N</td><td>CSA_68</td><td>Trade_9494</td><td/></tr>
+                        <tr><td>BB</td><td>CUST_N</td><td>CSA_68</td><td>Trade_7441</td><td/></tr>
+                        <tr><td>BB</td><td>CUST_N</td><td>CSA_68</td><td>Trade_6115</td><td/></tr>
+                        <tr><td>BB</td><td>CUST_N</td><td>CSA_68</td><td>Trade_1836</td><td/></tr>
+                        <tr><td>BB</td><td>CUST_N</td><td>CSA_69</td><td>Trade_6808</td><td/></tr>
+                        <tr><td>BB</td><td>CUST_N</td><td>CSA_69</td><td>Trade_3045</td><td/></tr>
+                        <tr><td>BB</td><td>CUST_N</td><td>CSA_69</td><td>Trade_4899</td><td/></tr>
+                        <tr><td>BB</td><td>CUST_N</td><td>CSA_69</td><td>Trade_8153</td><td/></tr>
+                        <tr><td>BB</td><td>CUST_N</td><td>CSA_69</td><td>Trade_8397</td><td/></tr>
+                        <tr><td>BB</td><td>CUST_N</td><td>CSA_70</td><td>Trade_6275</td><td/></tr>
+                        <tr><td>BB</td><td>CUST_N</td><td>CSA_70</td><td>Trade_8510</td><td/></tr>
+                        <tr><td>BB</td><td>CUST_N</td><td>CSA_70</td><td>Trade_1471</td><td/></tr>
+                        <tr><td>BB</td><td>CUST_N</td><td>CSA_70</td><td>Trade_5935</td><td/></tr>
+                        <tr><td>BB</td><td>CUST_N</td><td>CSA_70</td><td>Trade_5086</td><td/></tr>
+                        <tr><td>AA</td><td>CUST_O</td><td>CSA_71</td><td>Trade_3223</td><td/></tr>
+                        <tr><td>AA</td><td>CUST_O</td><td>CSA_71</td><td>Trade_5477</td><td/></tr>
+                        <tr><td>AA</td><td>CUST_O</td><td>CSA_71</td><td>Trade_4786</td><td/></tr>
+                        <tr><td>AA</td><td>CUST_O</td><td>CSA_71</td><td>Trade_4970</td><td/></tr>
+                        <tr><td>AA</td><td>CUST_O</td><td>CSA_71</td><td>Trade_5849</td><td/></tr>
+                        <tr><td>AA</td><td>CUST_O</td><td>CSA_72</td><td>Trade_5519</td><td/></tr>
+                        <tr><td>AA</td><td>CUST_O</td><td>CSA_72</td><td>Trade_6483</td><td/></tr>
+                        <tr><td>AA</td><td>CUST_O</td><td>CSA_72</td><td>Trade_6013</td><td/></tr>
+                        <tr><td>AA</td><td>CUST_O</td><td>CSA_72</td><td>Trade_8937</td><td/></tr>
+                        <tr><td>AA</td><td>CUST_O</td><td>CSA_72</td><td>Trade_4512</td><td/></tr>
+                        <tr><td>AA</td><td>CUST_O</td><td>CSA_73</td><td>Trade_1553</td><td/></tr>
+                        <tr><td>AA</td><td>CUST_O</td><td>CSA_73</td><td>Trade_8668</td><td/></tr>
+                        <tr><td>AA</td><td>CUST_O</td><td>CSA_73</td><td>Trade_1546</td><td/></tr>
+                        <tr><td>AA</td><td>CUST_O</td><td>CSA_73</td><td>Trade_6251</td><td/></tr>
+                        <tr><td>AA</td><td>CUST_O</td><td>CSA_73</td><td>Trade_1844</td><td/></tr>
+                        <tr><td>AA</td><td>CUST_O</td><td>CSA_74</td><td>Trade_3149</td><td/></tr>
+                        <tr><td>AA</td><td>CUST_O</td><td>CSA_74</td><td>Trade_5571</td><td/></tr>
+                        <tr><td>AA</td><td>CUST_O</td><td>CSA_74</td><td>Trade_9877</td><td/></tr>
+                        <tr><td>AA</td><td>CUST_O</td><td>CSA_74</td><td>Trade_1744</td><td/></tr>
+                        <tr><td>AA</td><td>CUST_O</td><td>CSA_74</td><td>Trade_4155</td><td/></tr>
+                        <tr><td>AA</td><td>CUST_O</td><td>CSA_75</td><td>Trade_6440</td><td/></tr>
+                        <tr><td>AA</td><td>CUST_O</td><td>CSA_75</td><td>Trade_8372</td><td/></tr>
+                        <tr><td>AA</td><td>CUST_O</td><td>CSA_75</td><td>Trade_1911</td><td/></tr>
+                        <tr><td>AA</td><td>CUST_O</td><td>CSA_75</td><td>Trade_9553</td><td/></tr>
+                        <tr><td>AA</td><td>CUST_O</td><td>CSA_75</td><td>Trade_1986</td><td/></tr>
+                        <tr><td>BBB</td><td>CUST_P</td><td>CSA_76</td><td>Trade_5992</td><td/></tr>
+                        <tr><td>BBB</td><td>CUST_P</td><td>CSA_76</td><td>Trade_8521</td><td/></tr>
+                        <tr><td>BBB</td><td>CUST_P</td><td>CSA_76</td><td>Trade_9667</td><td/></tr>
+                        <tr><td>BBB</td><td>CUST_P</td><td>CSA_76</td><td>Trade_3406</td><td/></tr>
+                        <tr><td>BBB</td><td>CUST_P</td><td>CSA_76</td><td>Trade_7520</td><td/></tr>
+                        <tr><td>BBB</td><td>CUST_P</td><td>CSA_77</td><td>Trade_8381</td><td/></tr>
+                        <tr><td>BBB</td><td>CUST_P</td><td>CSA_77</td><td>Trade_9385</td><td/></tr>
+                        <tr><td>BBB</td><td>CUST_P</td><td>CSA_77</td><td>Trade_2862</td><td/></tr>
+                        <tr><td>BBB</td><td>CUST_P</td><td>CSA_77</td><td>Trade_7533</td><td/></tr>
+                        <tr><td>BBB</td><td>CUST_P</td><td>CSA_77</td><td>Trade_5518</td><td/></tr>
+                        <tr><td>BBB</td><td>CUST_P</td><td>CSA_78</td><td>Trade_5426</td><td/></tr>
+                        <tr><td>BBB</td><td>CUST_P</td><td>CSA_78</td><td>Trade_5847</td><td/></tr>
+                        <tr><td>BBB</td><td>CUST_P</td><td>CSA_78</td><td>Trade_8213</td><td/></tr>
+                        <tr><td>BBB</td><td>CUST_P</td><td>CSA_78</td><td>Trade_1346</td><td/></tr>
+                        <tr><td>BBB</td><td>CUST_P</td><td>CSA_78</td><td>Trade_5003</td><td/></tr>
+                        <tr><td>BBB</td><td>CUST_P</td><td>CSA_79</td><td>Trade_5817</td><td/></tr>
+                        <tr><td>BBB</td><td>CUST_P</td><td>CSA_79</td><td>Trade_9697</td><td/></tr>
+                        <tr><td>BBB</td><td>CUST_P</td><td>CSA_79</td><td>Trade_1620</td><td/></tr>
+                        <tr><td>BBB</td><td>CUST_P</td><td>CSA_79</td><td>Trade_4623</td><td/></tr>
+                        <tr><td>BBB</td><td>CUST_P</td><td>CSA_79</td><td>Trade_6760</td><td/></tr>
+                        <tr><td>BBB</td><td>CUST_P</td><td>CSA_80</td><td>Trade_1078</td><td/></tr>
+                        <tr><td>BBB</td><td>CUST_P</td><td>CSA_80</td><td>Trade_8819</td><td/></tr>
+                        <tr><td>BBB</td><td>CUST_P</td><td>CSA_80</td><td>Trade_2030</td><td/></tr>
+                        <tr><td>BBB</td><td>CUST_P</td><td>CSA_80</td><td>Trade_2131</td><td/></tr>
+                        <tr><td>BBB</td><td>CUST_P</td><td>CSA_80</td><td>Trade_9338</td><td/></tr>
+                        <tr><td>B</td><td>CUST_Q</td><td>CSA_81</td><td>Trade_6800</td><td/></tr>
+                        <tr><td>B</td><td>CUST_Q</td><td>CSA_81</td><td>Trade_5083</td><td/></tr>
+                        <tr><td>B</td><td>CUST_Q</td><td>CSA_81</td><td>Trade_1795</td><td/></tr>
+                        <tr><td>B</td><td>CUST_Q</td><td>CSA_81</td><td>Trade_4028</td><td/></tr>
+                        <tr><td>B</td><td>CUST_Q</td><td>CSA_81</td><td>Trade_7880</td><td/></tr>
+                        <tr><td>B</td><td>CUST_Q</td><td>CSA_82</td><td>Trade_5755</td><td/></tr>
+                        <tr><td>B</td><td>CUST_Q</td><td>CSA_82</td><td>Trade_1120</td><td/></tr>
+                        <tr><td>B</td><td>CUST_Q</td><td>CSA_82</td><td>Trade_5257</td><td/></tr>
+                        <tr><td>B</td><td>CUST_Q</td><td>CSA_82</td><td>Trade_6529</td><td/></tr>
+                        <tr><td>B</td><td>CUST_Q</td><td>CSA_82</td><td>Trade_8752</td><td/></tr>
+                        <tr><td>B</td><td>CUST_Q</td><td>CSA_83</td><td>Trade_6977</td><td/></tr>
+                        <tr><td>B</td><td>CUST_Q</td><td>CSA_83</td><td>Trade_4349</td><td/></tr>
+                        <tr><td>B</td><td>CUST_Q</td><td>CSA_83</td><td>Trade_6428</td><td/></tr>
+                        <tr><td>B</td><td>CUST_Q</td><td>CSA_83</td><td>Trade_8420</td><td/></tr>
+                        <tr><td>B</td><td>CUST_Q</td><td>CSA_83</td><td>Trade_9856</td><td/></tr>
+                        <tr><td>B</td><td>CUST_Q</td><td>CSA_84</td><td>Trade_8512</td><td/></tr>
+                        <tr><td>B</td><td>CUST_Q</td><td>CSA_84</td><td>Trade_3828</td><td/></tr>
+                        <tr><td>B</td><td>CUST_Q</td><td>CSA_84</td><td>Trade_2312</td><td/></tr>
+                        <tr><td>B</td><td>CUST_Q</td><td>CSA_84</td><td>Trade_7146</td><td/></tr>
+                        <tr><td>B</td><td>CUST_Q</td><td>CSA_84</td><td>Trade_7870</td><td/></tr>
+                        <tr><td>B</td><td>CUST_Q</td><td>CSA_85</td><td>Trade_8926</td><td/></tr>
+                        <tr><td>B</td><td>CUST_Q</td><td>CSA_85</td><td>Trade_4204</td><td/></tr>
+                        <tr><td>B</td><td>CUST_Q</td><td>CSA_85</td><td>Trade_1181</td><td/></tr>
+                        <tr><td>B</td><td>CUST_Q</td><td>CSA_85</td><td>Trade_7109</td><td/></tr>
+                        <tr><td>B</td><td>CUST_Q</td><td>CSA_85</td><td>Trade_7848</td><td/></tr>
+                        <tr><td>AAA</td><td>CUST_R</td><td>CSA_86</td><td>Trade_1155</td><td/></tr>
+                        <tr><td>AAA</td><td>CUST_R</td><td>CSA_86</td><td>Trade_7356</td><td/></tr>
+                        <tr><td>AAA</td><td>CUST_R</td><td>CSA_86</td><td>Trade_6337</td><td/></tr>
+                        <tr><td>AAA</td><td>CUST_R</td><td>CSA_86</td><td>Trade_9151</td><td/></tr>
+                        <tr><td>AAA</td><td>CUST_R</td><td>CSA_86</td><td>Trade_7665</td><td/></tr>
+                        <tr><td>AAA</td><td>CUST_R</td><td>CSA_87</td><td>Trade_1092</td><td/></tr>
+                        <tr><td>AAA</td><td>CUST_R</td><td>CSA_87</td><td>Trade_9004</td><td/></tr>
+                        <tr><td>AAA</td><td>CUST_R</td><td>CSA_87</td><td>Trade_2882</td><td/></tr>
+                        <tr><td>AAA</td><td>CUST_R</td><td>CSA_87</td><td>Trade_8793</td><td/></tr>
+                        <tr><td>AAA</td><td>CUST_R</td><td>CSA_87</td><td>Trade_9755</td><td/></tr>
+                        <tr><td>AAA</td><td>CUST_R</td><td>CSA_88</td><td>Trade_8256</td><td/></tr>
+                        <tr><td>AAA</td><td>CUST_R</td><td>CSA_88</td><td>Trade_5082</td><td/></tr>
+                        <tr><td>AAA</td><td>CUST_R</td><td>CSA_88</td><td>Trade_1759</td><td/></tr>
+                        <tr><td>AAA</td><td>CUST_R</td><td>CSA_88</td><td>Trade_2458</td><td/></tr>
+                        <tr><td>AAA</td><td>CUST_R</td><td>CSA_88</td><td>Trade_7325</td><td/></tr>
+                        <tr><td>AAA</td><td>CUST_R</td><td>CSA_89</td><td>Trade_9355</td><td/></tr>
+                        <tr><td>AAA</td><td>CUST_R</td><td>CSA_89</td><td>Trade_5274</td><td/></tr>
+                        <tr><td>AAA</td><td>CUST_R</td><td>CSA_89</td><td>Trade_8101</td><td/></tr>
+                        <tr><td>AAA</td><td>CUST_R</td><td>CSA_89</td><td>Trade_2342</td><td/></tr>
+                        <tr><td>AAA</td><td>CUST_R</td><td>CSA_89</td><td>Trade_6414</td><td/></tr>
+                        <tr><td>AAA</td><td>CUST_R</td><td>CSA_90</td><td>Trade_1863</td><td/></tr>
+                        <tr><td>AAA</td><td>CUST_R</td><td>CSA_90</td><td>Trade_4690</td><td/></tr>
+                        <tr><td>AAA</td><td>CUST_R</td><td>CSA_90</td><td>Trade_1384</td><td/></tr>
+                        <tr><td>AAA</td><td>CUST_R</td><td>CSA_90</td><td>Trade_3854</td><td/></tr>
+                        <tr><td>AAA</td><td>CUST_R</td><td>CSA_90</td><td>Trade_7868</td><td/></tr>
+                        <tr><td>CC</td><td>CUST_S</td><td>CSA_91</td><td>Trade_2104</td><td/></tr>
+                        <tr><td>CC</td><td>CUST_S</td><td>CSA_91</td><td>Trade_1201</td><td/></tr>
+                        <tr><td>CC</td><td>CUST_S</td><td>CSA_91</td><td>Trade_6503</td><td/></tr>
+                        <tr><td>CC</td><td>CUST_S</td><td>CSA_91</td><td>Trade_4410</td><td/></tr>
+                        <tr><td>CC</td><td>CUST_S</td><td>CSA_91</td><td>Trade_9656</td><td/></tr>
+                        <tr><td>CC</td><td>CUST_S</td><td>CSA_92</td><td>Trade_1232</td><td/></tr>
+                        <tr><td>CC</td><td>CUST_S</td><td>CSA_92</td><td>Trade_4887</td><td/></tr>
+                        <tr><td>CC</td><td>CUST_S</td><td>CSA_92</td><td>Trade_9007</td><td/></tr>
+                        <tr><td>CC</td><td>CUST_S</td><td>CSA_92</td><td>Trade_2769</td><td/></tr>
+                        <tr><td>CC</td><td>CUST_S</td><td>CSA_92</td><td>Trade_3028</td><td/></tr>
+                        <tr><td>CC</td><td>CUST_S</td><td>CSA_93</td><td>Trade_8778</td><td/></tr>
+                        <tr><td>CC</td><td>CUST_S</td><td>CSA_93</td><td>Trade_8995</td><td/></tr>
+                        <tr><td>CC</td><td>CUST_S</td><td>CSA_93</td><td>Trade_2103</td><td/></tr>
+                        <tr><td>CC</td><td>CUST_S</td><td>CSA_93</td><td>Trade_6631</td><td/></tr>
+                        <tr><td>CC</td><td>CUST_S</td><td>CSA_93</td><td>Trade_2463</td><td/></tr>
+                        <tr><td>CC</td><td>CUST_S</td><td>CSA_94</td><td>Trade_9751</td><td/></tr>
+                        <tr><td>CC</td><td>CUST_S</td><td>CSA_94</td><td>Trade_4409</td><td/></tr>
+                        <tr><td>CC</td><td>CUST_S</td><td>CSA_94</td><td>Trade_8577</td><td/></tr>
+                        <tr><td>CC</td><td>CUST_S</td><td>CSA_94</td><td>Trade_4709</td><td/></tr>
+                        <tr><td>CC</td><td>CUST_S</td><td>CSA_94</td><td>Trade_8142</td><td/></tr>
+                        <tr><td>CC</td><td>CUST_S</td><td>CSA_95</td><td>Trade_7540</td><td/></tr>
+                        <tr><td>CC</td><td>CUST_S</td><td>CSA_95</td><td>Trade_3975</td><td/></tr>
+                        <tr><td>CC</td><td>CUST_S</td><td>CSA_95</td><td>Trade_9170</td><td/></tr>
+                        <tr><td>CC</td><td>CUST_S</td><td>CSA_95</td><td>Trade_5407</td><td/></tr>
+                        <tr><td>CC</td><td>CUST_S</td><td>CSA_95</td><td>Trade_4117</td><td/></tr>
+                        <tr><td>C</td><td>CUST_T</td><td>CSA_96</td><td>Trade_1043</td><td/></tr>
+                        <tr><td>C</td><td>CUST_T</td><td>CSA_96</td><td>Trade_8597</td><td/></tr>
+                        <tr><td>C</td><td>CUST_T</td><td>CSA_96</td><td>Trade_4347</td><td/></tr>
+                        <tr><td>C</td><td>CUST_T</td><td>CSA_96</td><td>Trade_7946</td><td/></tr>
+                        <tr><td>C</td><td>CUST_T</td><td>CSA_96</td><td>Trade_3809</td><td/></tr>
+                        <tr><td>C</td><td>CUST_T</td><td>CSA_97</td><td>Trade_3643</td><td/></tr>
+                        <tr><td>C</td><td>CUST_T</td><td>CSA_97</td><td>Trade_9044</td><td/></tr>
+                        <tr><td>C</td><td>CUST_T</td><td>CSA_97</td><td>Trade_5687</td><td/></tr>
+                        <tr><td>C</td><td>CUST_T</td><td>CSA_97</td><td>Trade_3286</td><td/></tr>
+                        <tr><td>C</td><td>CUST_T</td><td>CSA_97</td><td>Trade_1852</td><td/></tr>
+                        <tr><td>C</td><td>CUST_T</td><td>CSA_98</td><td>Trade_9610</td><td/></tr>
+                        <tr><td>C</td><td>CUST_T</td><td>CSA_98</td><td>Trade_9097</td><td/></tr>
+                        <tr><td>C</td><td>CUST_T</td><td>CSA_98</td><td>Trade_4137</td><td/></tr>
+                        <tr><td>C</td><td>CUST_T</td><td>CSA_98</td><td>Trade_6345</td><td/></tr>
+                        <tr><td>C</td><td>CUST_T</td><td>CSA_98</td><td>Trade_4615</td><td/></tr>
+                        <tr><td>C</td><td>CUST_T</td><td>CSA_99</td><td>Trade_4172</td><td/></tr>
+                        <tr><td>C</td><td>CUST_T</td><td>CSA_99</td><td>Trade_7135</td><td/></tr>
+                        <tr><td>C</td><td>CUST_T</td><td>CSA_99</td><td>Trade_6229</td><td/></tr>
+                        <tr><td>C</td><td>CUST_T</td><td>CSA_99</td><td>Trade_2530</td><td/></tr>
+                        <tr><td>C</td><td>CUST_T</td><td>CSA_99</td><td>Trade_8688</td><td/></tr>
+                        <tr><td>C</td><td>CUST_T</td><td>CSA_100</td><td>Trade_5432</td><td/></tr>
+                        <tr><td>C</td><td>CUST_T</td><td>CSA_100</td><td>Trade_1927</td><td/></tr>
+                        <tr><td>C</td><td>CUST_T</td><td>CSA_100</td><td>Trade_4234</td><td/></tr>
+                        <tr><td>C</td><td>CUST_T</td><td>CSA_100</td><td>Trade_2958</td><td/></tr>
+                        <tr><td>C</td><td>CUST_T</td><td>CSA_100</td><td>Trade_3935</td><td/></tr>
+                        <tr><td>A</td><td>CUST_U</td><td>CSA_101</td><td>Trade_9149</td><td/></tr>
+                        <tr><td>A</td><td>CUST_U</td><td>CSA_101</td><td>Trade_9792</td><td/></tr>
+                        <tr><td>A</td><td>CUST_U</td><td>CSA_101</td><td>Trade_8867</td><td/></tr>
+                        <tr><td>A</td><td>CUST_U</td><td>CSA_101</td><td>Trade_2060</td><td/></tr>
+                        <tr><td>A</td><td>CUST_U</td><td>CSA_101</td><td>Trade_5582</td><td/></tr>
+                        <tr><td>A</td><td>CUST_U</td><td>CSA_102</td><td>Trade_4808</td><td/></tr>
+                        <tr><td>A</td><td>CUST_U</td><td>CSA_102</td><td>Trade_8542</td><td/></tr>
+                        <tr><td>A</td><td>CUST_U</td><td>CSA_102</td><td>Trade_8068</td><td/></tr>
+                        <tr><td>A</td><td>CUST_U</td><td>CSA_102</td><td>Trade_7595</td><td/></tr>
+                        <tr><td>A</td><td>CUST_U</td><td>CSA_102</td><td>Trade_6778</td><td/></tr>
+                        <tr><td>A</td><td>CUST_U</td><td>CSA_103</td><td>Trade_2367</td><td/></tr>
+                        <tr><td>A</td><td>CUST_U</td><td>CSA_103</td><td>Trade_5178</td><td/></tr>
+                        <tr><td>A</td><td>CUST_U</td><td>CSA_103</td><td>Trade_8847</td><td/></tr>
+                        <tr><td>A</td><td>CUST_U</td><td>CSA_103</td><td>Trade_7253</td><td/></tr>
+                        <tr><td>A</td><td>CUST_U</td><td>CSA_103</td><td>Trade_3284</td><td/></tr>
+                        <tr><td>A</td><td>CUST_U</td><td>CSA_104</td><td>Trade_4918</td><td/></tr>
+                        <tr><td>A</td><td>CUST_U</td><td>CSA_104</td><td>Trade_4418</td><td/></tr>
+                        <tr><td>A</td><td>CUST_U</td><td>CSA_104</td><td>Trade_7609</td><td/></tr>
+                        <tr><td>A</td><td>CUST_U</td><td>CSA_104</td><td>Trade_8691</td><td/></tr>
+                        <tr><td>A</td><td>CUST_U</td><td>CSA_104</td><td>Trade_7030</td><td/></tr>
+                        <tr><td>A</td><td>CUST_U</td><td>CSA_105</td><td>Trade_7715</td><td/></tr>
+                        <tr><td>A</td><td>CUST_U</td><td>CSA_105</td><td>Trade_1961</td><td/></tr>
+                        <tr><td>A</td><td>CUST_U</td><td>CSA_105</td><td>Trade_3729</td><td/></tr>
+                        <tr><td>A</td><td>CUST_U</td><td>CSA_105</td><td>Trade_2946</td><td/></tr>
+                        <tr><td>A</td><td>CUST_U</td><td>CSA_105</td><td>Trade_3855</td><td/></tr>
+                        <tr><td>BBB</td><td>CUST_V</td><td>CSA_106</td><td>Trade_3474</td><td/></tr>
+                        <tr><td>BBB</td><td>CUST_V</td><td>CSA_106</td><td>Trade_7679</td><td/></tr>
+                        <tr><td>BBB</td><td>CUST_V</td><td>CSA_106</td><td>Trade_5442</td><td/></tr>
+                        <tr><td>BBB</td><td>CUST_V</td><td>CSA_106</td><td>Trade_2335</td><td/></tr>
+                        <tr><td>BBB</td><td>CUST_V</td><td>CSA_106</td><td>Trade_5467</td><td/></tr>
+                        <tr><td>BBB</td><td>CUST_V</td><td>CSA_107</td><td>Trade_1687</td><td/></tr>
+                        <tr><td>BBB</td><td>CUST_V</td><td>CSA_107</td><td>Trade_3518</td><td/></tr>
+                        <tr><td>BBB</td><td>CUST_V</td><td>CSA_107</td><td>Trade_7055</td><td/></tr>
+                        <tr><td>BBB</td><td>CUST_V</td><td>CSA_107</td><td>Trade_9872</td><td/></tr>
+                        <tr><td>BBB</td><td>CUST_V</td><td>CSA_107</td><td>Trade_2590</td><td/></tr>
+                        <tr><td>BBB</td><td>CUST_V</td><td>CSA_108</td><td>Trade_8426</td><td/></tr>
+                        <tr><td>BBB</td><td>CUST_V</td><td>CSA_108</td><td>Trade_4746</td><td/></tr>
+                        <tr><td>BBB</td><td>CUST_V</td><td>CSA_108</td><td>Trade_9669</td><td/></tr>
+                        <tr><td>BBB</td><td>CUST_V</td><td>CSA_108</td><td>Trade_1877</td><td/></tr>
+                        <tr><td>BBB</td><td>CUST_V</td><td>CSA_108</td><td>Trade_5699</td><td/></tr>
+                        <tr><td>BBB</td><td>CUST_V</td><td>CSA_109</td><td>Trade_8753</td><td/></tr>
+                        <tr><td>BBB</td><td>CUST_V</td><td>CSA_109</td><td>Trade_5770</td><td/></tr>
+                        <tr><td>BBB</td><td>CUST_V</td><td>CSA_109</td><td>Trade_3687</td><td/></tr>
+                        <tr><td>BBB</td><td>CUST_V</td><td>CSA_109</td><td>Trade_4602</td><td/></tr>
+                        <tr><td>BBB</td><td>CUST_V</td><td>CSA_109</td><td>Trade_6974</td><td/></tr>
+                        <tr><td>BBB</td><td>CUST_V</td><td>CSA_110</td><td>Trade_3303</td><td/></tr>
+                        <tr><td>BBB</td><td>CUST_V</td><td>CSA_110</td><td>Trade_3669</td><td/></tr>
+                        <tr><td>BBB</td><td>CUST_V</td><td>CSA_110</td><td>Trade_5869</td><td/></tr>
+                        <tr><td>BBB</td><td>CUST_V</td><td>CSA_110</td><td>Trade_2363</td><td/></tr>
+                        <tr><td>BBB</td><td>CUST_V</td><td>CSA_110</td><td>Trade_8960</td><td/></tr>
+                        <tr><td>AAA</td><td>CUST_W</td><td>CSA_111</td><td>Trade_6411</td><td/></tr>
+                        <tr><td>AAA</td><td>CUST_W</td><td>CSA_111</td><td>Trade_8807</td><td/></tr>
+                        <tr><td>AAA</td><td>CUST_W</td><td>CSA_111</td><td>Trade_4993</td><td/></tr>
+                        <tr><td>AAA</td><td>CUST_W</td><td>CSA_111</td><td>Trade_4698</td><td/></tr>
+                        <tr><td>AAA</td><td>CUST_W</td><td>CSA_111</td><td>Trade_3989</td><td/></tr>
+                        <tr><td>AAA</td><td>CUST_W</td><td>CSA_112</td><td>Trade_4321</td><td/></tr>
+                        <tr><td>AAA</td><td>CUST_W</td><td>CSA_112</td><td>Trade_3022</td><td/></tr>
+                        <tr><td>AAA</td><td>CUST_W</td><td>CSA_112</td><td>Trade_6257</td><td/></tr>
+                        <tr><td>AAA</td><td>CUST_W</td><td>CSA_112</td><td>Trade_2354</td><td/></tr>
+                        <tr><td>AAA</td><td>CUST_W</td><td>CSA_112</td><td>Trade_7691</td><td/></tr>
+                        <tr><td>AAA</td><td>CUST_W</td><td>CSA_113</td><td>Trade_7043</td><td/></tr>
+                        <tr><td>AAA</td><td>CUST_W</td><td>CSA_113</td><td>Trade_4523</td><td/></tr>
+                        <tr><td>AAA</td><td>CUST_W</td><td>CSA_113</td><td>Trade_2646</td><td/></tr>
+                        <tr><td>AAA</td><td>CUST_W</td><td>CSA_113</td><td>Trade_8701</td><td/></tr>
+                        <tr><td>AAA</td><td>CUST_W</td><td>CSA_113</td><td>Trade_7029</td><td/></tr>
+                        <tr><td>AAA</td><td>CUST_W</td><td>CSA_114</td><td>Trade_4580</td><td/></tr>
+                        <tr><td>AAA</td><td>CUST_W</td><td>CSA_114</td><td>Trade_9827</td><td/></tr>
+                        <tr><td>AAA</td><td>CUST_W</td><td>CSA_114</td><td>Trade_9775</td><td/></tr>
+                        <tr><td>AAA</td><td>CUST_W</td><td>CSA_114</td><td>Trade_3994</td><td/></tr>
+                        <tr><td>AAA</td><td>CUST_W</td><td>CSA_114</td><td>Trade_9724</td><td/></tr>
+                        <tr><td>AAA</td><td>CUST_W</td><td>CSA_115</td><td>Trade_1798</td><td/></tr>
+                        <tr><td>AAA</td><td>CUST_W</td><td>CSA_115</td><td>Trade_6777</td><td/></tr>
+                        <tr><td>AAA</td><td>CUST_W</td><td>CSA_115</td><td>Trade_4515</td><td/></tr>
+                        <tr><td>AAA</td><td>CUST_W</td><td>CSA_115</td><td>Trade_2169</td><td/></tr>
+                        <tr><td>AAA</td><td>CUST_W</td><td>CSA_115</td><td>Trade_3676</td><td/></tr>
+                        <tr><td>AA</td><td>CUST_X</td><td>CSA_116</td><td>Trade_3338</td><td/></tr>
+                        <tr><td>AA</td><td>CUST_X</td><td>CSA_116</td><td>Trade_7053</td><td/></tr>
+                        <tr><td>AA</td><td>CUST_X</td><td>CSA_116</td><td>Trade_6632</td><td/></tr>
+                        <tr><td>AA</td><td>CUST_X</td><td>CSA_116</td><td>Trade_3229</td><td/></tr>
+                        <tr><td>AA</td><td>CUST_X</td><td>CSA_116</td><td>Trade_7979</td><td/></tr>
+                        <tr><td>AA</td><td>CUST_X</td><td>CSA_117</td><td>Trade_9341</td><td/></tr>
+                        <tr><td>AA</td><td>CUST_X</td><td>CSA_117</td><td>Trade_3454</td><td/></tr>
+                        <tr><td>AA</td><td>CUST_X</td><td>CSA_117</td><td>Trade_8354</td><td/></tr>
+                        <tr><td>AA</td><td>CUST_X</td><td>CSA_117</td><td>Trade_2255</td><td/></tr>
+                        <tr><td>AA</td><td>CUST_X</td><td>CSA_117</td><td>Trade_2434</td><td/></tr>
+                        <tr><td>AA</td><td>CUST_X</td><td>CSA_118</td><td>Trade_3264</td><td/></tr>
+                        <tr><td>AA</td><td>CUST_X</td><td>CSA_118</td><td>Trade_2842</td><td/></tr>
+                        <tr><td>AA</td><td>CUST_X</td><td>CSA_118</td><td>Trade_2841</td><td/></tr>
+                        <tr><td>AA</td><td>CUST_X</td><td>CSA_118</td><td>Trade_2859</td><td/></tr>
+                        <tr><td>AA</td><td>CUST_X</td><td>CSA_118</td><td>Trade_5133</td><td/></tr>
+                        <tr><td>AA</td><td>CUST_X</td><td>CSA_119</td><td>Trade_2457</td><td/></tr>
+                        <tr><td>AA</td><td>CUST_X</td><td>CSA_119</td><td>Trade_4863</td><td/></tr>
+                        <tr><td>AA</td><td>CUST_X</td><td>CSA_119</td><td>Trade_4323</td><td/></tr>
+                        <tr><td>AA</td><td>CUST_X</td><td>CSA_119</td><td>Trade_1693</td><td/></tr>
+                        <tr><td>AA</td><td>CUST_X</td><td>CSA_119</td><td>Trade_9287</td><td/></tr>
+                        <tr><td>AA</td><td>CUST_X</td><td>CSA_120</td><td>Trade_8700</td><td/></tr>
+                        <tr><td>AA</td><td>CUST_X</td><td>CSA_120</td><td>Trade_3121</td><td/></tr>
+                        <tr><td>AA</td><td>CUST_X</td><td>CSA_120</td><td>Trade_9886</td><td/></tr>
+                        <tr><td>AA</td><td>CUST_X</td><td>CSA_120</td><td>Trade_8047</td><td/></tr>
+                        <tr><td>AA</td><td>CUST_X</td><td>CSA_120</td><td>Trade_8718</td><td/></tr>
+                        <tr><td>A</td><td>CUST_Y</td><td>CSA_121</td><td>Trade_1985</td><td/></tr>
+                        <tr><td>A</td><td>CUST_Y</td><td>CSA_121</td><td>Trade_7252</td><td/></tr>
+                        <tr><td>A</td><td>CUST_Y</td><td>CSA_121</td><td>Trade_8639</td><td/></tr>
+                        <tr><td>A</td><td>CUST_Y</td><td>CSA_121</td><td>Trade_4233</td><td/></tr>
+                        <tr><td>A</td><td>CUST_Y</td><td>CSA_121</td><td>Trade_4704</td><td/></tr>
+                        <tr><td>A</td><td>CUST_Y</td><td>CSA_122</td><td>Trade_9247</td><td/></tr>
+                        <tr><td>A</td><td>CUST_Y</td><td>CSA_122</td><td>Trade_3389</td><td/></tr>
+                        <tr><td>A</td><td>CUST_Y</td><td>CSA_122</td><td>Trade_2869</td><td/></tr>
+                        <tr><td>A</td><td>CUST_Y</td><td>CSA_122</td><td>Trade_2178</td><td/></tr>
+                        <tr><td>A</td><td>CUST_Y</td><td>CSA_122</td><td>Trade_5800</td><td/></tr>
+                        <tr><td>A</td><td>CUST_Y</td><td>CSA_123</td><td>Trade_6187</td><td/></tr>
+                        <tr><td>A</td><td>CUST_Y</td><td>CSA_123</td><td>Trade_8942</td><td/></tr>
+                        <tr><td>A</td><td>CUST_Y</td><td>CSA_123</td><td>Trade_9087</td><td/></tr>
+                        <tr><td>A</td><td>CUST_Y</td><td>CSA_123</td><td>Trade_5823</td><td/></tr>
+                        <tr><td>A</td><td>CUST_Y</td><td>CSA_123</td><td>Trade_7735</td><td/></tr>
+                        <tr><td>A</td><td>CUST_Y</td><td>CSA_124</td><td>Trade_9945</td><td/></tr>
+                        <tr><td>A</td><td>CUST_Y</td><td>CSA_124</td><td>Trade_6964</td><td/></tr>
+                        <tr><td>A</td><td>CUST_Y</td><td>CSA_124</td><td>Trade_2706</td><td/></tr>
+                        <tr><td>A</td><td>CUST_Y</td><td>CSA_124</td><td>Trade_8648</td><td/></tr>
+                        <tr><td>A</td><td>CUST_Y</td><td>CSA_124</td><td>Trade_6288</td><td/></tr>
+                        <tr><td>A</td><td>CUST_Y</td><td>CSA_125</td><td>Trade_9037</td><td/></tr>
+                        <tr><td>A</td><td>CUST_Y</td><td>CSA_125</td><td>Trade_8750</td><td/></tr>
+                        <tr><td>A</td><td>CUST_Y</td><td>CSA_125</td><td>Trade_2763</td><td/></tr>
+                        <tr><td>A</td><td>CUST_Y</td><td>CSA_125</td><td>Trade_9246</td><td/></tr>
+                        <tr><td>A</td><td>CUST_Y</td><td>CSA_125</td><td>Trade_4458</td><td/></tr>
+                        <tr><td>BB</td><td>CUST_Z</td><td>CSA_126</td><td>Trade_3767</td><td/></tr>
+                        <tr><td>BB</td><td>CUST_Z</td><td>CSA_126</td><td>Trade_1160</td><td/></tr>
+                        <tr><td>BB</td><td>CUST_Z</td><td>CSA_126</td><td>Trade_4737</td><td/></tr>
+                        <tr><td>BB</td><td>CUST_Z</td><td>CSA_126</td><td>Trade_5118</td><td/></tr>
+                        <tr><td>BB</td><td>CUST_Z</td><td>CSA_126</td><td>Trade_9264</td><td/></tr>
+                        <tr><td>BB</td><td>CUST_Z</td><td>CSA_127</td><td>Trade_7517</td><td/></tr>
+                        <tr><td>BB</td><td>CUST_Z</td><td>CSA_127</td><td>Trade_2996</td><td/></tr>
+                        <tr><td>BB</td><td>CUST_Z</td><td>CSA_127</td><td>Trade_1861</td><td/></tr>
+                        <tr><td>BB</td><td>CUST_Z</td><td>CSA_127</td><td>Trade_9344</td><td/></tr>
+                        <tr><td>BB</td><td>CUST_Z</td><td>CSA_127</td><td>Trade_3509</td><td/></tr>
+                        <tr><td>BB</td><td>CUST_Z</td><td>CSA_128</td><td>Trade_2974</td><td/></tr>
+                        <tr><td>BB</td><td>CUST_Z</td><td>CSA_128</td><td>Trade_8838</td><td/></tr>
+                        <tr><td>BB</td><td>CUST_Z</td><td>CSA_128</td><td>Trade_3894</td><td/></tr>
+                        <tr><td>BB</td><td>CUST_Z</td><td>CSA_128</td><td>Trade_1360</td><td/></tr>
+                        <tr><td>BB</td><td>CUST_Z</td><td>CSA_128</td><td>Trade_8796</td><td/></tr>
+                        <tr><td>BB</td><td>CUST_Z</td><td>CSA_129</td><td>Trade_7223</td><td/></tr>
+                        <tr><td>BB</td><td>CUST_Z</td><td>CSA_129</td><td>Trade_9776</td><td/></tr>
+                        <tr><td>BB</td><td>CUST_Z</td><td>CSA_129</td><td>Trade_1685</td><td/></tr>
+                        <tr><td>BB</td><td>CUST_Z</td><td>CSA_129</td><td>Trade_1955</td><td/></tr>
+                        <tr><td>BB</td><td>CUST_Z</td><td>CSA_129</td><td>Trade_8518</td><td/></tr>
+                        <tr><td>BB</td><td>CUST_Z</td><td>CSA_130</td><td>Trade_4375</td><td/></tr>
+                        <tr><td>BB</td><td>CUST_Z</td><td>CSA_130</td><td>Trade_4251</td><td/></tr>
+                        <tr><td>BB</td><td>CUST_Z</td><td>CSA_130</td><td>Trade_5955</td><td/></tr>
+                        <tr><td>BB</td><td>CUST_Z</td><td>CSA_130</td><td>Trade_9950</td><td/></tr>
+                        <tr><td>BB</td><td>CUST_Z</td><td>CSA_130</td><td>Trade_5216</td><td/></tr>
+                      </tbody>
+                    </table>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- /page content -->
+
+        <!-- footer content -->
+        <footer>
+          <div class="pull-right">
+            Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
+          </div>
+          <div class="clearfix"></div>
+        </footer>
+        <!-- /footer content -->
+      </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="../vendors/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- FastClick -->
+    <script src="../vendors/fastclick/lib/fastclick.js"></script>
+    <!-- NProgress -->
+    <script src="../vendors/nprogress/nprogress.js"></script>
+    <!-- iCheck -->
+    <script src="../vendors/iCheck/icheck.min.js"></script>
+    <!-- Datatables -->
+    <script src="vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+    <script src="vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
+    <script src="vendors/datatables.net-buttons/js/buttons.flash.min.js"></script>
+    <script src="vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
+    <script src="vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
+    <script src="vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
+    <script src="vendors/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
+    <script src="vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
+    <script src="vendors/datatables.net-scroller/js/datatables.scroller.min.js"></script>
+    <script src="vendors/jszip/dist/jszip.min.js"></script>
+    <script src="vendors/pdfmake/build/pdfmake.min.js"></script>
+    <script src="vendors/pdfmake/build/vfs_fonts.js"></script>
+
+    <!-- Custom Theme Scripts -->
+    <script src="../build/js/custom.min.js"></script>
+
+    <!-- Datatables -->
+    <script>
+      $(document).ready(function() {
+        var handleDataTableButtons = function() {
+          if ($("#datatable-buttons").length) {
+            $("#datatable-buttons").DataTable({
+              dom: "Bfrtip",
+              buttons: [
+                {
+                  extend: "copy",
+                  className: "btn-sm"
+                },
+                {
+                  extend: "csv",
+                  className: "btn-sm"
+                },
+                {
+                  extend: "excel",
+                  className: "btn-sm"
+                },
+                {
+                  extend: "pdfHtml5",
+                  className: "btn-sm"
+                },
+                {
+                  extend: "print",
+                  className: "btn-sm"
+                },
+              ],
+              responsive: true
+            });
+          }
+        };
+
+        TableManageButtons = function() {
+          "use strict";
+          return {
+            init: function() {
+              handleDataTableButtons();
+            }
+          };
+        }();
+
+        $('#datatable').dataTable();
+
+        $('#datatable-keytable').DataTable({
+          keys: true
+        });
+
+        $('#datatable-responsive').DataTable();
+
+        $('#datatable-scroller').DataTable({
+          ajax: "js/datatables/json/scroller-demo.json",
+          deferRender: true,
+          scrollY: 380,
+          scrollCollapse: true,
+          scroller: true
+        });
+
+        $('#datatable-fixed-header').DataTable({
+          fixedHeader: true
+        });
+
+        var $datatable = $('#datatable-checkbox');
+
+        $datatable.dataTable({
+          'order': [[ 1, 'asc' ]],
+          'columnDefs': [
+            { orderable: false, targets: [0] }
+          ]
+        });
+        $datatable.on('draw.dt', function() {
+          $('input').iCheck({
+            checkboxClass: 'icheckbox_flat-green'
+          });
+        });
+
+        TableManageButtons.init();
+      });
+    </script>
+    <!-- /Datatables -->
+  </body>
+</html>

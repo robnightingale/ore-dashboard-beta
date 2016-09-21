@@ -13,14 +13,48 @@ var BARCharts = (function () {
         function setNewData(chart_, data_) {
             var localOptions_ = options;
 
-            localOptions_.series = [{
+            var dataStyle = {
+                normal: {
+                    label : {
+                        show: true,
+                        position: 'insideLeft',
+                        formatter: '{b}',
+                        textStyle : {
+                            color: 'black'
+                        }
+                    },
+                    color: function(params) {
+                        // red '#C1232B'
+                        // salmon '#FE8463'
+                        var colorList = [
+                            'rgba(120,178,88,0.5)', 'rgba(255, 69, 0, 0.5)'
+                        ];
+                        return colorList[params.seriesIndex]
+                    }
+                }
+            };
+
+            localOptions_.series = [
+                {
+                    itemStyle: dataStyle,
                     type: data_.seriesType,
                     data: data_.yaxisValues,
-                    name: data_.seriesName
-                }];
+                    name: 'bar data',
+                    // stack: 'bar data'
+
+                },
+                {
+                    itemStyle: dataStyle,
+                    type: data_.seriesType,
+                    data: data_.yaxisLimits,
+                    name: 'limits',
+                    // stack: 'bar data'
+                }
+                ];
             localOptions_.title = [{text: data_.title, subtext: data_.subTitleText}];
-            localOptions_.legend.data = data_.yaxisLabels;
+            localOptions_.legend.data = ['limits'];
             localOptions_.yAxis[0].data = data_.yaxisLabels;
+            localOptions_.yAxis[0].axisLabel = {show:false};
 
             chart_.setOption(localOptions_, true);
         }
@@ -37,6 +71,23 @@ var BARCharts = (function () {
             toolbox: {
                 show: false,
                 feature: {
+                    dataView: {
+                        show: false, title: 'view data', lang: ['Data', 'ok', 'refresh']
+                    },
+                    magicType: {
+                        show: true,
+                        title: {
+                            line: 'Line',
+                            bar: 'Bar',
+                            stack: 'Stack',
+                            tiled: 'Tiled'
+                        },
+                        type: ['stack','tiled']
+                    },
+                    restore: {
+                        show: true,
+                        title: "Restore"
+                    },
                     saveAsImage: {
                         show: true,
                         title: "Save Image"
@@ -49,18 +100,17 @@ var BARCharts = (function () {
                 type: 'value',
                 boundaryGap: false,
                 axisLabel:{interval: 'auto', formatter: function(value){
-                    return numeral(value).format('(0a)');
+                    return numeral(value).format('(0.0a)');
                 }},
-
             }],
             yAxis: [{
                 type: 'category',
                 boundaryGap: true,
                 axisLabel: {
                     interval: 'auto'
-                    // , formatter: function (value) {
-                    //     return value;
-                    // }
+                    , formatter: function (value) {
+                        return value;
+                    }
                 },
                 data: []
             }],
@@ -70,15 +120,17 @@ var BARCharts = (function () {
         function initialiseAllCharts() {
             // set the initial entry point to 'Total' level
             var args = {
-                date: chartManager.getBusinessDate(),
+                mode: chartManager.getMode(),
                 hierarchy: chartManager.getHierarchy(),
-                item: 'Total',
-                level: chartManager.getDrillDownLevel()[0].level
+                node: chartManager.getNode(),
+                xvaHierarchy: chartManager.getHierarchy(),
+                xvaNode: chartManager.getNode()
             };
 
             barGraphs.forEach(function(elem){
-                var p_ = chartManager.getGraphData(args, elem.metric,'bargraph');
-                chartManager.initChart(elem.id, options, p_, setNewData);
+                var p_ = chartManager.getGraphData(args, elem.metric, 'bargraph');
+                var clickable = chartManager.getLevel() < 3;
+                chartManager.initChart(elem.id, options, p_, setNewData, clickable);
 
                 p_.then(function(res){
                     // lookup the category in the chartCategories array
@@ -124,12 +176,13 @@ var LINECharts = (function () {
     function init() {
 
         var line_total_exposure, line_exposure_profile;
+        var baseccy_ = chartManager.getBaseCcy();
 
         var total_exposure_options = {
 
             title: {
-                text: 'Total Exposure',
-                subtext: 'Historical Credit Exposure Trends'
+                text: 'Total Exposure  ' + baseccy_,
+                subtext: 'Historical Credit Exposure Trends: NPV, CE, EEPE'
             },
             tooltip: {
                 trigger: 'axis',
@@ -154,7 +207,7 @@ var LINECharts = (function () {
                             stack: 'Stack',
                             tiled: 'Tiled'
                         },
-                        type: ['line', 'bar', 'stack', 'tiled']
+                        type: ['line', 'bar']
                     },
                     restore: {
                         show: true,
@@ -172,11 +225,10 @@ var LINECharts = (function () {
                 start: 0,
                 end: 100
             },
-            calculable: true,
             xAxis: [{
-                type: 'category',
+                type: 'time',
                 axisLabel:{interval: 'auto', formatter: function(value){
-                    return moment(value,'YYYYMMDD').format('DD-MM-YYYY');
+                    return moment(value).format('DD-MM-YYYY');
                 }},
 
                 // boundaryGap: false,
@@ -190,22 +242,11 @@ var LINECharts = (function () {
             }],
             series: []
         };
-        var profile_marklines = {};
-            // data: [
-            //     Vertical axis, default
-            //     {type: 'max', name: 'max', itemStyle: {normal: {color: '#dc143c'}}},
-            //     {type: 'min', name: 'min', itemStyle: {normal: {color: '#dc143c'}}},
-            //     {type: 'average', name: 'avg', itemStyle: {normal: {color: '#dc143c'}}},
-            //     Horizontal axis
-            //     {type: 'max', name: 'max', valueIndex: 0, itemStyle: {normal: {color: '#1e90ff'}}},
-            //     {type: 'min', name: 'min', valueIndex: 0, itemStyle: {normal: {color: '#1e90ff'}}},
-            //     {type: 'average', name: 'avg', valueIndex: 0, itemStyle: {normal: {color: '#1e90ff'}}}
-            // ]};
 
         var exposure_profile_options = {
             title: {
-                text: 'Exposure Profile',
-                subtext: 'Simulated EPE & PFE'
+                text: 'Exposure Profile  '  + baseccy_,
+                subtext: 'Simulated EPE, ENE & PFE'
             },
             tooltip: {
                 trigger: 'axis',
@@ -227,7 +268,7 @@ var LINECharts = (function () {
                             stack: 'Stack',
                             tiled: 'Tiled'
                         },
-                        type: ['line', 'bar', 'stack', 'tiled']
+                        type: ['line', 'bar']
                     },
                     restore: {
                         show: true,
@@ -245,62 +286,62 @@ var LINECharts = (function () {
                 start: 0,
                 end: 100
             },
-            calculable: true,
             xAxis: [{
-                type: 'category',
+                type: 'time',
                 boundaryGap: true,
                 axisLabel:{interval: 'auto', formatter: function(value){
-                    return moment(value,'YYYYMMDD').format('DD-MM-YYYY');
+                    return moment(value).format('DD-MM-YYYY');
                 }},
                 data: []
             }],
             yAxis: [{
                 type: 'value',
                 axisLabel:{interval: 'auto', formatter: function(value){
-                    return numeral(value).format('(0a)');
+                    return numeral(value).format('(0.0a)');
                 }},
 
             }],
-            series: [],
-            // markPoint : {
-            //     data : [
-            //         // Vertical axis, default
-            //         {type : 'max', name: 'max',symbol: 'emptyCircle', itemStyle:{normal:{color:'#dc143c',label:{position:'top'}}}},
-            //         {type : 'min', name: 'min',symbol: 'emptyCircle', itemStyle:{normal:{color:'#dc143c',label:{position:'bottom'}}}},
-            //         // Horizontal axis
-            //         {type : 'max', name: 'max', valueIndex: 0, symbol: 'emptyCircle', itemStyle:{normal:{color:'#1e90ff',label:{position:'right'}}}},
-            //         {type : 'min', name: 'min', valueIndex: 0, symbol: 'emptyCircle', itemStyle:{normal:{color:'#1e90ff',label:{position:'left'}}}}
-            //     ]
-            // },
+            series: []
         };
 
         function setNewData(chart_, data_) {
-            if (chart_.getOption().title[0].text == 'Exposure Profile'){
+            if (chart_.getOption().title[0].text.startsWith('Exposure')){
                 // yuk
                 var xAxisData_ = data_.dates;
+
+                var data_epes = [];
+                var data_pfes = [];
+                var data_enes = [];
+
+                // merge in the dates with the data for x axis labels
+                for (var j = 0;j< xAxisData_.length;j++){
+                    xAxisData_[j] = moment(xAxisData_[j], 'YYYYMMDD').toDate();
+                    data_epes.push([xAxisData_[j], data_.epes[j]]);
+                    data_pfes.push([xAxisData_[j], data_.pfes[j]]);
+                    data_enes.push([xAxisData_[j], data_.enes[j]]);
+                }
+
                 var series_0 = {
                     name: "EPE",
-                    data: data_.epes
+                    data: data_epes
                 }
                 var series_1 = {
                     name: "PFE",
-                    data: data_.pfes
+                    data: data_pfes
                 }
                 var series_2 = {
                     name: "ENE",
-                    data: data_.enes
+                    data: data_enes
                 }
                 var series_ = [];
                 series_.push(series_0);
-                series_.push((series_1));
-                series_.push((series_2));
+                series_.push(series_1);
+                series_.push(series_2);
 
                 series_.forEach(function (elem) {
-                    // only add marklines for exposure profile graph
-                    // if (chart_.getOption().title[0].text == 'Exposure Profile')
-                    //     elem.markLine = profile_marklines;
                     elem.type = 'line';
                     elem.smooth = true;
+                    elem.symbolSize = 1;
                     elem.itemStyle = {
                         normal: {
                             areaStyle: {
@@ -316,38 +357,68 @@ var LINECharts = (function () {
                 chart_.setOption(localOptions_, true);
 
             } else {
-                // yuk
                 var xAxisData_ = data_.dates;
+
+                var data_npvs = [];
+                var data_ces = [];
+                var data_eepes = [];
+                //var data_tes = [];
+
+                // merge in the dates with the data for x axis labels
+                for (var j = 0;j< xAxisData_.length;j++){
+                    xAxisData_[j] = moment(xAxisData_[j], 'YYYYMMDD').toDate();
+                    data_npvs.push([xAxisData_[j], data_.npvs[j]]);
+                    data_ces.push([xAxisData_[j], data_.ces[j]]);
+                    data_eepes.push([xAxisData_[j], data_.eepes[j]]);
+                    //data_tes.push([xAxisData_[j], data_.tes[j]]);
+                }
 
                 var series_0 = {
                     name: "NPV",
-                    data: data_.npvs
+                    data: data_npvs
                 }
                 var series_1 = {
                     name: "CE",
-                    data: data_.ces
+                    data: data_ces
                 }
+
                 var series_2 = {
                     name: "EEPE",
-                    data: data_.eepes
+                    data: data_eepes
                 }
-                var series_3 = {
-                    name: "Total",
-                    data: data_.tes
-                }
+                //var series_3 = {
+                //    name: "Total",
+                //    data: data_tes
+                //}
 
                 var series_ = []
                 series_.push(series_0);
-                series_.push((series_1));
-                series_.push((series_2));
-                series_.push((series_3));
+                series_.push(series_1);
+                series_.push(series_2);
+                // series_.push((series_3));
 
                 series_.forEach(function (elem) {
-                    // only add marklines for exposure profile graph
-                    // if (chart_.getOption().title[0].text == 'Exposure Profile')
-                    //     elem.markLine = profile_marklines;
+                    switch (elem.name) {
+                        case 'CE' :
+                            elem.markLine = {
+                                data: [
+                                    {yAxis: +data_.limitCE, name: 'limit', itemStyle: {normal: {color: '#dc143c'}}}
+                                ]};
+                            break;
+                        case 'EEPE':
+                            elem.markLine = {
+                                data: [
+                                    {yAxis: +data_.limitEEPE, name: 'limit', itemStyle: {normal: {color: '#dc143c'}}}
+                                ]};
+                            break;
+                        default:
+                            break;
+                    }
+
                     elem.type = 'line';
                     elem.smooth = true;
+                    // elem.showAllSymbol= false;
+                    elem.symbolSize = 1;
                     elem.itemStyle = {
                         normal: {
                             areaStyle: {
@@ -358,8 +429,10 @@ var LINECharts = (function () {
                 });
 
                 var localOptions_ = total_exposure_options;
-                localOptions_.legend.data = data_.name;
-                localOptions_.xAxis[0].data = xAxisData_;
+                series_.forEach(function(elem){
+                    localOptions_.legend.data.push(elem.name);
+                });
+
                 localOptions_.series = series_;
                 chart_.setOption(localOptions_, true);
             }
@@ -368,22 +441,22 @@ var LINECharts = (function () {
         function initialiseAllCharts() {
             StackTrace.get().then(StackTraceCallback).catch(StackTraceErrback);
             var args = {
-                date: chartManager.getBusinessDate(),
-                hierarchy: 'total',
-                item: 'Total',
-                level: chartManager.getDrillDownLevel()[0].level
+                mode: chartManager.getMode(),
+                hierarchy: chartManager.getHierarchy(),
+                node: chartManager.getNode(),
+                xvaHierarchy: chartManager.getHierarchy(),
+                xvaNode: chartManager.getNode()
             };
             var totexp_ = chartManager.getGraphData(args, '', 'totalexposure');
             var exp_ = chartManager.getGraphData(args, '', 'exposure');
 
             return Promise.all([totexp_, exp_]).then(function (values) {
-                chartManager.initChart('line_total_exposure', total_exposure_options, totexp_, setNewData);
-                chartManager.initChart('line_exposure_profile', exposure_profile_options, exp_, setNewData);
+                chartManager.initChart('line_total_exposure', total_exposure_options, totexp_, setNewData, false);
+                chartManager.initChart('line_exposure_profile', exposure_profile_options, exp_, setNewData, false);
                 return 'done';
             }).catch(function(error){
                 console.error(new Error(error));
             })
-
         }
 
         function loadData(chart_, data_) {
@@ -461,7 +534,7 @@ var DONUTCharts = (function () {
             series: [{
                 name: '',
                 type: 'pie',
-                radius: ['35%', '55%'],
+                radius: ['40%', '60%'],
                 itemStyle: {
                     normal: {
                         label: {
@@ -498,17 +571,19 @@ var DONUTCharts = (function () {
 
         function initialiseAllCharts() {
             var args = {
-                date: chartManager.getBusinessDate(),
+                mode: chartManager.getMode(),
                 hierarchy: chartManager.getHierarchy(),
-                item: 'Total',
-                level: chartManager.getDrillDownLevel()[0].level
+                node: chartManager.getNode(),
+                xvaHierarchy: chartManager.getHierarchy(),
+                xvaNode: chartManager.getNode()
             };
 
             xvaGraphs.forEach(function(elem){
                 var p_ = chartManager.getGraphData(args, elem.metric,'xva');
-                chartManager.initChart(elem.name, options, p_, setNewData);
+                chartManager.initChart(elem.name, options, p_, setNewData, true);
                 p_.then(function(res){
-                    document.getElementsByName(elem.name)[0].innerText = elem.text + ' : '+ numeral(chartManager.getSumOfArrayValues(res.data)).format('(0.00a)');
+                    var titleText_ = elem.text + " : " + chartManager.getBaseCcy() + ' ' + numeral(res.sum).format('(0.00a)');
+                    document.getElementsByName(elem.name)[0].innerText = titleText_;
                 });
 
             });
@@ -551,128 +626,107 @@ var RISKGauge = (function () {
 
         var options = {
             tooltip: {
-                formatter: "{a} <br/>{b} : {c}%"
+                formatter: riskGuageTooltipFormatter
             },
-            toolbox: {
-                show: false,
-                feature: {
-                    restore: {
-                        show: true,
-                        title: "Restore"
+            series: [
+                {
+                    pointer : {
+                        width : 8,
+                        length: '85%',
+                        color: 'black'
                     },
-                    saveAsImage: {
-                        show: true,
-                        title: "Save Image"
-                    }
-                }
-            },
-            series: [{
-                name: 'Risk Gauge',
-                type: 'gauge',
-                center: ['50%', '50%'],
-                startAngle: 240,
-                endAngle: -60,
-                min: 0,
-                max: 100,
-                precision: 0,
-                splitNumber: 10,
-                axisLine: {
-                    show: true,
-                    lineStyle: {
-                        color: [
-                            [0.3, 'lightgreen'],
-                            [0.8, 'orange'],
-                            // [0.8, 'skyblue'],
-                            [1, '#ff4500']
-                        ],
-                        width: 30
-                    }
-                },
-                axisTick: {
-                    show: true,
-                    splitNumber: 5,
-                    length: 8,
-                    lineStyle: {
-                        color: '#eee',
-                        width: 1,
-                        type: 'solid'
-                    }
-                },
-                axisLabel: {
-                    show: true,
-                    formatter: function (v) {
-                        switch (v + '') {
-                            case '10':
-                                return 'a';
-                            case '30':
-                                return 'b';
-                            case '60':
-                                return 'c';
-                            case '90':
-                                return 'd';
-                            default:
-                                return '';
+                    name: 'Risky',
+                    type: 'gauge',
+                    splitNumber: 10,
+                    axisLine: {
+                        lineStyle: {
+                            // rgba green value matches the olive green of the other charts
+                            color: [[0.3, 'rgba(120,178,88,0.5)'], [0.8, 'rgba(255, 150, 0, 0.5)'], [1, 'rgba(255, 69, 0, 0.5)']],
+                            width: 200
                         }
                     },
-                    textStyle: {
-                        color: '#333'
-                    }
-                },
-                splitLine: {
-                    show: true,
-                    length: 30,
-                    lineStyle: {
-                        color: '#eee',
-                        width: 2,
-                        type: 'solid'
-                    }
-                },
-                pointer: {
-                    length: '80%',
-                    width: 8,
-                    color: 'auto'
-                },
-                title: {
-                    show: true,
-                    offsetCenter: ['0%', -140],
-                    textStyle: {
-                        color: '#333',
-                        fontSize: 15
-                    }
-                },
-                detail: {
-                    show: true,
-                    backgroundColor: 'rgba(0,0,0,0)',
-                    borderWidth: 0,
-                    borderColor: '#ccc',
-                    width: 100,
-                    height: 40,
-                    offsetCenter: ['-60%', 110],
-                    formatter: '{value}%',
-                    textStyle: {
-                        color: 'auto',
-                        fontSize: 30
-                    }
-                },
-                data: [{
-                    value: 43
-                }]
-            }]
+                    axisTick: {
+                        splitNumber: 2,
+                        length: 10,
+                        lineStyle: {
+                            color: 'black'
+                        }
+                    },
+                    axisLabel: {
+                        formatter: function (v) {
+                            switch (v + '') {
+                                case '10':
+                                    return 'ok';
+                                case '50':
+                                    return 'warn';
+                                case '90':
+                                    return 'limit';
+                                default:
+                                    return '';
+                            }
+                        },
+                        textStyle: {color: 'black'}
+                    },
+                    splitLine: {
+                        show: true,
+                        length: 20,
+                        lineStyle: {
+                            color: 'black'
+                        }
+                    },
+                    title: {
+                        show: true,
+                        offsetCenter: [0, '-40%'],
+                        textStyle: {
+                            fontWeight: 'bolder'
+                        }
+                    },
+                    detail: {
+                        offsetCenter: ['-5%', 95],
+                        // formatter: riskGaugeLegendFormatter,
+                        formatter: function(value) {
+                            var res = '';
+                            if (value > 90)
+                                res += 'LIMIT BREACH ';
+                            res += numeral(value).format('(0.00)');
+                            res += '%';
+                            return res;
+
+                        },
+                        textStyle: {
+                            color: 'auto',
+                            fontWeight: 'bolder',
+                            fontSize: 20
+                        }
+                    },
+                    data: [{value: 50, name: 'Risk'}]
+                }
+            ]
         };
 
         function setNewData(chart_, data_) {
+
             chart_.setOption({
                 series: [{
-                    data: data_.yaxisValues,
-                    name: data_.title
+                    data: data_.value,
+                    name: data_.name,
+                    lemons: 'poo'
                 }],
-                legend: {data: data_.yaxisLabels}
+                legend: {data: data_.name}
             });
 
         }
 
         function initialiseAllCharts() {
-            chartManager.initChart('echart_guage', options, [], setNewData);
+            var data = {value : (Math.random()*100).toFixed(2) - 0, name: 'Risk'};
+            chartManager.initChart('gauge_1', options, data, setNewData, false);
+            // var timeTicket = setInterval(function (){
+            //     data = {value : (Math.random()*100).toFixed(2) - 0, name: 'Risk'};
+            //     var theChart_ = chartManager.getChartInstanceFromDivId('gauge_1');
+            //     setNewData(theChart_, data);
+            // },2000);
+            // clearInterval(timeTicket);
+
         }
 
         function loadData(chart_, data_) {
