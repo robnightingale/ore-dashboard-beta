@@ -129,8 +129,7 @@ var BARCharts = (function () {
 
             barGraphs.forEach(function(elem){
                 var p_ = chartManager.getGraphData(args, elem.metric, 'bargraph');
-                var clickable = chartManager.getLevel() < 3;
-                chartManager.initChart(elem.id, options, p_, setNewData, clickable);
+                chartManager.initChart(elem.id, options, p_, setNewData, chartManager.barGraphIsClickable());
 
                 p_.then(function(res){
                     // lookup the category in the chartCategories array
@@ -492,7 +491,7 @@ var DONUTCharts = (function () {
 
     function init() {
 
-        var donut_cva, donut_fva, donut_colva, echartGauge;
+        var donut_cva, donut_fva, donut_colva;
         var options = {
             tooltip: {
                 trigger: 'item',
@@ -620,13 +619,19 @@ var RISKGauge = (function () {
     'use strict';
     var instance;
 
-
     function init() {
-        var echartGauge;
 
         var options = {
             tooltip: {
-                formatter: riskGuageTooltipFormatter
+                // Function setNewData() (see below) already derived the tooltip, just return it:
+                formatter: function(params, ticket, callback) {
+                    return params.data.tooltip;
+                },
+                // The tooltip's default position is to the left of the cursor, which sends it off the screen.
+                // So render it a little bit to the right of its default position:
+                position : function(p) {
+                    return [p[0] + 10, p[1] - 10];
+                }
             },
             series: [
                 {
@@ -683,15 +688,21 @@ var RISKGauge = (function () {
                     },
                     detail: {
                         offsetCenter: ['-5%', 95],
-                        // formatter: riskGaugeLegendFormatter,
                         formatter: function(value) {
-                            var res = '';
-                            if (value > 90)
-                                res += 'LIMIT BREACH ';
-                            res += numeral(value).format('(0.00)');
-                            res += '%';
-                            return res;
 
+                            // If the server returned a consumption value of NaN,
+                            // then echarts does not render a needle.
+                            // Set the legend text to 'NaN', echarts renders this in red.
+                            if (Number.isNaN(value))
+                                return 'NaN';
+
+                            // If the consumption exceeds 100%, set the legend text to a warning message.
+                            // Echarts renders this in red.
+                            if (value > 100)
+                                return 'LIMIT BREACH';
+
+                            // Otherwise return the consumption value formatted as a percentage.
+                            return numeral(value).format('(0.00)') + '%';
                         },
                         textStyle: {
                             color: 'auto',
@@ -699,34 +710,60 @@ var RISKGauge = (function () {
                             fontSize: 20
                         }
                     },
-                    data: [{value: 50, name: 'Risk'}]
+                    // Default the gauge to zero with no "name" (caption).
+                    // This should immediately get overwritten by the data returned from the rest call.
+                    data: 0
                 }
             ]
         };
 
+        function getToolTip(metricName, metricValue, limit, consumption) {
+            metricName = metricName.toUpperCase();
+            metricValue = numeral(metricValue).format('(0,0.00)');
+            limit = numeral(limit).format('(0,0.00)');
+            consumption = numeral(consumption).format('(0,0.00)');
+            return metricName + ': ' + metricValue + ' Limit: ' + limit + ' Consumption: ' + consumption + '%';
+        }
+
         function setNewData(chart_, data_) {
 
             chart_.setOption({
-                series: [{
-                    data: data_.value,
-                    name: data_.name,
-                    lemons: 'poo'
-                }],
-                legend: {data: data_.name}
-            });
 
+                series: [{
+
+                    // Here is the normal way to pass in the data:
+                    //
+                    //  data: xxx
+                    //
+                    // Alternatively, echarts lets you pass in a list of objects.
+                    // This allows you to attach additional properties to the data,
+                    // where they can be retrieved later by the tooltip formatter event.
+                    // We are going to use an array of size one:
+
+                    data: [ {
+                        // This is the data that echarts will render, it must be called 'value':
+                        value : data_.consumption,
+                        // The string to display on the center of the gauge - must be called 'name':
+                        name : data_.name,
+                        // Derive the tooltip for use in the tooltip formatter event:
+                        tooltip : getToolTip(data_.metric, data_.value, data_.limit, data_.consumption)
+                    } ],
+                }],
+            });
         }
 
         function initialiseAllCharts() {
-            var data = {value : (Math.random()*100).toFixed(2) - 0, name: 'Risk'};
-            chartManager.initChart('gauge_1', options, data, setNewData, false);
-            // var timeTicket = setInterval(function (){
-            //     data = {value : (Math.random()*100).toFixed(2) - 0, name: 'Risk'};
-            //     var theChart_ = chartManager.getChartInstanceFromDivId('gauge_1');
-            //     setNewData(theChart_, data);
-            // },2000);
-            // clearInterval(timeTicket);
 
+            var args = {
+                mode: chartManager.getMode(),
+                hierarchy: chartManager.getHierarchy(),
+                node: chartManager.getNode(),
+                xvaHierarchy: chartManager.getHierarchy(),
+                xvaNode: chartManager.getNode()
+            };
+
+            var p_ = chartManager.getGraphData(args, 'ce', 'gauge');
+            chartManager.initChart('risk_gauge', options, p_, setNewData, false);
         }
 
         function loadData(chart_, data_) {
@@ -755,3 +792,4 @@ var RISKGauge = (function () {
     };
 
 })();
+

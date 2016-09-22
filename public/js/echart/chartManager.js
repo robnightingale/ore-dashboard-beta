@@ -54,10 +54,9 @@ var load_ = function() {
             _AttachEvent(e, 'change', chartManager.setBGMetric);
         });
 
-        [].forEach.call(document.getElementsByClassName('selectpicker-riskgauge'), function(e) {
-            chartManager.populateBarGraphMetricList(e);
-            _AttachEvent(e, 'change', chartManager.setRiskGaugeMetric);
-        });
+        var e = document.getElementById('gauge1_');
+        chartManager.populateRiskGaugeMetricListImpl(e);
+        _AttachEvent(e, 'change', chartManager.setRiskGaugeMetric);
 
         // add a click event handler to the radio buttons for credit rating/counterparty etc
         [].forEach.call($('label[name^="option"]'), function(e) {
@@ -81,7 +80,7 @@ var load_ = function() {
                 var xvaHierarchy = drilldownLevels[level].name;
                 donutZoom(graphId, xvaHierarchy, '');
             } else {
-                // TREE MODE: retrieve the stack, if we are below counterparty then use the parent counterparty.
+                // TREE MODE: retrieve the stack, if we are below counterparty then use the (grand)parent counterparty.
                 // NB: This copies some logic that is also implemented in fuction drillDown() - maybe consolidate?
                 var url_ = '/api/periscope/' + chartManager.getHierarchy()  + '/' + chartManager.getNode();
                 chartManager.getDataFromRestCall(url_).then(function(res) {
@@ -172,13 +171,8 @@ var barGraphs = [
     {id: 'bar_6', name: 'bar6', metric: 'cva', text: ''}
 ];
 
-var riskGauge = [
-    {id: 'gauge_1', name: 'gauge1', metric: 'ce', text: ''},
-];
-
 // deep copy clone
 var userBarGraphs = JSON.parse(JSON.stringify(barGraphs));
-var userRiskGauges = JSON.parse(JSON.stringify(riskGauge));
 
 var xvaGraphs = [
     {id: 'donut_cva', name: 'donut_cva', metric: 'cva', text: 'CVA'},
@@ -291,20 +285,69 @@ var chartManager = {
             sel.options.length = 0;
             var fragment = document.createDocumentFragment();
 
-            ["CE",'EEPE','CVA','DVA','NPV','FCA','FBA','FVA','ColVA'].forEach(function(dcc, index) {
-                        var opt = document.createElement('option');
-                        // nice format for the user to see
-                        opt.innerHTML = dcc;
-                        // nice format for the computer to see
-                        opt.value = dcc;
-                        fragment.appendChild(opt);
-                    });
-                    sel.appendChild(fragment);
+            ['CE','EEPE','CVA','DVA','NPV','FCA','FBA','FVA','ColVA'].forEach(function(dcc, index) {
+                var opt = document.createElement('option');
+                // nice format for the user to see
+                opt.innerHTML = dcc;
+                // nice format for the computer to see
+                opt.value = dcc;
+                fragment.appendChild(opt);
+            });
+            sel.appendChild(fragment);
         } catch (e) {
             console.error(new Error(e));
         }
     }
-    , tickleRiskGauge : function(evt) {
+    , populateRiskGaugeMetricList : function() {
+        var e = document.getElementById('gauge1_');
+        chartManager.populateRiskGaugeMetricListImpl(e);
+    }
+    , populateRiskGaugeMetricListImpl : function(element) {
+        try {
+            // zero out the existing options
+            element.options.length = 0;
+            var fragment = document.createDocumentFragment();
+
+            // Restrict the Risk Gauge drop down to the list of options for which
+            // both Metric and Limit are available given the selected mode / level.
+            if (1==chartManager.getMode() || 3==chartManager.getLevel())
+                // If we are in hierarchy view, the gauge always displays the total node,
+                // for which only CE and EEPE are available.
+                // If we are in tree view and trade level then we also have only CE/EEPE.
+                var choiceList = ['CE','EEPE'/*,'CVA','DVA','NPV','FCA','FBA','FVA','ColVA'*/];
+            else
+                // In Tree view, for creditrating/counterparty/nettingset, enable everything except NPV.
+                var choiceList = ['CE','EEPE','CVA','DVA'/*,'NPV'*/,'FCA','FBA','FVA','ColVA'];
+
+            // If possible, preserve the currently selected metric.
+            var previouslySelectedMetric = chartManager.getRiskGaugeMetric().toUpperCase();
+            var metricReused = false;
+
+            choiceList.forEach(function(dcc, index) {
+                var opt = document.createElement('option');
+                // nice format for the user to see
+                opt.innerHTML = dcc;
+                // nice format for the computer to see
+                opt.value = dcc;
+
+                // If the current item matches the previously selected one then select it.
+                if (!metricReused && dcc === previouslySelectedMetric) {
+                    opt.selected = true;
+                    metricReused = true;
+                }
+
+                fragment.appendChild(opt);
+            });
+            element.appendChild(fragment);
+
+            // If the previous selection could not be kept then reset to CE.
+            if (!metricReused)
+                sessionStorage.setItem('gauge_metric', 'ce');
+        } catch (e) {
+            console.error(new Error(e));
+        }
+    }
+    , flipGauge : function(evt) {
         if (isNullOrUndefined(evt))
             return;
 
@@ -314,15 +357,20 @@ var chartManager = {
         // refresh the single chart with the right metric
         // redraw the gauge with a new metric
         var gaugeInstance = RISKGauge.getInstance();
-        var graphId_ = filter(riskGauge, function(elem){return elem.name == target.name})[0].id;
-        var metric_ = chartManager.getRiskGaugeMetric(target.name);
+        var metric_ = chartManager.getRiskGaugeMetric();
 
-        //var hierarchy = chartManager.getHierarchy();
+        var args = {
+            mode: chartManager.getMode(),
+            hierarchy: chartManager.getHierarchy(),
+            node: chartManager.getNode()
+        };
 
-        var limit =  (Math.random()*100).toFixed(2) - 0;
-        var value =  (Math.random()*100).toFixed(2) - 0;
-        var data = {limit: limit, value : value, name: target.name};
-        chartManager.initChart('gauge_1', gaugeInstance.getDefaults, data, gaugeInstance.setNewData, false);
+        var p_ = chartManager.getGraphData(args, metric_, 'gauge');
+        p_.then(function(res) {
+            chartManager.initChart('risk_gauge', gaugeInstance.getDefaults, p_, gaugeInstance.setNewData, false);
+        }).catch(function(err) {
+            console.error(new Error(err));
+        });
     }
     , flipChart : function(evt) {
         if (isNullOrUndefined(evt))
@@ -345,8 +393,7 @@ var chartManager = {
 
         var p_ = chartManager.getGraphData(args, metric_, 'bargraph');
         p_.then(function(res) {
-            var clickable = chartManager.getLevel() < 3;
-            chartManager.initChart(graphId_, bgInstance.getDefaults, p_, bgInstance.setNewData, clickable);
+            chartManager.initChart(graphId_, bgInstance.getDefaults, p_, bgInstance.setNewData, chartManager.barGraphIsClickable());
             // lookup the category in the chartCategories array
             var cat_ = filter(chartCategory, function(elem){return elem.metric == metric_;});
             document.getElementById(graphId_).parentNode.parentNode.getElementsByTagName('h2')[0].innerText = cat_[0].category;
@@ -370,6 +417,9 @@ var chartManager = {
             } else if ('totalexposure' === args_.chartType) {
                 // totalexposure does not support hierarchy view, just display the root node.
                 return '/api/totalexposure-tree/total/Total';
+            } else if ('gauge' === args_.chartType) {
+                // gauge does not support hierarchy view, just display the root node.
+                return '/api/gauge-tree/' + args_.date + '/total/Total/' + args_.metric;
             } else {
                 throw "Invalid chart type : " + args_.chartType;
             }
@@ -383,6 +433,8 @@ var chartManager = {
                 return '/api/exposure-tree/' + args_.date + '/' + args_.hierarchy + '/' + args_.node;
             } else if ('totalexposure' === args_.chartType) {
                 return '/api/totalexposure-tree/' + args_.hierarchy + '/' + args_.node;
+            } else if ('gauge' === args_.chartType) {
+                return '/api/gauge-tree/' + args_.date + '/' + args_.hierarchy + '/' + args_.node + "/" + args_.metric;
             } else {
                 throw "Invalid chart type : " + args_.chartType;
             }
@@ -406,9 +458,8 @@ var chartManager = {
         var default_ = filter(barGraphs, function(elem){return elem.name == id_});
         return (sessionStorage.getItem(id_) || default_[0].metric).toLowerCase();
     }
-    , getRiskGaugeMetric : function(id_) {
-        var default_ = filter(riskGauge, function(elem){return elem.name == id_});
-        return (sessionStorage.getItem(id_) || default_[0].metric).toLowerCase();
+    , getRiskGaugeMetric : function() {
+        return sessionStorage.getItem('gauge_metric');
     }
     , getGraphData : function(args, metric_, chartType_) {
         // deep copy
@@ -427,14 +478,14 @@ var chartManager = {
         var bgInstance = BARCharts.getInstance();
         var xvInstance = DONUTCharts.getInstance();
         var lineInstance = LINECharts.getInstance();
+        var gaugeInstance = RISKGauge.getInstance();
 
         barGraphs.forEach(function(elem) {
             var metric_ = chartManager.getBarGraphMetric(elem.name);
             var p_ = chartManager.getGraphData(args, metric_, 'bargraph');
 
             p_.then(function(res) {
-                var clickable = chartManager.getLevel() < 3;
-                chartManager.initChart(elem.id, bgInstance.getDefaults, p_, bgInstance.setNewData, clickable);
+                chartManager.initChart(elem.id, bgInstance.getDefaults, p_, bgInstance.setNewData, chartManager.barGraphIsClickable());
                 // lookup the category in the chartCategories array
                 var cat_ = filter(chartCategory, function(elem){return elem.metric == metric_;});
                 document.getElementById(elem.id).parentNode.parentNode.getElementsByTagName('h2')[0].innerText = cat_[0].category;
@@ -458,6 +509,12 @@ var chartManager = {
         var exp_ = chartManager.getGraphData(args, '', 'exposure');
         exp_.then(function(res) {
             chartManager.initChart('line_exposure_profile', lineInstance.getDefaultExposureOpts, exp_, lineInstance.setNewData, false);
+        });
+
+        var metric_ = chartManager.getRiskGaugeMetric();
+        var gauge_ = chartManager.getGraphData(args, metric_, 'gauge');
+        gauge_.then(function(res) {
+            chartManager.initChart('risk_gauge', gaugeInstance.getDefaults, gauge_, gaugeInstance.setNewData, false);
         });
 
         return 'done';
@@ -486,6 +543,7 @@ var chartManager = {
         chartManager.setNode('');
 
         chartManager.setBGMetricDefaults();
+        sessionStorage.setItem('gauge_metric', 'ce');
     }
     // change of business date
     , changeDate : function(evt) {
@@ -515,6 +573,12 @@ var chartManager = {
             chartManager.drillDown(args);
         }
     }
+    // Should the bar graphs be clickable?
+    // If mode=1 (hierarchy) then the bar graphs are always clickable.
+    // If mode=2 (tree) then the bar graphs are clickable as long as we are above trade level.
+    , barGraphIsClickable() {
+        return 1 == chartManager.getMode() || chartManager.getLevel() < 3;
+    }
     , setBGMetric : function(evt) {
         if (isNullOrUndefined(evt))
             return;
@@ -533,10 +597,10 @@ var chartManager = {
 
         evt = evt || window.event;
         var target = evt.target || evt.srcElement;
-        sessionStorage.setItem(target.name, target.value);
-        chartManager.tickleRiskGauge(evt);
-        var default_ = filter(userRiskGauges, function(elem){return elem.name == target.name});
-        default_[0].metric = target.value.toLowerCase();
+        sessionStorage.setItem('gauge_metric', target.value.toLowerCase());
+        chartManager.flipGauge(evt);
+        //var default_ = filter(userRiskGauges, function(elem){return elem.name == target.name});
+        //default_[0].metric = target.value.toLowerCase();
     }
     , setMode : function(m) {
         sessionStorage.setItem('mode', +m);
@@ -569,6 +633,9 @@ var chartManager = {
         chartManager.setLevel(args.level);
         chartManager.setNode(args.node);
 
+        // Repopulate the dropdown for the risk gauge.
+        chartManager.populateRiskGaugeMetricList();
+
         if (1 == args.mode) {
             // Hierarchy view - display all nodes in selected level.
             args.hierarchy = chartManager.getHierarchy();
@@ -578,11 +645,6 @@ var chartManager = {
             chartManager.resetCrumbs();
             // Rerender the page.
             chartManager.refreshGraphs(args);
-
-            // FIXME PROTOTYPE RISK GAUGE TICKLER for DEMO ONLY
-            var evt = {target: {name: 'gauge1', id: 'gauge_1'}};
-            chartManager.tickleRiskGauge(evt);
-
         } else {
             // Tree view - display all children of selected node.
             args.hierarchy = chartManager.getHierarchy();
@@ -606,11 +668,6 @@ var chartManager = {
                 chartManager.setCrumbs(res);
                 // Rerender the page.
                 chartManager.refreshGraphs(args);
-
-                // FIXME PROTOTYPE RISK GAUGE TICKLER for DEMO ONLY
-                var evt = {target: {name: 'gauge1', id: 'gauge_1'}};
-                chartManager.tickleRiskGauge(evt);
-
             });
         };
     }
@@ -697,20 +754,15 @@ var chartManager = {
         console.log(evt);
 
         // Determine the level for the new render.
-        if (1 == chartManager.getMode()) {
-            // Switching from hierarchy (mode=1) to tree (mode=2) - don't change the level:
+        if (1 == chartManager.getMode())
+            // Changing from hierarchy to tree.  Don't drill down.
             var level = chartManager.getLevel();
-        } else {
-            // Already in tree mode, the user has clicked on a graph.
-            if (evt.seriesType === 'pie') {
-                // If it's a donut graph, drill down, but not below level 2 (nettingset):
-                var level = Math.min(chartManager.getLevel() + 1, 2);
-            } else {
-                // Bar graph - always drill down.  Note that bar graphs are not clickable
-                // at trade level so there is no danger of drilling down too far.
-                var level = chartManager.getLevel() + 1;
-            }
-        }
+        else
+            // Already in tree, drill down to next level.
+            var level = chartManager.getLevel() + 1;
+        // If the graph that got clicked on was a donut then don't go below nettingset level.
+        if (evt.seriesType === 'pie')
+            level = Math.min(level, 2);
 
         var args = {
             mode: 2,
