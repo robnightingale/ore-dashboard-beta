@@ -5,9 +5,77 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="caa21dc2-8a18-41a2-9fb6-7ca5b9d0c280" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/js/echart/limitsTable.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/.bower.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/CHANGES.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/Gruntfile.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/LICENSE.markdown" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/README.markdown" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/_config.yml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/bower.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/component.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/dist/jszip.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/dist/jszip.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/docs/APPNOTE.TXT" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/docs/ZIP spec.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/docs/references.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/documentation/_layouts/default.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/documentation/api_jszip.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/documentation/api_jszip/constructor.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/documentation/api_jszip/constructor_load.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/documentation/api_jszip/file_data.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/documentation/api_jszip/file_name.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/documentation/api_jszip/file_regex.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/documentation/api_jszip/filter.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/documentation/api_jszip/folder_data.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/documentation/api_jszip/folder_regex.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/documentation/api_jszip/generate.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/documentation/api_jszip/load.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/documentation/api_jszip/remove.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/documentation/api_jszip/support.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/documentation/api_zipobject.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/documentation/contributing.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/documentation/css/main.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/documentation/css/pygments.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/documentation/examples.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/documentation/examples/download-zip-file.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/documentation/examples/downloader.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/documentation/examples/downloader.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/documentation/examples/get-binary-files-ajax.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/documentation/examples/read-local-file-api.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/documentation/faq.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/documentation/howto/read_zip.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/documentation/howto/write_zip.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/documentation/limitations.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/documentation/upgrade_guide.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/index.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/lib/arrayReader.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/lib/base64.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/lib/compressedObject.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/lib/compressions.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/lib/crc32.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/lib/dataReader.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/lib/defaults.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/lib/deprecatedPublicUtils.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/lib/flate.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/lib/index.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/lib/license_header.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/lib/load.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/lib/nodeBuffer.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/lib/nodeBufferReader.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/lib/object.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/lib/signature.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/lib/stringReader.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/lib/stringWriter.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/lib/support.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/lib/uint8ArrayReader.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/lib/uint8ArrayWriter.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/lib/utf8.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/lib/utils.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/lib/zipEntries.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/lib/zipEntry.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/package.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/vendor/FileSaver.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/index.html" afterPath="$PROJECT_DIR$/public/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/tables_dynamic.html" afterPath="$PROJECT_DIR$/public/tables_dynamic.html" />
     </list>
     <ignored path="ore-dashboard-beta.iws" />
@@ -35,8 +103,8 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="407" column="26" selection-start-line="407" selection-start-column="26" selection-end-line="407" selection-end-column="26" />
+            <state relative-caret-position="45">
+              <caret line="401" column="40" selection-start-line="401" selection-start-column="40" selection-end-line="401" selection-end-column="40" />
               <folding>
                 <element signature="n#div#1;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
                 <element signature="n#div#2;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
@@ -50,8 +118,8 @@
       <file leaf-file-name="tables_dynamic.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/public/tables_dynamic.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="129" column="57" selection-start-line="129" selection-start-column="57" selection-end-line="129" selection-end-column="57" />
+            <state relative-caret-position="232">
+              <caret line="149" column="0" selection-start-line="149" selection-start-column="0" selection-end-line="149" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -191,8 +259,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -221,7 +287,65 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
+              <option name="myItemId" value="vendors" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ore-dashboard-beta" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ore-dashboard-beta" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="vendors" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jszip" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ore-dashboard-beta" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ore-dashboard-beta" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="vendors" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jszip" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dist" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ore-dashboard-beta" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ore-dashboard-beta" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="vendors" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="iCheck" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -257,48 +381,10 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ore-dashboard-beta" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ore-dashboard-beta" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ore-dashboard-beta" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ore-dashboard-beta" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="echart" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="PackagesPane" />
     </panes>
   </component>
@@ -316,15 +402,15 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/public" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/public/vendors" />
       <recent name="$PROJECT_DIR$/public/vendors/bootstrap-progressbar" />
       <recent name="$PROJECT_DIR$/public/vendors/html2canvas" />
       <recent name="$PROJECT_DIR$/public/vendors/nprogress" />
       <recent name="$PROJECT_DIR$/public/vendors/DateJS" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/public" />
     </key>
   </component>
   <component name="RestClientSettings">
@@ -705,6 +791,7 @@
       <workItem from="1473889643628" duration="3937000" />
       <workItem from="1473980573437" duration="14305000" />
       <workItem from="1474699029589" duration="3336000" />
+      <workItem from="1474706284096" duration="1017000" />
     </task>
     <task id="LOCAL-00001" summary="package.json updated for local web running">
       <created>1469372595018</created>
@@ -822,19 +909,19 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="482472000" />
+    <option name="totallyTimeSpent" value="483489000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="4" y="23" width="1276" height="777" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.16414343" sideWeight="0.65033406" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16414343" sideWeight="0.3496659" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.16414343" sideWeight="0.65701556" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16414343" sideWeight="0.3429844" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32776934" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33864543" sideWeight="0.63697106" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3414264" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31866464" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31866464" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.17370518" sideWeight="0.3444613" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32776934" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1513158" sideWeight="0.35204855" order="2" side_tool="true" content_ui="tabs" />
@@ -1183,7 +1270,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="870">
           <caret line="58" column="55" selection-start-line="58" selection-start-column="55" selection-end-line="58" selection-end-column="55" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1191,7 +1277,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1396">
           <caret line="3989" column="31" selection-start-line="3989" selection-start-column="31" selection-end-line="3989" selection-end-column="31" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1207,11 +1292,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="6000">
           <caret line="404" column="0" selection-start-line="404" selection-start-column="0" selection-end-line="404" selection-end-column="0" />
-          <folding>
-            <marker date="1473855599000" expanded="true" signature="10888:11000" ph="..." />
-            <marker date="1473855599000" expanded="true" signature="11383:11491" ph="..." />
-            <marker date="1473855599000" expanded="true" signature="12473:12585" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1235,8 +1315,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/public/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="407" column="26" selection-start-line="407" selection-start-column="26" selection-end-line="407" selection-end-column="26" />
+        <state relative-caret-position="45">
+          <caret line="401" column="40" selection-start-line="401" selection-start-column="40" selection-end-line="401" selection-end-column="40" />
           <folding>
             <element signature="n#div#1;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#div#2;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
@@ -1248,8 +1328,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/public/tables_dynamic.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="129" column="57" selection-start-line="129" selection-start-column="57" selection-end-line="129" selection-end-column="57" />
+        <state relative-caret-position="232">
+          <caret line="149" column="0" selection-start-line="149" selection-start-column="0" selection-end-line="149" selection-end-column="0" />
           <folding />
         </state>
       </provider>
