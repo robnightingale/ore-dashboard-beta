@@ -5,77 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="caa21dc2-8a18-41a2-9fb6-7ca5b9d0c280" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/.bower.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/CHANGES.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/Gruntfile.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/LICENSE.markdown" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/README.markdown" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/_config.yml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/bower.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/component.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/dist/jszip.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/dist/jszip.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/docs/APPNOTE.TXT" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/docs/ZIP spec.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/docs/references.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/documentation/_layouts/default.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/documentation/api_jszip.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/documentation/api_jszip/constructor.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/documentation/api_jszip/constructor_load.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/documentation/api_jszip/file_data.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/documentation/api_jszip/file_name.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/documentation/api_jszip/file_regex.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/documentation/api_jszip/filter.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/documentation/api_jszip/folder_data.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/documentation/api_jszip/folder_regex.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/documentation/api_jszip/generate.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/documentation/api_jszip/load.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/documentation/api_jszip/remove.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/documentation/api_jszip/support.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/documentation/api_zipobject.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/documentation/contributing.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/documentation/css/main.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/documentation/css/pygments.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/documentation/examples.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/documentation/examples/download-zip-file.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/documentation/examples/downloader.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/documentation/examples/downloader.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/documentation/examples/get-binary-files-ajax.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/documentation/examples/read-local-file-api.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/documentation/faq.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/documentation/howto/read_zip.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/documentation/howto/write_zip.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/documentation/limitations.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/documentation/upgrade_guide.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/lib/arrayReader.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/lib/base64.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/lib/compressedObject.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/lib/compressions.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/lib/crc32.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/lib/dataReader.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/lib/defaults.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/lib/deprecatedPublicUtils.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/lib/flate.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/lib/index.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/lib/license_header.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/lib/load.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/lib/nodeBuffer.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/lib/nodeBufferReader.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/lib/object.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/lib/signature.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/lib/stringReader.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/lib/stringWriter.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/lib/support.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/lib/uint8ArrayReader.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/lib/uint8ArrayWriter.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/lib/utf8.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/lib/utils.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/lib/zipEntries.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/lib/zipEntry.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/package.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/vendors/jszip/vendor/FileSaver.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/index.html" afterPath="$PROJECT_DIR$/public/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/echart/limitsTable.js" afterPath="$PROJECT_DIR$/public/js/echart/limitsTable.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/tables_dynamic.html" afterPath="$PROJECT_DIR$/public/tables_dynamic.html" />
     </list>
     <ignored path="ore-dashboard-beta.iws" />
@@ -103,23 +34,66 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="401" column="40" selection-start-line="401" selection-start-column="40" selection-end-line="401" selection-end-column="40" />
+            <state relative-caret-position="517">
+              <caret line="410" column="0" selection-start-line="410" selection-start-column="0" selection-end-line="410" selection-end-column="0" />
               <folding>
-                <element signature="n#div#1;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-                <element signature="n#div#2;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-                <element signature="n#div#3;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-                <element signature="n#div#4;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+                <element signature="n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+                <element signature="n#style#0;n#div#0;n#div#1;n#div#2;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#1;n#div#3;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#1;n#div#4;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#1;n#div#1;n#div#2;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#1;n#div#2;n#div#2;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#1;n#div#3;n#div#2;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#1;n#div#4;n#div#2;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#1;n#div#5;n#div#2;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#1;n#div#6;n#div#2;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#2;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="tables_dynamic.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="limitsTable.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/js/echart/limitsTable.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="136">
+              <caret line="53" column="43" selection-start-line="53" selection-start-column="43" selection-end-line="53" selection-end-column="43" />
+              <folding>
+                <element signature="e#0#51#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="jquery.dataTables.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/public/vendors/datatables.net/js/jquery.dataTables.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="258">
+              <caret line="2331" column="21" selection-start-line="2331" selection-start-column="21" selection-end-line="2331" selection-end-column="21" />
+              <folding>
+                <marker date="1469189932000" expanded="true" signature="156778:156803" ph="..." />
+                <marker date="1469189932000" expanded="true" signature="157025:157050" ph="..." />
+                <marker date="1469189932000" expanded="true" signature="424468:424476" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="tables_dynamic.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/tables_dynamic.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="232">
-              <caret line="149" column="0" selection-start-line="149" selection-start-column="0" selection-end-line="149" selection-end-column="0" />
+            <state relative-caret-position="415">
+              <caret line="192" column="0" selection-start-line="192" selection-start-column="0" selection-end-line="192" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="gulpfile.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/gulpfile.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="181">
+              <caret line="54" column="0" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -172,9 +146,9 @@
         <option value="$PROJECT_DIR$/public/js/echart/chartManager.js" />
         <option value="$PROJECT_DIR$/gulpfile.js" />
         <option value="$PROJECT_DIR$/public/js/echart/echart.js" />
-        <option value="$PROJECT_DIR$/public/js/echart/limitsTable.js" />
         <option value="$PROJECT_DIR$/public/index.html" />
         <option value="$PROJECT_DIR$/public/tables_dynamic.html" />
+        <option value="$PROJECT_DIR$/public/js/echart/limitsTable.js" />
       </list>
     </option>
   </component>
@@ -274,110 +248,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="ore-dashboard-beta" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ore-dashboard-beta" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ore-dashboard-beta" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="vendors" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ore-dashboard-beta" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ore-dashboard-beta" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="vendors" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jszip" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ore-dashboard-beta" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ore-dashboard-beta" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="vendors" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jszip" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dist" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ore-dashboard-beta" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ore-dashboard-beta" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="vendors" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="iCheck" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ore-dashboard-beta" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ore-dashboard-beta" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ore-dashboard-beta" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ore-dashboard-beta" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="vendors" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -791,7 +661,7 @@
       <workItem from="1473889643628" duration="3937000" />
       <workItem from="1473980573437" duration="14305000" />
       <workItem from="1474699029589" duration="3336000" />
-      <workItem from="1474706284096" duration="1017000" />
+      <workItem from="1474706284096" duration="4560000" />
     </task>
     <task id="LOCAL-00001" summary="package.json updated for local web running">
       <created>1469372595018</created>
@@ -909,20 +779,20 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="483489000" />
+    <option name="totallyTimeSpent" value="487032000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="4" y="23" width="1276" height="777" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.16414343" sideWeight="0.65701556" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16414343" sideWeight="0.3429844" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.16414343" sideWeight="0.6636971" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16414343" sideWeight="0.3363029" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32776934" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33864543" sideWeight="0.63697106" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3414264" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31866464" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.17370518" sideWeight="0.3444613" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31866464" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.17370518" sideWeight="0.33853006" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32776934" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1513158" sideWeight="0.35204855" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39908952" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1012,7 +882,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/vendors/echarts-3.2.2/src/component/tooltip/TooltipModel.js" />
     <entry file="file://$PROJECT_DIR$/vendors/echarts-3.2.2/src/component/tooltip/TooltipContent.js" />
     <entry file="file://$PROJECT_DIR$/vendors/echarts-3.2.2/src/view/Chart.js" />
     <entry file="file://$PROJECT_DIR$/vendors/echarts-3.2.2/dist/echarts.js" />
@@ -1098,13 +967,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
           <caret line="20" column="6" selection-start-line="20" selection-start-column="6" selection-end-line="20" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/js/echart/chartController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-13">
-          <caret line="85" column="19" selection-start-line="85" selection-start-column="19" selection-end-line="85" selection-end-column="19" />
         </state>
       </provider>
     </entry>
@@ -1266,17 +1128,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/gulpfile.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="870">
-          <caret line="58" column="55" selection-start-line="58" selection-start-column="55" selection-end-line="58" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/js/custom.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1396">
           <caret line="3989" column="31" selection-start-line="3989" selection-start-column="31" selection-end-line="3989" selection-end-column="31" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1288,13 +1144,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/js/custom.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6000">
-          <caret line="404" column="0" selection-start-line="404" selection-start-column="0" selection-end-line="404" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/js/echart/echart.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="10443">
@@ -1303,34 +1152,81 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/js/echart/limitsTable.js">
+    <entry file="file://$PROJECT_DIR$/gulpfile.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="16">
-          <caret line="57" column="0" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#51#0" expanded="false" />
-          </folding>
+        <state relative-caret-position="181">
+          <caret line="54" column="0" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="401" column="40" selection-start-line="401" selection-start-column="40" selection-end-line="401" selection-end-column="40" />
+        <state relative-caret-position="517">
+          <caret line="410" column="0" selection-start-line="410" selection-start-column="0" selection-end-line="410" selection-end-column="0" />
           <folding>
-            <element signature="n#div#1;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#div#2;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#div#3;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#div#4;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#2;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#3;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#4;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#1;n#div#2;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#2;n#div#2;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#3;n#div#2;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#4;n#div#2;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#5;n#div#2;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#6;n#div#2;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#2;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/tables_dynamic.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="232">
-          <caret line="149" column="0" selection-start-line="149" selection-start-column="0" selection-end-line="149" selection-end-column="0" />
+        <state relative-caret-position="415">
+          <caret line="192" column="0" selection-start-line="192" selection-start-column="0" selection-end-line="192" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/js/custom.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="301">
+          <caret line="447" column="18" selection-start-line="447" selection-start-column="18" selection-end-line="447" selection-end-column="18" />
+          <folding>
+            <marker date="1473855599000" expanded="true" signature="10888:11000" ph="..." />
+            <marker date="1473855599000" expanded="true" signature="11383:11491" ph="..." />
+            <marker date="1473855599000" expanded="true" signature="12473:12585" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/echart/chartController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="319" column="157" selection-start-line="319" selection-start-column="157" selection-end-line="319" selection-end-column="157" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/echart/limitsTable.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="53" column="43" selection-start-line="53" selection-start-column="43" selection-end-line="53" selection-end-column="43" />
+          <folding>
+            <element signature="e#0#51#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/vendors/datatables.net/js/jquery.dataTables.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="258">
+          <caret line="2331" column="21" selection-start-line="2331" selection-start-column="21" selection-end-line="2331" selection-end-column="21" />
+          <folding>
+            <marker date="1469189932000" expanded="true" signature="156778:156803" ph="..." />
+            <marker date="1469189932000" expanded="true" signature="157025:157050" ph="..." />
+            <marker date="1469189932000" expanded="true" signature="424468:424476" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
