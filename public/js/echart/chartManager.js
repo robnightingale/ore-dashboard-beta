@@ -576,7 +576,7 @@ var chartManager = {
     // Should the bar graphs be clickable?
     // If mode=1 (hierarchy) then the bar graphs are always clickable.
     // If mode=2 (tree) then the bar graphs are clickable as long as we are above trade level.
-    , barGraphIsClickable() {
+    , barGraphIsClickable : function() {
         return 1 == chartManager.getMode() || chartManager.getLevel() < 3;
     }
     , setBGMetric : function(evt) {
