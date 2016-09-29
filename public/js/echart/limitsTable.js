@@ -1,7 +1,39 @@
-/**
- * Created by robnightingale on 24/09/2016.
- */
+var flipTable = function() {
+    // update the metric and redraw the limits table
+};
+
+var limitLoad_ = function() {
+    // load the page
+    // attach change event handlers to the dropdown controls
+    console.log('[INFO] ORE Limit Table.init');
+
+    var pCcy_ = chartManager.setBaseCcy();
+
+    return Promise.all([pCcy_]).then(function (values) {
+        console.log('[INFO] bus date calls and base ccy complete');
+        // when the bus date and base ccy rest calls have resolved
+        // reset the page defaults and init the charts
+        console.debug(sessionStorage);
+        return 'done';
+    }).then(function (res) {
+        console.log('[INFO] init limits table complete');
+
+        // for each bar graph selector, populate the choices listz
+        // and add a change event handler
+        [].forEach.call(document.getElementsByClassName('selectpicker-bg'), function (e) {
+            chartManager.populateBarGraphMetricList(e);
+            _AttachEvent(e, 'change', flipTable);
+        });
+
+        return 'done';
+
+    }).catch(function (error) {
+        console.error(new Error(error));
+    });
+}
+
 $(document).ready(function() {
+
     var handleDataTableButtons = function() {
         if ($("#datatable-buttons").length) {
             $("#datatable-buttons").DataTable({
@@ -42,24 +74,57 @@ $(document).ready(function() {
         };
     }();
 
-    $('#datatable-responsive').DataTable({
-        ajax: {url: "api/totalportfolio/ce", dataSrc: ''},
+    $("a[data-toggle=\"tab\"]").on("shown.bs.tab", function (e) {
+        var $newTab = $(e.target);
+
+        if ($.inArray("sais-tab", $newTab.parent().get(0).classList) >= 0) {
+            $(".sais-tab").addClass("active");
+            $(".azed-tab").removeClass("active");
+
+        } else {
+            $(".azed-tab").addClass("active");
+            $(".sais-tab").removeClass("active");
+        }
+
+        $(".dt-responsive:visible").each(function (e) {
+           $(this).DataTable().columns.adjust().responsive.recalc();
+        });
+        // $(".dt-responsive:visible").each(function (e) {
+        //    $(this).DataTable().columns.adjust().responsive.recalc();
+        // });
+    });
+
+
+    // $('table.table').DataTable( {});
+    var getUrl = function(e){
+        console.debug(e);
+        // if it's the breaches table, use a different URL
+        switch (e){
+            default:
+                break;
+        };
+
+        return "api/totalportfolio/ce";
+    };
+
+    $('#datatable-responsive, #datatable-responsive2').DataTable({
+        ajax: {url: getUrl(this), dataSrc: ''},
+        "columnDefs" : [{
+            "className" : "text-right", "targets" : [5,6,8]
+        }],
         "columns": [
             { title: "Credit Rating", data : "creditRating" },
             { title: "Counterparty", data : "counterParty"},
             { title: "Netting Set", data: "nettingSet" },
             { title: "Trade", data: "trade" },
-            { title: "Metric", data: "metric" },
+            { title: "Metric", data: "metric" , render: function (data, type, row) {
+                return data.toUpperCase();
+            }},
             { title: "Limit Value", data: "limit"
-                , render: $.fn.dataTable.render.number( ',', '.', 2, '$' )
-                // , render: function(data, type, row){
-                // return numeral(data).format('(0.00a)');
-            // }
+                , render: $.fn.dataTable.render.number( ',', '.', 0, chartManager.getBaseCcy())
             },
             { title: "Consumption Value", data: "consumptions.0.value"
-                , render: function(data, type, row){
-                return numeral(data).format('(0.00a)');
-            }
+                , render: $.fn.dataTable.render.number( ',', '.', 0, chartManager.getBaseCcy())
             },
             { title: "Date", data: "consumptions.0.date"
                 , render: function ( data, type, row ) {
@@ -75,10 +140,8 @@ $(document).ready(function() {
             }
             },
             { title: " Cons %", data: "consumptions.0.consumption"
-             , render: function(data, type, row){
-                return numeral(data).format('(0.00a)');
+                , render: $.fn.dataTable.render.number( ',', '.', 2, '','%')
             }
-            },
         ],
         deferRender: true,
         scrollY: 380,

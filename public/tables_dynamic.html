@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>DataTables | Gentellela</title>
+    <title>DataTables | ORE Risk Dashboard</title>
 
     <!-- Bootstrap -->
     <link href="vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -38,15 +38,6 @@
             </div>
 
             <div class="clearfix"></div>
-
-            <!-- menu profile quick info -->
-            <div class="profile">
-              <div class="profile_pic">
-                <img src="" alt="..." class="img-circle profile_img">
-              </div>
-            </div>
-            <!-- /menu profile quick info -->
-
             <br>
 
             <!-- sidebar menu -->
@@ -54,7 +45,7 @@
               <div class="menu_section active">
                 <h3>Live On</h3>
                 <ul class="nav side-menu" style="">
-                  <li class=""><a onclick="pdfMe();"><i class="fa fa-download"></i> PDF </span></a></li>
+                  <!--<li class=""><a onclick="pdfMe();"><i class="fa fa-download"></i> PDF </span></a></li>-->
                   <li class=""><a class="close-link" href="tables_dynamic.html"><i class="fa fa-table"></i> Limits </a></li>
                   <li class=""><a class="close-link" href="#glossary" data-toggle="modal" data-id="glossary" data-target=".bs-example-modal-sm1"><i class="fa fa-question-circle-o"></i> Glossary </a></li>
                 </ul>
@@ -91,17 +82,6 @@
               <div class="x_title clearfix">
                 <h2>ORE Risk Dashboard</h2>
               </div>
-
-              <!--<div class="title_right">-->
-                <!--<div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">-->
-                  <!--<div class="input-group">-->
-                    <!--<input type="text" class="form-control" placeholder="Search for...">-->
-                    <!--<span class="input-group-btn">-->
-                      <!--<button class="btn btn-default" type="button">Go!</button>-->
-                    <!--</span>-->
-                  <!--</div>-->
-                <!--</div>-->
-              <!--</div>-->
             </div>
 
             <div class="clearfix"></div>
@@ -110,39 +90,49 @@
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Trade level limits report</h2>
+                    <h2>Limits report</h2>
                     <ul class="nav navbar-right panel_toolbox">
                         <li>
-                          <select class="selectpicker-bg pull-right" id="bar5_" name="bar5" data-toggle="tooltip" data-placement="top" data-title="Select Risk Metric">
+                          <select class="selectpicker-bg pull-right" id="limitMetric_" name="limitMetric_" data-toggle="tooltip" data-placement="top" data-title="Select Risk Metric">
                             <!-- the options are filled in by Javascript-->
                           </select>
                         </li>
-                        <li><a class="close-link" href="#glossary" data-toggle="modal" data-id="glossary" data-target=".bs-example-modal-sm1"><i class="fa fa-question-circle-o" data-toggle="tooltip" data-placement="top" data-title="Help"></i></a></li>
-                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                      </li>
-                      <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                        <ul class="dropdown-menu" role="menu">
-                          <li><a href="#">Settings 1</a>
-                          </li>
-                          <li><a href="#">Settings 2</a>
-                          </li>
-                        </ul>
-                      </li>
-                      <li><a class="close-link"><i class="fa fa-close"></i></a>
-                      </li>
+                        <!--<li><a class="close-link" href="#glossary" data-toggle="modal" data-id="glossary" data-target=".bs-example-modal-sm1"><i class="fa fa-question-circle-o" data-toggle="tooltip" data-placement="top" data-title="Help"></i></a></li>-->
+                      <!--<li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>-->
+                      <!--</li>-->
+                      <!--<li class="dropdown">-->
+                        <!--<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>-->
+                        <!--<ul class="dropdown-menu" role="menu">-->
+                          <!--<li><a href="#">Settings 1</a>-->
+                          <!--</li>-->
+                          <!--<li><a href="#">Settings 2</a>-->
+                          <!--</li>-->
+                        <!--</ul>-->
+                      <!--</li>-->
+                      <!--<li><a class="close-link"><i class="fa fa-close"></i></a>-->
+                      <!--</li>-->
                     </ul>
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
 
-                    <!--<p class="text-muted font-13 m-b-30">-->
-                      <!--Responsive is an extension for DataTables that resolves that problem by optimising the table's layout for different screen sizes through the dynamic insertion and removal of columns from the table.-->
-                    <!--</p>-->
-                    <table id="datatable-responsive" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
-                    </table>
+                    <ul class="nav nav-tabs">
+                      <li class="active sais-tab"><a data-toggle="tab" role="tab" data-target="#SAISData">All Records</a></li>
+                      <li class="azed-tab"><a data-toggle="tab" role="tab" data-target="#AzEDSData">Breaches</a></li>
+                    </ul>
 
-                  </div>
+                    <div class="tab-content">
+                      <br/>
+                      <div id="SAISData" class="tab-pane fade in active" role="tabpanel">
+                        <table id="datatable-responsive" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+                    </table>
+                        </div>
+
+                      <div id="AzEDSData" class="tab-pane fade in" role="tabpanel">
+                    <table id="datatable-responsive2" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+                    </table>
+                        </div>
+                    </div>
                 </div>
               </div>
             </div>
@@ -168,7 +158,10 @@
     <!-- FastClick -->
     <script src="vendors/fastclick/lib/fastclick.js"></script>
     <!-- NProgress -->
-    <script src="vendors/nprogress/nprogress.js"></script>
+      <script src="vendors/nprogress/nprogress.js"></script>
+      <script src="vendors/html2canvas/dist/html2canvas.min.js"></script>
+      <script src="vendors/html2canvas/dist/html2canvas.svg.min.js"></script>
+      <script src="vendors/pdfmake/build/pdfmake.min.js"></script>
     <!-- Datatables -->
     <script src="vendors/datatables.net/js/jquery.dataTables.min.js"></script>
     <script src="vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
@@ -191,9 +184,11 @@
     <script src="js/custom.min.js"></script>
     <script src="js/common/fetch.js"></script>
     <script src="js/echart/limitsTable.js"></script>
+    <script src="js/echart/chartManager.js"></script>
 
     <!-- Datatables -->
     <script>
+        window.onload = limitLoad_;
     </script>
     <!-- /Datatables -->
   </body>
