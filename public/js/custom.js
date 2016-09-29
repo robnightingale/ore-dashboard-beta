@@ -4092,16 +4092,25 @@ function cloneCanvas(oldCanvas) {
 
 function lineChartTooltipFormatter(params, ticket, callback) {
     // console.debug(params);
-    var symbol_ = chartManager.getBaseCcy();
-    var res = moment(params[0].value[0]).format('DD-MM-YYYY') + '<br/>';
-    for (var i = 0, l = params.length; i < l; i++) {
+    try {
+        if (params.componentType === 'markLine')
+        {
+            return 'Limit ' + params.seriesName + ' : ' + numeral(params.value).format('(0,0)');
+        }
 
-        var colorEl = '<span style="display:inline-block;margin-right:5px;'
-            + 'border-radius:10px;width:9px;height:9px;background-color:' + params[i].color + '"></span>';
+        var symbol_ = chartManager.getBaseCcy();
+        var res = moment(params[0].value[0]).format('DD-MM-YYYY') + '<br/>';
+        for (var i = 0, l = params.length; i < l; i++) {
 
-        res += colorEl + ' '+ params[i].seriesName + ' : ' + symbol_ + ' ' + numeral(params[i].value[1]).format('(0,0)') + '<br/>';
+            var colorEl = '<span style="display:inline-block;margin-right:5px;'
+                + 'border-radius:10px;width:9px;height:9px;background-color:' + params[i].color + '"></span>';
+
+            res += colorEl + ' '+ params[i].seriesName + ' : ' + symbol_ + ' ' + numeral(params[i].value[1]).format('(0,0)') + '<br/>';
+        }
+        return res;
+    } catch (e){
+        console.error(e);
     }
-    return res;
 }
 
 function donutChartTooltipFormatter(params, ticket, callback) {

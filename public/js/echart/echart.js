@@ -400,14 +400,30 @@ var LINECharts = (function () {
                     switch (elem.name) {
                         case 'CE' :
                             elem.markLine = {
+                                symbol: ['none','none'],
                                 data: [
-                                    {yAxis: +data_.limitCE, name: 'limit', itemStyle: {normal: {color: '#dc143c'}}}
+                                    {yAxis: +data_.limitCE, name: 'limit', itemStyle: {normal: {color: '#dc143c',
+                                        label: {
+                                            show: false
+                                        },
+                                        labelLine: {
+                                            show: false
+                                        }
+                                    }}}
                                 ]};
                             break;
                         case 'EEPE':
                             elem.markLine = {
+                                symbol: ['none','none'],
                                 data: [
-                                    {yAxis: +data_.limitEEPE, name: 'limit', itemStyle: {normal: {color: '#dc143c'}}}
+                                    {yAxis: +data_.limitEEPE, name: 'limit', itemStyle: {normal: {color: '#dc143c'
+                                        ,label: {
+                                            show: false
+                                        },
+                                        labelLine: {
+                                            show: false
+                                        }
+                                }}}
                                 ]};
                             break;
                         default:

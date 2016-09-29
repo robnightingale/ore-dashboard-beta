@@ -1,5 +1,5 @@
 var flipTable = function() {
-
+    // update the metric and redraw the limits table
 };
 
 var limitLoad_ = function() {
@@ -7,7 +7,6 @@ var limitLoad_ = function() {
     // attach change event handlers to the dropdown controls
     console.log('[INFO] ORE Limit Table.init');
 
-    // var pDates_ = chartManager.populateBusinessDates();
     var pCcy_ = chartManager.setBaseCcy();
 
     return Promise.all([pCcy_]).then(function (values) {
@@ -75,10 +74,6 @@ $(document).ready(function() {
         };
     }();
 
-    // $('a[data-toggle="tab"]').on( 'shown.bs.tab', function (e) {
-    //     $.fn.dataTable.tables( {visible: true, api: true} ).columns.adjust();
-    // } );
-
     $("a[data-toggle=\"tab\"]").on("shown.bs.tab", function (e) {
         var $newTab = $(e.target);
 
@@ -91,89 +86,92 @@ $(document).ready(function() {
             $(".sais-tab").removeClass("active");
         }
 
-        //$(".dt-responsive:visible").each(function (e) {
+        $(".dt-responsive:visible").each(function (e) {
+           $(this).DataTable().columns.adjust().responsive.recalc();
+        });
+        // $(".dt-responsive:visible").each(function (e) {
         //    $(this).DataTable().columns.adjust().responsive.recalc();
-        //});$(".dt-responsive:visible").each(function (e) {
-        //    $(this).DataTable().columns.adjust().responsive.recalc();
-        //});
+        // });
     });
 
 
-    $('table.table').DataTable( {});
-    $('#datatable-responsive2').DataTable({});
+    // $('table.table').DataTable( {});
+    var getUrl = function(e){
+        console.debug(e);
+        // if it's the breaches table, use a different URL
+        switch (e){
+            default:
+                break;
+        };
 
-    // $('#datatable-responsive').DataTable({
-    //     ajax: {url: "api/totalportfolio/ce", dataSrc: ''},
-    //     "columns": [
-    //         { title: "Credit Rating", data : "creditRating" },
-    //         { title: "Counterparty", data : "counterParty"},
-    //         { title: "Netting Set", data: "nettingSet" },
-    //         { title: "Trade", data: "trade" },
-    //         { title: "Metric", data: "metric" , render: function (data, type, row) {
-    //             return data.toUpperCase();
-    //         }},
-    //         { title: "Limit Value", data: "limit"
-    //             , render: $.fn.dataTable.render.number( ',', '.', 0, chartManager.getBaseCcy())
-    //             // , render: function(data, type, row){
-    //             // return numeral(data).format('(0.00a)');
-    //         // }
-    //         },
-    //         { title: "Consumption Value", data: "consumptions.0.value"
-    //             , render: $.fn.dataTable.render.number( ',', '.', 0, chartManager.getBaseCcy())
-    //
-    //             // , render: function(data, type, row){
-    //             // return numeral(data).format('(0.00a)');
-    //         // }
-    //         },
-    //         { title: "Date", data: "consumptions.0.date"
-    //             , render: function ( data, type, row ) {
-    //             // If display or filter data is requested, format the date
-    //             if ( type === 'display' || type === 'filter' ) {
-    //                 var rowvalue = row["Date"];
-    //                     return (moment(data, 'YYYYMMDD').format('DD-MMM-YYYY'));
-    //             }
-    //             // Otherwise the data type requested (`type`) is type detection or
-    //             // sorting data, for which we want to use the raw date value, so just return
-    //             // that, unaltered
-    //             return data;
-    //         }
-    //         },
-    //         { title: " Cons %", data: "consumptions.0.consumption"
-    //             , render: $.fn.dataTable.render.number( ',', '.', 2, '')
-    //          // , render: function(data, type, row){
-    //          //    return numeral(data).format('(0.00a)');
-    //         // }
-    //         }
-    //     ],
-    //     deferRender: true,
-    //     scrollY: 380,
-    //     scrollCollapse: true,
-    //     scroller: true,
-    //     dom: 'Bfrtip',
-    //     buttons: [
-    //         {
-    //             extend: "copy",
-    //             className: "btn-sm"
-    //         },
-    //         {
-    //             extend: "csv",
-    //             className: "btn-sm"
-    //         },
-    //         {
-    //             extend: "excel",
-    //             className: "btn-sm"
-    //         },
-    //         {
-    //             extend: "pdfHtml5",
-    //             className: "btn-sm"
-    //         },
-    //         {
-    //             extend: "print",
-    //             className: "btn-sm"
-    //         },
-    //     ],
-    //
-    // });
+        return "api/totalportfolio/ce";
+    };
+
+    $('#datatable-responsive, #datatable-responsive2').DataTable({
+        ajax: {url: getUrl(this), dataSrc: ''},
+        "columnDefs" : [{
+            "className" : "text-right", "targets" : [5,6,8]
+        }],
+        "columns": [
+            { title: "Credit Rating", data : "creditRating" },
+            { title: "Counterparty", data : "counterParty"},
+            { title: "Netting Set", data: "nettingSet" },
+            { title: "Trade", data: "trade" },
+            { title: "Metric", data: "metric" , render: function (data, type, row) {
+                return data.toUpperCase();
+            }},
+            { title: "Limit Value", data: "limit"
+                , render: $.fn.dataTable.render.number( ',', '.', 0, chartManager.getBaseCcy())
+            },
+            { title: "Consumption Value", data: "consumptions.0.value"
+                , render: $.fn.dataTable.render.number( ',', '.', 0, chartManager.getBaseCcy())
+            },
+            { title: "Date", data: "consumptions.0.date"
+                , render: function ( data, type, row ) {
+                // If display or filter data is requested, format the date
+                if ( type === 'display' || type === 'filter' ) {
+                    var rowvalue = row["Date"];
+                        return (moment(data, 'YYYYMMDD').format('DD-MMM-YYYY'));
+                }
+                // Otherwise the data type requested (`type`) is type detection or
+                // sorting data, for which we want to use the raw date value, so just return
+                // that, unaltered
+                return data;
+            }
+            },
+            { title: " Cons %", data: "consumptions.0.consumption"
+                , render: $.fn.dataTable.render.number( ',', '.', 2, '','%')
+            }
+        ],
+        deferRender: true,
+        scrollY: 380,
+        scrollCollapse: true,
+        scroller: true,
+        dom: 'Bfrtip',
+        buttons: [
+            {
+                extend: "copy",
+                className: "btn-sm"
+            },
+            {
+                extend: "csv",
+                className: "btn-sm"
+            },
+            {
+                extend: "excel",
+                className: "btn-sm"
+            },
+            {
+                extend: "pdfHtml5",
+                className: "btn-sm"
+            },
+            {
+                extend: "print",
+                className: "btn-sm"
+            },
+        ],
+
+    });
 
     var $datatable = $('#datatable-checkbox');
 

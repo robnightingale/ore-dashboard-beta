@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>DataTables | Gentellela</title>
+    <title>DataTables | ORE Risk Dashboard</title>
 
     <!-- Bootstrap -->
     <link href="vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -38,14 +38,6 @@
             </div>
 
             <div class="clearfix"></div>
-
-            <!-- menu profile quick info -->
-            <!--<div class="profile">-->
-              <!--<div class="profile_pic">-->
-                <!--<img src="" alt="..." class="img-circle profile_img">-->
-              <!--</div>-->
-            <!--</div>-->
-            <!-- /menu profile quick info -->
             <br>
 
             <!-- sidebar menu -->
@@ -53,7 +45,7 @@
               <div class="menu_section active">
                 <h3>Live On</h3>
                 <ul class="nav side-menu" style="">
-                  <li class=""><a onclick="pdfMe();"><i class="fa fa-download"></i> PDF </span></a></li>
+                  <!--<li class=""><a onclick="pdfMe();"><i class="fa fa-download"></i> PDF </span></a></li>-->
                   <li class=""><a class="close-link" href="tables_dynamic.html"><i class="fa fa-table"></i> Limits </a></li>
                   <li class=""><a class="close-link" href="#glossary" data-toggle="modal" data-id="glossary" data-target=".bs-example-modal-sm1"><i class="fa fa-question-circle-o"></i> Glossary </a></li>
                 </ul>
@@ -97,14 +89,14 @@
             <div class="row">
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
-                  <!--<div class="x_title">-->
-                    <!--<h2>Trade level limits report</h2>-->
-                    <!--<ul class="nav navbar-left panel_toolbox">-->
-                        <!--<li>-->
-                          <!--<select class="selectpicker-bg pull-right" id="bar5_" name="bar5" data-toggle="tooltip" data-placement="top" data-title="Select Risk Metric">-->
-                            <!--&lt;!&ndash; the options are filled in by Javascript&ndash;&gt;-->
-                          <!--</select>-->
-                        <!--</li>-->
+                  <div class="x_title">
+                    <h2>Limits report</h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                        <li>
+                          <select class="selectpicker-bg pull-right" id="limitMetric_" name="limitMetric_" data-toggle="tooltip" data-placement="top" data-title="Select Risk Metric">
+                            <!-- the options are filled in by Javascript-->
+                          </select>
+                        </li>
                         <!--<li><a class="close-link" href="#glossary" data-toggle="modal" data-id="glossary" data-target=".bs-example-modal-sm1"><i class="fa fa-question-circle-o" data-toggle="tooltip" data-placement="top" data-title="Help"></i></a></li>-->
                       <!--<li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>-->
                       <!--</li>-->
@@ -119,48 +111,28 @@
                       <!--</li>-->
                       <!--<li><a class="close-link"><i class="fa fa-close"></i></a>-->
                       <!--</li>-->
-                    <!--</ul>-->
-                    <!--<div class="clearfix"></div>-->
-                  <!--</div>-->
+                    </ul>
+                    <div class="clearfix"></div>
+                  </div>
                   <div class="x_content">
 
                     <ul class="nav nav-tabs">
-                      <li class="active sais-tab"><a data-toggle="tab" role="tab" data-target="#SAISData, #SAISData2">All Records</a></li>
-                      <li class="azed-tab"><a data-toggle="tab" role="tab" data-target="#AzEDSData, #AzEDSData2">Breaches</a></li>
+                      <li class="active sais-tab"><a data-toggle="tab" role="tab" data-target="#SAISData">All Records</a></li>
+                      <li class="azed-tab"><a data-toggle="tab" role="tab" data-target="#AzEDSData">Breaches</a></li>
                     </ul>
 
                     <div class="tab-content">
-                      <div id="SAISData2" class="tab-pane fade in active" role="tabpanel">
+                      <br/>
+                      <div id="SAISData" class="tab-pane fade in active" role="tabpanel">
                         <table id="datatable-responsive" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
-                      <thead>
-                      <tr>
-                        <th>Name</th>
-                        <th>Position</th>
-                        <th>Office</th>
-                        <th>Extn.</th>
-                        <th>Start date</th>
-                        <th>Salary</th>
-                      </tr>
-                      </thead>
                     </table>
                         </div>
 
-                      <div id="AzEDSData2" class="tab-pane fade in" role="tabpanel">
+                      <div id="AzEDSData" class="tab-pane fade in" role="tabpanel">
                     <table id="datatable-responsive2" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
-
-                      <thead>
-                      <tr>
-                        <th>Position</th>
-                        <th>Office</th>
-                        <th>Extn.</th>
-                        <th>Start date</th>
-                        <th>Salary</th>
-                      </tr>
-                      </thead>
                     </table>
                         </div>
-
-                  </div>
+                    </div>
                 </div>
               </div>
             </div>
@@ -186,7 +158,10 @@
     <!-- FastClick -->
     <script src="vendors/fastclick/lib/fastclick.js"></script>
     <!-- NProgress -->
-    <script src="vendors/nprogress/nprogress.js"></script>
+      <script src="vendors/nprogress/nprogress.js"></script>
+      <script src="vendors/html2canvas/dist/html2canvas.min.js"></script>
+      <script src="vendors/html2canvas/dist/html2canvas.svg.min.js"></script>
+      <script src="vendors/pdfmake/build/pdfmake.min.js"></script>
     <!-- Datatables -->
     <script src="vendors/datatables.net/js/jquery.dataTables.min.js"></script>
     <script src="vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
