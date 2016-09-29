@@ -16,9 +16,12 @@ var BARCharts = (function () {
             var dataStyle = {
                 normal: {
                     label : {
-                        show: true,
+                        show : true,
                         position: 'insideLeft',
-                        formatter: '{b}',
+                        formatter: function(params) {
+                            // console.debug(params);
+                            return params.seriesName == 'limits' ? '' : params.name;
+                        }, //'{b}',
                         textStyle : {
                             color: 'black'
                         }
@@ -55,6 +58,10 @@ var BARCharts = (function () {
             localOptions_.legend.data = ['limits'];
             localOptions_.yAxis[0].data = data_.yaxisLabels;
             localOptions_.yAxis[0].axisLabel = {show:false};
+
+            // don't show limit data labels as this crowds the graph
+            // localOptions_.series[0].itemStyle.normal.label.show = true;
+            // localOptions_.series[1].itemStyle.normal.label.show = false;
 
             chart_.setOption(localOptions_, true);
         }
