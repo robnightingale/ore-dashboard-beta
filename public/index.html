@@ -66,6 +66,7 @@
                         <ul class="nav side-menu" style="">
                             <li class=""><a onclick="pdfMe();"><i class="fa fa-download"></i> PDF </span></a></li>
                             <li class=""><a class="close-link" href="tables_dynamic.html"><i class="fa fa-table"></i> Limits </a></li>
+                            <li class=""><a class="close-link" href="#" onclick="chartManager.toggleLimitsClick(this);"><i class="fa fa-toggle-on"></i> Limits On/Off</a></li>
                             <li class=""><a class="close-link" href="#glossary" data-toggle="modal" data-id="glossary" data-target=".bs-example-modal-sm1"><i class="fa fa-question-circle-o"></i> Glossary </a></li>
                         </ul>
                     </div>
@@ -131,11 +132,6 @@
                                         </select>
                                     </label>
                                 </div>
-                            </div>
-
-                            <div class="col-md-2 col-sm-2 col-xs-2">
-                                <button type="button" id="limitToggle" class="btn btn-secondary btn-sm active pull-right"
-                                    data-toggle="button" aria-pressed="true" autocomplete="off">Limits</button>
                             </div>
 
                             <div class="row col-md-12 col-sm-12 col-xs-12">

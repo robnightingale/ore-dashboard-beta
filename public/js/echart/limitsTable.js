@@ -1,5 +1,6 @@
 var flipTable = function() {
     // update the metric and redraw the limits table
+
 };
 
 var limitLoad_ = function() {
@@ -22,6 +23,7 @@ var limitLoad_ = function() {
         // and add a change event handler
         [].forEach.call(document.getElementsByClassName('selectpicker-bg'), function (e) {
             chartManager.populateBarGraphMetricList(e);
+            sessionStorage.setItem('limitMetric_','CE');
             _AttachEvent(e, 'change', flipTable);
         });
 
@@ -33,46 +35,6 @@ var limitLoad_ = function() {
 }
 
 $(document).ready(function() {
-
-    var handleDataTableButtons = function() {
-        if ($("#datatable-buttons").length) {
-            $("#datatable-buttons").DataTable({
-                dom: "Bfrtip",
-                buttons: [
-                    {
-                        extend: "copy",
-                        className: "btn-sm"
-                    },
-                    {
-                        extend: "csv",
-                        className: "btn-sm"
-                    },
-                    {
-                        extend: "excel",
-                        className: "btn-sm"
-                    },
-                    {
-                        extend: "pdfHtml5",
-                        className: "btn-sm"
-                    },
-                    {
-                        extend: "print",
-                        className: "btn-sm"
-                    },
-                ],
-                responsive: true
-            });
-        }
-    };
-
-    TableManageButtons = function() {
-        "use strict";
-        return {
-            init: function() {
-                handleDataTableButtons();
-            }
-        };
-    }();
 
     $("a[data-toggle=\"tab\"]").on("shown.bs.tab", function (e) {
         var $newTab = $(e.target);
@@ -91,40 +53,41 @@ $(document).ready(function() {
         });
     });
 
-
     var getUrl = function(e){
         console.debug(e);
-        // if it's the breaches table, use a different URL
-        switch (e){
-            default:
-                break;
-        };
+        // return the right suffic fr the metric
+        var baseUrl = 'api/totalportfolio/';
 
-        return "api/totalportfolio/ce";
+        // find out the selected metric from the dropdown / sessionStorage
+        // add it to the baseUrl
+        var metric = sessionStorage.getItem('limitMetric_') || 'CE';
+        return baseUrl + metric.toLowerCase();
     };
 
-    $('#datatable-responsive, #datatable-responsive2').DataTable({
-        ajax: {url: getUrl(this), dataSrc: function(json){
-            var ret_ = [];
-            [].forEach.call(json, function(e){
-                var row_ = {};
-                row_.creditRating = e.creditRating;
-                row_.counterParty = e.counterParty;
-                row_.nettingSet = e.nettingSet;
-                row_.trade = e.trade;
-                row_.metric = e.metric;
-                row_.limit = e.limit;
-                var cons = e.consumptions;
-                [].forEach.call(cons, function(el){
-                    var new_row = JSON.parse(JSON.stringify(row_));
-                    new_row.value = el.value;
-                    new_row.date = el.date;
-                    new_row.consumption = el.consumption;
-                    ret_.push(new_row);
-                })
+    var massageJson = function(json){
+        var ret_ = [];
+        [].forEach.call(json, function(e){
+            var row_ = {};
+            row_.creditRating = e.creditRating;
+            row_.counterParty = e.counterParty;
+            row_.nettingSet = e.nettingSet;
+            row_.trade = e.trade;
+            row_.metric = e.metric;
+            row_.limit = e.limit;
+            var cons = e.consumptions;
+            [].forEach.call(cons, function(el){
+                var new_row = JSON.parse(JSON.stringify(row_));
+                new_row.value = el.value;
+                new_row.date = el.date;
+                new_row.consumption = el.consumption;
+                ret_.push(new_row);
             })
-            return ret_;
-        }},
+        })
+        return ret_;
+    };
+
+    // table definition common to both tables
+    var tableDef = {
         "createdRow": function( row, data, dataIndex ) {
             if ( data.consumption > 75 ) {
                 $(row).addClass( 'warning' );
@@ -155,7 +118,7 @@ $(document).ready(function() {
                 // If display or filter data is requested, format the date
                 if ( type === 'display' || type === 'filter' ) {
                     var rowvalue = row["Date"];
-                        return (moment(data, 'YYYYMMDD').format('DD-MMM-YYYY'));
+                    return (moment(data, 'YYYYMMDD').format('DD-MMM-YYYY'));
                 }
                 // Otherwise the data type requested (`type`) is type detection or
                 // sorting data, for which we want to use the raw date value, so just return
@@ -192,24 +155,19 @@ $(document).ready(function() {
             {
                 extend: "print",
                 className: "btn-sm"
-            },
-        ],
-
-    });
-
-    var $datatable = $('#datatable-checkbox');
-
-    $datatable.dataTable({
-        'order': [[ 1, 'asc' ]],
-        'columnDefs': [
-            { orderable: false, targets: [0] }
+            }
         ]
-    });
-    // $datatable.on('draw.dt', function() {
-    //     $('input').iCheck({
-    //         checkboxClass: 'icheckbox_flat-green'
-    //     });
-    // });
+    };
 
-    TableManageButtons.init();
+    // all records - find the right metric
+    $('#datatable-responsive').DataTable(
+        tableDef,
+        tableDef.ajax = {url: getUrl(this), dataSrc: massageJson}
+    );
+
+    // limitBreach table
+    $('#datatable-responsive2').DataTable(
+        tableDef,
+        tableDef.ajax = {url: "api/limitbreaches", dataSrc: massageJson}
+    );
 });
