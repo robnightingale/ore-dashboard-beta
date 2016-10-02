@@ -42,26 +42,19 @@ var BARCharts = (function () {
                     itemStyle: dataStyle,
                     type: data_.seriesType,
                     data: data_.yaxisValues,
-                    name: 'bar data',
-                    // stack: 'bar data'
-
+                    name: 'bar data'
                 },
                 {
                     itemStyle: dataStyle,
                     type: data_.seriesType,
                     data: data_.yaxisLimits,
-                    name: 'limits',
-                    // stack: 'bar data'
+                    name: 'limits'
                 }
                 ];
             localOptions_.title = [{text: data_.title, subtext: data_.subTitleText}];
             localOptions_.legend.data = ['limits'];
             localOptions_.yAxis[0].data = data_.yaxisLabels;
             localOptions_.yAxis[0].axisLabel = {show:false};
-
-            // don't show limit data labels as this crowds the graph
-            // localOptions_.series[0].itemStyle.normal.label.show = true;
-            // localOptions_.series[1].itemStyle.normal.label.show = false;
 
             chart_.setOption(localOptions_, true);
         }

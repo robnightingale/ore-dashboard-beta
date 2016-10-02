@@ -310,14 +310,12 @@ var chartManager = {
 
             // Restrict the Risk Gauge drop down to the list of options for which
             // both Metric and Limit are available given the selected mode / level.
-            if (1==chartManager.getMode() || 3==chartManager.getLevel())
-                // If we are in hierarchy view, the gauge always displays the total node,
-                // for which only CE and EEPE are available.
-                // If we are in tree view and trade level then we also have only CE/EEPE.
+            if (2==chartManager.getMode() && 3==chartManager.getLevel())
+                // If we are in tree view, and looking at a trade, then only CE and EEPE are available:
                 var choiceList = ['CE','EEPE'/*,'CVA','DVA','NPV','FCA','FBA','FVA','ColVA'*/];
             else
-                // In Tree view, for creditrating/counterparty/nettingset, enable everything except NPV.
-                var choiceList = ['CE','EEPE','CVA','DVA'/*,'NPV'*/,'FCA','FBA','FVA','ColVA'];
+                // In all other cases (hierarchy view, or other tree views) we can see everything except NPV and ColVA:
+                var choiceList = ['CE','EEPE','CVA','DVA'/*,'NPV'*/,'FCA','FBA','FVA'/*,'ColVA'*/];
 
             // If possible, preserve the currently selected metric.
             var previouslySelectedMetric = chartManager.getRiskGaugeMetric().toUpperCase();

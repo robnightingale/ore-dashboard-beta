@@ -89,13 +89,9 @@ $(document).ready(function() {
         $(".dt-responsive:visible").each(function (e) {
            $(this).DataTable().columns.adjust().responsive.recalc();
         });
-        // $(".dt-responsive:visible").each(function (e) {
-        //    $(this).DataTable().columns.adjust().responsive.recalc();
-        // });
     });
 
 
-    // $('table.table').DataTable( {});
     var getUrl = function(e){
         console.debug(e);
         // if it's the breaches table, use a different URL
@@ -108,7 +104,35 @@ $(document).ready(function() {
     };
 
     $('#datatable-responsive, #datatable-responsive2').DataTable({
-        ajax: {url: getUrl(this), dataSrc: ''},
+        ajax: {url: getUrl(this), dataSrc: function(json){
+            var ret_ = [];
+            [].forEach.call(json, function(e){
+                var row_ = {};
+                row_.creditRating = e.creditRating;
+                row_.counterParty = e.counterParty;
+                row_.nettingSet = e.nettingSet;
+                row_.trade = e.trade;
+                row_.metric = e.metric;
+                row_.limit = e.limit;
+                var cons = e.consumptions;
+                [].forEach.call(cons, function(el){
+                    var new_row = JSON.parse(JSON.stringify(row_));
+                    new_row.value = el.value;
+                    new_row.date = el.date;
+                    new_row.consumption = el.consumption;
+                    ret_.push(new_row);
+                })
+            })
+            return ret_;
+        }},
+        "createdRow": function( row, data, dataIndex ) {
+            if ( data.consumption > 75 ) {
+                $(row).addClass( 'warning' );
+            }
+            if ( data.consumption > 100 ) {
+                $(row).addClass( 'danger' );
+            }
+        },
         "columnDefs" : [{
             "className" : "text-right", "targets" : [5,6,8]
         }],
@@ -123,10 +147,10 @@ $(document).ready(function() {
             { title: "Limit Value", data: "limit"
                 , render: $.fn.dataTable.render.number( ',', '.', 0, chartManager.getBaseCcy())
             },
-            { title: "Consumption Value", data: "consumptions.0.value"
+            { title: "Consumption Value", data: "value"
                 , render: $.fn.dataTable.render.number( ',', '.', 0, chartManager.getBaseCcy())
             },
-            { title: "Date", data: "consumptions.0.date"
+            { title: "Date", data: "date"
                 , render: function ( data, type, row ) {
                 // If display or filter data is requested, format the date
                 if ( type === 'display' || type === 'filter' ) {
@@ -139,7 +163,7 @@ $(document).ready(function() {
                 return data;
             }
             },
-            { title: " Cons %", data: "consumptions.0.consumption"
+            { title: " Cons %", data: "consumption"
                 , render: $.fn.dataTable.render.number( ',', '.', 2, '','%')
             }
         ],
@@ -181,11 +205,11 @@ $(document).ready(function() {
             { orderable: false, targets: [0] }
         ]
     });
-    $datatable.on('draw.dt', function() {
-        $('input').iCheck({
-            checkboxClass: 'icheckbox_flat-green'
-        });
-    });
+    // $datatable.on('draw.dt', function() {
+    //     $('input').iCheck({
+    //         checkboxClass: 'icheckbox_flat-green'
+    //     });
+    // });
 
     TableManageButtons.init();
 });
