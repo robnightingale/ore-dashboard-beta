@@ -37,31 +37,34 @@ var BARCharts = (function () {
                 }
             };
 
-            localOptions_.series = [
-                {
-                    itemStyle: dataStyle,
-                    type: data_.seriesType,
-                    data: data_.yaxisValues,
-                    name: 'bar data',
-                    // stack: 'bar data'
-
-                },
-                {
-                    itemStyle: dataStyle,
-                    type: data_.seriesType,
-                    data: data_.yaxisLimits,
-                    name: 'limits',
-                    // stack: 'bar data'
-                }
+            if (1 == chartManager.getLimits()) {
+                localOptions_.series = [
+                    {
+                        itemStyle: dataStyle,
+                        type: data_.seriesType,
+                        data: data_.yaxisValues,
+                        name: 'bar data'
+                    },
+                    {
+                        itemStyle: dataStyle,
+                        type: data_.seriesType,
+                        data: data_.yaxisLimits,
+                        name: 'limits'
+                    }
                 ];
+            } else {
+                localOptions_.series = [
+                    {
+                        itemStyle: dataStyle,
+                        type: data_.seriesType,
+                        data: data_.yaxisValues,
+                        name: 'bar data'
+                    }
+                ];
+            }
             localOptions_.title = [{text: data_.title, subtext: data_.subTitleText}];
-            localOptions_.legend.data = ['limits'];
             localOptions_.yAxis[0].data = data_.yaxisLabels;
             localOptions_.yAxis[0].axisLabel = {show:false};
-
-            // don't show limit data labels as this crowds the graph
-            // localOptions_.series[0].itemStyle.normal.label.show = true;
-            // localOptions_.series[1].itemStyle.normal.label.show = false;
 
             chart_.setOption(localOptions_, true);
         }
@@ -72,7 +75,6 @@ var BARCharts = (function () {
                 formatter: barChartTooltipFormatter
             },
             legend: {
-                // x: 10000,
                 data: null
             },
             toolbox: {
@@ -404,37 +406,39 @@ var LINECharts = (function () {
                 // series_.push((series_3));
 
                 series_.forEach(function (elem) {
-                    switch (elem.name) {
-                        case 'CE' :
-                            elem.markLine = {
-                                symbol: ['none','none'],
-                                data: [
-                                    {yAxis: +data_.limitCE, name: 'limit', itemStyle: {normal: {color: '#dc143c',
-                                        label: {
-                                            show: false
-                                        },
-                                        labelLine: {
-                                            show: false
-                                        }
+                    if (1 == chartManager.getLimits()) {
+                        switch (elem.name) {
+                            case 'CE' :
+                                elem.markLine = {
+                                    symbol: ['none','none'],
+                                    data: [
+                                        {yAxis: +data_.limitCE, name: 'limit', itemStyle: {normal: {color: '#dc143c',
+                                            label: {
+                                                show: false
+                                            },
+                                            labelLine: {
+                                                show: false
+                                            }
+                                        }}}
+                                    ]};
+                                break;
+                            case 'EEPE':
+                                elem.markLine = {
+                                    symbol: ['none','none'],
+                                    data: [
+                                        {yAxis: +data_.limitEEPE, name: 'limit', itemStyle: {normal: {color: '#dc143c'
+                                            ,label: {
+                                                show: false
+                                            },
+                                            labelLine: {
+                                                show: false
+                                            }
                                     }}}
-                                ]};
-                            break;
-                        case 'EEPE':
-                            elem.markLine = {
-                                symbol: ['none','none'],
-                                data: [
-                                    {yAxis: +data_.limitEEPE, name: 'limit', itemStyle: {normal: {color: '#dc143c'
-                                        ,label: {
-                                            show: false
-                                        },
-                                        labelLine: {
-                                            show: false
-                                        }
-                                }}}
-                                ]};
-                            break;
-                        default:
-                            break;
+                                    ]};
+                                break;
+                            default:
+                                break;
+                        }
                     }
 
                     elem.type = 'line';
