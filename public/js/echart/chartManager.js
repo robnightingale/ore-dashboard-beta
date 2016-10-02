@@ -68,6 +68,10 @@ var load_ = function() {
             _AttachEvent(e, 'click', chartManager.breadcrumbClick);
         });
 
+        // add a click event handler for the button to show/hide limits.
+        var limitToggleButton = document.getElementById('limitToggle');
+        _AttachEvent(limitToggleButton, 'click', chartManager.toggleLimitsClick);
+
         // function to zoom a xva graph
         $('#xva-zoom').on('shown.bs.modal', function(e) {
 
@@ -233,6 +237,23 @@ var chartManager = {
                     .then(console.error);
                 return Promise.reject(ex);
             })
+    }
+    , toggleLimitsClick : function(evt) {
+
+        if (isNullOrUndefined(evt))
+            return;
+
+        // flip the hide/show limits flag.
+        chartManager.toggleLimits();
+
+        // rerender the dashboard with the new limits flag
+        // without changing anything else.
+        var args = {
+            mode: chartManager.getMode(),
+            level: chartManager.getLevel(),
+            node: chartManager.getNode()
+        };
+        chartManager.drillDown(args);
     }
     , setBaseCcy: function() {
         return chartManager.getDataFromRestCall('/api/baseccy')
@@ -542,6 +563,7 @@ var chartManager = {
 
         chartManager.setBGMetricDefaults();
         sessionStorage.setItem('gauge_metric', 'ce');
+        sessionStorage.setItem('limits', 1);
     }
     // change of business date
     , changeDate : function(evt) {
@@ -615,6 +637,15 @@ var chartManager = {
     , setDrilldownMenu : function(level) {
         $('input:radio')[level].checked = true;
         $($('label[name^="option"]')[level]).button('toggle');
+    }
+    , toggleLimits : function() {
+        if (1==sessionStorage.getItem('limits'))
+            sessionStorage.setItem('limits', 0);
+        else
+            sessionStorage.setItem('limits', 1);
+    }
+    , getLimits : function() {
+        return sessionStorage.getItem('limits');
     }
 // Function drillDown:  Rerender the dashboard.
 //                      Whether or not this actually drills down depends on whether the caller incremented the level.
