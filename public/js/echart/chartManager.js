@@ -69,8 +69,8 @@ var load_ = function() {
         });
 
         // add a click event handler for the button to show/hide limits.
-        var limitToggleButton = document.getElementById('limitToggle');
-        _AttachEvent(limitToggleButton, 'click', chartManager.toggleLimitsClick);
+        // var limitToggleButton = document.getElementById('limitToggle');
+        // _AttachEvent(limitToggleButton, 'click', chartManager.toggleLimitsClick);
 
         // function to zoom a xva graph
         $('#xva-zoom').on('shown.bs.modal', function(e) {
