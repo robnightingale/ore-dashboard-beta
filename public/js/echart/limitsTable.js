@@ -1,6 +1,29 @@
-var flipTable = function() {
-    // update the metric and redraw the limits table
+"use strict";
 
+var dtLimits, dtBreaches;
+
+var getUrl = function(e){
+    console.debug(e);
+    // return the right suffic fr the metric
+    var baseUrl = 'api/totalportfolio/';
+
+    // find out the selected metric from the dropdown / sessionStorage
+    // add it to the baseUrl
+    var metric = sessionStorage.getItem('limitMetric_') || 'CE';
+    return baseUrl + metric.toLowerCase();
+};
+
+var flipTable = function(evt) {
+    // update the metric and redraw the limits table
+    if (isNullOrUndefined(evt))
+        return;
+
+    evt = evt || window.event;
+    var target = evt.target || evt.srcElement;
+    sessionStorage.setItem(target.name, target.value);
+    // set the user selected item
+    // default_[0].metric = target.value.toLowerCase();
+    dtLimits.ajax.url(getUrl()).load();
 };
 
 var limitLoad_ = function() {
@@ -52,17 +75,6 @@ $(document).ready(function() {
            $(this).DataTable().columns.adjust().responsive.recalc();
         });
     });
-
-    var getUrl = function(e){
-        console.debug(e);
-        // return the right suffic fr the metric
-        var baseUrl = 'api/totalportfolio/';
-
-        // find out the selected metric from the dropdown / sessionStorage
-        // add it to the baseUrl
-        var metric = sessionStorage.getItem('limitMetric_') || 'CE';
-        return baseUrl + metric.toLowerCase();
-    };
 
     var massageJson = function(json){
         var ret_ = [];
@@ -160,13 +172,13 @@ $(document).ready(function() {
     };
 
     // all records - find the right metric
-    $('#datatable-responsive').DataTable(
+    dtLimits = $('#datatable-responsive').DataTable(
         tableDef,
         tableDef.ajax = {url: getUrl(this), dataSrc: massageJson}
     );
 
     // limitBreach table
-    $('#datatable-responsive2').DataTable(
+    dtBreaches = $('#datatable-responsive2').DataTable(
         tableDef,
         tableDef.ajax = {url: "api/limitbreaches", dataSrc: massageJson}
     );
