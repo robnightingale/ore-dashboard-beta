@@ -28,6 +28,12 @@ var load_ = function() {
     // attach change event handlers to the dropdown controls
     console.log('[INFO] ORE Dashboard.init');
 
+    // turn the limit toggle into a switch control
+    var elem = document.getElementById('limitToggle');
+    var init = new Switchery(elem, {size: 'small', color:'#73879C'});
+    // add a click event handler for the button to show/hide limits.
+    _AttachEvent(elem, 'change', chartManager.toggleLimitsClick);
+
     var pDates_ = chartManager.populateBusinessDates();
     var pCcy_ = chartManager.setBaseCcy();
 
@@ -67,10 +73,6 @@ var load_ = function() {
         [].forEach.call($('ol[id^="periscope"]'), function(e) {
             _AttachEvent(e, 'click', chartManager.breadcrumbClick);
         });
-
-        // add a click event handler for the button to show/hide limits.
-        var limitToggleButton = document.getElementById('limitToggle');
-        _AttachEvent(limitToggleButton, 'click', chartManager.toggleLimitsClick);
 
         // function to zoom a xva graph
         $('#xva-zoom').on('shown.bs.modal', function(e) {
@@ -243,8 +245,12 @@ var chartManager = {
         if (isNullOrUndefined(evt))
             return;
 
+        evt = evt || window.event;
+        var target = evt.target || evt.srcElement;
+
         // flip the hide/show limits flag.
-        chartManager.toggleLimits();
+        var onOrOff = target.checked ? 1:0;
+        chartManager.toggleLimits(onOrOff);
 
         // rerender the dashboard with the new limits flag
         // without changing anything else.
@@ -638,15 +644,8 @@ var chartManager = {
         $('input:radio')[level].checked = true;
         $($('label[name^="option"]')[level]).button('toggle');
     }
-    , toggleLimits : function() {
-        var limitToggleButton = document.getElementById('limitToggle');
-        if (1==sessionStorage.getItem('limits')) {
-            sessionStorage.setItem('limits', 0);
-            limitToggleButton.innerText = "Show Limits";
-        } else {
-            sessionStorage.setItem('limits', 1);
-            limitToggleButton.innerText = "Hide Limits";
-        }
+    , toggleLimits : function(onOrOff) {
+            sessionStorage.setItem('limits', onOrOff);
     }
     , getLimits : function() {
         return sessionStorage.getItem('limits');
