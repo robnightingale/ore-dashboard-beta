@@ -69,8 +69,8 @@ var load_ = function() {
         });
 
         // add a click event handler for the button to show/hide limits.
-        // var limitToggleButton = document.getElementById('limitToggle');
-        // _AttachEvent(limitToggleButton, 'click', chartManager.toggleLimitsClick);
+        var limitToggleButton = document.getElementById('limitToggle');
+        _AttachEvent(limitToggleButton, 'click', chartManager.toggleLimitsClick);
 
         // function to zoom a xva graph
         $('#xva-zoom').on('shown.bs.modal', function(e) {
@@ -639,10 +639,14 @@ var chartManager = {
         $($('label[name^="option"]')[level]).button('toggle');
     }
     , toggleLimits : function() {
-        if (1==sessionStorage.getItem('limits'))
+        var limitToggleButton = document.getElementById('limitToggle');
+        if (1==sessionStorage.getItem('limits')) {
             sessionStorage.setItem('limits', 0);
-        else
+            limitToggleButton.innerText = "Show Limits";
+        } else {
             sessionStorage.setItem('limits', 1);
+            limitToggleButton.innerText = "Hide Limits";
+        }
     }
     , getLimits : function() {
         return sessionStorage.getItem('limits');
