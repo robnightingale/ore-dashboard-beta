@@ -65,13 +65,13 @@ $(document).ready(function() {
         if ($.inArray("sais-tab", $newTab.parent().get(0).classList) >= 0) {
             $(".sais-tab").addClass("active");
             $(".azed-tab").removeClass("active");
-
         } else {
             $(".azed-tab").addClass("active");
             $(".sais-tab").removeClass("active");
         }
 
         $(".dt-responsive:visible").each(function (e) {
+           $(this).DataTable().scroller.measure();
            $(this).DataTable().columns.adjust().responsive.recalc();
         });
     });

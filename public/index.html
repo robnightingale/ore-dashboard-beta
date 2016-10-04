@@ -29,9 +29,13 @@
     <link href="vendors/iCheck/skins/flat/green.css" type="text/css" rel="stylesheet">
     <!-- bootstrap-progressbar -->
     <link href="vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.css" type="text/css" rel="stylesheet">
+    <link href="vendors/switchery/dist/switchery.min.css" type="text/css" rel="stylesheet">
 
     <!-- Custom Theme Style -->
     <link href="css/custom.min.css" type="text/css" rel="stylesheet">
+
+    <!--<link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">-->
+
 </head>
 
 <body class="nav-sm">
@@ -66,7 +70,7 @@
                         <ul class="nav side-menu" style="">
                             <li class=""><a onclick="pdfMe();"><i class="fa fa-download"></i> PDF </span></a></li>
                             <li class=""><a class="close-link" href="tables_dynamic.html"><i class="fa fa-table"></i> Limits </a></li>
-                            <li class=""><a class="close-link" href="#" onclick="chartManager.toggleLimitsClick(this);"><i class="fa fa-toggle-on"></i> Limits On/Off</a></li>
+                            <!--li class=""><a class="close-link" href="#" onclick="chartManager.toggleLimitsClick(this);"><i class="fa fa-toggle-on"></i> Limits On/Off</a></li-->
                             <li class=""><a class="close-link" href="#glossary" data-toggle="modal" data-id="glossary" data-target=".bs-example-modal-sm1"><i class="fa fa-question-circle-o"></i> Glossary </a></li>
                         </ul>
                     </div>
@@ -105,7 +109,8 @@
 
                         <div class="col-md-8 col-sm-8 col-xs-12">
 
-                            <div class="col-md-10 col-sm-10 col-xs-10">
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <div>
                                 <div class="btn-group btn-sm" data-toggle="buttons">
                                     <label name="options" class="btn btn-sm active">
                                         <input type="radio" name="options" id="option0" value="0" autocomplete="off"
@@ -132,6 +137,10 @@
                                         </select>
                                     </label>
                                 </div>
+                                    <label class="checkbox-inline">
+                                        <input type="checkbox" checked id="limitToggle" > Limits
+                                    </label>
+                                </div>
                             </div>
 
                             <div class="row col-md-12 col-sm-12 col-xs-12">
@@ -145,8 +154,6 @@
                         </div>
                     </div>
                     <div class="x_content">
-                        <!--<a data-toggle="tooltip" data-placement="top" data-title="popoooo">hover</a>-->
-
                         <div class="col-md-6 col-sm-12 col-xs-12">
                             <div class="demo-container" style="height:275px">
                                 <div id="line_total_exposure" style="height:275px;" data-toggle="tooltip" data-placement="top" data-title="Click Glossary for help"></div>
@@ -359,24 +366,8 @@
             </div>
         </div>
         <!-- /modals -->
-        <div id="glossary" class="modal fade bs-example-modal-sm1" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span>
-                        </button>
-                        <h4 class="modal-title" id="myModalLabel3"> Glossary of terms </h4>
-                    </div>
-                    <div class="modal-body">
-
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <!-- glossary modal - there is code in glossary.js to replace this div with the relevant html. -->
+        <div id="glossaryModal"></div>
 
         <!-- /page content -->
 
@@ -403,7 +394,7 @@
 <script src="vendors/html2canvas/dist/html2canvas.min.js"></script>
 <script src="vendors/html2canvas/dist/html2canvas.svg.min.js"></script>
 <script src="vendors/pdfmake/build/pdfmake.min.js"></script>
-<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/numeral.js/1.4.5/numeral.min.js"></script>-->
+<script src="vendors/switchery/dist/switchery.min.js"></script>
 
 <!-- Custom Themes/Scripts -->
 <script src="js/moment/moment.min.js"></script>
@@ -414,25 +405,10 @@
 <script src="js/echart/echart.js"></script>
 <script src="js/echart/chartManager.js"></script>
 
+<script src="js/glossary.js"></script>
+
 <script language="javascript">
     window.onload = load_;
-</script>
-
-<script>
-    $('#glossary').on('shown.bs.modal', function(e){
-        // 1 :the content that we want to inject inside our modal
-        //  this content can be loaded from another external file, this is just an example
-        var content = {title:"Glossary of Terms ",body:"this is the body content"};
-
-        // reference my modal
-        var modal1=$('#glossary');
-        $(modal1).find('.modal-title').html(content.title);
-        $(modal1).find('.modal-body').html(content.body);
-
-        // show the modal
-        $(modal1).modal();
-    });
-
 </script>
 
 </body>
