@@ -125,7 +125,7 @@ $(document).ready(function() {
             { title: "Consumption Value", data: "value"
                 , render: $.fn.dataTable.render.number( ',', '.', 0, chartManager.getBaseCcy())
             },
-            { title: "Date", data: "date"
+            { title: "", data: "date"
                 , render: function ( data, type, row ) {
                 // If display or filter data is requested, format the date
                 if ( type === 'display' || type === 'filter' ) {
@@ -184,11 +184,14 @@ $(document).ready(function() {
     );
 
     yadcf.init(dtLimits, [
-        {column_number : 7}
-        // {column_number : 1, filter_type: "range_number_slider", filter_container_id: "external_filter_container"},
-        // {column_number : 2, data: ["Yes", "No"], filter_default_label: "Select Yes/No"},
-        // {column_number : 3, filter_type: "auto_complete", text_data_delimiter: ","},
-        // {column_number : 4, column_data_type: "html", html_data_type: "text", filter_default_label: "Select tag"}
+        // {column_number : 0},
+        // {column_number : 1},
+        // {column_number : 2},
+        // {column_number : 3},
+        {column_number : 7, filter_default_label: "Select Date"}
+        ]);
+    yadcf.init(dtBreaches, [
+        {column_number : 7, filter_default_label: "Select Date"}
         ]);
 
 });
