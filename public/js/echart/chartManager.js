@@ -143,29 +143,29 @@ var currencyMap = [
 ];
 
 var chartCategory = [
-    {metric: 'npv', category: 'MARKET'},
-    {metric: 'ce', category: 'CREDIT'},
-    {metric: 'epe', category: 'CREDIT'},
-    {metric: 'ene', category: 'CREDIT'},
-    {metric: 'pfe', category: 'CREDIT'},
-    {metric: 'eepe', category: 'CREDIT'},
-    //{metric: 'totalexposure', category: 'CREDIT'},
-    {metric: 'cva', category: 'CREDIT'},
-    {metric: 'dva', category: 'CREDIT'},
-    {metric: 'saccr', category: 'CREDIT'},
-    {metric: 'el', category: 'CREDIT'},
-    {metric: 'uel', category: 'CREDIT'},
-    {metric: 'var', category: 'MARKET'},
-    {metric: 'es', category: 'MARKET'},
-    {metric: 'fca', category: 'LIQUIDITY'},
-    {metric: 'fba', category: 'LIQUIDITY'},
-    {metric: 'fva', category: 'LIQUIDITY'},
-    {metric: 'colva', category: 'LIQUIDITY'},
-    {metric: 'mva', category: 'LIQUIDITY'},
-    //{metric: 'im', category: 'LIQUIDITY'},
-    {metric: 'vm', category: 'LIQUIDITY'},
-    {metric: 'snco', category: 'LIQUIDITY'},
-    {metric: 'rsf', category: 'LIQUIDITY'}
+    {metric: 'npv', category: 'MARKET', tradeLevel:true},
+    {metric: 'ce', category: 'CREDIT', tradeLevel:true},
+    {metric: 'epe', category: 'CREDIT', tradeLevel:true},
+    {metric: 'ene', category: 'CREDIT', tradeLevel:true},
+    {metric: 'pfe', category: 'CREDIT', tradeLevel:true},
+    {metric: 'eepe', category: 'CREDIT', tradeLevel:true},
+    //{metric: 'totalexposure', category: 'CREDIT', tradeLevel:true},
+    {metric: 'cva', category: 'CREDIT', tradeLevel:false},
+    {metric: 'dva', category: 'CREDIT', tradeLevel:false},
+    {metric: 'saccr', category: 'CREDIT', tradeLevel:true},
+    {metric: 'el', category: 'CREDIT', tradeLevel:true},
+    {metric: 'uel', category: 'CREDIT', tradeLevel:true},
+    {metric: 'var', category: 'MARKET', tradeLevel:true},
+    {metric: 'es', category: 'MARKET', tradeLevel:true},
+    {metric: 'fca', category: 'LIQUIDITY', tradeLevel:false},
+    {metric: 'fba', category: 'LIQUIDITY', tradeLevel:false},
+    {metric: 'fva', category: 'LIQUIDITY', tradeLevel:false},
+    {metric: 'colva', category: 'LIQUIDITY', tradeLevel:false},
+    {metric: 'mva', category: 'LIQUIDITY', tradeLevel:false},
+    //{metric: 'im', category: 'LIQUIDITY', tradeLevel:true},
+    {metric: 'vm', category: 'LIQUIDITY', tradeLevel:true},
+    {metric: 'snco', category: 'LIQUIDITY', tradeLevel:true},
+    {metric: 'rsf', category: 'LIQUIDITY', tradeLevel:true}
 ];
 
 var barGraphs = [
@@ -396,8 +396,13 @@ var chartManager = {
         }).catch(function(err) {
             console.error(new Error(err));
         });
-    }
-    , flipChart : function(evt) {
+    },
+    setBarGraphTitle : function(graphId_, cat_){
+        var instance_ = chartManager.getChartInstanceFromDivId(graphId_);
+        instance_.setOption({title: [{text: ''}]});
+        if (chartManager.barGraphIsClickable() && cat_[0].tradeLevel == false)
+            instance_.setOption({title: [{text: 'Not Applicable at Trade Level'}]});
+    }, flipChart : function(evt) {
         if (isNullOrUndefined(evt))
             return;
 
@@ -419,9 +424,14 @@ var chartManager = {
         var p_ = chartManager.getGraphData(args, metric_, 'bargraph');
         p_.then(function(res) {
             chartManager.initChart(graphId_, bgInstance.getDefaults, p_, bgInstance.setNewData, chartManager.barGraphIsClickable());
+            return 'done';
+        }).then(function(res){
             // lookup the category in the chartCategories array
-            var cat_ = filter(chartCategory, function(elem){return elem.metric == metric_;});
+            var cat_ = filter(chartCategory, function (elem) {
+                return elem.metric == metric_;
+            });
             document.getElementById(graphId_).parentNode.parentNode.getElementsByTagName('h2')[0].innerText = cat_[0].category;
+            chartManager.setBarGraphTitle(graphId_, cat_);
         }).catch(function(err) {
             // FIXME if the chart flip returns no data or an error, revert the change
             // with a popup?
@@ -511,9 +521,12 @@ var chartManager = {
 
             p_.then(function(res) {
                 chartManager.initChart(elem.id, bgInstance.getDefaults, p_, bgInstance.setNewData, chartManager.barGraphIsClickable());
+                return 'done';
+            }).then(function(res){
                 // lookup the category in the chartCategories array
                 var cat_ = filter(chartCategory, function(elem){return elem.metric == metric_;});
                 document.getElementById(elem.id).parentNode.parentNode.getElementsByTagName('h2')[0].innerText = cat_[0].category;
+                chartManager.setBarGraphTitle(elem.id,cat_);
             });
         });
 
