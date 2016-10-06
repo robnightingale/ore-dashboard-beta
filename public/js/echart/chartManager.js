@@ -399,9 +399,11 @@ var chartManager = {
     },
     setBarGraphTitle : function(graphId_, cat_){
         var instance_ = chartManager.getChartInstanceFromDivId(graphId_);
-        instance_.setOption({title: [{text: ''}]});
-        if (chartManager.barGraphIsClickable() && cat_[0].tradeLevel == false)
-            instance_.setOption({title: [{text: 'Not Applicable at Trade Level'}]});
+        var titleText_ = '';
+        if (chartManager.getLevel() ==3 && cat_[0].tradeLevel == false)
+            titleText_ = 'Not Applicable at Trade Level';
+
+        instance_.setOption({title: [{text: titleText_}]});
     }, flipChart : function(evt) {
         if (isNullOrUndefined(evt))
             return;
