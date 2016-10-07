@@ -125,7 +125,7 @@ $(document).ready(function() {
             { title: "Consumption Value", data: "value"
                 , render: $.fn.dataTable.render.number( ',', '.', 0, chartManager.getBaseCcy())
             },
-            { title: "Date", data: "date"
+            { title: "", data: "date"
                 , render: function ( data, type, row ) {
                 // If display or filter data is requested, format the date
                 if ( type === 'display' || type === 'filter' ) {
@@ -182,4 +182,16 @@ $(document).ready(function() {
         tableDef,
         tableDef.ajax = {url: "api/limitbreaches", dataSrc: massageJson}
     );
+
+    yadcf.init(dtLimits, [
+        // {column_number : 0},
+        // {column_number : 1},
+        // {column_number : 2},
+        // {column_number : 3},
+        {column_number : 7, filter_default_label: "Select Date"}
+        ]);
+    yadcf.init(dtBreaches, [
+        {column_number : 7, filter_default_label: "Select Date"}
+        ]);
+
 });
