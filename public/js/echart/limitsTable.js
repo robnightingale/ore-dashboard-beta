@@ -65,9 +65,15 @@ $(document).ready(function() {
         if ($.inArray("sais-tab", $newTab.parent().get(0).classList) >= 0) {
             $(".sais-tab").addClass("active");
             $(".azed-tab").removeClass("active");
+            document.getElementById('limitMetric_').disabled = false;
+            document.getElementById('limitMetric_').value = sessionStorage.getItem('limitMetric_');
+            yadcf.exGetColumnFilterVal(dtLimits,7);
         } else {
             $(".azed-tab").addClass("active");
             $(".sais-tab").removeClass("active");
+            document.getElementById('limitMetric_').disabled = true;
+            document.getElementById('limitMetric_').value = '--';
+            yadcf.exGetColumnFilterVal(dtLimits,7);
         }
 
         $(".dt-responsive:visible").each(function (e) {
@@ -184,14 +190,10 @@ $(document).ready(function() {
     );
 
     yadcf.init(dtLimits, [
-        // {column_number : 0},
-        // {column_number : 1},
-        // {column_number : 2},
-        // {column_number : 3},
-        {column_number : 7, filter_default_label: "Select Date"}
+        {column_number : 7, filter_default_label: "- Date -", date_format: 'YYYYMMDD', sort_as: 'none'}
         ]);
     yadcf.init(dtBreaches, [
-        {column_number : 7, filter_default_label: "Select Date"}
+        {column_number : 7, filter_default_label: "- Date -", date_format: 'YYYYMMDD', sort_as: 'none'}
         ]);
 
 });
