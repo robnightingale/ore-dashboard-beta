@@ -52,6 +52,7 @@ var BARCharts = (function () {
                         name: 'limits'
                     }
                 ];
+                localOptions_.legend.data = ['limits'];
             } else {
                 localOptions_.series = [
                     {
