@@ -62,18 +62,19 @@ $(document).ready(function() {
     $("a[data-toggle=\"tab\"]").on("shown.bs.tab", function (e) {
         var $newTab = $(e.target);
 
-        if ($.inArray("sais-tab", $newTab.parent().get(0).classList) >= 0) {
-            $(".sais-tab").addClass("active");
-            $(".azed-tab").removeClass("active");
+        if ($.inArray("limits-tab", $newTab.parent().get(0).classList) >= 0) {
+            $(".limits-tab").addClass("active");
+            $(".breaches-tab").removeClass("active");
             document.getElementById('limitMetric_').disabled = false;
             document.getElementById('limitMetric_').value = sessionStorage.getItem('limitMetric_');
             yadcf.exGetColumnFilterVal(dtLimits,7);
         } else {
-            $(".azed-tab").addClass("active");
-            $(".sais-tab").removeClass("active");
+            $(".breaches-tab").addClass("active");
+            $(".limits-tab").removeClass("active");
             document.getElementById('limitMetric_').disabled = true;
             document.getElementById('limitMetric_').value = '--';
-            yadcf.exGetColumnFilterVal(dtLimits,7);
+
+            // yadcf.exGetColumnFilterVal(dtLimits,7);
         }
 
         $(".dt-responsive:visible").each(function (e) {
@@ -190,10 +191,12 @@ $(document).ready(function() {
     );
 
     yadcf.init(dtLimits, [
-        {column_number : 7, filter_default_label: "- Date -", date_format: 'YYYYMMDD', sort_as: 'none'}
+             {column_number : 7, filter_default_label: "- Date -", date_format: 'dd-mm-yyyy', sort_as: 'none'}
         ]);
+
     yadcf.init(dtBreaches, [
-        {column_number : 7, filter_default_label: "- Date -", date_format: 'YYYYMMDD', sort_as: 'none'}
-        ]);
+        {column_number : 7, filter_default_label: "- Date -", date_format: 'dd-mm-yyyy', sort_as: 'num'}
+    ]);
+
 
 });
