@@ -14,17 +14,38 @@ var getUrl = function(e){
 };
 
 var flipTable = function(evt) {
+    if (isNullOrUndefined(evt))
+        return;
+
+    evt = evt || window.event;
+    var target = evt.target || evt.srcElement;
     // update the metric and redraw the limits table
+    sessionStorage.setItem(target.name, target.value);
+    dtLimits.ajax.url(getUrl()).load();
+};
+
+var filterOnDate = function(evt){
     if (isNullOrUndefined(evt))
         return;
 
     evt = evt || window.event;
     var target = evt.target || evt.srcElement;
     sessionStorage.setItem(target.name, target.value);
-    // set the user selected item
-    // default_[0].metric = target.value.toLowerCase();
-    dtLimits.ajax.url(getUrl()).load();
+    // dtLimits.draw();
+    $(".dt-responsive:visible").each(function (e) {
+        $(this).DataTable().draw();
+    });
+
 };
+
+$.fn.dataTable.ext.search.push(
+    function( settings, data, dataIndex ) {
+        var val_  = document.getElementById('businessDates').value;
+        if (val_ == '19700101') return true;
+        return data[7] == moment(val_,'YYYYMMDD').format('DD-MMM-YYYY');
+    }
+);
+
 
 var limitLoad_ = function() {
     // load the page
@@ -32,22 +53,28 @@ var limitLoad_ = function() {
     console.log('[INFO] ORE Limit Table.init');
 
     var pCcy_ = chartManager.setBaseCcy();
+    var pDates_ = chartManager.populateBusinessDates();
 
-    return Promise.all([pCcy_]).then(function (values) {
+    return Promise.all([pCcy_, pDates_]).then(function (values) {
         console.log('[INFO] bus date calls and base ccy complete');
         // when the bus date and base ccy rest calls have resolved
         // reset the page defaults and init the charts
+        document.getElementById('businessDates').options[0].text = '- All Dates -';
         console.debug(sessionStorage);
         return 'done';
     }).then(function (res) {
         console.log('[INFO] init limits table complete');
 
-        // for each bar graph selector, populate the choices listz
+        // for each selector, populate the choices list
         // and add a change event handler
         [].forEach.call(document.getElementsByClassName('selectpicker-bg'), function (e) {
             chartManager.populateBarGraphMetricList(e);
             sessionStorage.setItem('limitMetric_','CE');
             _AttachEvent(e, 'change', flipTable);
+        });
+
+        [].forEach.call(document.getElementsByClassName('selectpicker'), function (e) {
+            _AttachEvent(e, 'change', filterOnDate);
         });
 
         return 'done';
@@ -67,14 +94,11 @@ $(document).ready(function() {
             $(".breaches-tab").removeClass("active");
             document.getElementById('limitMetric_').disabled = false;
             document.getElementById('limitMetric_').value = sessionStorage.getItem('limitMetric_');
-            yadcf.exGetColumnFilterVal(dtLimits,7);
         } else {
             $(".breaches-tab").addClass("active");
             $(".limits-tab").removeClass("active");
             document.getElementById('limitMetric_').disabled = true;
             document.getElementById('limitMetric_').value = '--';
-
-            // yadcf.exGetColumnFilterVal(dtLimits,7);
         }
 
         $(".dt-responsive:visible").each(function (e) {
@@ -132,17 +156,18 @@ $(document).ready(function() {
             { title: "Consumption Value", data: "value"
                 , render: $.fn.dataTable.render.number( ',', '.', 0, chartManager.getBaseCcy())
             },
-            { title: "", data: "date"
+            { title: "Date", data: "date"
                 , render: function ( data, type, row ) {
                 // If display or filter data is requested, format the date
-                if ( type === 'display' || type === 'filter' ) {
-                    var rowvalue = row["Date"];
+                // if ( type === 'display' || type === 'filter' ) {
+                //     var rowvalue = row["Date"];
                     return (moment(data, 'YYYYMMDD').format('DD-MMM-YYYY'));
-                }
+                    // return data;
+                // }
                 // Otherwise the data type requested (`type`) is type detection or
                 // sorting data, for which we want to use the raw date value, so just return
                 // that, unaltered
-                return data;
+                // return data;
             }
             },
             { title: " Cons %", data: "consumption"
@@ -189,14 +214,5 @@ $(document).ready(function() {
         tableDef,
         tableDef.ajax = {url: "api/limitbreaches", dataSrc: massageJson}
     );
-
-    yadcf.init(dtLimits, [
-             {column_number : 7, filter_default_label: "- Date -", date_format: 'dd-mm-yyyy', sort_as: 'none'}
-        ]);
-
-    yadcf.init(dtBreaches, [
-        {column_number : 7, filter_default_label: "- Date -", date_format: 'dd-mm-yyyy', sort_as: 'num'}
-    ]);
-
 
 });

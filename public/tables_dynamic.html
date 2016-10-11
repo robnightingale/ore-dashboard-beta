@@ -23,7 +23,6 @@
     <link href="vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
     <link href="vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
     <link href="vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
-    <link href="vendors/datatables.net-yadcf/jquery.dataTables.yadcf.css" ref="stylesheet">
 
     <!-- Custom Theme Style -->
     <link href="css/custom.min.css" type="text/css" rel="stylesheet">
@@ -93,11 +92,22 @@
                   <div class="x_title">
                     <h2>Limits report</h2>
                     <ul class="nav navbar-right panel_toolbox">
-                        <li>
+                      <li>
+
+                      <label class="btn btn-sm"> Bus Date :
+                        <select class="selectpicker pull-right" data-live-search="true" data-size="7"
+                                id="businessDates" name="businessDate" data-toggle="tooltip" data-placement="bottom" data-title="Select Business Date">
+                          <option>Choose Business Date</option>
+                        </select>
+                      </label>
+                      </li>
+                      <li>
+                        <label class="btn btn-sm"> Metric :
                           <select class="selectpicker-bg pull-right" id="limitMetric_" name="limitMetric_" data-toggle="tooltip" data-placement="top" data-title="Select Risk Metric">
                             <!-- the options are filled in by Javascript-->
                           </select>
-                        </li>
+                        </label>
+                      </li>
                     </ul>
                     <div class="clearfix"></div>
                   </div>
@@ -167,10 +177,9 @@
     <script src="vendors/datatables.net-scroller/js/dataTables.scroller.min.js"></script>
     <script src="vendors/jszip/dist/jszip.min.js"></script>
     <script src="vendors/pdfmake/build/vfs_fonts.js"></script>
-    <script src="vendors/datatables.net-yadcf/jquery.dataTables.yadcf.js"></script>
+    <script src="js/moment/moment.min.js"></script>
 
     <!-- Custom Theme Scripts -->
-    <script src="js/moment/moment.min.js"></script>
     <script src="js/custom.min.js"></script>
     <script src="js/common/fetch.js"></script>
     <script src="js/echart/limitsTable.js"></script>

@@ -285,6 +285,11 @@ var chartManager = {
             var fragment = document.createDocumentFragment();
             return chartManager.getDataFromRestCall('/api/dates')
                 .then(function(response) {
+                    var opt = new Option();
+                    opt.innerHTML = '- Date -';
+                    opt.value = '19700101';
+                    fragment.appendChild(opt);
+
                     response.forEach(function(dcc, index) {
                         var opt = document.createElement('option');
                         // nice format for the user to see
@@ -306,7 +311,6 @@ var chartManager = {
     }
     , populateBarGraphMetricList : function(element) {
         try {
-            // var sel = document.getElementById('businessDates');
             var sel = element;
             // zero out the existing options
             sel.options.length = 0;
@@ -569,10 +573,10 @@ var chartManager = {
         });
     }
     , resetPageDefaults : function() {
-        // set the business date dropdown to item 0
+        // set the business date dropdown to item 1
         var nodes = document.getElementsByClassName('selectpicker');
         [].forEach.call(nodes,function(e) {
-            e.selectedIndex = 0;
+            e.selectedIndex = 1;
         });
 
         // set initial values
