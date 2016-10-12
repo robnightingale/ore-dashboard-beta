@@ -235,8 +235,6 @@ var chartManager = {
                 return response;
             })
             .catch(function(ex) {
-                StackTrace.fromError(ex)
-                    .then(console.error);
                 return Promise.reject(ex);
             })
     }
@@ -823,15 +821,3 @@ var chartManager = {
         chartManager.drillDown(args);
     }
 }
-
-// StackTrace.instrument(chartManager.drillDown, StackTraceCallback, StackTraceErrback);
-
-var StackTraceCallback = function(stackframes) {
-    var stringifiedStack = stackframes.map(function(sf) {
-        return sf.toString();
-    }).join('\n');
-    console.log(stringifiedStack);
-};
-
-var StackTraceErrback = function(err) { console.log(err.message); };
-

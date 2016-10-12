@@ -38,15 +38,6 @@ var filterOnDate = function(evt){
 
 };
 
-$.fn.dataTable.ext.search.push(
-    function( settings, data, dataIndex ) {
-        var val_  = document.getElementById('businessDates').value;
-        if (val_ == '19700101') return true;
-        return data[7] == moment(val_,'YYYYMMDD').format('DD-MMM-YYYY');
-    }
-);
-
-
 var limitLoad_ = function() {
     // load the page
     // attach change event handlers to the dropdown controls
@@ -84,7 +75,7 @@ var limitLoad_ = function() {
     });
 }
 
-$(document).ready(function() {
+var doLimitTableLoaded = function() {
 
     $("a[data-toggle=\"tab\"]").on("shown.bs.tab", function (e) {
         var $newTab = $(e.target);
@@ -102,8 +93,8 @@ $(document).ready(function() {
         }
 
         $(".dt-responsive:visible").each(function (e) {
-           $(this).DataTable().scroller.measure();
-           $(this).DataTable().columns.adjust().responsive.recalc();
+            $(this).DataTable().scroller.measure();
+            $(this).DataTable().columns.adjust().responsive.recalc();
         });
     });
 
@@ -151,23 +142,14 @@ $(document).ready(function() {
                 return data.toUpperCase();
             }},
             { title: "Limit Value", data: "limit"
-                , render: $.fn.dataTable.render.number( ',', '.', 0, chartManager.getBaseCcy())
+                // , render: $.fn.dataTable.render.number( ',', '.', 0, chartManager.getBaseCcy())
             },
             { title: "Consumption Value", data: "value"
                 , render: $.fn.dataTable.render.number( ',', '.', 0, chartManager.getBaseCcy())
             },
             { title: "Date", data: "date"
                 , render: function ( data, type, row ) {
-                // If display or filter data is requested, format the date
-                // if ( type === 'display' || type === 'filter' ) {
-                //     var rowvalue = row["Date"];
-                    return (moment(data, 'YYYYMMDD').format('DD-MMM-YYYY'));
-                    // return data;
-                // }
-                // Otherwise the data type requested (`type`) is type detection or
-                // sorting data, for which we want to use the raw date value, so just return
-                // that, unaltered
-                // return data;
+                return (moment(data, 'YYYYMMDD').format('DD-MMM-YYYY'));
             }
             },
             { title: " Cons %", data: "consumption"
@@ -215,4 +197,12 @@ $(document).ready(function() {
         tableDef.ajax = {url: "api/limitbreaches", dataSrc: massageJson}
     );
 
-});
+    $.fn.dataTable.ext.search.push(
+        function( settings, data, dataIndex ) {
+            var val_  = document.getElementById('businessDates').value;
+            if (val_ == '19700101') return true;
+            return data[7] == moment(val_,'YYYYMMDD').format('DD-MMM-YYYY');
+        }
+    );
+
+};

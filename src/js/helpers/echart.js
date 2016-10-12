@@ -466,7 +466,6 @@ var LINECharts = (function () {
         }
 
         function initialiseAllCharts() {
-            StackTrace.get().then(StackTraceCallback).catch(StackTraceErrback);
             var args = {
                 mode: chartManager.getMode(),
                 hierarchy: chartManager.getHierarchy(),
@@ -748,9 +747,9 @@ var RISKGauge = (function () {
         function getToolTip(metricName, metricValue, limit, consumption) {
             var symbol_ = chartManager.getBaseCcy();
             metricName = metricName.toUpperCase();
-            metricValue = numeral(metricValue).format('(0,0)');
-            limit = numeral(limit).format('(0,0)');
-            consumption = numeral(consumption).format('(0,0)');
+            metricValue = numeral(metricValue).format('(0,0.00)');
+            limit = numeral(limit).format('(0,0.00)');
+            consumption = numeral(consumption).format('(0,0.00)');
             return metricName + ': ' + symbol_ + ' ' + metricValue + '<br/>Limit: ' + symbol_ + ' '+ limit + '<br/>Consumption: ' + consumption + '%';
         }
 
