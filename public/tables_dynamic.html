@@ -16,7 +16,7 @@
     <!-- NProgress -->
     <link href="vendors/nprogress/nprogress.css" rel="stylesheet">
     <!-- iCheck -->
-    <link href="vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+    <!--<link href="vendors/iCheck/skins/flat/green.css" rel="stylesheet">-->
     <!-- Datatables -->
     <link href="vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
     <link href="vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
@@ -179,18 +179,18 @@
     <script src="vendors/pdfmake/build/vfs_fonts.js"></script>
     <!--<script src="js/moment/moment.min.js"></script>-->
 
-    <!-- Custom Theme Scripts -->
+    <!-- Custom Application Scripts -->
     <script src="js/custom.min.js"></script>
-    <!--<script src="js/common/fetch.js"></script>-->
-    <!--<script src="js/echart/limitsTable.js"></script>-->
-    <!--<script src="js/echart/chartManager.js"></script>-->
 
 <script src="js/glossary.js"></script>
 
     <!-- Datatables -->
     <script>
+      // the pure JS methods go in here
         window.onload = limitLoad_;
 
+      // while this one takes care of jQuery methods
+      // that must run only once all resources have laoded
         $(document).ready(function() {
           doLimitTableLoaded();
         });
